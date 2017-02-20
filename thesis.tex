@@ -1,0 +1,83 @@
+
+\documentclass[a4paper,
+oneside,
+11pt,
+abstracton,
+nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+parskip, % add space between paragraphs
+headsepline, % get a line under the header
+]{scrreprt} %
+
+\input{thesis-config}
+
+\addbibresource[label=ownpubs]{appendices.literatur.bib}
+
+
+\begin{document}
+\pagestyle{empty}
+
+\input{appendices/Deckblatt}
+\input{chapters/Abstract}
+
+\tableofcontents % Prints the main table of contents
+
+
+%	THESIS CONTENT - CHAPTERS
+
+\cleardoublepage
+\pagestyle{headings}%%Ab hier die Kopf-/Fusszeilen: headings / fancy .
+%\hyphenation{JavaScript} %trennt JavaScript nie
+
+
+\include{chapters/Einleitung}
+\include{chapters/StateOfTheArt}
+\include{chapters/Grundlagen}
+\include{chapters/Szenarien}
+\include{chapters/Anforderungen}
+\include{chapters/Konzeption}
+\include{chapters/Implementierung}
+\include{chapters/Test}
+\include{chapters/Fazit}
+
+%
+%	THESIS CONTENT - APPENDICES
+%
+
+%% Ein kleiner Abstand zu den Kapiteln im Inhaltsverzeichnis (toc)
+\addtocontents{toc}{\protect\vspace*{\baselineskip}}
+\include{appendices/Acronym}
+\printglossary[type=\acronymtype, title=Abkürzungen, style=super]
+\printglossary[type=main,style=altlist]
+
+%
+%Abbildungsverzeichnis
+%
+\clearpage
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+
+% \renewcommand\lstlistlistingname{Quellcodeverzeichnis} %Inhaltsverzeichnistitel = Inhalt
+%\lstlistoflistings%quellcodeverzeichnis
+
+% Literaturverzeichnis
+\printbibliography
+% \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+
+
+% Anhang
+\clearpage
+\appendix
+\addcontentsline{toc}{chapter}{Anhang}
+\chapter*{Anhang}
+\section*{Eidesstattliche Erklärung}
+\section*{CD-Inhalt}
+Auf der beigefügten CD befinden sich
+\begin{itemize}
+	\item Die schriftliche Ausarbeitung dieser Bachelorarbeit im PDF-Format
+	\item Das erstellte Projekt	inklusive der Android .apk-Datei
+	\item Testprotokolle
+\end{itemize}
+
+
+\end{document}

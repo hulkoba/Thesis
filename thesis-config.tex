@@ -1,0 +1,145 @@
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+
+\usepackage[english, ngerman]{babel}
+
+
+\usepackage[default]{lato}
+\usepackage[T1]{fontenc}
+
+% \usepackage{titleref}
+% \usepackage{titlesec} % formatiert titel-absätze
+
+
+\usepackage[bottom=30mm]{geometry} %Seitenränder
+\usepackage[pdfborder={ 0 0 0 }, breaklinks]{hyperref}
+
+
+
+% \usepackage{cite}
+\usepackage[babel, german=swiss]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage[backend=bibtex8, style=authortitle-icomp, natbib=true]{biblatex}
+
+% \usepackage{enumitem}
+
+\addto\captionsngerman{\renewcommand{\abstractname}{Abstract}}
+
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+
+%------------------------------------------------
+
+\usepackage{textcomp} % Fix warning with missing font shapes
+
+%------------------------------------------------
+
+\usepackage{xspace} % To get the spacing after macros right
+
+%------------------------------------------------
+
+\usepackage{mparhack} % To get marginpar right
+
+%------------------------------------------------
+
+\usepackage{fixltx2e} % Fixes some LaTeX stuff
+
+%------------------------------------------------
+
+\usepackage{scrhack} % Fix warnings when using KOMA with listings package
+
+%------------------------------------------------
+
+\usepackage{xspace} % setzt Leerzeichen, wenn welche hingehören
+
+% --------------------------------------------
+
+\usepackage[
+nonumberlist,   %keine Seitenzahlen anzeigen
+%nopostdot,      %keine Punkte am Ende
+acronym,       %ein Abkürzungsverzeichnis erstellen
+toc]
+{glossaries}
+\makeglossaries
+%Glossar-Befehle anschalten
+\include{appendices/Glossary}
+
+
+%-----------------------------------------------
+%	FLOATS: FIGURES AND CAPTIONS SETUP
+%-----------------------------------------------
+\usepackage{caption}
+\captionsetup{font=small}
+\usepackage{subcaption}
+
+% ---------------------------------------------------
+
+\usepackage[table,xcdraw,dvipsnames ]{xcolor}
+\usepackage{float} % table float
+\usepackage{booktabs} % need for table toprule etc
+
+\definecolor{lightgray}{gray}{0.95}
+\definecolor{rulegray}{gray}{0.8}
+
+\addtokomafont{chapter}{ \scshape \mdseries}
+\addtokomafont{section}{\huge \scshape \mdseries \color{darkgray}}
+\addtokomafont{subsection}{\LARGE \scshape \mdseries \color{gray}}
+\addtokomafont{subsubsection}{\large \scshape \mdseries}
+\setlength{\parindent}{0pt}  % keine Einrückungen nach Absätzen
+
+\addto\captionsngerman{\renewcommand{\abstractname}{Abstract}}
+
+
+\newcommand{\grayRule}{
+   \textcolor{rulegray}{\rule{35em}{0.4pt}}
+}
+
+
+% ----------------------------------------------------
+
+\usepackage{listings}
+\lstdefinelanguage{JSON}{
+	morestring=[b]",
+	stringstyle=\color{purple},
+    literate=
+     *{0}{{{\color{violet}0}}}{1}
+      {1}{{{\color{violet}1}}}{1}
+      {2}{{{\color{violet}2}}}{1}
+      {3}{{{\color{violet}3}}}{1}
+      {4}{{{\color{violet}4}}}{1}
+      {5}{{{\color{violet}5}}}{1}
+      {6}{{{\color{violet}6}}}{1}
+      {7}{{{\color{violet}7}}}{1}
+      {8}{{{\color{violet}8}}}{1}
+      {9}{{{\color{violet}9}}}{1}
+      {false}{{{\color{violet}false}}}{1}
+      {true}{{{\color{violet}true}}}{1}
+      {:}{{{\color{blue}{:}}}}{1}
+      {,}{{{\color{blue}{,}}}}{1}
+      {\{}{{{\color{blue}{\{}}}}{1}
+      {\}}{{{\color{blue}{\}}}}}{1}
+      {[}{{{\color{blue}{[}}}}{1}
+      {]}{{{\color{blue}{]}}}}{1},     ,
+}
+\lstset{
+   captionpos=b,
+   basicstyle=\scriptsize\ttfamily,
+   keywordstyle=\bfseries\ttfamily\color{violet},
+   stringstyle=\color{purple}\ttfamily,
+   commentstyle=\color{OliveGreen}\ttfamily,
+   backgroundcolor=\color{lightgray},
+   emph={square},
+   emphstyle=\color{blue}\texttt,
+   emph={[2]root,base},
+   emphstyle={[2]\color{yac}\texttt},
+   showstringspaces=false,
+   flexiblecolumns=false,
+   tabsize=4,
+   numbers=left,
+   numberstyle=\tiny,
+   numberblanklines=false,
+   stepnumber=1,
+   numbersep=5pt,
+   xleftmargin=15pt
+ }
