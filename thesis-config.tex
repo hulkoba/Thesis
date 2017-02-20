@@ -3,31 +3,34 @@
 
 \usepackage[english, ngerman]{babel}
 
-
 \usepackage[default]{lato}
 \usepackage[T1]{fontenc}
 
-% \usepackage{titleref}
-% \usepackage{titlesec} % formatiert titel-absätze
-
-
 \usepackage[bottom=30mm]{geometry} %Seitenränder
-\usepackage[pdfborder={ 0 0 0 }, breaklinks]{hyperref}
+\usepackage[pdfborder={ 0 0 0 }, breaklinks, backref]{hyperref}
+
+% ----------------------------------------------------------------
 
 
-
-% \usepackage{cite}
 \usepackage[babel, german=swiss]{csquotes} % Required to generate language-dependent quotes in the bibliography
-\usepackage[backend=bibtex8, style=authortitle-icomp, natbib=true]{biblatex}
 
-% \usepackage{enumitem}
+\usepackage{titleref}
+\usepackage{cite}
 
-\addto\captionsngerman{\renewcommand{\abstractname}{Abstract}}
-
+\usepackage{wrapfig}
+\usepackage[justification=raggedright, format=hang,labelsep=quad]{caption}
+%\usepackage{subcaption}
 
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
+\usepackage[table,xcdraw,dvipsnames ]{xcolor}
+\usepackage{float} % table float
+\usepackage{booktabs} % need for table toprule etc
+
+% ------------------------------------------------------------
+
+\addto\captionsngerman{\renewcommand{\abstractname}{Abstract}}
 
 %------------------------------------------------
 
@@ -66,18 +69,8 @@ toc]
 \include{appendices/Glossary}
 
 
-%-----------------------------------------------
-%	FLOATS: FIGURES AND CAPTIONS SETUP
-%-----------------------------------------------
-\usepackage{caption}
-\captionsetup{font=small}
-\usepackage{subcaption}
-
 % ---------------------------------------------------
 
-\usepackage[table,xcdraw,dvipsnames ]{xcolor}
-\usepackage{float} % table float
-\usepackage{booktabs} % need for table toprule etc
 
 \definecolor{lightgray}{gray}{0.95}
 \definecolor{rulegray}{gray}{0.8}

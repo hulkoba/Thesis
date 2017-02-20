@@ -5,6 +5,7 @@
 * `texlive texlive-latex-extra texlive-lang-german`
 * `texlive-science`
 * `texlive-bibtex-extra`
+* `biber`
 * `texlive-fonts-extra`
 * `texlive-generic-extra` (glossaries)
 

@@ -10,8 +10,7 @@ headsepline, % get a line under the header
 
 \input{thesis-config}
 
-\addbibresource[label=ownpubs]{appendices.literatur.bib}
-
+%\addbibresource[label=ownpubs]{appendices/literatur.bib}
 
 \begin{document}
 \pagestyle{empty}
@@ -40,7 +39,7 @@ headsepline, % get a line under the header
 \include{chapters/Fazit}
 
 %
-%	THESIS CONTENT - APPENDICES
+%	APPENDICES
 %
 
 %% Ein kleiner Abstand zu den Kapiteln im Inhaltsverzeichnis (toc)
@@ -60,9 +59,9 @@ headsepline, % get a line under the header
 %\lstlistoflistings%quellcodeverzeichnis
 
 % Literaturverzeichnis
-\printbibliography
-% \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliographystyle{alphadin}
+\bibliography{appendices/literatur}
 
 
 % Anhang
