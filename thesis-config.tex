@@ -18,15 +18,15 @@
 \usepackage{cite}
 
 \usepackage{wrapfig}
-\usepackage[justification=raggedright, format=hang,labelsep=quad]{caption}
-%\usepackage{subcaption}
-
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
-\usepackage[table,xcdraw,dvipsnames ]{xcolor}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
 \usepackage{float} % table float
 \usepackage{booktabs} % need for table toprule etc
+
+\usepackage{enumitem}
+\linespread {1.25}\selectfont
 
 % ------------------------------------------------------------
 
@@ -44,9 +44,6 @@
 
 \usepackage{mparhack} % To get marginpar right
 
-%------------------------------------------------
-
-\usepackage{fixltx2e} % Fixes some LaTeX stuff
 
 %------------------------------------------------
 
@@ -60,7 +57,7 @@
 
 \usepackage[
 nonumberlist,   %keine Seitenzahlen anzeigen
-%nopostdot,      %keine Punkte am Ende
+nopostdot,      %keine Punkte am Ende
 acronym,       %ein Abkürzungsverzeichnis erstellen
 toc]
 {glossaries}

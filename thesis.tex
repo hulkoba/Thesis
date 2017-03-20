@@ -3,8 +3,7 @@
 oneside,
 11pt,
 abstracton,
-nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
-parskip, % add space between paragraphs
+% parskip, % add space between paragraphs
 headsepline, % get a line under the header
 ]{scrreprt} %
 
@@ -13,18 +12,17 @@ headsepline, % get a line under the header
 %\addbibresource[label=ownpubs]{appendices/literatur.bib}
 
 \begin{document}
+\setlist{noitemsep}  %% verringert Zeilenabstand bei aufzaehlungen
 \pagestyle{empty}
 
 \input{appendices/Deckblatt}
 \input{chapters/Abstract}
 
-\tableofcontents % Prints the main table of contents
+\tableofcontents 
 
-
-%	THESIS CONTENT - CHAPTERS
 
 \cleardoublepage
-\pagestyle{headings}%%Ab hier die Kopf-/Fusszeilen: headings / fancy .
+\pagestyle{headings} %Ab hier die Kopf-/Fusszeilen.
 %\hyphenation{JavaScript} %trennt JavaScript nie
 
 
@@ -55,7 +53,8 @@ headsepline, % get a line under the header
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
 
-% \renewcommand\lstlistlistingname{Quellcodeverzeichnis} %Inhaltsverzeichnistitel = Inhalt
+% \renewcommand\lstlistlistingname{Quellcodeverzeichnis} 
+%Inhaltsverzeichnistitel = Inhalt
 %\lstlistoflistings%quellcodeverzeichnis
 
 % Literaturverzeichnis
@@ -77,6 +76,5 @@ Auf der beigefügten CD befinden sich
 	\item Das erstellte Projekt	inklusive der Android .apk-Datei
 	\item Testprotokolle
 \end{itemize}
-
 
 \end{document}
