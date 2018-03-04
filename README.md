@@ -14,8 +14,9 @@
 
 1. pdflatex filename (with or without extensions)
 2. bibtex filename (without extensions)
-3. pdflatex filename (with or without extensions)
+3. makeglossaries filename
 4. pdflatex filename (with or without extensions)
+5. pdflatex filename (with or without extensions)
 
 or add the following line to your `~/.bashrc`
 ``` alias texbib = 'pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex' ```

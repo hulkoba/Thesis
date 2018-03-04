@@ -1,4 +1,3 @@
-
 \documentclass[a4paper,
 oneside,
 11pt,
@@ -16,25 +15,22 @@ headsepline, % get a line under the header
 \pagestyle{empty}
 
 \input{appendices/Deckblatt}
-\input{chapters/Abstract}
+\input{chapters/0Abstract}
 
-\tableofcontents 
-
-
+\renewcommand{\contentsname}{Inhalt} %Inhaltsverzeichnistitel = Inhalt
+\tableofcontents
 \cleardoublepage
 \pagestyle{headings} %Ab hier die Kopf-/Fusszeilen.
 %\hyphenation{JavaScript} %trennt JavaScript nie
 
 
-\include{chapters/Einleitung}
-\include{chapters/StateOfTheArt}
-\include{chapters/Grundlagen}
-\include{chapters/Szenarien}
-\include{chapters/Anforderungen}
-\include{chapters/Konzeption}
-\include{chapters/Implementierung}
-\include{chapters/Test}
-\include{chapters/Fazit}
+\include{chapters/1Einleitung}
+\include{chapters/2StateOfTheArt}
+\include{chapters/3Grundlagen}
+\include{chapters/6Konzeption}
+\include{chapters/7Implementierung}
+\include{chapters/8Test}
+\include{chapters/9Fazit}
 
 %
 %	APPENDICES
@@ -53,17 +49,18 @@ headsepline, % get a line under the header
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
 
-% \renewcommand\lstlistlistingname{Quellcodeverzeichnis} 
-%Inhaltsverzeichnistitel = Inhalt
+% \renewcommand\lstlistlistingname{Quellcodeverzeichnis}
 %\lstlistoflistings%quellcodeverzeichnis
 
+%
 % Literaturverzeichnis
+%
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{alphadin}
 \bibliography{appendices/literatur}
-
-
+%
 % Anhang
+%
 \clearpage
 \appendix
 \addcontentsline{toc}{chapter}{Anhang}
@@ -72,9 +69,8 @@ headsepline, % get a line under the header
 \section*{CD-Inhalt}
 Auf der beigefügten CD befinden sich
 \begin{itemize}
-	\item Die schriftliche Ausarbeitung dieser Bachelorarbeit im PDF-Format
-	\item Das erstellte Projekt	inklusive der Android .apk-Datei
-	\item Testprotokolle
+	\item Die schriftliche Ausarbeitung dieser Masterrarbeit im PDF-Format
+	\item Das erstellte Projekt
 \end{itemize}
 
 \end{document}
