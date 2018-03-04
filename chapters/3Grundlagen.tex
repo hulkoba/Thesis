@@ -1,0 +1,64 @@
+\chapter{\label{chap:grundlagen}Grundlagen}
+Software, mit der ein freigegebenes Dokument zusammen mit anderen über das Internet bearbeitet werden kann, kann überaus wertvoll sein wenn man beispielsweise in einem Team arbeitet. Heutzutage gibt es viele webbasierte Software für simultanes kollaboratives Editieren \textit{(Textdokumente, Tabellenkalkulationen, Präsentationen, Quellcode)}. Im Kapitel \ref{chap:state} werden Produkte und Frameworks vorgestellt, mit deren Hilfe man solche Software erstellen kann.\\
+Lassen Sie uns einen Moment nehmen, um genauer zu definieren, was wir unter dem Begriff kollaboratives Echtzeit-Editieren verstehen.
+Wir möchten, dass mehrere Personen, die an verschiedenen Computern arbeiten, jederzeit Änderungen an einem auf einem Server gehosteten Dokument vornehmen können. Diese Änderungen werden sofort mit den anderen KollegInnen synchronisiert. Kein Client sollte vor einer Änderung mit dem Server oder einem anderen Client kommunizieren müssen. Insbesondere ist es nicht erforderlich, eine Sperre vom Server zu erhalten um ein Dokument zu bearbeiten und gleichzeitige Editierungen können auftreten. Nachdem alle Änderungen synchronisiert wurden, sollte jeder Client das exakt gleiche Dokument sehen.
+%
+% Strategien
+%
+\section{Konfliktmanagementstrategien in verteilten Systemen}
+Es stellt sich heraus, dass die Implementierung dieser Art von Echtzeit-Zusammenarbeit alles andere als trivial ist.
+Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorgestellt.
+%
+% Operational Transform
+%
+\subsection{Operational Transformation}
+\gls{OT} als weit verbreitete Lösung stammt aus einer im Jahre 1989 veröffentlichten Forschungsarbeit\cite{ot_paper}.
+% Ideen: einfach und mathematisch elegant
+Es wird das Problem untersucht, dass \gls{OT} in einer idealen Umgebung löst und dadurch zu einem funktionierendem Algorithmus gelangt.\\
+Ziel: Mehrere BenutzerInnen können gleichzeitig an einem Dokument arbeiten, sehen Änderungen der anderen in Echtzeit (live), ohne dass einer Verzögerung durch die Netzwerklatenz verursacht wird. Gleichzeitig auftretende Mehrfachänderungen sollen nicht zu unterschiedlichen Dokumentenzuständen führen.
+\subsubsection{Funktionsweise}
+Jede Änderung an einem freigegebenen Dokument wird als Operation dargestellt. Operationen sind Repräsentationen von Änderungen an einem Dokument. (Beispielsweise: Füge 'Hello world!' an Position 0 in das Textdokument ein).  Eine Operation zeichnet im Wesentlichen den Unterschied zwischen einer und der nachfolgenden Version eines Dokuments auf. Die Anwendung einer Operation auf das aktuelle Dokument führt zu einem neuen Dokumentstatus.\\
+Es gibt die Operationen \textbf{das Einfügen}\\
+Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument (\texttt{insert('h', 0)}).
+Für die Position kann ein Koordinatensystem ermittelt werden (Zeilennummer: Position in Zeile oder einfacher: Dokument wie eine Folge von Zeichen behandeln, also einfach einen nullbasierten Index vergeben.)\\
+und \textbf{das Löschen}\\
+Löschen(5,6) = löscht 5 Zeichen, beginnend bei Position 6.
+Mehr benötigt man nicht, denn update = delete \& insert
+\subsubsection{Konfliktmanagement}
+
+\cite{ot}
+\subsubsection{Kritik}
+%
+% CRDT
+%
+\subsection{Conflict-free replicated data type}
+CRDTs sind Objekte, die ohne teure Synchronisation aktualisiert werden können. Sie konvergieren schließlich, wenn alle gleichzeitigen Aktualisierungen kommutativ\footnote{Unverändert bei Vertauschen der Operanden} sind und wenn alle Aktualisierungen schließlich von jeder Replik ausgeführt werden \cite{crdt_shapiro}.
+Um diese Garantien zu geben, müssen diese Objekte bestimmte Kriterien erfüllen, welche im Folgenden beschrieben werden \cite{crdt_shapiro2}.
+% In ihren Arbeiten betrachten Shapiro et. al zwei Replikationsmodelle in einem letztendlich konsistentem verteilten System: den zusatndsbasierten und den operationsbasierten Ansatz. Basierend auf dem Replikationsmodell definieren Sie zwei Arten von CRDTs: CvRDT (vonvergent replicated data type) und CmRDT (kommutativ replizierter Datantyp). Interessanterweise zeigen sie, dass diese beiden Replikationsmodelle und diese beiden Arten von CRDTs äquivalent sind.
+\subsubsection{Zustandbasierter Ansatz}
+Wenn ein Replikat ein Update von einem Client empfängt, aktualisiert es zuerst seinen lokalen Status und dann, einige Zeit später, seinen \textbf{vollständigen Status}. So sendet jedes Replikat gelegentlich seinen vollständigen Status an ein anderes Replikat im System. Um ein Replikat, das den Status eines anderen Replikats empfängt, wendet eine \textbf{Zusammenführungsfunktion} (merge) an, um den empfangenen Status mit dem lokalen Status zusammenzuführen. Entsprechend sendet dieses Replikat gelegentlich auch seinen Status an ein anderes Replikat, sodass jedes Update schließlich alle Replikate im System erreicht.
+\subsubsection{Operationsbasierter Ansatz}
+Bei diesem Ansatz sendet ein Replikat seinen vollständigen Status (kann groß sein) nicht an ein anderes Replikat. Stattdessen sendet es nur den \textbf{Aktualisierungsvorgang} an \textbf{alle} anderen Replikate im System und erwartet von ihnen, dass sie das Update auf sich anwenden.\\
+Da es sich um einen Sendevorgang handelt, wenn zwei Updates $u1$ und $u2$, bei einem Replikat $i$ angewendet werden und diese Updates an zwei Replikate $r1$ und $r2$ gesendet werden, können diese Updates in unterschiedlicher Reihenfolge bei diesen replikaten ankommen. $r1$ kann sie in der Reihenfolge $u1, u2$ empfangen, während bei $r2$ die Updates in umgekehrter Reihenfolge ($u2, u1$) ankommen können. Sind die Aktualisierungen \textbf{kommutativ}, können die Repliken zussamengeführt werden, egal in welcher Reihenfolge die Updates bei ihnen ankommen - der resultierende Zustand ist derselbe. In diesem Modell wird ein Objekt, für das alle gleichzeitigen Aktualisierungen kommutativ sind, CmRDT (commutative replicated data type - kommutativ replizierter Datentyp) genannt. \\\\
+\textbf{Beispiel:...}\\
+CRDTs befassen sich mit einem interessanten und grundlegendem Problem in verteilten Systemen, haben jedoch eine wichtige Einschränkung: "Da ein CRDT konstruktionsbedingt keinen Konsens verwendet, hat der Ansatz starke Einschränkungen; Dennoch sind einige interessante und nicht-triviale CRDTs bekannt" \cite{crdt_shapiro2}. Die Einschränkung ist, dass die CRDT-Adresse nur einen Teil des Problemraums betrifft, da nicht alle möglichen Aktualisierungsoperationen kommutativ sind und daher nicht alle Probleme in CRDTs umgewandelt werden können. Auf der anderen Seite können CRDTs für einige Arten von Anwendungen durchaus nützlich sein, da sie eine nette Abstraktion zur Implementierung repliziter verteilter Systeme bieten und gleichzeitig theoretische Konsistenzgarantien bieten.
+%
+% Last-write-wins
+%
+\subsection{Last-Write-Wins (LWW)}
+%
+% Couch Pouch
+%
+\section{CouchDB/PouchDB}
+\subsection{CouchDB}
+\subsection{PouchDB}
+
+%
+% Offline-First
+%
+\section{Offline First}
+1. Separate Apps from Data\\
+2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
+3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
+4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
+5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
