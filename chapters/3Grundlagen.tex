@@ -25,9 +25,19 @@ und \textbf{das Löschen}\\
 Löschen(5,6) = löscht 5 Zeichen, beginnend bei Position 6.
 Mehr benötigt man nicht, denn update = delete \& insert
 \subsubsection{Konfliktmanagement}
-
-\cite{ot}
+Um gleichzeitige Operationen zu behandeln, gibt es eine Funktion (normalerweise texttt{Transform} genannt), die zwei Operationen übernimmt, die auf denselben Dokumentstatus angewendet wurden (aber auf verschiedenen Clients).
+Daraus wird eine neue Operation berechnet, die nach der zweiten Operation angewendet werden kann. Diese behält die erste beabsichtigte Änderung der Operation.
+Beispiel:
+Benutzer A fügt an Position 12 das Zeichen "A" ein
+Benutzer B fügt am Anfang des Dokuments ein "B" ein.
+Die konkurrierenden Operationen sind daher Einfügen (12, 'A') und Einfügen (0, 'B').
+Wenn wir die Operation von B einfach an Client A senden und dort anwenden würden, gäbe es ein Problem.
+Aber wenn die Operation von A an B gesendet, und angewandt wird nachdem Operation B angewandt wurde ist, würde das Zeichen 'A' eine Position zu weit links von der korrekten Position eingefügt werden.
+Dokumentstatus A und Dokumentstatus B sind nicht identisch.\\
+Daher muss A's \texttt{insert(12, 'A')} gegen die Operation von B transformiert werden. So wird berücksichtigt, dass B ein Zeichen vor der Position 12 eingefügt hat (die die Operation \texttt{insert(13, 'A')} erzeugt.)\\
+Diese neue Operation kann auf Dokument B nach B's Operation angewandt werden.
 \subsubsection{Kritik}
+\cite{diff_sync}
 %
 % CRDT
 %
