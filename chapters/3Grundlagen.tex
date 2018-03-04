@@ -12,19 +12,19 @@ Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorge
 % Operational Transform
 %
 \subsection{Operational Transformation}
-\gls{OT} als weit verbreitete Lösung stammt aus einer im Jahre 1989 veröffentlichten Forschungsarbeit\cite{ot_paper}.
+\gls{OT} als weit verbreitete Lösung stammt aus einer im Jahre 1989 veröffentlichten Forschungsarbeit~\cite{ot_paper}.
 % Ideen: einfach und mathematisch elegant
 Es wird das Problem untersucht, dass \gls{OT} in einer idealen Umgebung löst und dadurch zu einem funktionierendem Algorithmus gelangt.\\
 Ziel: Mehrere BenutzerInnen können gleichzeitig an einem Dokument arbeiten, sehen Änderungen der anderen in Echtzeit (live), ohne dass einer Verzögerung durch die Netzwerklatenz verursacht wird. Gleichzeitig auftretende Mehrfachänderungen sollen nicht zu unterschiedlichen Dokumentenzuständen führen.
 \subsubsection{Funktionsweise}
+TODO: \url{https://en.wikipedia.org/wiki/Operational_transformation} system architecture and basics\\
 Jede Änderung an einem freigegebenen Dokument wird als Operation dargestellt. Operationen sind Repräsentationen von Änderungen an einem Dokument. (Beispielsweise: Füge 'Hello world!' an Position 0 in das Textdokument ein).  Eine Operation zeichnet im Wesentlichen den Unterschied zwischen einer und der nachfolgenden Version eines Dokuments auf. Die Anwendung einer Operation auf das aktuelle Dokument führt zu einem neuen Dokumentstatus.\\
 Es gibt die Operationen \textbf{das Einfügen}\\
 Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument (\texttt{insert('h', 0)}).
 Für die Position kann ein Koordinatensystem ermittelt werden (Zeilennummer: Position in Zeile oder einfacher: Dokument wie eine Folge von Zeichen behandeln, also einfach einen nullbasierten Index vergeben.)\\
 und \textbf{das Löschen}\\
 Löschen(5,6) = löscht 5 Zeichen, beginnend bei Position 6.
-Mehr benötigt man nicht, denn update = delete \& insert
-\subsubsection{Konfliktmanagement}
+Mehr benötigt man nicht, denn update = delete \& insert\\\\
 Um gleichzeitige Operationen zu behandeln, gibt es eine Funktion (normalerweise texttt{Transform} genannt), die zwei Operationen übernimmt, die auf denselben Dokumentstatus angewendet wurden (aber auf verschiedenen Clients).
 Daraus wird eine neue Operation berechnet, die nach der zweiten Operation angewendet werden kann. Diese behält die erste beabsichtigte Änderung der Operation.
 Beispiel:
@@ -37,13 +37,15 @@ Dokumentstatus A und Dokumentstatus B sind nicht identisch.\\
 Daher muss A's \texttt{insert(12, 'A')} gegen die Operation von B transformiert werden. So wird berücksichtigt, dass B ein Zeichen vor der Position 12 eingefügt hat (die die Operation \texttt{insert(13, 'A')} erzeugt.)\\
 Diese neue Operation kann auf Dokument B nach B's Operation angewandt werden.
 \subsubsection{Kritik}
-\cite{diff_sync}
+Während der klassische OT-Ansatz, Operationen durch ihre Versätze im Text zu definieren, einfach und natürlich zu sein scheint, werfen real verteilte Systeme ernsthafte Probleme auf. Nämlich, dass sich die Operationen mit endlicher Geschwindigkeit fortpflanzen, die Zustände der TeilnehmerInnen sind oft verschieden, so dass die resultierenden Kombinationen von Zuständen und Operationen extrem schwer vorherzusehen und zu verstehen sind.
+Wie Li und Li es ausdrückten: "Aufgrund der Notwendigkeit, eine komplizierte Fallabdeckung in Betracht zu ziehen, sind formale Beweise sehr kompliziert und fehleranfällig, selbst für OT-Algorithmen, die nur zwei charakteristische Primitive behandeln (Einfügen und Löschen)".~\cite{ot-critic}\\
+Damit OT funktioniert, muss jede einzelne Änderung an den Daten erfasst werden: "Einen Schnappschuss des Zustands zu erhalten, ist normalerweise trivial, aber das Erfassen von Bearbeitungen ist eine ganz andere Sache. [...] Der Reichtum moderner Benutzerschnittstellen kann dies problematisch machen, besonders in einer browserbasierten Umgebung".~\cite{diff_sync}
 %
 % CRDT
 %
 \subsection{Conflict-free replicated data type}
-CRDTs sind Objekte, die ohne teure Synchronisation aktualisiert werden können. Sie konvergieren schließlich, wenn alle gleichzeitigen Aktualisierungen kommutativ\footnote{Unverändert bei Vertauschen der Operanden} sind und wenn alle Aktualisierungen schließlich von jeder Replik ausgeführt werden \cite{crdt_shapiro}.
-Um diese Garantien zu geben, müssen diese Objekte bestimmte Kriterien erfüllen, welche im Folgenden beschrieben werden \cite{crdt_shapiro2}.
+CRDTs sind Objekte, die ohne teure Synchronisation aktualisiert werden können. Sie konvergieren schließlich, wenn alle gleichzeitigen Aktualisierungen kommutativ\footnote{Unverändert bei Vertauschen der Operanden} sind und wenn alle Aktualisierungen schließlich von jeder Replik ausgeführt werden ~\cite{crdt_shapiro}.
+Um diese Garantien zu geben, müssen diese Objekte bestimmte Kriterien erfüllen, welche im Folgenden beschrieben werden ~\cite{crdt_shapiro2}.
 % In ihren Arbeiten betrachten Shapiro et. al zwei Replikationsmodelle in einem letztendlich konsistentem verteilten System: den zusatndsbasierten und den operationsbasierten Ansatz. Basierend auf dem Replikationsmodell definieren Sie zwei Arten von CRDTs: CvRDT (vonvergent replicated data type) und CmRDT (kommutativ replizierter Datantyp). Interessanterweise zeigen sie, dass diese beiden Replikationsmodelle und diese beiden Arten von CRDTs äquivalent sind.
 \subsubsection{Zustandbasierter Ansatz}
 Wenn ein Replikat ein Update von einem Client empfängt, aktualisiert es zuerst seinen lokalen Status und dann, einige Zeit später, seinen \textbf{vollständigen Status}. So sendet jedes Replikat gelegentlich seinen vollständigen Status an ein anderes Replikat im System. Um ein Replikat, das den Status eines anderen Replikats empfängt, wendet eine \textbf{Zusammenführungsfunktion} (merge) an, um den empfangenen Status mit dem lokalen Status zusammenzuführen. Entsprechend sendet dieses Replikat gelegentlich auch seinen Status an ein anderes Replikat, sodass jedes Update schließlich alle Replikate im System erreicht.
@@ -51,7 +53,7 @@ Wenn ein Replikat ein Update von einem Client empfängt, aktualisiert es zuerst 
 Bei diesem Ansatz sendet ein Replikat seinen vollständigen Status (kann groß sein) nicht an ein anderes Replikat. Stattdessen sendet es nur den \textbf{Aktualisierungsvorgang} an \textbf{alle} anderen Replikate im System und erwartet von ihnen, dass sie das Update auf sich anwenden.\\
 Da es sich um einen Sendevorgang handelt, wenn zwei Updates $u1$ und $u2$, bei einem Replikat $i$ angewendet werden und diese Updates an zwei Replikate $r1$ und $r2$ gesendet werden, können diese Updates in unterschiedlicher Reihenfolge bei diesen replikaten ankommen. $r1$ kann sie in der Reihenfolge $u1, u2$ empfangen, während bei $r2$ die Updates in umgekehrter Reihenfolge ($u2, u1$) ankommen können. Sind die Aktualisierungen \textbf{kommutativ}, können die Repliken zussamengeführt werden, egal in welcher Reihenfolge die Updates bei ihnen ankommen - der resultierende Zustand ist derselbe. In diesem Modell wird ein Objekt, für das alle gleichzeitigen Aktualisierungen kommutativ sind, CmRDT (commutative replicated data type - kommutativ replizierter Datentyp) genannt. \\\\
 \textbf{Beispiel:...}\\
-CRDTs befassen sich mit einem interessanten und grundlegendem Problem in verteilten Systemen, haben jedoch eine wichtige Einschränkung: "Da ein CRDT konstruktionsbedingt keinen Konsens verwendet, hat der Ansatz starke Einschränkungen; Dennoch sind einige interessante und nicht-triviale CRDTs bekannt" \cite{crdt_shapiro2}. Die Einschränkung ist, dass die CRDT-Adresse nur einen Teil des Problemraums betrifft, da nicht alle möglichen Aktualisierungsoperationen kommutativ sind und daher nicht alle Probleme in CRDTs umgewandelt werden können. Auf der anderen Seite können CRDTs für einige Arten von Anwendungen durchaus nützlich sein, da sie eine nette Abstraktion zur Implementierung repliziter verteilter Systeme bieten und gleichzeitig theoretische Konsistenzgarantien bieten.
+CRDTs befassen sich mit einem interessanten und grundlegendem Problem in verteilten Systemen, haben jedoch eine wichtige Einschränkung: "Da ein CRDT konstruktionsbedingt keinen Konsens verwendet, hat der Ansatz starke Einschränkungen; Dennoch sind einige interessante und nicht-triviale CRDTs bekannt" ~\cite{crdt_shapiro2}. Die Einschränkung ist, dass die CRDT-Adresse nur einen Teil des Problemraums betrifft, da nicht alle möglichen Aktualisierungsoperationen kommutativ sind und daher nicht alle Probleme in CRDTs umgewandelt werden können. Auf der anderen Seite können CRDTs für einige Arten von Anwendungen durchaus nützlich sein, da sie eine nette Abstraktion zur Implementierung repliziter verteilter Systeme bieten und gleichzeitig theoretische Konsistenzgarantien bieten.
 %
 % Last-write-wins
 %
