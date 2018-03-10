@@ -15,7 +15,7 @@ Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorge
 \gls{OT} als weit verbreitete Lösung stammt aus einer im Jahre 1989 veröffentlichten Forschungsarbeit~\cite{ot_paper}.
 % Ideen: einfach und mathematisch elegant
 Es wird das Problem untersucht, dass \gls{OT} in einer idealen Umgebung löst und dadurch zu einem funktionierendem Algorithmus gelangt.\\
-Ziel: Mehrere BenutzerInnen können gleichzeitig an einem Dokument arbeiten, sehen Änderungen der anderen in Echtzeit (live), ohne dass einer Verzögerung durch die Netzwerklatenz verursacht wird. Gleichzeitig auftretende Mehrfachänderungen sollen nicht zu unterschiedlichen Dokumentenzuständen führen.
+Ziel: Mehrere BenutzerInnen können gleichzeitig an einem Dokument arbeiten, sehen Änderungen der anderen in Echtzeit (live), ohne dass einer Verzögerung durch die \gls{Netzwerklatenz} verursacht wird. Gleichzeitig auftretende Mehrfachänderungen sollen nicht zu unterschiedlichen Dokumentenzuständen führen.
 \subsubsection{Funktionsweise}
 TODO: \url{https://en.wikipedia.org/wiki/Operational_transformation} system architecture and basics\\
 Jede Änderung an einem freigegebenen Dokument wird als Operation dargestellt. Operationen sind Repräsentationen von Änderungen an einem Dokument. (Beispielsweise: Füge 'Hello world!' an Position 0 in das Textdokument ein).  Eine Operation zeichnet im Wesentlichen den Unterschied zwischen einer und der nachfolgenden Version eines Dokuments auf. Die Anwendung einer Operation auf das aktuelle Dokument führt zu einem neuen Dokumentstatus.\\
