@@ -1,26 +1,11 @@
 @misc{offlinefirst,
-	key				= "offlinefirst",
- 	title  			= "Offline First",
+	key				= {offlinefirst},
+ 	title  			= {Offline First},
  	howpublished= {\url{http://offlinefirst.org/}},
  	note   			= {Zugriff: 12.04.2018}
 }
 
-@book{gettingStartedRN,
- author 	= "Ethan Holmes and Tom Bray",
- title 		= "Getting Started with React Native -- Learn to build modern native iOS and Android applications using JavaScript and the incredible power of React",
- publisher = "Packt Publishing",
- year		= 2015,
- month   	= 12,
- address	= "Birmingham",
- isbn		= {978-1-78588-518-1}
-}
-@booklet{understandingFlexbox,
- author 	= "Ohans Emmanuel",
- title 		= "Understanding Flexbox -- Everything you need to know",
- howpublished= {\url{https://ohansemmanuel.github.io/uf_download.html}},
- year			= 2017
-}
-
+% Grundlagen
 @article{ot-critic,
 author = {Li, Du and Li, Rui},
  title = {An Admissibility-Based Operational Transformation Framework for Collaborative Editing Systems},
@@ -28,7 +13,7 @@ author = {Li, Du and Li, Rui},
  issue_date = {February  2010},
  volume = {19},
  number = {1},
- month = feb,
+ month = {feb},
  year = {2010},
  issn = {0925-9724},
  pages = {1--43},
@@ -48,7 +33,7 @@ author = {Li, Du and Li, Rui},
   type 		= {Research Report},
   pages 	= {8},
   year 		= {2009},
-  month 	= Jan,
+  month 	= {Jan},
   keywords = {Synchronization, Collaboration},
   pdf 		= {https://neil.fraser.name/writing/sync/eng047-fraser.pdf},
 }
@@ -62,7 +47,7 @@ author = {Li, Du and Li, Rui},
   pages 	= {50},
   INSTITUTION	= {{Inria -- Centre Paris-Rocquencourt ; INRIA}},
   year 		= {2011},
-  month 	= Jan,
+  month 	= {Jan},
   keywords = {eventual consistency ; optimistic replication ; replicated data types ; distributed algorithms ; distributed systems ; Data replication ; commutative operations},
   pdf 		= {https://hal.inria.fr/inria-00555588/file/techreport.pdf},
   HAL_ID	= {inria-00555588},
@@ -77,49 +62,112 @@ author = {Li, Du and Li, Rui},
   number 	= {RR-7687},
   pages 	= {18},
   year 		= {2011},
-  month 	= Jul,
+  month 	= {Jul},
   keywords 	= {eventual consistency ; replicated shared objects ; large-scale distributed systems},
   pdf 		= {https://hal.inria.fr/inria-00609399/file/RR-7687.pdf},
   HAL_ID = {inria-00609399},
   HAL_VERSION = {v1},
 }
 @article{ot_paper,
- author = {Ellis, C. A. and Gibbs, S. J.},
- title = {Concurrency Control in Groupware Systems},
- journal = {SIGMOD Rec.},
- issue_date = {June 1989},
- volume = {18},
- number = {2},
- month = jun,
- year = {1989},
- issn = {0163-5808},
- pages = {399--407},
+ author    = {Ellis, C. A. and Gibbs, S. J.},
+ title        = {{Concurrency Control in Groupware Systems}},
+ journal    = {SIGMOD Rec.},
+ issue_date  = {June 1989},
+ volume   = {18},
+ number   = {2},
+ month    = {jun},
+ year       = {1989},
+ issn       = {0163-5808},
+ pages    = {399--407},
  numpages = {9},
- url = {http://doi.acm.org/10.1145/66926.66963},
- doi = {10.1145/66926.66963},
- acmid = {66963},
+ url          = {http://doi.acm.org/10.1145/66926.66963},
+ doi          = {10.1145/66926.66963},
+ acmid    = {66963},
  publisher = {ACM},
- address = {New York, NY, USA},
+ address  = {New York, NY, USA},
 }
 
 @misc{ot,
-	key				= "ot",
- 	title  			= "Operational Transformation",
+	key				= {ot},
+ 	title  			= {Operational Transformation},
  	howpublished	= {\url{https://operational-transformation.github.io}},
  	note   			= {Zugriff: 12.04.2018}
 }
 
-@misc{hoodie,
-	key				= "hoodie",
- 	title  			= "Hoodie -- The Offline First Backend",
- 	howpublished	= {\url{http://hood.ie}},
- 	note   			= {Zugriff: 12.04.2018}
-}
 % Konzepte
 @misc{realm,
-	key				= "realm",
- 	title  			= "realm -- The new standard in data scnchronization",
- 	howpublished	= {\url{https://realm.io/}},
- 	note   			= {Zugriff: 12.04.2018}
+  key       = {realm},
+  title       = {realm -- The new standard in data synchronization},
+  howpublished  = {\url{https://realm.io/}},
+  note        = {Zugriff: 12.04.2018}
 }
 
+  author = {Kay Plößer},
+@misc{webpack-dev,
+  key = {webpack-dev},
+  title = {Easy Offline First Apps With Webpacks Offline Plugin},
+  year = {2017},
+  howpublished  = {\url{https://dev.to/kayis/easy-offline-first-apps-with-webpacks-offline-plugin}},
+  note = {Zugriff: 12.04.2018},
+}
+@misc{webpack-gh,
+  key       = {webpack-gh},
+  title       = {offline-plugin},
+  author    = {Arthur Stolyar},
+  howpublished  = {\url{https://github.com/NekR/offline-plugin}},
+  note        = {Zugriff: 12.04.2018},
+}
+
+@misc{redux-offline-gh,
+  key       = {redux-offline-gh},
+  title       = {redux-offline},
+  howpublished  = {\url{https://github.com/redux-offline/redux-offline}},
+  note        = {Zugriff: 12.04.2018}
+}
+  % author    ={Jani Eväkallado},
+@article{redux-offline,
+  key         = {redux-offline},
+  journal   = {HACKERnoon},
+  title        = {Introducing Redux Offline: Offline-First Architecture for Progressive Web Applications and React Native},
+  year        = {2017},
+  month     = {3},
+  note        = {Zugriff: 12.04.2018},
+}
+
+@article{redux-persist,
+  journal   = {Medium},
+  title        = {{Persist}ence is Key: Using Redux-Persist to Store Your State in LocalStorage},
+  author    = {Clark Sanford},
+  year        = {2016},
+  month     = {12},
+  note        = {Zugriff: 12.04.2018},
+}
+@misc{redux-persist-gh,
+  key       = {redux-persist-gh},
+  title       = {react-native-offline},
+  howpublished  = {\url{https://github.com/rt2zz/redux-persist}},
+  note        = {Zugriff: 12.04.2018}
+}
+
+@misc{rn-offline-gh,
+  key       = {rn-offline-gh},
+  author    = {Raúl Gómez Acuña},
+  title       = {react-native-offline},
+  howpublished  = {\url{https://github.com/rauliyohmc/react-native-offline}},
+  note        = {Zugriff: 12.04.2018}
+}
+@article{rn-offline-medium,
+  author    = {Raúl Gómez Acuña},
+  title        = {Your React Native Offline Tool Belt},
+  journal   = {Medium},
+  year        = {2017},
+  month     = {6},
+  note        = {Zugriff: 12.04.2018}
+}
+
+@misc{hoodie,
+    key				= {hoodie},
+    title  			= {Hoodie -- The Offline First Backend},
+    howpublished	= {\url{http://hood.ie}},
+    note   			= {Zugriff: 12.04.2018}
+}
