@@ -6,7 +6,7 @@ abstracton,
 headsepline, % get a line under the header
 ]{scrreprt} %
 
-\input{thesis-config}
+\input{config}
 
 %\addbibresource[label=ownpubs]{appendices/literatur.bib}
 
@@ -14,7 +14,7 @@ headsepline, % get a line under the header
 \setlist{noitemsep}  %% verringert Zeilenabstand bei aufzaehlungen
 \pagestyle{empty}
 
-\input{appendices/Deckblatt}
+\input{extra/Deckblatt}
 \input{chapters/0Abstract}
 
 \renewcommand{\contentsname}{Inhalt} %Inhaltsverzeichnistitel = Inhalt
@@ -53,7 +53,7 @@ headsepline, % get a line under the header
 %
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{alphadin}
-\bibliography{appendices/literatur}
+\bibliography{extra/literatur}
 %
 % Anhang
 %

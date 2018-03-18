@@ -66,6 +66,7 @@ Damit OT funktioniert, muss jede einzelne Änderung an den Daten erfasst werden:
 % CRDT
 %
 \sub{Conflict-free replicated data type}
+Die Idee von \glspl{CRDT} ist, dass jeder "Typ" (wie ein Einkaufswagen) mit Intelligenz handelt, um Konflikte automatisch zu lösen.\\\\
 CRDTs sind Objekte, die ohne teure Synchronisation aktualisiert werden können. Sie konvergieren schließlich, wenn alle gleichzeitigen Aktualisierungen kommutativ\footnote{Unverändert bei Vertauschen der Operanden} sind und wenn alle Aktualisierungen schließlich von jeder Replik ausgeführt werden ~\cite{crdt_shapiro}.
 Um diese Garantien zu geben, müssen diese Objekte bestimmte Kriterien erfüllen, welche im Folgenden beschrieben werden ~\cite{crdt_shapiro2}.
 % In ihren Arbeiten betrachten Shapiro et. al zwei Replikationsmodelle in einem letztendlich konsistentem verteilten System: den zusatndsbasierten und den operationsbasierten Ansatz. Basierend auf dem Replikationsmodell definieren Sie zwei Arten von CRDTs: CvRDT (vonvergent replicated data type) und CmRDT (kommutativ replizierter Datantyp). Interessanterweise zeigen sie, dass diese beiden Replikationsmodelle und diese beiden Arten von CRDTs äquivalent sind.
@@ -80,6 +81,7 @@ CRDTs befassen sich mit einem interessanten und grundlegendem Problem in verteil
 % Last-write-wins
 %
 \sub{Last-Write-Wins (LWW) || Blockieren?}
+NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, der ihnen hilft, zu entscheiden, welcher Schreibvorgang zuletzt kam. Datenbanken wie DynamoDB\footnote{\url{https://aws.amazon.com/de/dynamodb/faqs/What_is_a_readwrite_capacity_unit}} oder Cassandra \footnote{\url{https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html}} verwenden LWW, um Schreibvorgänge zu verarbeiten. Bei diesen Leuten erfordern stark konsistente Schreibvorgänge das Schreiben in ein Quorum von Shards, wodurch Sie mehr Geld kosten.
 %
 % Couch Pouch
 %
