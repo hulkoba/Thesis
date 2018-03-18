@@ -1,14 +1,18 @@
 \newglossaryentry{kollaborativ}{
     name={kollaborativ},
-    description={ Als kollaborative Software oder kollaboratives System wird eine Software zur Unterstützung der computergestützten Zusammenarbeit in einer Gruppe über zeitliche und/oder räumliche Distanz hinweg bezeichnet. }
+    description={Als kollaborative Software oder kollaboratives System wird eine Software zur Unterstützung der computergestützten Zusammenarbeit in einer Gruppe über zeitliche und/oder räumliche Distanz hinweg bezeichnet}
 }
 
-% %%% define the acronym and use the see= option
-% \newglossaryentry{C2X}{type=\acronymtype, name={C2X}, description={Car-to-X oder Vehicle-to-X}, first={Car-to-X (C2X)\glsadd{C2Xg}}, see=[Glossary:]{C2Xg}}
-% \newglossaryentry{C2Ig}{
-%     name={C2I},
-%     description={ direkter, drahtloser Datenaustausch zwischen Fahrzeugen jeglicher Art und infrastrukturellen Einrichtungen wie Funkbaken und Lichtsignalanlagen auf Basis von \gls{WLAN}, Bluetooth oder \gls{DSRC}}
-% }
+\newglossaryentry{PWAg}{
+    name={PWA},
+    description={Oder ``fortschrittliche Web App`` eine mobil nutzbare Webseite, erstellt mit den Webstandards, die als Symbiose aus einer nativen, mobilen Anwendung und einer responsiven Webseite beschrieben werden kann. Die Idee dahinter ist, dass Apps zukünftig nicht mehr über einen App Store, sondern über den Browser installiert werden kann}}
+\newglossaryentry{PWA}{
+  type=\acronymtype,
+  name={PWA},
+  description={Progressive Web App},
+  first={Progressive Web App (PWA)\glsadd{PWAg}},
+  see=[Glossary:]{PWAg}
+}
 
 \newglossaryentry{Netzwerklatenz}{
     name={Netzwerklatenz},
@@ -18,12 +22,13 @@
 \newacronym{LWW}{LWW}{Last-Write-Wins}
 \newacronym{CRDT}{CRDT}{Conflict-free replicated data type}
 \newacronym{OT}{OT}{Operational Transformation}
-\newacronym{PWA}{PWA}{Progressive Web Apps}
+
 %
 \newacronym{API}{API}{Application Programming Interface}
 \newacronym{App}{App}{Applikation}
 \newacronym{JSON}{JSON}{JavaScript Object Notation}
 \newacronym{PDF}{PDF}{Portable Document Format}
+% \newacronym[longplural={Lichtsignalanlagen}]{LSA}{LSA}{Lichtsignalanlage}
 \newacronym{WLAN}{WLAN}{Wireless Local Area Network}
 \newacronym{VM}{VM}{Virtual Machine}
 \newacronym{XML}{XML}{Extensible Markup Language}
