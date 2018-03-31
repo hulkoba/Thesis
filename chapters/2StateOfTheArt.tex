@@ -42,7 +42,16 @@
   % redux-offline
   %
   \sub{redux-offline}
-  github~\cite{redux-offline-gh}
+  ``Persistenter Redux store für \it{reasonaboutable}\texttrademark ~Offline-First Anwendungen``. Zur Verwendung mit React, React Native oder als eigenständiger Statuscontainer einer Webanwendung.\\
+  ist eine experimentelle Bibliothek die die Offline-First Architektur implementiert?\\
+  \sc{Redux Offline} verspricht nicht, die Webanwendung offlinefähig zu machen. Um \it{assets}(Bilder, Skripte etc) zwischenzuspeichern, muss zusätzlch noch ein ServiceWorker implementiert sein.\\
+  Benutzt redux-persist. Bei jeder Änderung wird der Redux store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. (Standardmäßig IndexedDB, localForage, AsyncStorage)\\
+  Eine mit \sc{Redux Offline} erstellte Anwendung funktioniert ohne weitere Anpassung offline im Lesemodus. Also wenn die benutzende Person vom (Redux-)Status lesen möchte.
+  Um auch im Schreibmodus offline zu funktionieren, werden alle Netzwerkgebundenen Aktionen in einem Store-internem \gls{Queue} gespeichert. Dann erstellt \sc{Redux Offline} einen Unterbaum \tt{offline}, wo unter anderem der internen Status und ein Array namens \tt{outbox} verwaltet wird. Um diese Aktivitäten bei Internetverbindung ausführen zu können, müssen alle notwendigen Daten Plus Metadaten gespeichert werden. Die Metadaten sind für die Information zuständig, was davor oder danach passieren soll. Es gibt drei Metadaten die \sc{Redux Offline} interpretieren kann:\\
+  \tt{meta-offline.effect} - Die Daten die gesendet werden sollen?\\
+  \tt{meta-offline.commit} - Aktion die ausgeführt wird sobald Daten erfolgreich gesendet wurden\\
+  \tt{meta-offline.rollback} - Aktion die bei permanent fehlgeschlagener Internetverbindung
+  ~\cite{redux-offline-gh}
   hackernoon~\cite{redux-offline}
   %
   % redux persist
