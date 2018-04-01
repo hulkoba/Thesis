@@ -42,10 +42,12 @@
   % redux-offline
   %
   \sub{Redux Offline}
-  ``Persistenter Redux store für \it{reasonaboutable}\texttrademark ~Offline-First Anwendungen``. Zur Verwendung mit React, React Native oder als eigenständiger Statuscontainer einer Webanwendung.\\
+  ``Persistenter Redux store für \it{reasonaboutable}\texttrademark ~Offline-First Anwendungen``. \\
+  Ist ein eigenständiger Statuscontainer und kann mit jeder Webanwendung angewandt werden, die sich \it{deklarativ auf Basis einer einzigen Datenquelle rendern lässt}, wie beispielsweise React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.\\
   ist eine experimentelle Bibliothek die die Offline-First Architektur implementiert?\\
-  \sc{Redux Offline} verspricht nicht, die Webanwendung offlinefähig zu machen. Um \it{assets}(Bilder, Skripte etc) zwischenzuspeichern, muss zusätzlch noch ein ServiceWorker implementiert sein.\\
-  Benutzt redux-persist. Bei jeder Änderung wird der Redux store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. (Standardmäßig IndexedDB, localForage, AsyncStorage)\\
+  \sc{Redux Offline} verspricht nicht, die Webanwendung offlinefähig zu machen. Um \it{assets}(Bilder, Skripte etc) zwischenzuspeichern, muss zusätzlich noch ein ServiceWorker implementiert sein.\\
+  Benutzt redux-persist und redux-optimist.\\
+  Bei jeder Änderung wird der Redux store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. (Standardmäßig IndexedDB, localForage, AsyncStorage)\\
   Eine mit \sc{Redux Offline} erstellte Anwendung funktioniert ohne weitere Anpassung offline im Lesemodus. Also wenn die benutzende Person vom (Redux-)Status lesen möchte.
   Um auch im Schreibmodus offline zu funktionieren, werden alle Netzwerkgebundenen Aktionen in einem Store-internem \gls{Queue} gespeichert. Dann erstellt \sc{Redux Offline} einen Unterbaum \tt{offline}, wo unter anderem der internen Status und ein Array namens \tt{outbox} verwaltet wird. Um diese Aktivitäten bei Internetverbindung ausführen zu können, müssen alle notwendigen Daten Plus Metadaten gespeichert werden. Die Metadaten sind für die Information zuständig, was davor oder danach passieren soll. Es gibt drei Metadaten die \sc{Redux Offline} interpretieren kann:\\
   \tt{meta.offline.effect} - Die Daten die gesendet werden sollen?\\
