@@ -48,22 +48,26 @@
   Benutzt redux-persist. Bei jeder Änderung wird der Redux store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. (Standardmäßig IndexedDB, localForage, AsyncStorage)\\
   Eine mit \sc{Redux Offline} erstellte Anwendung funktioniert ohne weitere Anpassung offline im Lesemodus. Also wenn die benutzende Person vom (Redux-)Status lesen möchte.
   Um auch im Schreibmodus offline zu funktionieren, werden alle Netzwerkgebundenen Aktionen in einem Store-internem \gls{Queue} gespeichert. Dann erstellt \sc{Redux Offline} einen Unterbaum \tt{offline}, wo unter anderem der internen Status und ein Array namens \tt{outbox} verwaltet wird. Um diese Aktivitäten bei Internetverbindung ausführen zu können, müssen alle notwendigen Daten Plus Metadaten gespeichert werden. Die Metadaten sind für die Information zuständig, was davor oder danach passieren soll. Es gibt drei Metadaten die \sc{Redux Offline} interpretieren kann:\\
-  \tt{meta-offline.effect} - Die Daten die gesendet werden sollen?\\
-  \tt{meta-offline.commit} - Aktion die ausgeführt wird sobald Daten erfolgreich gesendet wurden\\
-  \tt{meta-offline.rollback} - Aktion die bei permanent fehlgeschlagener Internetverbindung
+  \tt{meta.offline.effect} - Die Daten die gesendet werden sollen?\\
+  \tt{meta.offline.commit} - Aktion die ausgeführt wird sobald Daten erfolgreich gesendet wurden\\
+  \tt{meta.offline.rollback} - Aktion die bei permanent fehlgeschlagener Internetverbindung
   ~\cite{redux-offline-gh}
   \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{redux-offline}
     \grayRule
-    \caption[Redux Offline]{Redux Offline Übersicht\\\\~Quelle:~\cite{redux-offline}}
+    \caption[Redux Offline]{Redux Offline Architektur\\\\~Quelle:~\cite{redux-offline}}
      \label{fig:redux-offline}
 \end{figure}
+Die grundlegende Idee hinter Redux Offline ist, dass der \sc{Redux store} die Datenbank ersetzt/ist. Jede Aktion die benötigt wird um offline zu arbeiten, wird im \sc{store} persisiert und durch die \tt{meta.offline} -Daten weiß die Anwendung was online zu tun ist. Wie die Grafik \ref{fig:redux-offline} (links) zeigt, wird jede (offline-unterstützende) Aktion mit dem \tt{offline.meta} Feld dekoriert. Darin wird beschrieben, wie der \it{Netzwerkeffekt} ausgeführt werden soll (\tt{effect}) und welche Aktion ausgelöst werden soll, wenn sie erfolgreich (\tt{commit}) ist oder fehlschlägt (\tt{rollback}). Diese Offline-Aktionen werden im \sc{store}-internen \gls{Queue} gespeichert und werden, einmal online, an den Server gesendet. \it{Wie, wo und wann sie gesendet werden kann variieren.}\\
+
+{\LARGE Konflikte?}
   %
   % redux persist
   %
-  \sub{redux-persist}
+  \subsub{redux-persist}
   localStorage. github~\cite{redux-persist-gh} medium~\cite{redux-persist}
+  \subsub{redux-optimist}
   %
   % react-native-offline
   %
