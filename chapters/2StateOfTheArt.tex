@@ -59,7 +59,7 @@
     \caption[Redux Offline]{Redux Offline Architektur\\\\~Quelle:~\cite{redux-offline}}
      \label{fig:redux-offline}
 \end{figure}
-Die grundlegende Idee hinter Redux Offline ist, dass der \sc{Redux store} die Datenbank ersetzt/ist. Jede Aktion die benötigt wird um offline zu arbeiten, wird im \sc{store} persisiert und durch die \tt{meta.offline} -Daten weiß die Anwendung was online zu tun ist. Wie die Grafik \ref{fig:redux-offline} (links) zeigt, wird jede (offline-unterstützende) Aktion mit dem \tt{offline.meta} Feld dekoriert. Darin wird beschrieben, wie der \it{Netzwerkeffekt} ausgeführt werden soll (\tt{effect}) und welche Aktion ausgelöst werden soll, wenn sie erfolgreich (\tt{commit}) ist oder fehlschlägt (\tt{rollback}). Diese Offline-Aktionen werden im \sc{store}-internen \gls{Queue} gespeichert und werden, einmal online, an den Server gesendet. \it{Wie, wo und wann sie gesendet werden kann variieren.}\\
+Die grundlegende Idee hinter Redux Offline ist, dass der \sc{Redux store} die Datenbank ersetzt/ist. Jede Aktion die benötigt wird um offline zu arbeiten, wird im \sc{store} persisiert und durch die \tt{meta.offline} -Daten weiß die Anwendung was online zu tun ist. Wie die Grafik \ref{fig:redux-offline} (links) zeigt, wird jede (offline-unterstützende) Aktion mit dem \tt{offline.meta} Feld dekoriert. Darin wird beschrieben, wie der \it{Netzwerkeffekt} ausgeführt werden soll (\tt{effect}) und welche Aktion ausgelöst werden soll, wenn sie erfolgreich (\tt{commit}) ist oder fehlschlägt (\tt{rollback}). Diese Offline-Aktionen werden im \sc{store}-internen \gls{Queue} gespeichert und werden, einmal online, an den Server gesendet. \gls{UI} \gls{optimistic UI}\\
 
 {\LARGE Konflikte?}
   %
