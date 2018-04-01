@@ -9,7 +9,10 @@
 \usepackage[pdfborder={ 0 0 0 }, breaklinks, backref]{hyperref}
 
 % ----------------------------------------------------------------
-
+%Fußnoten: verhindere das Zurücksetzen des Fußnotenzählers in jedem kapitel
+\usepackage{remreset}
+\makeatletter \@removefromreset{footnote}{chapter} \makeatother
+% ------------------------------------------------------------------
 
 \usepackage[babel, german=swiss]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
