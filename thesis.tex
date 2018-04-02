@@ -7,8 +7,6 @@ headsepline, % get a line under the header
 ]{scrreprt} %
 
 \input{config}
-% \usepackage{coloremoji}
-%\addbibresource[label=ownpubs]{appendices/literatur.bib}
 
 \begin{document}
 \setlist{noitemsep}  %% verringert Zeilenabstand bei aufzaehlungen
@@ -21,7 +19,6 @@ headsepline, % get a line under the header
 \tableofcontents
 \cleardoublepage
 \pagestyle{headings} %Ab hier die Kopf-/Fusszeilen.
-%\hyphenation{JavaScript} %trennt JavaScript nie
 
 
 \include{chapters/1Einleitung}
@@ -57,6 +54,7 @@ headsepline, % get a line under the header
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{alphadin}
 \bibliography{extra/literatur}
+
 %
 % Anhang
 %
