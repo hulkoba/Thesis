@@ -1,2 +1,11 @@
   \sub{react-native-offline}
-  github \cite{rn-offline-gh} medium\cite{rn-offline-medium}
+  React Native = JavaScript React Framework um native, mobile Apps zu bauen. blabla\\
+  Behandelt online/offline Verbinding. Kann die Internetverbindung auch regelmäßig prüfen\\
+  Speichert nur den Status online/offline im store. -> erlaubt so unterschiedliches Rendern von Componenten.\\
+
+\tt{const YourComponent = ({ isConnected }) => (\\
+  <Text>{isConnected ? 'I am connected to the internet!' : 'Offline :('}</Text>\\
+);\\}\\
+Zusammen mir Redux hat es einen `Mehrwert`:
+Hat dann einen `Offline-\gls{Queue} um Aktionen zu wiederholen (im Intervall) \tt{meta.retry? \textcolor{gray}  {Array of actions which, once dispatched, will trigger a dismissal from the queue}} ~ oder nicht \tt{meta.dismiss? []}.\cite{rn-offline-gh}
+  % \cite{rn-offline-medium}
