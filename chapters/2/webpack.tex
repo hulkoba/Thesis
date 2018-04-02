@@ -1,3 +1,10 @@
-  \sub{offline-plugin für webpack}
-  github\cite{webpack-gh}
-  dev\cite{webpack-dev}
+\sub{offline-plugin für webpack}
+webpack ist ein JavaScript `Bundler`, packt JS-Dateien und oder assets für die Verwendumg in Browsern.blabla\\
+Bietet offline experience für webpack Projekte. Benutzt \sc{ServiceWorker} und \sc{AppCache} unter der Haube --> cached nur (gebündelten) von webpack generierten assets. Für die anderen Dateien (z.B. index.html die nicht gebundled wird oder Modul von CDN) braucht mal ein \tt{html-plugin} oder benutzt die \tt{externals} :\\\\
+\tt{const OfflinePlugin = require('offline-plugin')\\
+const offline = new OfflinePlugin\\\\
+const offline = new OfflinePlugin({\\
+    externals: ['index.html'],\\
+})}\\
+Es gibt diverse config-options für ServiceWorker und AppCache...~\cite{webpack-gh}
+% dev\cite{webpack-dev}
