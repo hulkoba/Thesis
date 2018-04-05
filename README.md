@@ -18,8 +18,3 @@ Untersuchung der Konfliktmanagementstrategien verschiedener offlinefähiger Syst
 3. makeglossaries filename
 4. pdflatex filename
 5. pdflatex filename
-
-or add the following line to your `~/.bashrc` or `.profile`
-``` alias texbib = 'pdflatex thesis.tex && bibtex thesis && makeglossaries thesis && pdflatex thesis.tex && pdflatex thesis.tex' ```
-
-
