@@ -1,7 +1,7 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
 Was bedeutet offlinefähig?\\\\
 \textcolor{gray}{Software, mit der ein freigegebenes Dokument zusammen mit anderen über das Internet bearbeitet werden kann, kann überaus wertvoll sein wenn man beispielsweise in einem Team arbeitet. Heutzutage gibt es viele webbasierte Software für simultanes kollaboratives Editieren \textit{(Textdokumente, Tabellenkalkulationen, Präsentationen, Quellcode)}. Im Kapitel \ref{chap:state} werden Produkte und Frameworks vorgestellt, mit deren Hilfe man solche Software erstellen kann.\\
-Lassen Sie uns einen Moment nehmen, um genauer zu definieren, was wir unter dem Begriff kollaboratives Echtzeit-Editieren verstehen.
+  Lassen Sie uns einen Moment nehmen, um genauer zu definieren, was wir unter dem Begriff kollaboratives Echtzeit-Editieren verstehen.
 Wir möchten, dass mehrere Personen, die an verschiedenen Computern arbeiten, jederzeit Änderungen an einem auf einem Server gehosteten Dokument vornehmen können. Diese Änderungen werden sofort mit den anderen KollegInnen synchronisiert. Kein Client sollte vor einer Änderung mit dem Server oder einem anderen Client kommunizieren müssen. Insbesondere ist es nicht erforderlich, eine Sperre vom Server zu erhalten um ein Dokument zu bearbeiten und gleichzeitige Editierungen können auftreten. Nachdem alle Änderungen synchronisiert wurden, sollte jeder Client das exakt gleiche Dokument sehen.}
 %
 % Konflikte [Jan]
@@ -27,7 +27,6 @@ Einfachster Fall:
 1. Lese- und Schreibfähigkeit\\
 2. Sync im Hintergrund\\
 3. Cache sollte in der Lage sein App-Aktualisierungen zu ``überstehen``
-\sub{Konflikte}
 %
 % Browserstuff
 %
@@ -44,8 +43,8 @@ Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorge
 %
 % Last-write-wins
 %
-  \sub{Last-Write-Wins (LWW) || Blockieren?}
-  NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, der ihnen hilft, zu entscheiden, welcher Schreibvorgang zuletzt kam. Datenbanken wie DynamoDB\footnote{\url{https://aws.amazon.com/de/dynamodb/faqs/What_is_a_readwrite_capacity_unit}} oder Cassandra \footnote{\url{https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html}} verwenden LWW, um Schreibvorgänge zu verarbeiten. Bei diesen Leuten erfordern stark konsistente Schreibvorgänge das Schreiben in ein Quorum von Shards, wodurch Sie mehr Geld kosten.
+\sub{Last-Write-Wins (LWW) || Blockieren?}
+NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, der ihnen hilft, zu entscheiden, welcher Schreibvorgang zuletzt kam. Datenbanken wie DynamoDB\footnote{\url{https://aws.amazon.com/de/dynamodb/faqs/What_is_a_readwrite_capacity_unit}} oder Cassandra \footnote{\url{https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html}} verwenden LWW, um Schreibvorgänge zu verarbeiten. Bei diesen Leuten erfordern stark konsistente Schreibvorgänge das Schreiben in ein Quorum von Shards, wodurch Sie mehr Geld kosten.
 %
 % Operational Transform
 %
