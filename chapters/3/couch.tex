@@ -4,17 +4,9 @@ Durch die inkrementelle (schrittweise) Arbeitsweise kann CouchDB genau dort weit
 \it{Es werden auch nur die Daten übertragen, die notwendig sind, um die Datenbanken zu synchronisieren.}\\
 Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Fehler/Konflikte vernünftig zu behandeln statt anznehmen es träten keine auf (vgl. \cite{couchDB} S. 7f). Wie \hyperref[sec:conflict]{oben} beschrieben, gibt es in Verteilten Systemen einige Fehler die auftreten können.\\\\
 \it{Das CouchDB Replikationsmodell erlaubt eine nahtlose, peer-to-peer (direkte) Datensynchronisation zwischen beliebig vielen Geräten. Das CouchDB Replikationsprotokoll ist in CouchDB selbst implementiert, das die Serverkomponente abdeckt. Dann gibt es das PouchDB-Projekt, das dasselbe Protokoll in JavaScript implementiert, das auf Browser- und Node.js-Anwendungen abzielt. das deckt Ihre Kunden und dev-Server ab. Schließlich gibt es Couchbase Mobile und Cloudant Sync, die auf iOS und Android laufen und das CouchDB Synchronisationsprotokoll in Objective-C bzw. Java implementieren.}
-%
-% Couch
-%
-\sub{CouchDB}
-Apache Couch\tm
-Vektoruhr~\footnote{\url{https://en.wikipedia.org/wiki/Vector_clock}} \\
-content addressable versions: Idee: Nimm den Objektinhalt (content) und jag ihn durch eine \gls{Hashfunktion}\\
-%
-% Pouch
-%
-\sub{PouchDB}
-PouchDB ist eine Open-Source-JavaScript-Datenbank, die so konzipiert wurde, dass sie im Browser läuft. PouchDB ermöglicht es Anwendungen zu erstellen, die sowohl offline als auch online funktionieren. Daten können lokal gespeichert werden, sodass alle Funktionen der Anwendung auch im Offline-Modus zur Verfügung stehen.
-Daten werden unabhängig von der nächsten Anmeldung (des nächsten Onlinezugangs) zwischen \b{Clients}, CouchDB oder kompatiblen Servern synchronisiert.
-PouchDB läuft auch in Node.js\footnote{JavaScript Laufzeitumgebung, steht unter \url{https://nodejs.org/en/download/} zum Download bereit} und kann als direkte Schnittstelle zu CouchDB-kompatiblen Servern verwendet werden~\cite{pouch}.\\\\
+\sub{Konsistenz}
+\subsub{Lokale Konsistenz}
+\subsub{Verteilte Konsistenz}
+
+\sub{Replikation?}
+\sub{Konfliktmanagement}
