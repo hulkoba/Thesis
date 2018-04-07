@@ -6,12 +6,18 @@
 \usepackage[T1]{fontenc}
 
 \usepackage[bottom=30mm]{geometry} %Seitenränder
+
+\usepackage[hyphens]{url} % breaks very long urls
 \usepackage[pdfborder={ 0 0 0 }, breaklinks, backref]{hyperref}
 
 % ----------------------------------------------------------------
 %Fußnoten: verhindere das Zurücksetzen des Fußnotenzählers in jedem kapitel
 \usepackage{remreset}
 \makeatletter \@removefromreset{footnote}{chapter} \makeatother
+% ------------------------------------------------------------------
+
+% breaks url after '-'
+
 % ------------------------------------------------------------------
 
 \usepackage[babel, german=swiss]{csquotes} % Required to generate language-dependent quotes in the bibliography
