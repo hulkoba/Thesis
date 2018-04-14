@@ -1,8 +1,5 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
-Was bedeutet offlinefähig?\\\\
-\textcolor{gray}{Software, mit der ein freigegebenes Dokument zusammen mit anderen über das Internet bearbeitet werden kann, kann überaus wertvoll sein wenn man beispielsweise in einem Team arbeitet. Heutzutage gibt es viele webbasierte Software für simultanes kollaboratives Editieren \textit{(Textdokumente, Tabellenkalkulationen, Präsentationen, Quellcode)}. Im Kapitel \ref{chap:state} werden Produkte und Frameworks vorgestellt, mit deren Hilfe man solche Software erstellen kann.\\
-  Lassen Sie uns einen Moment nehmen, um genauer zu definieren, was wir unter dem Begriff kollaboratives Echtzeit-Editieren verstehen.
-Wir möchten, dass mehrere Personen, die an verschiedenen Computern arbeiten, jederzeit Änderungen an einem auf einem Server gehosteten Dokument vornehmen können. Diese Änderungen werden sofort mit den anderen KollegInnen synchronisiert. Kein Client sollte vor einer Änderung mit dem Server oder einem anderen Client kommunizieren müssen. Insbesondere ist es nicht erforderlich, eine Sperre vom Server zu erhalten um ein Dokument zu bearbeiten und gleichzeitige Editierungen können auftreten. Nachdem alle Änderungen synchronisiert wurden, sollte jeder Client das exakt gleiche Dokument sehen.}
+Was bedeutet offlinefähig?
 %
 % Offline-First
 %
@@ -15,17 +12,35 @@ Wir möchten, dass mehrere Personen, die an verschiedenen Computern arbeiten, je
 %
 % Anforderungen
 %
-\sub{Anforderungen an Offline-First / PWA?}
+\sub{Anforderungen an Offline-First Anwendungen}
 1. Lese- und Schreibfähigkeit\\
 2. Sync im Hintergrund\\
 3. Cache sollte in der Lage sein App-Aktualisierungen zu ``überstehen``
 %
 % Browserstuff
 %
-\sub{Progressive Web Apps?}
-\subsub{ServiceWorker?}
-\subsub{localForage || AsyncStorage?}
-\subsub{IndexedDB?}
+\sub{Progressive Web Apps}
+Der Begriff \gls{PWA} wurde im Jahr 2015  von Alex Russel und seiner Frau Frances Berriman geprägt.
+Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikationen mitbringen, aber statt über App Stores installiert zu werden, im Webbrowser existieren. Die Webseiteninhalte sind ohne die Installation sofort und jederzeit für die NutzerInnen abrufbar. Schon beim zweiten Besuch der Webseite ist die Ladezeit der Daten verkürzt und sie ist offline, oder auch bei schlechter Internetverbindung nutzbar. Nach mehrmaligem Aufruf kann die \gls{PWA} über den Browser installiert und zum Startbildschirm hinzugefügt werden. Russel und Berriman legen folgende Einenschaften einer \gls{PWA} fest:
+\begin{description}[leftmargin=0.5cm,style=nextline]
+    \item[Responsive] to fit any form factor
+    \item[Connectivity independent] Progressively-enhanced with Service Workers to let them work offline
+    \item[App-like-interactions] Adopt a Shell + Content application model to create appy navigations \& interactions
+    \item[Fresh] Transparently always up-to-date thanks to the Service Worker update process
+    \item[Safe] Served via TLS (a Service Worker requirement) to prevent snooping
+    \item[Discoverable] Are identifiable as “applications” thanks to W3C Manifests and Service Worker registration scope a llowing search engines to find them
+    \item[Re-engageable] Can access the re-engagement UIs of the OS; e.g. Push Notifications
+    \item[Installable] to the home screen through browser-provided prompts, allowing users to “keep” apps they find most useful without the hassle of an app store
+    \item[Linkable] meaning they’re zero-friction, zero-install, and easy to share. The social power of URLs matters.
+\end{description}
+\todo{Näher erläutern?}~\cite{pwa}.
+
+%
+% ServiceWorker
+%
+\subsub{ServiceWorker}
+\subsub{localForage und AsyncStorage}
+\subsub{IndexedDB}
 %
 % Konflikte [Jan]
 %
