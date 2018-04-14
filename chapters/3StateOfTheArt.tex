@@ -1,4 +1,8 @@
 \chapter{\label{chap:state}Bestehende offlinefähige Systeme / Konzepte}
+
+\note{Harte, weiche, mittlere probleme (verschiedene Stufen von offlinefähig)}
+\note{Native Apps sind offlinefähig}
+bei nativen Apps ist das Problem bei der Datenverteilung
 %
 % Software
 %
@@ -17,8 +21,6 @@ Markdown: \url{https://hackmd.io/}\\
 LaTeX: \url{https://www.sharelatex.com/}\\
 Online editor: \url{http://etherpad.org/} (OT)\\
 Mockingbird (tool for creating wireframes): \url{https://gomockingbird.com/home} (OT)\\
-marvelapp? \url{https://marvelapp.com/collaboration/}
-
 --> Zahl steigend, (nachdem Google die Drive Realtime API veröffentlicht hat, die auf \gls{OT} basiert und es \it{third-party Apps} ermöglicht, dieselbe Zusammenarbeit wie Google Docs zu verwenden)\\\\
 \b{plus} wachsende Anzahl von offen zur Verfügung gestellter Bibliotheken und Frameworks die es ermöglichen, offlinefähige Anwendungen zu programmieren. Siehe Kapitel \ref{sec:frameworks}
 %
@@ -26,32 +28,27 @@ marvelapp? \url{https://marvelapp.com/collaboration/}
 %
 \section{\label{sec:frameworks}Offline-First Frameworks/Bibliotheken}
 Ich möchte aber auch eigenständig Software entwickeln die man vielleicht nicht nur zum Arbeiten nehmen kann, sondern auch um Quatsch zu machen wie Katzengifs zu teilen.
-\sub{redux? react-native? webpack?}
-\Gls{PWA}
+\Gls{PWAg}
 %
 % realm
 %
-\input{chapters/2/realm}
-%
-% Datomic
-%
-\sub{Datomic? (Closure)}
+\input{chapters/3/realm}
 %
 % redux-offline
 %
-\input{chapters/2/redux}
+\input{chapters/3/redux}
 
 %
 % react-native-offline
 %
-\input{chapters/2/react-native}
+\input{chapters/3/react-native}
 
 %
 % webpack offline-plugin
 %
-\input{chapters/2/webpack}
+\input{chapters/3/webpack}
 
 %
 % hoodie
 %
-\input{chapters/2/hoodie}
+\input{chapters/3/hoodie}

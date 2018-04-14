@@ -4,6 +4,29 @@ Was bedeutet offlinefähig?\\\\
   Lassen Sie uns einen Moment nehmen, um genauer zu definieren, was wir unter dem Begriff kollaboratives Echtzeit-Editieren verstehen.
 Wir möchten, dass mehrere Personen, die an verschiedenen Computern arbeiten, jederzeit Änderungen an einem auf einem Server gehosteten Dokument vornehmen können. Diese Änderungen werden sofort mit den anderen KollegInnen synchronisiert. Kein Client sollte vor einer Änderung mit dem Server oder einem anderen Client kommunizieren müssen. Insbesondere ist es nicht erforderlich, eine Sperre vom Server zu erhalten um ein Dokument zu bearbeiten und gleichzeitige Editierungen können auftreten. Nachdem alle Änderungen synchronisiert wurden, sollte jeder Client das exakt gleiche Dokument sehen.}
 %
+% Offline-First
+%
+\section{Offline First}
+1. Separate Apps from Data\\
+2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
+3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
+4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
+5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
+%
+% Anforderungen
+%
+\sub{Anforderungen an Offline-First / PWA?}
+1. Lese- und Schreibfähigkeit\\
+2. Sync im Hintergrund\\
+3. Cache sollte in der Lage sein App-Aktualisierungen zu ``überstehen``
+%
+% Browserstuff
+%
+\sub{Progressive Web Apps?}
+\subsub{ServiceWorker?}
+\subsub{localForage || AsyncStorage?}
+\subsub{IndexedDB?}
+%
 % Konflikte [Jan]
 %
 \section{\label{sec:conflict}Konflikte}
@@ -32,30 +55,7 @@ Acht Irrtümer der verteilten Datenverarbeitung:
  \item[7. Die Datentransportkosten sind gleich null] ~ Netflix bezahlte anfang 2014 diversen InternetanbieterInnen dafür, dass Netflix KundInnen bevorzugten Internetzugang haben.
  \item[8. Das Netzwerk ist homogen] ~ Es gibt verschiedene Arten von Netzwer: 3G, 4G, LTE, WiFi. Wird beeinflusst durch Hardware (Smartphone, Tablet, PC, Laptop, Router \ldots)~\cite{fallacies}
 \end{description}
-\sub{\gls{CAP} Theorem?}
-%
-% Offline-First
-%
-\section{Offline First}
-1. Separate Apps from Data\\
-2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
-3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
-4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
-5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
-%
-% Anforderungen
-%
-\sub{Anforderungen an Offline-First / PWA?}
-1. Lese- und Schreibfähigkeit\\
-2. Sync im Hintergrund\\
-3. Cache sollte in der Lage sein App-Aktualisierungen zu ``überstehen``
-%
-% Browserstuff
-%
-\section{Progressive Web Apps?}
-\sub{ServiceWorker?}
-\sub{localForage || AsyncStorage?}
-\sub{IndexedDB?}
+\sub{\gls{CAP} Theorem}
 %
 % Strategien
 %
@@ -70,12 +70,12 @@ NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, de
 %
 % Operational Transform
 %
-\input{chapters/3/ot}
+\input{chapters/2/ot}
 %
 % CRDT
 %
-\input{chapters/3/crdt}
+\input{chapters/2/crdt}
 %
 % Couch Pouch
 %
-\input{chapters/3/couch}
+\input{chapters/2/couch}
