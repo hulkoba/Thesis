@@ -1,25 +1,37 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
-Was bedeutet offlinefähig?
+Was bedeutet offlinefähig?\\
+Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen.
 %
 % Offline-First
 %
 \section{Offline First}
-1. Separate Apps from Data\\
-2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
-3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
-4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
-5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
+Offline-First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist um deren grundlegenden Funktionen zu nutzen.\todo{Quelle}\\
+Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit. Bei einer bestehenden Internetverbindung ist das Laden der \gls{Assets} aus dem Cache schneller als aus dem Netz. Daten, die zuerst lokal gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.
+% 1. Separate Apps from Data\\
+% 2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
+% 3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
+% 4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
+% 5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
 %
 % Anforderungen
 %
 \sub{Anforderungen an Offline-First Anwendungen}
-1. Lese- und Schreibfähigkeit\\
-2. Sync im Hintergrund\\
-3. Cache sollte in der Lage sein App-Aktualisierungen zu ``überstehen``
+Eine Webanwendung besteht grundsätzlich aus zwei Bestandteilen: \it{\gls{Assets}} und benutzerInnengenerierte Daten.\\
+Um offline nutzbar zu sein, müssen einige Voraussetzungen erfüllt werden.
+\begin{itemize}
+  \item müssen auf dem Endgerät gespeichert werden
+  \item Serverseitige (nicht lokal) Datenbank \&\& Synchronisation zwischen Server ind Client
+  \item Kollaborativ \&\& Sync zwischen allen Beteiligten
+  \item Synchronisation erfordert den Umgang mit Konflikten
+  \item Kein Datenverlust
+\end{itemize}
+\todo{merge mit PWA?}
 %
-% Browserstuff
+% PWA
 %
 \sub{Progressive Web Apps}
+\Gls{PWA} ist eine Bezeichnung für eine mobil nutzbare Webseite, die eine Brücke zwischen der nativen
+Applikation und einer Webseite schlägt.
 Der Begriff \gls{PWA} wurde im Jahr 2015  von Alex Russel und seiner Frau Frances Berriman geprägt.
 Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikationen mitbringen, aber statt über App Stores installiert zu werden, im Webbrowser existieren. Die Webseiteninhalte sind ohne die Installation sofort und jederzeit für die NutzerInnen abrufbar. Schon beim zweiten Besuch der Webseite ist die Ladezeit der Daten verkürzt und sie ist offline, oder auch bei schlechter Internetverbindung nutzbar. Nach mehrmaligem Aufruf kann die \gls{PWA} über den Browser installiert und zum Startbildschirm hinzugefügt werden. Russel und Berriman legen folgende Einenschaften einer \gls{PWA} fest:
 \begin{description}[leftmargin=0.5cm,style=nextline]
@@ -80,16 +92,19 @@ Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorge
 %
 % Last-write-wins
 %
-\sub{Last-Write-Wins (LWW) || Blockieren?}
-NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, der ihnen hilft, zu entscheiden, welcher Schreibvorgang zuletzt kam. Datenbanken wie DynamoDB\footnote{\url{https://aws.amazon.com/de/dynamodb/faqs/What_is_a_readwrite_capacity_unit}} oder Cassandra \footnote{\url{https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html}} verwenden LWW, um Schreibvorgänge zu verarbeiten. Bei diesen Leuten erfordern stark konsistente Schreibvorgänge das Schreiben in ein Quorum von Shards, wodurch Sie mehr Geld kosten.
+%\input{chapters/2/lww}
+\sub{LWW}
+\sub{OT}
+\sub{CRDT}
+
 %
 % Operational Transform
 %
-\input{chapters/2/ot}
+%\input{chapters/2/ot}
 %
 % CRDT
 %
-\input{chapters/2/crdt}
+%\input{chapters/2/crdt}
 %
 % Couch Pouch
 %
