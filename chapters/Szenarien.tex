@@ -25,6 +25,13 @@ Der Client fordert Daten vom Server an und hat den Status \sc{online}. Während 
 Der Client fordert Daten vom Server an und hat den Status \sc{online}. Während der Server antwortet bricht die Internetverbindung ab. Die Antwort ist teilweise erfolgreich. Nur ein Teil der angefragten Daten kommen beim Client an.
 \end{description}
 In den obigen Szenarien wird nicht beschrieben warum die Internetverbindung abbricht. Dies kann verschiedene Gründe haben. Um nur einige Beispiele zu nennen: Eine langsame Internetverbindung, oder eine Fahrt durch einen Tunnel kann ein Timeout während einer Aktion hervorrufen. Ein auf einer Baustelle gekapptes Kabel oder ein Stromausfall kann zu zeitweise vollständigen Internetverlust (haha) führen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Szenarien}
+  \grayRule
+  \caption[Szenarien]{Szenarien und Fälle}
+  \label{fig:scenarios}
+\end{figure}
 %
 % ERGEBNIS
 %
@@ -33,7 +40,7 @@ Da die Szenarien \it{A0} und \it{S0}, die Szenarien \it{A1}, \it{A2} und \it{A3}
 \begin{itemize}
   \item Fall a: Anfrage und Antwort sind erfolgreich. Es besteht kein Aktionsbedarf \highlight{irrelevant?}
   \item Fall b: Anfrage ist nicht erfolgreich
-  \item Fall c: Anfrage ist erfolgreich, Antwort nicht.
+  \item Fall c: Anfrage ist erfolgreich, Antwort schlägt fehl
 \end{itemize}
 \highlight{Ergebnis für Fall b und c ist nur aus Entwicklungsperspektive (für die Behandlung) interessant. Das Ergebnis ist identisch: fail}\\
 \todo{Anforderungen:}
