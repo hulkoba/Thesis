@@ -3,7 +3,7 @@ Alle in Kapitel \ref{chap:state} angeführten Technologien haben die Unterstütz
 %Sie versprechen, dass die Anwendungen die mit ihnen gebaut werden in der Lage sind mit einer fehlenden Internetverbindung umgehen zu können.\\
 % \hyperref[sub:realm]{Realm} verspricht sogar eine automatische Konfliktlösung in Echtzeit.\\
 Prinzipiell sollte eine Offline First Anwendung in der Lage sein, mit fehlender Internetverbindung zu funktionieren und mit auftretenden Konflikten so umgehen zu können, dass keine Daten verloren gehen. Sie muss die Fälle behandeln können, die sich aus den folgenden Szenarien ergeben.\\
-Im oben beschriebenen Anwendungsfall (Adressbuch) gibt es zwei Parteien die miteinander interagieren: das Adressbuch als Client und den Server. Folgende Situationen können eintreten:
+Im oben beschriebenen Anwendungsfall (Adressbuch) gibt es zwei Parteien die miteinander interagieren: das Adressbuch als Client und den Server \todo{in Variabler Anzahl?}. Folgende Situationen können eintreten:
 \begin{description}[leftmargin=0.7cm,style=nextline]
 % client push
 \item[Szenario A0:]
@@ -22,7 +22,12 @@ Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an, hat de
 \item[Szenario S2:]
 Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}. Während der Server antwortet bricht die Internetverbindung ab. Die Antwort `wartet` bis ein Timeout getriggert wird schlägt dann fehl. Wärend des Wartens ist der Client blockiert.\\
 \item[Szenario S3:]
-Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}. Während der Server antwortet bricht die Internetverbindung ab. Die Antwort ist teilweise erfolgreich. Nur ein Teil der angefragten Daten kommen beim Client an.
+Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}. Während der Server antwortet bricht die Internetverbindung ab. Die Antwort ist teilweise erfolgreich. Nur ein Teil der angefragten Daten kommen beim Client an.\\
+% both push
+\item[Szenario K0:]
+Client erstellt Kontakt \sc{online}. \todo{2. Client einführen? Konflikt!}
+\item[Szenario K1:]
+2 Kontakte, gleicher Name? Doofe ID?
 \end{description}
 In den obigen Szenarien wird nicht beschrieben warum die Internetverbindung abbricht. Dies kann verschiedene Gründe haben. Um nur einige Beispiele zu nennen: Eine langsame Internetverbindung, oder eine Fahrt durch einen Tunnel kann ein Timeout während einer Aktion hervorrufen. Ein auf einer Baustelle gekapptes Kabel oder ein Stromausfall kann zu zeitweise vollständigen Internetverlust (haha) führen.
 \begin{figure}[H]
@@ -44,4 +49,5 @@ Da die Szenarien \it{A0} und \it{S0}, die Szenarien \it{A1}, \it{A2} und \it{A3}
 \end{itemize}
 \highlight{Ergebnis für Fall b und c ist nur aus Entwicklungsperspektive (für die Behandlung) interessant. Das Ergebnis ist identisch: fail}\\
 \todo{Anforderungen:}
-\it{Die Daten sollten wenigstens so lange auf dem Client gespeichert werden, bis sie vollständig beim Server angekommen sind. Jeder Fehlersfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen (Welche Telefonnummer ist die richtige).}
+\it{Die Daten sollten wenigstens so lange auf dem Client gespeichert werden, bis sie vollständig beim Server angekommen sind. Jeder Fehlersfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen (Welche Telefonnummer ist die richtige).}\\
+Im weiteren Verlauf dieser Arbeit wird unter anderem beschrieben, wie diese Fälle \ldots  eingebunden werden.
