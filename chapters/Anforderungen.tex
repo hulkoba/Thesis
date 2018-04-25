@@ -2,6 +2,24 @@
 Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Konfliktmanegement und Funktionalität.
 Die von BenutzerInnen generierten Daten sollten wenigstens so lange auf dem Client gespeichert werden, bis sie vollständig beim Server angekommen sind. Jeder Fehlersfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen (Welche Telefonnummer ist die richtige).\\
 Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung \highlight{unter Berücksichtigung von...} erfüllen soll.
+\begin{enumerate}
+  \item Nur die Einträge laden die ich noch nicht hab
+    \subitem kostet Bandbreite und Serverarbeitszeit
+    \subitem doppelt (geladen)
+    \subitem dauert länger (response)
+  \item Einträge identifizieren (key)
+    \subitem Operationen müssen dem Objekt/Eintrag zugeordnet werden
+  \item Delta berechnen
+  \item lokal und auf dem Server gespeichert sein
+  \item 2 Objekte mit derselben ID ? welches ist das aktuellste
+  \item mehr als 2 Objekte mit derselben ID ? sortieren
+  \item Liste von inhaltsbasierten Versionen muss festgelegte Länge haben
+  \item Konflikte effizient speichern
+  \item
+\end{enumerate}
+% Die Identifizierung des Datensatzes ist für die Kommunikation zwischen Client und Server obligatorisch. \todo{2 unterschiedliche IDs (natural key, UUID) erklären?}\\
+\todo{Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar sind, muss er sowohl auf dem Client, als auch auf dem Server gespeichert sein. Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät, eine auf dem Server.\\
+Um dieses Delta zu kalkulieren müssen Daten auf dem Client gespeichert werden (localStorage, lokale Datenbank oder Datei...) | Server muss die Daten sortieren können und in der Lage sein nur bestimmte Daten zu liefern.}
 %
 % Use Cases  \hyperref[sec:conflict]{oben}
 %

@@ -5,7 +5,8 @@
   \caption{Szenarien bei der Datenübertragung über das Netzwerk}
   \label{fig:szenarien}
 \end{figure}
-\begin{description}[leftmargin=0.7cm,style=nextline]
+\todo{Erstellen = erstellen, aktualisieren, löschen}
+\begin{description}[leftmargin=0.5cm,style=nextline]
 % client push
 \item[Szenario A0:]
 Der Client erstellt einen Adressbucheintrag, hat den Status \sc{online} und der Server ist erreichbar. Sowohl Anfrage als auch Antwort ist erfolgreich. Der Kontakt wird erfolgreich erstellt.\\
@@ -30,10 +31,9 @@ In den obigen Szenarien wird nicht beschrieben warum die Internetverbindung abbr
 % ERGEBNIS
 %
 \subsubsection*{Ergebnis}
-Da die Szenarien \it{A0} und \it{S0}, die Szenarien \it{A1}, \it{A2} und \it{A3} sowie die Szenazien\it{S1}, \it{S2} und \it{S3} zusammengefasst werden können, ergeben sich aus den acht Szenarien die drei nun aufgezählten Fälle.
+Da die Szenarien \it{A0} und \it{S0}, die Szenarien \it{A1}, \it{A2} und \it{A3} sowie die Szenazien \it{S1}, \it{S2} und \it{S3} zusammengefasst werden können, ergeben sich aus den acht Szenarien die drei nun aufgezählten Fälle.
 \begin{itemize}
   \item Fall a: Anfrage und Antwort sind erfolgreich.
   \item Fall b: Anfrage ist nicht erfolgreich
   \item Fall c: Anfrage ist erfolgreich, Antwort schlägt fehl
 \end{itemize}
-\highlight{Ergebnis für Fall b und c ist nur aus Entwicklungsperspektive (für die Behandlung) interessant. Das Ergebnis ist identisch: fail}
