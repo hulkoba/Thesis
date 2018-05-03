@@ -6,7 +6,7 @@
 %
 %
 \begin{description}[leftmargin=0.5cm,style=nextline]
-  \item[Szenario ID0:] \todo{ID1 = natural key ohne Konflikt?}
+  \item[Szenario ID0:]
   Zur Identifizierung eines Adressbucheintrags wird eine \gls{UUID} verwendet. Es wird sowohl auf dem Client als auch auf dem Server ein Kontakt mit dem Namen `Amilia Pond` erstellt. Währenddessen tritt Fall \it{b,c} ein und beide Parteien können nicht miteinander kommunizieren. Nach der Synchronisation existieren zwei Kontakteinträge mit gleichem Namen, aber unterschiedlicher ID. Sie sind voneinander zu unterscheiden und können einzeln behandelt werden.\\
   \item[Szenario ID1:]
   Zur Identifizierung eines Adressbucheintrags wird ein sprechender Schlüssel\footnote{\naturalkey} verwendet.
@@ -42,15 +42,14 @@
 % ERGEBNIS
 %
 \subsubsection*{Ergebnis}
-Die Szenarien \it{ID0} und \it{ID1}
-Unterscheidung: Konflikt, nicht Konflikt\\
-ID0 -- UUID und V3?, V6 als Gewinner.\\
-\b{Probleme?}\\
-ID1: sprechender Schlüssel ist nicht eindeutig\\
-V0: Es kann zum Konflikt gehen weil die Version von allen Parteien gleichermaßen erhöht werden kann\\
-V1: siehe V2\\
-V2: kein Verlass auf Zeitstempel. Referenz `fallacies`?\\
-V3: ??? \highlight{logische Uhren hab ich noch nicht ganz verstanden}\\
-V4: siehe V5\\
-V5: Inhaltsbasierte Versionen sind nicht sortierbar.
-Im weiteren Verlauf dieser Arbeit werden aus diesen Fällen die Anforderungen an eine offlinefähige Anwendung erarbeitet.
+Die Szenarien \it{ID0} und \it{ID1} beschreiben die Identifizierung einzelner Kontakte. Eine eindeutige Identifizierung des Kontakts ist im Szenario \it{ID0} gewährleistet.\\
+Die Szenarien \it{V1}, \it{V2} und \it{V4}, \it{V5} beschreiben Situationen mit demselben Ausgangspunkt. In einem Fall kommt zu keinem Konflikt, in dem nächsten schon. Deswegen können \it{V1} und \it{V2}, sowie \it{V4} und \it{V5} zusammengefasst werden. Es wird deutlich, dass es in jedem Fall zu einem Konflikt kommen kann. Es gilt zu unterscheiden in welchen Fällen mit Konflikten umgegangen werden kann und in welchen Daten verloren gehen.\\
+\todo{Grafik?}\\\\
+% \b{Probleme?}\\
+% ID1: sprechender Schlüssel ist nicht eindeutig\\
+% V0: Es kann zum Konflikt gehen weil die Version von allen Parteien gleichermaßen erhöht werden kann\\
+% V1: siehe V2\\
+% V2: kein Verlass auf Zeitstempel. Referenz `fallacies`?\\
+% V3: ??? \highlight{logische Uhren hab ich noch nicht ganz verstanden}\\
+% V4: siehe V5\\
+% V5: Inhaltsbasierte Versionen sind nicht sortierbar.
