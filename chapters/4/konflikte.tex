@@ -6,7 +6,7 @@
 %
 %
 \begin{description}[leftmargin=0.5cm,style=nextline]
-  \item[Szenario ID0:]
+  \item[Szenario ID0:] \todo{ID1 = natural key ohne Konflikt?}
   Zur Identifizierung eines Adressbucheintrags wird eine \gls{UUID} verwendet. Es wird sowohl auf dem Client als auch auf dem Server ein Kontakt mit dem Namen `Amilia Pond` erstellt. Währenddessen tritt Fall \it{b,c} ein und beide Parteien können nicht miteinander kommunizieren. Nach der Synchronisation existieren zwei Kontakteinträge mit gleichem Namen, aber unterschiedlicher ID. Sie sind voneinander zu unterscheiden und können einzeln behandelt werden.\\
   \item[Szenario ID1:]
   Zur Identifizierung eines Adressbucheintrags wird ein sprechender Schlüssel\footnote{\naturalkey} verwendet.
@@ -42,6 +42,7 @@
 % ERGEBNIS
 %
 \subsubsection*{Ergebnis}
+Die Szenarien \it{ID0} und \it{ID1}
 Unterscheidung: Konflikt, nicht Konflikt\\
 ID0 -- UUID und V3?, V6 als Gewinner.\\
 \b{Probleme?}\\
