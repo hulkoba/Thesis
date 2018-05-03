@@ -1,28 +1,28 @@
 \chapter{\label{chap:szenarien}Szenarien}
 Alle in Kapitel \ref{chap:state} angeführten Technologien haben die Unterstützung der Erstellung von offlinefähigen Anwendungen gemeinsam.
 Prinzipiell sollte eine Offline First Anwendung in der Lage sein, mit fehlender Internetverbindung zu funktionieren und mit auftretenden Konflikten so umgehen zu können, dass keine Daten verloren gehen.
-Sie muss die Fälle behandeln können, die sich aus den folgenden Szenarien ergeben.\\
-Dafür werden zunächst
-\todo{Erst Netzwerkübetragung als `Voraussetzung für Konfliktentstehung`?}
+Sie muss die Fälle behandeln können, die sich aus den folgenden Szenarien ergeben.
+Dafür werden zunächst Szenarien in der \todo{Netzwerkübetragung als `Voraussetzung für die der Konfliktentstehung`} aufgezeigt.
 %
 %
 % Netzwerk Szanarien (fail)   ------------------------------------------------------------------------------------------------------------------------------------------------
 %
 \section{\label{sec:netszenarien}Szenarien bei der Datenübertragung}
-Im oben beschriebenen \it{Anwendungsbeispiel} (Adressbuch) gibt es zwei Parteien die miteinander interagieren: das Adressbuch als Client und den Server. Folgende Situationen können bei der Übertragung von Daten über das Netzwerk eintreten.
+Im einfachen Anwendungsbeispiel einer Kontaktliste gibt es zwei Parteien die miteinander interagieren: die Liste als Client und den Server. Folgende Situationen können bei der Übertragung von Daten über das Netzwerk eintreten.
 \input{chapters/4/netzwerk}
-\todo{Bezug auf die Netzwerkfails. Wenn die Anfrage fehlschlägt, kann man das im Client gut lösen (im Hintergrund (in intervallen) nochmal senden..) Oder das erst am Ende?}
+%\todo{Bezug auf die Netzwerkfails. Wenn die Anfrage fehlschlägt, kann man das im Client gut lösen (im Hintergrund (in intervallen) nochmal senden..) Oder das erst am Ende?}
 Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur Konfliktentstehung relevant: Die Anfrage oder die Antwort schlägt fehl.
 %
 %
 % Konflikte   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 %
 \section{\label{sec:konfliktszenarien}Szenarien zur Konfliktentstehung}
-Ausgangssituation: Adressbuch (shared).\\
-Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle (\it{b,c}) eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\
-Bei jedem Start der Anwendung sollen nur die neuen und die gegebenenfalls aktualisierten Einträge geladen werden \it{(um traffic usw zu sparen)}. Dazu müssen die Adressbucheinträge identifiziert und versioniert werden.
+Im Anwendungsbeispiel einer Kontaktliste können mehrere Personen die Liste verwalten. Die Komplexität wird durch mehr Parteien -- beliebig viele Clients -- erhöht.
+Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle (\it{b,c}) eintritt und ein Objekt von mehreren Parteien bearbeitet wird.
+Für die effiziente Nutzung der Anwendung sollen bei jedem Start der Anwendung nur die neuen und die gegebenenfalls aktualisierten Einträge geladen werden. Alle Adressbucheinträge müssen identifiziert und versioniert werden. Folgende Situationen können eintreten:
 % \highlight{Damit die Einträge sortiert und gefiltert aus der Datenbank geladen werden können, werden sie mit einem Index versehen. Jeder neue Eintrag bekommt automatisch einen höheren Index. Die aktualisierten Objekte sollen ebenfalls geladen werden, aber keinen neuen Index bekommen. Deswegen gibt es neben dem Datensatz \sc{Adressbucheinträge} zusätzlich den der \sc{Aktualisierungen} mit einem sich automatisch erhöhendem Index \it{und der Referenz zum Adressbucheintrag}. \todo{eigenes Szenario?}. Mit jeder Aktualisierung oder Löschung eines Kontakts wird im Aktualisierungsdatensatz der Index durch einen neuen ersetzt. So hat jede Kontakt-ID eine Aktualisierungs-ID und ein Eintrag wird auch nach mehrmaligem Aktualisieren nicht mehrfach geladen.}\\
 %
 \input{chapters/4/konflikte}
 %
-Im weiteren Verlauf dieser Arbeit wird unter anderem beschrieben, wie diese Fälle \ldots  eingebunden werden.
+Im weiteren Verlauf dieser Arbeit wird unter anderem beschrieben, wie diese Fälle \ldots eingebunden werden.
+\todo{was passiert danach}
