@@ -1,6 +1,7 @@
 \chapter{\label{chap:anforderungen}Anforderungsdefinition}
 Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Konfliktmanagement und Funktionalität. \todo{UI auch mit rein?}
-Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.
+Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.\\
+Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar ist, sollte er wenigstens so lange auf dem Client gespeichert werden, bis er vollständig beim Server angekommen sind. Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät, eine auf dem Server. Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen.
 %
 % Use Cases  \hyperref[sec:conflict]{oben}
 %
@@ -9,8 +10,7 @@ Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden 
 % Funktionalität
 %
 \section{Funktionalität}
-Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar ist, sollte er wenigstens so lange auf dem Client gespeichert werden, bis er vollständig beim Server angekommen sind. Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät, eine auf dem Server.\\
-Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen (Welche Telefonnummer ist die richtige).\\
+
 \begin{enumerate}
   \item Nur die Einträge laden die ich noch nicht hab
     \subitem kostet Bandbreite und Serverarbeitszeit
@@ -19,8 +19,11 @@ Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt m
   \item Einträge identifizieren
     \subitem Operationen müssen dem Objekt/Eintrag zugeordnet werden
   \item Einträge versionieren
-  \item Delta berechnen
+  \item Delta berechnen [alle Kontakte -- lokal existierende Kontakte]
   \item lokal und auf dem Server gespeichert sein
+    \subitem Daten müssen lokal gespeichert sein (lokale Datenbank, browserStorage, IndexedDB, LocalStorage)
+    \subitem Server muss in der Lage sein die Einträge effizient zu sortieren (z.B. nach Name) [ID]
+    \subitem Server uss in der Lage sein nur bestimmte Einträge zu verschicken (range)
   \item 2 Objekte mit derselben ID ? welches ist das aktuellste
   \item mehr als 2 Objekte mit derselben ID ? sortieren
   \item (Liste von inhaltsbasierten Versionen muss festgelegte Länge haben)
@@ -37,9 +40,8 @@ Daten sollen jederzeit (offline und online) lesbar und bearbeitbar (löschbar) s
 % UI
 %
 \section{User experience? Bedienoberfläche?}
-\Gls{optimistic UI}\\
-Einfache Liste mit Einträgen, editierbar, bei Konflikt: Dialog mit : welche Version möchtest du behalten?\\
-\gls{UI} soll mich nicht mit Meldungen darüber nerven, dass ich offline bin\\
+Einfache Liste mit Einträgen, editierbar, bei Konflikt: Dialog: `welche Version möchtest du behalten?`\\
 \gls{UI} soll sagen wenn es einen Konflikt gab / gibt und mich entscheiden lassen. Bzw ihn lösen lassen.
-Auf keinen Fall selber lösen und mich nichts davon wissen lassen.\\
-Im besten Fall soll die \gls{UI} mir sagen \b{warum} es zum Konflikt gekommen ist.
+Auf keinen Fall selber lösen und mich nichts davon wissen lassen.
+Im besten Fall soll die \gls{UI} mir sagen \b{warum} es zum Konflikt gekommen ist.\\
+\Gls{optimistic UI}\\
