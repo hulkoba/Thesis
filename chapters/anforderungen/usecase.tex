@@ -14,32 +14,37 @@ Aus den in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien ergeben sich die 
   \multicolumn{1}{p{0.45\textwidth}}
   {Um die Anwendung auch ohne Internetzugang zu nutzen, sollen die Daten auch offline erreichbar sein.}
   & \multicolumn{1}{p{0.45\textwidth}}
-  {Die Daten werden auf dem Server und lokal gespeichert. Lokal bedeutet in einer lokalen Datenbank oder im Browser (localStorage, IndexedDB usw.)}.\\
+  {Die Daten werden auf dem Server und lokal gespeichert. Lokal bedeutet in einer lokalen Datenbank oder im Browser (localStorage, IndexedDB usw.).}\\
   \midrule
-  % UC2
-  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC2}} & \multicolumn{1}{p{0.45\textwidth}}
-  {Um Datentraffic und Ladezeiten zu sparen möchte ich nur die Adressbucheinträge oder deren Aktualisierungen laden, die sich nicht schon auf dem Endgerät befinden.}
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC2}} &
+  \multicolumn{1}{p{0.45\textwidth}}
+  {Die Anwendung soll die Kontaktliste schnell und effizient laden.}
+  % {Um Datentraffic und Ladezeiten zu sparen / schnell und effizient möchte ich nur die Adressbucheinträge oder deren Aktualisierungen laden, die sich nicht schon auf dem Endgerät befinden.}
   & \multicolumn{1}{p{0.45\textwidth}}
-  {Es wird ermittelt welche Daten neu angelegt oder aktualisiert wurden. Dazu müssen sie sortierbar und versionierbar sein.}\\
+  % {Es wird ermittelt welche Daten neu angelegt oder aktualisiert wurden. Dazu müssen sie sortierbar und versionierbar sein.}\\
+  {Es werden nur Einträge oder deren Aktualisierungen geladen, die sich noch nicht auf dem Endgerät befinden.}\\
   \midrule
-  % UC3
-  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC3}} & \multicolumn{1}{p{0.45\textwidth}}
-  {Um jedem Adressbucheintrag Operationen zuzuweisen, möchte ich die Einträge identifizieren.
-  \b{Leute finden}?}
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC3}} &
+  \multicolumn{1}{p{0.45\textwidth}}
+  {Ich möchte Einträge immer und überall editieren können.}
+  & \multicolumn{1}{p{0.45\textwidth}}
+  {Jeder Eintrag muss identifizierbar und versionierbar sein.}\\
+  \midrule
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC4}} &
+  \multicolumn{1}{p{0.45\textwidth}}
+  {Um jedem Adressbucheintrag Operationen zuzuweisen und einzelne Kontakte zu finden, möchte ich die Einträge identifizieren.}
   & \multicolumn{1}{p{0.45\textwidth}}
   {Jeder Eintrag bekommt zur eindeutigen Identifikation eine \gls{UUID} zugewiesen.}\\
   \midrule
-  % UC4
-  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC4}} & \multicolumn{1}{p{0.45\textwidth}}
-  {Um zu wissen ob, wie oft und wann ein Eintrag aktualisiert wurde, möchte ich die Einträge versionieren.}
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC5}} &
+  \multicolumn{1}{p{0.45\textwidth}}
+  {Um zu wissen ob, wie oft und wann ein Eintrag bearbeitet wurde, möchte ich die Einträge versionieren.}
   & \multicolumn{1}{p{0.45\textwidth}}
   {Jeder Eintrag bekommt ein Versionsattribut.}\\
-  \midrule
-  % UC5
-  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC5}} & \multicolumn{1}{p{0.45\textwidth}}
-  {Ich möchte Einträge immer und überall editieren können.}
-  & \multicolumn{1}{p{0.45\textwidth}}
-  {}\\
   \midrule
   % UC6
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC6}} &
@@ -47,13 +52,14 @@ Aus den in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien ergeben sich die 
   {Ich möchte dass alle Änderungen ankommen und keine Daten verloren gehen.}
   &
   \multicolumn{1}{p{0.45\textwidth}}
-  {}\\
+  {Wenn ein Konflikt auftritt, wird er effizient gespeichert (statt eine Version zu verwerfen).}\\
   \midrule
   % UC7
-  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC7}} & \multicolumn{1}{p{0.45\textwidth}}
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{UC7}} &
+  \multicolumn{1}{p{0.45\textwidth}}
   {Ich weiß, Konflikte können immer auftreten, deswegen möchte ich mit ihnen umgehen können.}
   & \multicolumn{1}{p{0.45\textwidth}}
-  {}\\
+  {Konflikte werden effizient gespeichert, sodass sie nach und nach von NutzerInnen aufgelöst werden können.}\\
   % end
   \bottomrule \cellcolor[HTML]{FFFFFF}
   \vspace{0.1cm}\\
