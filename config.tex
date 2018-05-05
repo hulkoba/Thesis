@@ -25,32 +25,6 @@
 \usepackage{titleref}
 \usepackage{cite}
 
-% -----------------------------------------------------------------------------------------------------------
-\usepackage{listings}
-\lstset{
-   captionpos=b,
-   basicstyle=\small\ttfamily,
-   keywordstyle=\bfseries\ttfamily\color{blue},
-   stringstyle=\color{OliveGreen}\ttfamily,
-   commentstyle=\color{OliveGreen}\ttfamily,
-   backgroundcolor=\color{lightgray},
-   emph={square},
-   emphstyle=\color{blue}\texttt,
-   emph={[2]root,base},
-   emphstyle={[2]\color{yac}\texttt},
-   showstringspaces=false,
-   flexiblecolumns=false,
-   tabsize=4,
-   % numbers=left,
-   % numberstyle=\tiny,
-   numberblanklines=false,
-   % stepnumber=1,
-   numbersep=5pt,
-   xleftmargin=10pt
- }
-
-% -----------------------------------------------------------------------------------------------------------
-
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \graphicspath{{images/}}
@@ -138,5 +112,44 @@ toc]
 \newcommand{\subsub}[1]{\subsubsection{#1}}
 
 % ----------------------------------------------------
+
+
+% -----------------------------------------------------------------------------------------------------------
+\usepackage{listings}
+   % numbers=left,
+   % numberstyle=\tiny,
+   % stepnumber=1,
+ \DeclareCaptionFormat{listing}{
+    \parbox{\textwidth}{
+      \centering
+      \grayRule\\
+      #1#2#3
+    }
+}
+\captionsetup[lstlisting]{format=listing, font={small,it}}
+\renewcommand{\ttdefault}{pcr} % Using Courier font
+\lstset{
+   % backgroundcolor=\color{lightgray},
+   captionpos=b,
+   abovecaptionskip=0.5\baselineskip,
+   belowcaptionskip=1\baselineskip,
+   aboveskip=\baselineskip,
+   basicstyle=\color{CarnationPink}\small,
+   keywordstyle=\color{Cerulean}\bfseries\ttfamily,
+   stringstyle=\color{Black},
+   identifierstyle=\color{SeaGreen},
+   commentstyle=\color{Gray},
+   showstringspaces=false,
+   tabsize=2,
+   numbersep=5pt,
+   frame=L,
+   rulecolor=\color{SeaGreen},
+   keepspaces=true,
+   language=Octave,
+   % xleftmargin=10pt,
+ }
+
+% -----------------------------------------------------------------------------------------------------------
+
 
 \hyphenation{JavaScript} %trennt JavaScript nie
