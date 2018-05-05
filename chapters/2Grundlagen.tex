@@ -6,12 +6,31 @@ Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, 
 %
 \section{Offline First}
 Offline-First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist um deren grundlegenden Funktionen zu nutzen.\todo{Quelle}\\
-Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit. Bei einer bestehenden Internetverbindung ist das Laden der \gls{Assets} aus dem Cache schneller als aus dem Netz. Daten, die zuerst lokal gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.
+Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit. Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz. Daten, die zuerst lokal gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.
 % 1. Separate Apps from Data\\
 % 2. Deliver App Code (and make it cachable) {appcache \& ServiceWorkers}\\
 % 3. Save Data Offline {localStrogare / localForage, IndexedDB, other Wrapper}\\
 % 4. Detect Connectivity {navigator.onLine} (Lie-fi)\\
 % 5. Sync Data - Build upon existing solutions --CouchDB/PouchDB | remoteStorage\\
+\sub{Cache}
+Das Cachen der \gls{Assets} ist der erste Schritt um Daten offline verfügbar zu machen. Browser haben die Möglichkeit, diese Dateien in ihrem Cache zu speichern. Der Browser-Cache ist leider nicht persistent und kann ohne Vorwarnung Daten löschen, wenn das Limit des globalen Cache (Disk Cache) erreicht ist.
+\subsub{Appcache}
+Um mehr Kontrolle darüber zu bekommen, was wann und für wie lange gespeichert werden soll, wurde der Application Cache zur HTML-Spezifikation hinzugefügt.
+Am ersten Juni 2016\footnote{siehe \url{https://github.com/w3c/html/pull/444/commits}} wurde der AppCache wieder aus den Web-Standards entfernt, und wird nicht mehr empfohlen.
+In der Theorie stellte sich der AppCache als einfach anzuwenden und unproblematisch dar. Um eine webbasierte Anwendung offline auszuliefern wurde benötigte es nur eine zusätzliche Textdatei -- der cache manifest-Datei -- mit der Endung \tt{.appcache}. Dort wurden alle Ressourcen aufgelistet, welche der Browser cachen sollte.
+Die Datei wurde dann über das \tt{manifest}-Attribut in die \gls{HTML}-Dateien der Webanwendung eingebunden werden.
+\lstset{language=HTML,caption={Beispiel einer Manifest-Attribut einbindung},label=DescriptiveLabel}
+\begin{lstlisting}
+<html manifest="example.appcache">
+    ...
+</html>
+\end{lstlisting}
+Alle Seiten, mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.
+\subsub{ServiceWorker}
+\sub{Lokale Speicherung der Daten}
+\subsub{localForage und AsyncStorage}
+\subsub{IndexedDB}
+
 %
 % Anforderungen
 %
@@ -46,13 +65,6 @@ Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikatio
     \item[Linkable] meaning they’re zero-friction, zero-install, and easy to share. The social power of URLs matters.
 \end{description}
 \todo{Näher erläutern?}~\cite{pwa}.
-
-%
-% ServiceWorker
-%
-\subsub{ServiceWorker}
-\subsub{localForage und AsyncStorage}
-\subsub{IndexedDB}
 %
 % Konflikte [Jan]
 %
