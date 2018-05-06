@@ -15,17 +15,37 @@ Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, 
 \sub{Cache}
 Das Cachen der \gls{Assets} ist der erste Schritt um Daten offline verfügbar zu machen. Browser haben die Möglichkeit, diese Dateien in ihrem Cache zu speichern. Der Browser-Cache ist leider nicht persistent und kann ohne Vorwarnung Daten löschen, wenn das Limit des globalen Cache (Disk Cache) erreicht ist.
 \subsub{Appcache}
-Um mehr Kontrolle darüber zu bekommen, was wann und für wie lange gespeichert werden soll, wurde der Application Cache zur HTML-Spezifikation hinzugefügt.
+Um mehr Kontrolle darüber zu bekommen, was wann und für wie lange gespeichert werden soll, wurde der Application Cache (AppCache) zur HTML-Spezifikation hinzugefügt.
 Am ersten Juni 2016\footnote{siehe \url{https://github.com/w3c/html/pull/444/commits}} wurde der AppCache wieder aus den Web-Standards entfernt, und wird nicht mehr empfohlen.
-In der Theorie stellte sich der AppCache als einfach anzuwenden und unproblematisch dar. Um eine webbasierte Anwendung offline auszuliefern wurde benötigte es nur eine zusätzliche Textdatei -- der cache manifest-Datei -- mit der Endung \tt{.appcache}. Dort wurden alle Ressourcen aufgelistet, welche der Browser cachen sollte.
+In der Theorie stellte sich der Application Cache als einfach anzuwenden und unproblematisch dar. Um eine webbasierte Anwendung offline auszuliefern wurde benötigte es eine Textdatei -- der \tt{cache manifest}-Datei -- mit der Endung \tt{.appcache}. Dort wurden alle Ressourcen aufgelistet, welche der Browser cachen sollte.
 Die Datei wurde dann über das \tt{manifest}-Attribut in die \gls{HTML}-Dateien der Webanwendung eingebunden werden.
-\lstset{language=HTML,caption={Beispiel einer Manifest-Attribut Einbindung},label=DescriptiveLabel}
+\lstset{language=HTML,caption={Beispiel einer \gls{HTML}-Datei mit einer Manifest-Attribut Einbindung},label={code:appcache_html}}
 \begin{lstlisting}
+<!DOCTYPE html>
 <html manifest="example.appcache">
+  <head>
+    <title>Example Application Cache</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="example.js"></script>
+  </head>
+  <body>
     ...
+  </body>
 </html>
 \end{lstlisting}
-Alle Seiten, mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.
+Die über das \tt{manifest}-Attribut eingebundene Cache-Datei kann folgendermaßen aussehen:
+\lstset{language=python,caption={Beispiel einer \normalfont{\tt{.appcache}}\itshape{-Datei}},label={code:appcache}}
+\begin{lstlisting}
+CACHE MANIFEST
+# v1
+style.css
+example.js
+image.png
+\end{lstlisting}
+
+Alle Seiten, mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.\\
+In der Praxis jedoch zeigten sich zahlreiche Probleme mit dem AppCache.
+~\cite{noappcache}.
 \subsub{ServiceWorker}
 \sub{Lokale Speicherung der Daten}
 \subsub{localForage und AsyncStorage}
