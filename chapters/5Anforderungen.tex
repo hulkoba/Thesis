@@ -1,6 +1,6 @@
 \chapter{\label{chap:anforderungen}Anforderungsdefinition}
-Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Konfliktmanagement und Funktionalität. \todo{UI auch mit rein?}
-Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anwendungsfälle und Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.
+Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Funktionalität, Konfliktmanagement und der Bedienoberfläche.
+Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.
 %
 % Use Cases  \hyperref[sec:conflict]{oben}
 %
@@ -21,9 +21,11 @@ Die Daten würden sonst doppelt geladen werden, der Server hätte mehr zu arbeit
 Der Server muss also in der Lage sein die Einträge zu sortieren und nur bestimmte Einträge zu versenden und die Anwendung muss wissen, welche Daten sie bereits hat. Dazu muss jeder Kontakt mittels einer ID identifiziert werden.\\
 Wenn es zwei Kontakteinträge mit derselben ID gibt, muss feststellbar sein, welcher Eintrag der aktuellere ist. Gibt es mehr als zwei Einträge müssen diese sortiert werden, sodass ersichtlich wird welcher der aktuellste oder älteste ist, welcher Eintrag vor oder nach welchem kommt. Dazu muss jeder Kontakt versioniert werden.
 %
+%
 \sub{Konfliktmanagement}
 %
-Die in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien zeigen, Konflikte können immer auftreten. Werden Konflikte falsch oder gar nicht behandelt, kann es zu Datenverlust führen. Aus diesem Grund müssen sie als Teil der Anwendung betrachtet statt ignoriert zu werden.
+Die in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien zeigen, Konflikte können immer auftreten. Werden Konflikte falsch oder gar nicht behandelt, kann es zu Datenverlust führen.
+Aus diesem Grund müssen sie als Teil der Anwendung betrachtet statt ignoriert zu werden.
 Im einfachen Konfliktfall kann das System entscheiden welches die konfliktfreie Version ist. So kann zum Beispiel der Kontakt `Amilia Pond` von einer Person eine neue Telefonnummer, von einer anderen eine neue Adresse bekommen.
 Die Aktualisierungen finden in unterschiedlichen Bereichen statt und stellen kein Problem dar. \todo{in Szenarien aufnehmen?}\\\\
 Die oben erarbeiteten \hyperref[sec:konfliktszenarien]{Konfliktszenarien} beschreiben Konflikte die nicht vom System gelöst werden können.
@@ -31,12 +33,18 @@ Diese sollen effizient gespeichert werden. Wichtig hierbei ist die Möglichkeit 
 Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt, und angeboten werden die Konflikte zu lösen. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.
     % \subitem Operationen müssen dem Objekt/Eintrag zugeordnet werden
   % \item Delta berechnen [alle Kontakte -- lokal existierende Kontakte]
-\todo{siehe Anforderungen \hyperref[sub:pwa]{PWA}?}
 %
 % UI
 %
-\section{User experience? Bedienoberfläche?}
-Einfache Liste mit Einträgen, editierbar, bei Konflikt: Dialog: `welche Version möchtest du behalten?`\\
-\gls{UI} soll sagen wenn es einen Konflikt gab / gibt und mich entscheiden lassen. Bzw ihn lösen lassen.
-Auf keinen Fall selber lösen und mich nichts davon wissen lassen.
-Im besten Fall soll die \gls{UI} mir sagen \b{warum} es zum Konflikt gekommen ist.\\
+\section{Bedienoberfläche}
+Da der Schwerpunkt dieser Arbeit auf dem Umgang mit Konflikten der zu testenden offlineunterstützenden Technologien liegt, wird die Bedienoberfläche des zu entwickelnden Prototyps \todo{der Prototypen?} möglichst einfach gehalten werden.\\
+Alle Adressbucheinträge sollen in einer Liste angezeigt werden. Zum Anlegen, Editieren und Löschen eines einzelnen Eintrags soll es eine zweite Ansicht geben, auf die man per Klick auf den entsprechenden Eintrag in der Liste gelangt.
+Wenn es zum Konflikt kommt, kann dieser über ein Dialogfenster aufgelöst werden. Im Dialog muss erkennbar sein wo, bei welchem Kontakteintrag, der Konflikt auftrat. Außerdem müssen sich die entsprechenden Bereiche beider Versionen unterscheiden lassen und auswählbar sein. Abbildung \ref{fig:dialog} zeigt wie so ein Dialogfenster aussehen könnte.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Konfliktdialog}
+    \grayRule
+    \caption{Dialogfenster im Konfliktfall}
+    \label{fig:dialog}
+\end{figure}
+Wurde beispielsweise Amilias Telefonnummer gleichzeitig bearbeitet, bildet der Dialog zwei Bereiche mit der Nummer in den unterschiedlichen Versionen ab. Durch Klick auf die korrekte Nummer kann entschieden werden welche Version die richtige ist und behalten wird.
