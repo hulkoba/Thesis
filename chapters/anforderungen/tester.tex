@@ -1,4 +1,4 @@
-\sub{Terster Perspektive}
+\sub{TesterInnen Perspektive}
 Die folgende Tabelle zeigt die Software-Anforderungen an eine offlinefähige Kontaktliste aus Perspektive der TesterInnen.
 \begin{longtable}[c]{@{}
 	>{\columncolor[HTML]{CFFCC2}}l ll@{}}
@@ -10,24 +10,29 @@ Die folgende Tabelle zeigt die Software-Anforderungen an eine offlinefähige Kon
 	%
 	\endhead
 	%
-	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 14}}  &
+	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 14}} &
 	\multicolumn{1}{p{0.85\textwidth}}
-	{Ich als TesterIn möchte die Daten lokal und auf dem Server speichern, um deren Erreichbarkeit unabhängig vom Internetstatus zu gewährleisten.}\\
+	{Ich als TesterIn möchte sicherstellen, dass der Netzwerkstatus der Anwendung änderbar ist, um zwischen offline und online zu wechseln.}\\
 	\midrule
 	%
-	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 15}}  &
+	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 15}} &
 	\multicolumn{1}{p{0.85\textwidth}}
-	{Ich als TesterIn möchte ich nur die Adressbucheinträge oder deren Aktualisierungen laden, die sich nicht schon auf dem Endgerät befinden, um Datentraffic und Ladezeiten zu sparen.}\\
+	{Ich als TesterIn möchte die Anwendung auf mindestens zwei Geräten verwenden, um Kontakte gleichzeitig zu bearbeiten zu können.}\\
 	\midrule
 	%
-	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 16}}  &
+	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 16}} &
 	\multicolumn{1}{p{0.85\textwidth}}
-	{Ich als TesterIn möchte ich jeden Eintrag identifizieren, um jedem Adressbucheintrag Operationen zuzuweisen und einzelne Kontakte zu finden.}\\
+	{Ich als TesterIn möchte Konflikte forcieren können, um das Verhalten der Anwendung zu testen.}\\
 	\midrule
 	%
-	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 17}}  &
+	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 17}} &
 	\multicolumn{1}{p{0.85\textwidth}}
-	{Ich als TesterIn möchte ich jeden Eintrag versionieren, um zu wissen ob wann ein Eintrag bearbeitet wurde.}\\
+	{Ich als TesterIn möchte einen Eintrag editieren können wenn 1. beide Client und Server online sind, 2. entweder Client oder Server offline ist oder 3. beide Parteien offine sind. \todo{daraus 3 Stories machen?}}\\
+	\midrule
+	%
+	\multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{User-Story 18}} &
+	\multicolumn{1}{p{0.85\textwidth}}
+	{Ich als TesterIn möchte die Testfälle detailliert dokumentieren, um sie auswerten zu können.}\\
 	% end
 	\bottomrule \cellcolor[HTML]{FFFFFF}
 	\vspace{0.1cm}\\
