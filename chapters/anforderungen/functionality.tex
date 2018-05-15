@@ -1,10 +1,9 @@
 %
 %
 \section{Funktionalität}
-\highlight{Es soll ein System entwickelt werden, welches an dem Beispiel eines kollaborativen Adressbuchs die Offlinekompatibilität mit dem Schwerpunkt auf das Konfliktmanagement der verwendeten Technologien illustriert.}
-\todo{Bezug zu Szenarien und Anwendungsfällen}\\\\
-Ein offlinefähiges, kollaboratives Adressbuch zeigt eine Liste von Kontakten, welche jederzeit -- unabhängig von der Internetverbindung -- von den verwendenden Personen gelesen, bearbeitet, erstellt und gelöscht werden können.
-Geschieht eine dieser Operationen offline, werden die Daten bei wieder bestehender Internetverbindung synchronisiert. Im einfachen Fall erfolgt die Synchronisation zwischen der Server und Client. Da die Beispielanwendung kollaborativ ist, erfolgt die sie zwischen allen beteiligten Parteien. Synchronisation erfordert in jedem Fall den Umgang mit Konflikten.\\\\%
+Ein offlinefähiges, kollaboratives Adressbuch ist eine Anwendung, mit der mehrere Personen, Kontakte verwalten können.
+Sie \it{zeigt} eine Liste von Kontakteinträgen, welche jederzeit -- unabhängig von der Internetverbindung -- von den verwendenden Personen gelesen, bearbeitet, erstellt und gelöscht werden können.
+Geschieht eine dieser Operationen offline, werden die Daten bei wieder bestehender Internetverbindung synchronisiert. Im einfachen Fall erfolgt die Synchronisation zwischen der Server und Client. Da die Beispielanwendung kollaborativ ist, erfolgt die sie zwischen allen beteiligten Parteien. Synchronisation erfordert in jedem Fall den Umgang mit Konflikten.\\\\
 Bein ersten Start der Anwendung müssen, sofern vorhanden, alle Kontakte geladen werden. Sobald sie einmal geladen sind, sollen sie auch offline verfügbar sein.
 Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar ist, sollte er wenigstens so lange auf dem Client gespeichert werden, bis er vollständig beim Server angekommen sind.
 Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät -- beispielsweise in einer lokalen Datenbank \todo{ref: grundlagen/lokale Speicherung?}, eine auf dem Server.\\
