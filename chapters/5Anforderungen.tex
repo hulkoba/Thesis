@@ -2,14 +2,19 @@
 Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Funktionalität, Konfliktmanagement und der Bedienoberfläche.
 Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.
 %
+% Scope
+%
+\input{chapters/anforderungen/scope}
+%
 % User-Stories
 %
 \section{User-Stories}
 Aus den in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien ergeben sich die folgenden User-Stories, die von der offlinefähigen Adressbuchanwendung erfüllt werden sollen.
-Ein Ziel der Arbeit ist es, EntwicklerInnen bei der Wahl einer Technologie mit der eine offlinefähige Anwendung entwickelt werden kann, zu unterstützen.
-Deswegen werden zunächst die Anforderungen aus Sicht der NutzerInnen definiert, danach die aus Entwicklingsperspektive.
+Ein Ziel der Arbeit ist es, EntwicklerInnen bei der Wahl einer Technologie mit der eine offlinefähige Anwendung entwickelt werden kann, zu unterstützen. Dafür wird untersucht, inwieweit die ausgewählten Technologien die Erwartungen an diese erfüllen.
+Deswegen werden zunächst die Anforderungen aus Sicht der NutzerInnen definiert, danach die aus Entwicklingsperspektive und dann die aus der Perspektive der TesterInnen.
 \input{chapters/anforderungen/user}
 \input{chapters/anforderungen/developer}
+\input{chapters/anforderungen/tester}
 %
 % Funktionalität
 %
@@ -31,3 +36,7 @@ Außerdem müssen sich die entsprechenden Bereiche beider Versionen unterscheide
 \end{figure}
 Wurde beispielsweise Amilias Telefonnummer gleichzeitig bearbeitet, bildet der Dialog zwei Bereiche mit der Nummer in den unterschiedlichen Versionen ab.
 Durch Klick auf die korrekte Nummer kann entschieden werden welche Version die richtige ist und behalten wird.
+%
+% Tests
+%
+\section{Tests}
