@@ -1,6 +1,6 @@
 \chapter{\label{chap:anforderungen}Anforderungsdefinition}
 Dieses Kapitel beschreibt die Anforderungen an eine Offline First Anwendung unter Berücksichtigung von Funktionalität, Konfliktmanagement, Tests und der Bedienoberfläche.
-Aus den oben genannten \hyperref[chap:szenarien]{Szenarien} werden im Folgenden die Anforderungen hergeleitet, die eine offlinefähige Anwendung erfüllen soll.
+Nach der konkreten Beschreibung dessen, was das \it{Projekt} umfassen soll, folgen die aus den oben genannten \hyperref[chap:szenarien]{Szenarien} hergeleiteten Anforderungen, die eine offlinefähige Anwendung erfüllen soll.
 %
 % Scope
 %
@@ -29,7 +29,7 @@ Wenn es zum Konflikt kommt, kann dieser über ein Dialogfenster aufgelöst werde
 Außerdem müssen sich die entsprechenden Bereiche beider Versionen unterscheiden lassen und auswählbar sein. Abbildung \ref{fig:dialog} zeigt wie so ein Dialogfenster aussehen könnte.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Konfliktdialog}
+	\includegraphics[width=0.7\textwidth]{Konfliktdialog}
 	\grayRule
 	\caption{Dialogfenster im Konfliktfall}
 	\label{fig:dialog}
@@ -42,6 +42,6 @@ Durch Klick auf die korrekte Nummer kann entschieden werden welche Version die r
 \section{Tests}
 \todo{Auch testen ob Offlinefunktionalität gewährleistet ist? -- Scope: Zeitlichen Rahmen sprengen usw.}\\
 Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können, müssen zunächst Konflikte erstellt werden. Dazu muss in erster Linie die Anwendunng auf mindestens zwei Geräten laufen und der Netzwerkstatus muss änderbar sein. Es ist außerdem hilfreich, wenn die Anwendung zeigt, in welchem Status sie sich befindet. Sie sollte wissen, ob sie on-- oder offline ist.\\
-Kontakte editieren (auf 2 Geräten gleichzeitig) on-on, off-off, on-off? Dasselbe für Anlegen und löschen?\\
-Zur Auswertung der Daten sollten alle Ausgangspositionen, Vorgänge und Ergebnisse dokumentiert werden. Für einen Testfall kann hierfür zuerst der Kontakt aufgeschrieben werden. Dann die Operation, z.B. `bearbeiten des Kontakts Amilia` zusammen mit dem Verbindungsstatus (von Client und Server). Ebenso muss der Kontakt aufgeschrieben werden, wie er nach der Synchronisation aussieht. \todo{Lösung anbieten: .log--Datei?}\\
+\todo{Kontakte editieren (auf 2 Geräten gleichzeitig) on-on, off-off, on-off? Dasselbe für Anlegen und löschen?}\\
+Zur Auswertung der Daten sollten alle Ausgangspositionen, Vorgänge und Ergebnisse dokumentiert werden. Für einen Testfall kann hierfür zuerst der Kontakt aufgeschrieben werden. Dann die Operation, z.B. `bearbeiten des Kontakts Amilia` zusammen mit dem Verbindungsstatus (von Client und Server). Ebenso muss der Kontakt aufgeschrieben werden, wie er nach der Synchronisation aussieht. \todo{Lösung anbieten: .log--Datei?}
 \highlight{Es stellt sich die Frage wie oft ein Testfall durchlaufen werden muss um eine sinnvolle Aussage treffen zu können}.
