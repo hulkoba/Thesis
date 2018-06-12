@@ -4,3 +4,57 @@ Um die Funktionalität des Prototyps zu untersuchen, wurden folgende Testgeräte
 % Systemtest
 %
 \section{Systemtest und Ergebnisse}
+
+\section{Vergleich}
+\begin{longtable}[c]{@{}
+	>{\columncolor[HTML]{CFFCC2}}l ll@{}}
+	\toprule
+	\multicolumn{1}{p{0.1\textwidth}}{\cellcolor[HTML]{cffcc2}{}} 
+  &
+	\multicolumn{1}{p{0.45\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{PouchDB}}
+	&
+  \multicolumn{1}{p{0.45\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Redux Offline}} \\
+	
+  \hline \noalign{\vskip 0.1cm}
+	\endfirsthead
+	\endhead
+	%
+\multicolumn{1}{p{0.1\textwidth}}
+{\textbf{Storage}}
+&       
+\multicolumn{1}{p{0.45\textwidth}}
+{IndexedDB WebSQL}
+&                                                                                         
+\multicolumn{1}{p{0.45\textwidth}}
+{(redux-persist) Brwoser: IndexedDB oder WebSQL / LocalStorage, Fallbacks via localForage.
+ReactNative: AsyncStorage}\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.1\textwidth}}
+{\textbf{Requirements}}
+&       
+\multicolumn{1}{p{0.45\textwidth}}
+{--}
+&                                                                                         
+\multicolumn{1}{p{0.45\textwidth}}
+{Redux}\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.1\textwidth}}
+{\textbf{Lines of Code}}
+&       
+\multicolumn{1}{p{0.45\textwidth}}
+{?}
+&                                                                                         
+\multicolumn{1}{p{0.45\textwidth}}
+{?}\\
+\midrule
+
+	%
+	% end
+	\bottomrule \cellcolor[HTML]{FFFFFF}
+	\vspace{0.1cm}\\
+	\noalign{\hspace{0.0525\textwidth}\grayRule}
+	\caption{Anforderungen aus Entwicklungsperspektive}
+	\label{tab:dev}\\
+\end{longtable}

@@ -1,24 +1,38 @@
 \chapter{\label{chap:konzeption}Konzeption}
-Die erarbeiteten Anforderungen an ... werden in diesem Kapitel für die Konzeption angewendet.
-Beginnend mit dem Aufbau der Anwendung werden in den folgenden Abschnitten die Anwendungsfälle,
-die Architektur und schließlich die Komponenten der Entwicklumgsumgebung aufgeführt.\\
-Den Raum aller möglichen Lösungen anhand der Anforderungen auf die in irgendeinem Sinn beste / geeignetste einzuschränken:\\
-Ein Prototyp oder zwei?\\
-App entwickeln, in der es einen `Verbindung unterbrechen` Knopf gibt ', oder ob es aus irgendwelchen Erwägungen notwendig sein könnte, das über eine separate Instanz zu machen.
+Die erarbeiteten Anforderungen zur Untersuchung der Konfliktmanagementstrategien offlinefähiger Systeme werden in diesem Kapitel für die Konzeption angewendet.\\
+Es soll für jede zu untersuchende Technologie ein Prototyp entwickelt werden. Im Rahmen dieser Arbeit entsteht ein Prototyp der \sc{Redux Offline} verwendet und einer in dem \sc{PouchDB} und \sc{CouchDB} eingesetzt wird. \todo{Entscheidung begründen?} Bis zu einem gewissen Status, nämlich dem der Verweindung der Technologien, sind beide Prototypen -- bis auf den Namen-- identisch. \highlight{Vielleicht hier erstmal klären dass die Prototypen bis zu einem gewissen Status identisch sind und deswegen von ihnen im Singular geschrieben wird?.}\\
+Beginnend mit dem Aufbau der exemplarischen Anwendung werden in den folgenden Abschnitten die  Architektur  und schließlich \todo{blabla} aufgeführt.\\
+% Den Raum aller möglichen Lösungen anhand der Anforderungen auf die in irgendeinem Sinn beste / geeignetste einzuschränken:\\
+% App entwickeln, in der es einen `Verbindung unterbrechen` Knopf gibt ', oder ob es aus irgendwelchen Erwägungen notwendig sein könnte, das über eine separate Instanz zu machen.
 %
 % Aufbau
 %
-\section{Bedienung}
+\section{Voraussetzungen?}
+Als Grundstein beider Pro
+\tt{create-react-app}
 \section{Anwendungsaufbau}
 %
 % Architekturf
 %
-\section{Architektur}
+\sub{Architektur}
+Container\\
+Header\\
+Liste\\
+Form\\
+Konflikt--Dialog\\
 %
 % Testfälle
 %
 \section{Testfälle}
-Folgende Testfälle werden während der Entwicklung stetig durchgeführt. Das erfolgreiche Bestehen dieser Tests ist eine notwendige Qualitätseigenschaft der zu entwickelnden Applikation.
+Folgende Testfälle werden während der Entwicklung stetig durchgeführt. Das erfolgreiche Bestehen dieser Tests ist eine notwendige Qualitätseigenschaft / Voraussetzung der zu entwickelnden Prototypen.
+\begin{itemize}
+  	\item Netzwerkstatus anzeigen ? 
+    \item Folgende Punkte müssten durch ServiceWorker usw sowohl on- als auch offline möglich sein. 
+    \item Kontakt anlegen 
+    \item Kontakt bearbeiten (Name, Email oder Telefonnummer)
+    \item Kontakt löschen 
+    \item lesen vorhandener Kontakte (lokal und Server)
+\end{itemize}
 %
 % Entwicklungsumgebung
 %
@@ -36,5 +50,4 @@ Folgende Testfälle werden während der Entwicklung stetig durchgeführt. Das er
 % 	\item Tuxedo (Intel\textsuperscript{\textregistered} Core\tm i7-6500U, 2,50GHz x 4, 7,7 GB RAM) als ersten Entwicklungsrechner
 % 	      (Betriebssystem: Ubuntu\footnote{ Download unter \url{https://www.ubuntu.com/download/desktop}} 16.06, 64-bit-Version)
 % 	\item Lenovo Thinkpad X200 (Intel\textsuperscript{\textregistered} Core\tm   2 Duo, 2,40GHz, 8GB RAM) als zweiten Entwicklungsrechner (Betriebssystem: Debian 7.8, 64-bit-Version)
-% 	\item Testgeräte...
-% \end{itemize}
+% \end{itemize}7
