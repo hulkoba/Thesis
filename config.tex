@@ -29,6 +29,8 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage[font={small,it}]{caption}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
 
 \usepackage[table,xcdraw,dvipsnames]{xcolor}
 \usepackage{float} % table float
@@ -128,6 +130,46 @@ toc]
 }
 \captionsetup[lstlisting]{format=listing, font={small,it}}
 \renewcommand{\ttdefault}{pcr} % Using Courier font
+
+\lstdefinelanguage{JSON}{
+	morestring=[b]",
+	stringstyle=\color{SeaGreen},
+    literate=
+     *{0}{{{\color{Cerulean}0}}}{1}
+      {1}{{{\color{Cerulean}1}}}{1}
+      {2}{{{\color{Cerulean}2}}}{1}
+      {3}{{{\color{Cerulean}3}}}{1}
+      {4}{{{\color{Cerulean}4}}}{1}
+      {5}{{{\color{Cerulean}5}}}{1}
+      {6}{{{\color{Cerulean}6}}}{1}
+      {7}{{{\color{Cerulean}7}}}{1}
+      {8}{{{\color{Cerulean}8}}}{1}
+      {9}{{{\color{Cerulean}9}}}{1}
+      {false}{{{\color{Cerulean}false}}}{1}      
+      {true}{{{\color{Cerulean}true}}}{1}
+      {:}{{{\color{CarnationPink}{:}}}}{1}
+      {,}{{{\color{CarnationPink}{,}}}}{1}
+      {\{}{{{\color{CarnationPink}{\{}}}}{1}
+      {\}}{{{\color{CarnationPink}{\}}}}}{1}
+      {[}{{{\color{CarnationPink}{[}}}}{1}
+      {]}{{{\color{CarnationPink}{]}}}}{1},     ,
+}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, function, return, null, switch, const, let, if, in, else, case, break},
+  keywordstyle=\color{Cerulean}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \lstset{
    % backgroundcolor=\color{lightgray},
    captionpos=b,

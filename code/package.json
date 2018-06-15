@@ -1,0 +1,37 @@
+{
+  "name": "amilia-qouch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "pouchdb": "^6.4.3",
+    "react": "^16.3.2",
+    "react-detect-offline": "^2.0.1",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "react-scripts": "1.1.4",
+    "standard": "^11.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "eject": "react-scripts eject",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "standard": {
+    "globals": [
+      "fetch"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hulkoba/amilia-qouch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hulkoba/amilia-qouch/issues"
+  },
+  "homepage": "https://github.com/hulkoba/amilia-qouch#readme"
+}
