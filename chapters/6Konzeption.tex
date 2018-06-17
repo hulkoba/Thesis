@@ -34,35 +34,53 @@ In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), be
 %
 % React Komponenten
 %
-\subsub{Aufbau der React Komponenten ?}
+\sub{Aufbau der React Komponenten ?}
 \todo{React und redux beschreiben?}
 %
 %
 % Architektur
 %
-\sub{Architektur}
+\section{Architektur}
+Container\\
+Header\\
+Liste\\
+Form\\
+Konflikt--Dialog\\
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{uml}
   \grayRule
   \caption{Komponentenarchitektur}
   \label{fig:uml}
 \end{figure}
-
-Container\\
-Header\\
-Liste\\
-Form\\
-Konflikt--Dialog\\
-
-\subsub{Online Offline}
+%
+% Online / Offline
+%
+\sub{Verbindungsstatus feststellen}
 React detect-offline
-\subsub{lokale Datenbank}
+%
+% Lokale Speicherung
+%
+\sub{Lokale Speichern der Daten}
+% Redux Offline
+\subsub{Lokale Speicherung mit Redux Offline}
 Redux Offline: Idee: Store = Datenbank
-\subsub{Backend}
-CouchDB = RemoteDB\\
+% Pouch
+\subsub{Lokale Speicherung mit PouchDB}
+%
+% Sync
+%
+\sub{Synchronisation}
+% Redux Offline
+\subsub{Synchronisation mit Redux Offline}
 Redux Offline: Server der alle \gls{CRUD} Operationen unterstützt,
 \gls{JSON}--Datei zur Persisierung um Ergebnisse nicht zu verfälschen 
-
+Redux Offline: Idee: Store = Datenbank
+% Pouch
+\subsub{Synchronisation mit PouchDB}
+CouchDB = RemoteDB\\
+%
+% UI
+%
 \section{Die graphische Oberfläche}
 Aus den minimalen Anforderungen an die graphische Oberfläche ergibt sich das Design. Anhand der folgenden Abbildungen werden die gefertigten Entwürfe der BenutzerInnenoberfläche dargestellt.\\\\
 Diese Listenansicht in Abbildung \ref{fig:list} besteht aus dem Header / Kopf und den Listeneinträgen. Sie zeigt die Kontakteinträge in beiden Netzwerkstatus: online (Abbildung \ref{fig:list-online}) und offline (\ref{fig:list-offline}).\\\\
