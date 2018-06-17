@@ -47,32 +47,31 @@ Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der A
 Die \tt{Header}--Komponente zeigt den Netzwerkstatus der Anwendung an und hat einen Knopf, der zum \tt{ContactForm} führt.\\
 Die \tt{ContactList} wird initial gerendert. Es werden alle Kontakte als Liste dargestellt. Hier kann das Bearbeiten (\tt{handle"-On"-Edit"-Click()}) oder das Löschen (\tt{handle"-On"-De"-lete"-Click()}) des Kontakts eingeleitet werden.
 \begin{figure}[H]
-        \includegraphics[width=\textwidth]{uml}
-        \grayRule
-        \caption{Komponentenarchitektur}
-        \label{fig:uml}
+  \includegraphics[width=\textwidth]{uml}
+  \grayRule
+  \caption{Komponentenarchitektur}
+  \label{fig:uml}
 \end{figure}
 Die Komponente \tt{ContactForm} zeigt, sofern vorhanden, alle im Kontakt gespeicherten Daten an. Diese können hier bearbeitet werden. Gibt es keine Kontaktdaten die geladen werden kann, kann hier ein neuer Kontakt angelegt werden. Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt (\tt{handleSubmit()}) oder abgebrochen (\tt{handleCancel()}) werden kann. Sie ist neben \tt{Contacs} die einzige Komponente mit einem internen \tt{state}. Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ``lauschen``. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
-\todo{Konflikt--Dialog}\\
+\todo{Konflikt--Dialog}\\\\
+%
+% 
+%
+\todo{Backend: Implementierung bei qouch nicht notwendig. Nur Installation von Couch.\\ 
+Für Redux Offline: Server und JSON Datei als DB Ersatz?}
 % Client - Server - Modell
-\todo{Grafik?\\ Anwendung -- Pouch -- Couch \\Anwendung -- Redux Offline -- Server}
-%
-% Online / Offline
-%
-\sub{Verbindungsstatus feststellen und ändern}
-Für die Überprüfung der Verbindung zum Server wird das Modus \sc{React Detect Offline} verwendet. Es beobachtet den Online-- und Offlinestatus und bietet zwei Komponenten entsprechend des Status den Inhalt rendern. Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
-\begin{center}
-\lstinputlisting[language=HTML,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
-\end{center}
-Das Modul fragt alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente. Verschiedene Parameter wie die URL oder das Poll--Interval können konfiguriert werden~\cite{react-detect}.\\\\
-Der Verbindungsstatus kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chromium laufen.\\
-In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
-In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbos ist auch im `Application`--Tab unter `Service Workers` zu finden.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{qouch-model}
+  \grayRule
+  \caption{Client-Server-Modell}
+  \label{fig:qouch-model}
+\end{figure}
 %
 % Lokale Speicherung
 %
 \sub{Lokale Speichern der Daten}
-Das Peichern von Kontakten ...
+Das Seichern von Kontakten ...
 Beide Technologien benutzen unterschiedliche ... 
 PouchDB nimmt IndexedDB oder... Browserabhängig.\\
 Redux Offline nimmt per default localStorage, das kann aber konfiguriert werden.
@@ -93,6 +92,19 @@ Redux Offline: Idee: Store = Datenbank
 % Pouch
 \subsub{Synchronisation mit PouchDB}
 CouchDB = RemoteDB\\
+% -----------------------------------------------------------------------------
+%
+% Online / Offline
+%
+\sub{Verbindungsstatus feststellen und ändern}
+Für die Überprüfung der Verbindung zum Server wird das Modus \sc{React Detect Offline} verwendet. Es beobachtet den Online-- und Offlinestatus und bietet zwei Komponenten entsprechend des Status den Inhalt rendern. Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
+\begin{center}
+\lstinputlisting[language=HTML,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
+\end{center}
+Das Modul fragt alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente. Verschiedene Parameter wie die URL oder das Poll--Interval können konfiguriert werden~\cite{react-detect}.\\\\
+Der Verbindungsstatus kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chromium laufen.\\
+In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
+In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbos ist auch im `Application`--Tab unter `Service Workers` zu finden.
 %
 % UI
 %
@@ -156,5 +168,5 @@ Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt mit jedem s
 Das Bearbeiten eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.\\
 \item[Kontakt löschen:] 
 Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt zu löschen.
-Das Löschen eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.\\
+Das Löschen eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.
 \end{description}
