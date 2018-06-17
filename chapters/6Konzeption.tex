@@ -11,8 +11,8 @@ Von den Namen der beiden Prototypen können die beinhalten verwendeten Technolog
 %
 \section{Anwendungsaufbau}
 Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React App}\footnote{\url{https://github.com/facebook/create-react-app}} erstellt. \sc{Create React App} erstellt ein Projekt mit dem gewünschten Namen, generiert eine initiale Projektstruktur (vgl. Abbildung \ref{fig:init}) und installiert die dafür benötigten Abhängigkeiten. Diese sind im Verzeichnis node\_modules installiert.
-Als Template gibt es nun die \tt{public/index.html}-- Datei und als Startdatei die \tt{index.js}. 
 Außerdem ist ein ServiceWorker und ein App Manifest (\tt{manifest.json}) enthalten, wodurch die \gls{PWA}-- Kriterien erfüllt sind.\\
+Als Template gibt es nun die \tt{public/index.html}-- Datei. In der \tt{index.js}--Datei werden die React--Komponenten und der ServiceWorker initialisiert.. Alle \tt{App.*}--Dateien umfassen eine minimale Beispielanwendung.
 In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), befinden sich Informationen über die Anwendung und ihre Abhängigkeiten. Im Unterpunkt \tt{scripts} werden Kommandozeilen-Aufrufe definiert und können mit dem Befehl \tt{npm} aufgerufen werden.
 \begin{figure}[H]
   \centering
@@ -31,17 +31,11 @@ In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), be
   \caption[Create React App: initiale Testapplikation]{einer mit Create React App erstellten Testapplikation}
   \label{fig:create-react-app}
 \end{figure}
-
-\subsub{Aufbau der React Komponenten}
-\subsub{Online Offline}
-React detect-offline
-\subsub{lokale Datenbank}
-Redux Offline: Idee: Store = Datenbank
-\subsub{Backend}
-CouchDB = RemoteDB\\
-Redux Offline: Server der alle \gls{CRUD} Operationen unterstützt,
-\gls{JSON}--Datei zur Persisierung um Ergebnisse nicht zu verfälschen 
-
+%
+% React Komponenten
+%
+\subsub{Aufbau der React Komponenten ?}
+\todo{React und redux beschreiben?}
 %
 %
 % Architektur
@@ -59,6 +53,58 @@ Header\\
 Liste\\
 Form\\
 Konflikt--Dialog\\
+
+\subsub{Online Offline}
+React detect-offline
+\subsub{lokale Datenbank}
+Redux Offline: Idee: Store = Datenbank
+\subsub{Backend}
+CouchDB = RemoteDB\\
+Redux Offline: Server der alle \gls{CRUD} Operationen unterstützt,
+\gls{JSON}--Datei zur Persisierung um Ergebnisse nicht zu verfälschen 
+
+\section{Die graphische Oberfläche}
+Aus den minimalen Anforderungen an die graphische Oberfläche ergibt sich das Design. Anhand der folgenden Abbildungen werden die gefertigten Entwürfe der BenutzerInnenoberfläche dargestellt.\\\\
+Diese Listenansicht in Abbildung \ref{fig:list} besteht aus dem Header / Kopf und den Listeneinträgen. Sie zeigt die Kontakteinträge in beiden Netzwerkstatus: online (Abbildung \ref{fig:list-online}) und offline (\ref{fig:list-offline}).
+Im Header ist abzulesen ob die Anwendung gerade eine Netzwerkverbindung hat oder nicht. Für eine bessere Prägnanz wurden hierzu unterstützend die Farben Rot für keine Verbindung und Grün für eine bestehende Netzwerkverbindung gewählt. Rechts im Header gibt es einen Knopf mit dem man in die Ansicht gelangt in der ein Kontakt hinzugefügt werden kann.\\
+In der Liste sieht man die Namen der Person und jeweils einen Knopf zum Bearbeiten oder Löschen. Mit der Betätigung des `Delete`--Knopfs wird der entsprechende Eintrag in der Liste gelöscht
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.49\textwidth}
+          \includegraphics[width=\textwidth]{list-online}
+          \caption{Kontaktliste im Onlinestatus}
+          \label{fig:list-online}
+  \end{subfigure}
+  ~ 
+  \begin{subfigure}[t]{0.49\textwidth}
+          \includegraphics[width=\textwidth]{list-offline}
+          \caption{Kontaktliste im Offlinestatus}
+          \label{fig:list-offline}
+  \end{subfigure}
+  \grayRule
+  \caption{Die Kontaktliste in beiden Netzwerkstatus}
+  \label{fig:list}
+\end{figure}
+Klickt man auf den Knopf zum Bearbeiten oder auf den zum Hinzufügen eines Kontakts gelangt man in die Bearbeitungsansicht (vgl. Abbildung \ref{fig:edit}). Der Header ist bis auf den Knopf zum Hinzufügen eines Kontakts identisch zu dem der Liste. Auch hier ist abzulesen ob die Anwendung on-- oder offline ist. Da man sich bereits in der Ansicht zum Anlegen oder Editieren eines Kontaks befindet, ist der Knopf im Header überflüssig.\\
+Ein Kontakt hat einen Namen, eine E-Mailadresse und eine Telefonnummer. In dieser Ansicht gibt es für jedes Attribut ein Eingabefeld. Die Felder sind beim Bearbeiten des Kontakts vorausgefüllt. Mittels Betätigung des `Speichern` Knopfs werden die Änderungen übernommen, klickt man auf `Cancel` werden sie verworfen. In beiden Fällen gelangt man wieder zur Listenansicht.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[t]{0.49\textwidth}
+          \includegraphics[width=\textwidth]{edit}
+          \caption{Editieransicht im Onlinestatus}
+          \label{fig:edit-online}
+  \end{subfigure}
+  ~ 
+  \begin{subfigure}[t]{0.49\textwidth}
+          \includegraphics[width=\textwidth]{edit-offline}
+          \caption{Editieransicht im Offlinestatus}
+          \label{fig:edit-offline}
+  \end{subfigure}
+  \grayRule
+  \caption{Die Editieransicht in beiden Netzwerkstatus}
+  \label{fig:edit}
+\end{figure}
+\todo{Konfliktdialog}
 %
 % Testfälle
 %
@@ -72,21 +118,3 @@ Folgende Testfälle werden während der Entwicklung stetig durchgeführt. Das er
     \item Kontakt löschen 
     \item lesen vorhandener Kontakte (lokal und Server)
 \end{itemize}
-%
-% Entwicklungsumgebung
-%
-% \section{Entwicklungsumgebung}
-% Für die Erstellung des Simulators wurde folgende Soft- und Hardware verwendet:
-% \subsubsection{Software}
-% \begin{itemize}
-% 	\item Sublime Editor 3
-% 	\item Visual Studio Code
-% 	\item git, Version 2.7.4 zur Versionsverwaltung
-% 	\item Inkscape, Version 0.92 zur Erstellung von Diagrammen und Zeichnungen
-% \end{itemize}
-% \subsubsection{Hardware}
-% \begin{itemize}
-% 	\item Tuxedo (Intel\textsuperscript{\textregistered} Core\tm i7-6500U, 2,50GHz x 4, 7,7 GB RAM) als ersten Entwicklungsrechner
-% 	      (Betriebssystem: Ubuntu\footnote{ Download unter \url{https://www.ubuntu.com/download/desktop}} 16.06, 64-bit-Version)
-% 	\item Lenovo Thinkpad X200 (Intel\textsuperscript{\textregistered} Core\tm   2 Duo, 2,40GHz, 8GB RAM) als zweiten Entwicklungsrechner (Betriebssystem: Debian 7.8, 64-bit-Version)
-% \end{itemize}7
