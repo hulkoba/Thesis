@@ -36,6 +36,7 @@ In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), be
 %
 \sub{Aufbau der React Komponenten ?}
 \todo{React und redux beschreiben?}
+\subsub{Redux}
 %
 %
 % Architektur
@@ -55,12 +56,23 @@ Konflikt--Dialog\\
 %
 % Online / Offline
 %
-\sub{Verbindungsstatus feststellen}
-React detect-offline
+\sub{Verbindungsstatus feststellen und ändern}
+Für die Überprüfung der Verbindung zum Server wird das Modus \sc{React Detect Offline} verwendet. Es beobachtet den Online-- und Offlinestatus und bietet zwei Komponenten entsprechend des Status den Inhalt rendern. Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
+\begin{center}
+\lstinputlisting[language=HTML,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
+\end{center}
+Das Modul fragt alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente. Verschiedene Parameter wie die URL oder das Poll--Interval können konfiguriert werden~\cite{react-detect}.\\\\
+Der Verbindungsstatus kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chromium laufen.\\
+In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
+In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbos ist auch im `Application`--Tab unter `Service Workers` zu finden.
 %
 % Lokale Speicherung
 %
 \sub{Lokale Speichern der Daten}
+Das Peichern von Kontakten ...
+Beide Technologien benutzen unterschiedliche ... 
+PouchDB nimmt IndexedDB oder... Browserabhängig.\\
+Redux Offline nimmt per default localStorage, das kann aber konfiguriert werden.
 % Redux Offline
 \subsub{Lokale Speicherung mit Redux Offline}
 Redux Offline: Idee: Store = Datenbank
