@@ -70,15 +70,8 @@ Für Redux Offline: Server und JSON Datei als DB Ersatz? UND Redux- store, actio
 % Lokale Speicherung
 %
 \sub{Lokales Speichern der Daten}
-Das Seichern von Kontakten ...
-Beide Technologien benutzen unterschiedliche ... 
-PouchDB nimmt IndexedDB oder... Browserabhängig.\\
-Redux Offline nimmt per default localStorage, das kann aber konfiguriert werden.
-% Redux Offline
-\subsub{Lokale Speicherung mit Redux Offline}
-Redux Offline: Idee: Store = Datenbank
-% Pouch
-\subsub{Lokale Speicherung mit PouchDB}
+Das Seichern von Kontakten ist in den Prototypen unterschiedlich implementiert.
+Die Idee hinter Redux Offline ist, dass der Redux Store die Datenbank ersetzt. Sobald der Appstatus sich ändert, wird er automatisch lokal gespeichert. Dazu wird \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird. Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung neu geladen. Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\\\
 %
 % Sync
 %
