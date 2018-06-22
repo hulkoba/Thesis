@@ -9,11 +9,11 @@ Bis zu einem gewissen Status, nämlich dem der Verwendung der Technologien, sind
 % Aufbau
 %
 \section{Anwendungsaufbau}
-Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React App}\footnote{\url{https://github.com/facebook/create-react-app}} erstellt. \sc{Create React App} erstellt ein Projekt mit dem gewünschten Namen, generiert eine initiale Projektstruktur (vgl. Abbildung \ref{fig:init}) und installiert die dafür benötigten Abhängigkeiten. Diese sind im Verzeichnis node\_modules installiert.
+Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React App} erstellt. \sc{Create React App} erstellt ein Projekt mit dem gewünschten Namen, generiert eine initiale Projektstruktur (vgl. Abbildung \ref{fig:init}) und installiert die dafür benötigten Abhängigkeiten~cite{create-react}. Diese sind im Verzeichnis node\_modules installiert.
 Außerdem ist ein ServiceWorker und ein App Manifest (\tt{manifest.json}) enthalten, wodurch die \gls{PWA}-- Kriterien erfüllt sind.\\
 Als Template gibt es nun die \tt{public/index.html}-- Datei. In der \tt{index.js}--Datei werden die React--Komponenten und der ServiceWorker initialisiert.. Alle \tt{App.*}--Dateien umfassen eine minimale Beispielanwendung.
 In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), befinden sich Informationen über die Anwendung und ihre Abhängigkeiten. Im Unterpunkt \tt{scripts} werden Kommandozeilen-Aufrufe definiert und können mit dem Befehl \tt{npm} aufgerufen werden.
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
   \begin{subfigure}[t]{0.45\textwidth}
           \includegraphics[width=\textwidth]{Ordnerstruktur}
@@ -34,7 +34,15 @@ In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), be
 % React Komponenten
 %
 \sub{Aufbau der React Komponenten ?}
-\todo{React und redux beschreiben?}
+React ist eine open-source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die wiederverwendbaren Komponenten. Eine Komponente ermöglicht die Aufteilung der UI in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
+
+Zur Veranschaulichung beschreibe ich anhand des Listings \ref{code:react-list} die Komponente der Kontaktliste, so wie sie im Startbildschirm angezeigt wird.
+\begin{center}
+\lstinputlisting[language=REACT,caption={React Komponente \tt{ContactList} der Prototypen}, label=code:react-list]{code/List.js}
+\end{center}
+%
+% Redux
+%
 \subsub{Redux}
 %
 %
@@ -98,10 +106,13 @@ CouchDB = RemoteDB\\
 %
 \sub{Verbindungsstatus feststellen und ändern}
 Für die Überprüfung der Verbindung zum Server wird das Modus \sc{React Detect Offline} verwendet. Es beobachtet den Online-- und Offlinestatus und bietet zwei Komponenten entsprechend des Status den Inhalt rendern. Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
+%
 \begin{center}
-\lstinputlisting[language=HTML,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
+\lstinputlisting[language=REACT,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
 \end{center}
+%
 Das Modul fragt alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente. Verschiedene Parameter wie die URL oder das Poll--Interval können konfiguriert werden~\cite{react-detect}.\\\\
+%
 Der Verbindungsstatus kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chromium laufen.\\
 In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
 In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbos ist auch im `Application`--Tab unter `Service Workers` zu finden.

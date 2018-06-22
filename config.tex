@@ -155,19 +155,28 @@ toc]
       {]}{{{\color{CarnationPink}{]}}}}{1},     ,
 }
 
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, function, return, null, switch, const, let, if, in, else, case, break},
+\lstdefinelanguage{REACT}{
+  morekeywords={
+    export,
+    import,
+    this,
+    const,
+    bind,
+    ul,
+    li,
+    span,
+    button,
+    div,
+    Online, Offline
+  },
   keywordstyle=\color{Cerulean}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
   sensitive=false,
+  identifierstyle=\color{SeaGreen},
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
+  commentstyle=\color{Gray},
+  stringstyle=\color{CarnationPink},
+  morestring=[b]'
 }
 
 \lstset{
@@ -176,8 +185,8 @@ toc]
    abovecaptionskip=0.5\baselineskip,
    belowcaptionskip=1\baselineskip,
    aboveskip=\baselineskip,
-   basicstyle=\color{CarnationPink}\small,
-   keywordstyle=\color{Cerulean}\bfseries\ttfamily,
+   basicstyle=\color{CarnationPink}\footnotesize,
+   keywordstyle=\color{Cerulean}\bfseries,
    stringstyle=\color{Black},
    identifierstyle=\color{SeaGreen},
    commentstyle=\color{Gray},
@@ -186,8 +195,7 @@ toc]
    numbersep=5pt,
    frame=L,
    rulecolor=\color{SeaGreen},
-   keepspaces=true,
-   language=Octave,
+   keepspaces=true
    % xleftmargin=10pt,
  }
 
