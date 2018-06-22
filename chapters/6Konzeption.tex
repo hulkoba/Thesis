@@ -72,6 +72,27 @@ Für Redux Offline: Server und JSON Datei als DB Ersatz? UND Redux- store, actio
 \sub{Lokales Speichern der Daten}
 Das Seichern von Kontakten ist in den Prototypen unterschiedlich implementiert.
 Die Idee hinter Redux Offline ist, dass der Redux Store die Datenbank ersetzt. Sobald der Appstatus sich ändert, wird er automatisch lokal gespeichert. Dazu wird \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird. Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung neu geladen. Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\\\
+Für den Prototypen \it{amilia-qouch} sind wenige Schritte notwendig. Das \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit wie diese am Besten zu verwenden sind.  Diese werden anhand des Codeausschnitts \ref{code:pouch} ausgeführt.
+\begin{center}
+  \lstinputlisting[language=REACT,
+  firstline=1,lastline=15,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Implementierung der von PouchDB bereitgestellten \gls{CRUD} Operationen}, 
+  label=code:pouch]{code/Pouch.js}
+\end{center}
+Die lokale Datenbank wird in Zeile eins erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt passiert nichts.\\
+Der Aufruf \tt{localDB.allDocs()} in Zeile dre fragt alle in der lokalen Datenbank gespeicherten Kontakte an. Ohne den Parameter \tt{include\_docs: true} werden nur die \tt{\_id} und die \tt{\_rev} Eigenschaften eines jeden gespeicherten Kontakts zurückgegeben. In der Callbackfunktion kann der Appstatus mit den Daten des Kontaks aktualisiert werden. 
+Zeile 5: Kontakt erzeugen\\
+Zeile 7: Kontakt bearbeiten\\
+Zeile 7: Kontakt löschen -- API Erlären \todo{put statt remove!}
+% Die Anwort sieht so aus wie im Listing \ref{code:pouchdoc}.
+% \begin{center}
+%   \lstinputlisting[language=JSON,
+%   firstline=45,lastline=60,
+%   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+%   caption={Gespeicherter Kontakt in einer PouchDB}, 
+%   label=code:pouchdoc]{code/Pouch.js}
+% \end{center}
 %
 % Sync
 %
@@ -99,7 +120,7 @@ Das Modul fragt alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab 
 %
 Der Verbindungsstatus kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chromium laufen.\\
 In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
-In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbos ist auch im `Application`--Tab unter `Service Workers` zu finden.
+In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbox ist auch im `Application`--Tab unter `Service Workers` zu finden.
 %
 % UI
 %

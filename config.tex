@@ -134,6 +134,8 @@ toc]
 \lstdefinelanguage{JSON}{
 	morestring=[b]",
 	stringstyle=\color{SeaGreen},
+  keywordstyle=\color{Cerulean},
+  identifierstyle=\color{Cerulean},
     literate=
      *{0}{{{\color{Cerulean}0}}}{1}
       {1}{{{\color{Cerulean}1}}}{1}
@@ -152,17 +154,20 @@ toc]
       {\{}{{{\color{CarnationPink}{\{}}}}{1}
       {\}}{{{\color{CarnationPink}{\}}}}}{1}
       {[}{{{\color{CarnationPink}{[}}}}{1}
-      {]}{{{\color{CarnationPink}{]}}}}{1},     ,
+      {]}{{{\color{CarnationPink}{]}}}}{1},
+    ,
 }
 
 \lstdefinelanguage{REACT}{
   morekeywords={
     export, import, extends,
     this, state, props,
-    const, let,
-    if, else,
+    const, let, new,
+    if, else, true,
+    map, length,
     switch, case, return, 
     bind, render, function,
+    then, 
     ul, li,
     span, form,
     button,
