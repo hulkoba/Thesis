@@ -34,80 +34,7 @@ In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), be
 %
 % React Komponenten
 %
-\sub{Aufbau der React Komponenten ?}
-React ist eine open-source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die wiederverwendbaren Komponenten. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
-Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten nur aus den \tt{props} nehmen. \tt{Props} sind Eigenschaften die übergeben werden und nur von der Elternkomponente änderbar.
-Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} die reduzierte Version der Formularkomponente beider zu entwickelnden Prototypen beschrieben. In dieser Version wird nur der Name des Kontakts gezeigt und verändert.\\
-Die Formularkomponente hat Kontaktobjekt im internen \tt{state} gespeichert. Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
-Initial wird das Kontaktobjekt über die \tt{props} geladen (Zeile vier). So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In Zeile sieben ist die \tt{handleChange()} Funktion, die am Eingabefeld (Zeile 22) auf die Änderungen reagiert (Zeile zehn) und der interne \tt{state} aktualisiert (Zeile 12).\\
-Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll. Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{state}s führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.
-% listing
-\begin{center}
-\lstinputlisting[language=REACT,
-numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-caption={Limitierte Version der React Komponente \tt{ContactForm} beider Prototypen},
-label=code:react-form]{code/Form.js}
-\end{center}
-In der Elternkomponente \tt{Contacts} wird die Formularkomponente so wie es im folgenden Listing zu lesen ist, aufgerufen. Alle im Formular verfügbaren Eigenschaften werden hier übergeben.
-\lstset{language=REACT,
-caption={Aufruf der React \tt{ContactForm} Komponente},
-label=code:form-call}
-\begin{lstlisting}
-<ContactForm contact={editView.contact}
-  addOrEditContact={this.addContact}
-  handleCancel={this.toggleEdit} />
-\end{lstlisting}
-%
-% Redux
-%
-\sub{Erweiterungen für \sc{amilia-rdx}}
-Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für den entsprechenden Prototypen die Implementierung von Redux vorausgesetzt.
-\subsub{Redux}
-Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
-Mit Redux hat jede Applikation genau einen \tt{store}. Dieser hat den Applikationsstatus, der via \tt{dispatch()} aktualisiert, und via \tt{getState()} gelesen werden kann.
-Als einzige Informationsquelle für den \tt{store} dienen Aktionen. Sie senden Daten von der Anwendung mittels \tt{store.dispatch()} an den \tt{store} und beschreiben dabei nicht wie etwas passiert, sondern was passiert.\\
-Der dritte wichtige Bestandteil von Redux sind die \tt{Reducer}. Sie spezifizieren wie der Status sich als Reaktion auf die Aktionen ändert~\cite{redux}.
-% % Der Datenfluss in der Reduxarchitektur ist unidirektional.
-% Zur Veranschaulichung des Datenflusses in Redux wird anhand des Listings \ref{code:redux-dataflow} das Wechseln der Ansichten Liste und Formular beschrieben.
-% Alles beginnt mit dem Aufruf von \tt{store.dispatch(action)} von jeder beliebigen Stelle in der Anwendung. Die Aktion die beschreibt was passiert heißt \tt{toggleEdit} und sieht im Beispiel des Ansichtswechsels aus wie in Zeile drei bis fünf.\\
-% Der \tt{Store} ruft nun den \tt{Reducer} auf
-% % listing
-% \begin{center}
-% \lstinputlisting[language=REACT,
-% numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-% caption={Datenfluss in Redux},
-% label=code:react-form]{code/Redux.js}
-% \end{center}
-\subsub{Redux Offline}
-Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
-Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile fünf erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
-Redux Offline kommt mit einer vorgegebenen Konfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile acht übergeben.
-\begin{center}
-  \lstinputlisting[language=REACT,
-  firstline=53,lastline=62,
-  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  caption={Erstellen eines Stores mit Redux Offline},
-  label=code:store]{code/Redux.js}
-\end{center}
-Der gesamte Kontext der zum Synchronisieren einer Aktion erforderlich ist in einem zusätzlichen Metaattribut gespeichert. Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mit dem Metafeld dekoriert. Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
-\begin{center}
-  \lstinputlisting[language=REACT,
-  firstline=9,lastline=20,
-  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  caption={Aktion \tt{addContact} mit Metaattribut},
-  label=code:react-meta]{code/Redux.js}
-\end{center}
-Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs. Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll. Für den Fall dass von dem angefragtem \gls{API} der Statuscode 500 zurückkommt oder der Server nicht läuft, wird die im \tt{rollback} definierte Aktion gefeuert.\\
-Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben. Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte..
-\begin{center}
-  \lstinputlisting[language=REACT,
-  firstline=36,lastline=50,
-  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  caption={Reducer mit allen Aktionen die im Meta Feld beschrieben werden},
-  label=code:reducer]{code/Redux.js}
-\end{center}
-In diesem Beispiel wird der Appstatus nur bei erfolgreichem Netzwerkaufruf aktualisiert. Das ist in den Zeilen sieben bis zehn nachzulesen. Und auch nur dann, wenn sich die Antwort vom Server von diesem unterscheidet.
+\input{chapters/6konzept/aufbau}
 %
 %
 % Architektur
@@ -183,65 +110,8 @@ In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt a
 %
 % UI
 %
-\section{Die graphische Oberfläche}
-Aus den minimalen Anforderungen an die graphische Oberfläche ergibt sich das Design. Anhand der folgenden Abbildungen werden die gefertigten Entwürfe der BenutzerInnenoberfläche dargestellt.\\\\
-Diese Listenansicht in Abbildung \ref{fig:list} besteht aus dem Header / Kopf und den Listeneinträgen. Sie zeigt die Kontakteinträge in beiden Netzwerkstatus: online (Abbildung \ref{fig:list-online}) und offline (\ref{fig:list-offline}).\\\\
-Im Header ist abzulesen ob die Anwendung gerade eine Netzwerkverbindung hat oder nicht. Für eine bessere Prägnanz wurden hierzu unterstützend die Farben Rot für keine Verbindung und Grün für eine bestehende Netzwerkverbindung gewählt. Rechts im Header gibt es einen Knopf mit dem man in die Ansicht gelangt in der ein Kontakt hinzugefügt werden kann.\\
-In der Liste sieht man die Namen der Person und jeweils einen Knopf zum Bearbeiten oder Löschen. Mit der Betätigung des `Delete`--Knopfs wird der entsprechende Eintrag in der Liste gelöscht
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.49\textwidth}
-          \includegraphics[width=\textwidth]{list-online}
-          \caption{Kontaktliste im Onlinestatus}
-          \label{fig:list-online}
-  \end{subfigure}
-  ~ 
-  \begin{subfigure}[t]{0.49\textwidth}
-          \includegraphics[width=\textwidth]{list-offline}
-          \caption{Kontaktliste im Offlinestatus}
-          \label{fig:list-offline}
-  \end{subfigure}
-  \grayRule
-  \caption{Die Kontaktliste in beiden Netzwerkstatus}
-  \label{fig:list}
-\end{figure}
-Klickt man auf den Knopf zum Bearbeiten oder auf den zum Hinzufügen eines Kontakts gelangt man in die Bearbeitungsansicht (vgl. Abbildung \ref{fig:edit}). Der Header ist bis auf den Knopf zum Hinzufügen eines Kontakts identisch zu dem der Liste. Auch hier ist abzulesen ob die Anwendung on-- oder offline ist. Da man sich bereits in der Ansicht zum Anlegen oder Editieren eines Kontaks befindet, ist der Knopf im Header überflüssig.\\
-Ein Kontakt hat einen Namen, eine E-Mailadresse und eine Telefonnummer. In dieser Ansicht gibt es für jedes Attribut ein Eingabefeld. Die Felder sind beim Bearbeiten des Kontakts vorausgefüllt. Mittels Betätigung des `Speichern` Knopfs werden die Änderungen übernommen, klickt man auf `Cancel` werden sie verworfen. In beiden Fällen gelangt man wieder zur Listenansicht.
-\begin{figure}[H]
-  \centering
-  \begin{subfigure}[t]{0.49\textwidth}
-          \includegraphics[width=\textwidth]{edit}
-          \caption{Editieransicht im Onlinestatus}
-          \label{fig:edit-online}
-  \end{subfigure}
-  ~ 
-  \begin{subfigure}[t]{0.49\textwidth}
-          \includegraphics[width=\textwidth]{edit-offline}
-          \caption{Editieransicht im Offlinestatus}
-          \label{fig:edit-offline}
-  \end{subfigure}
-  \grayRule
-  \caption{Die Editieransicht in beiden Netzwerkstatus}
-  \label{fig:edit}
-\end{figure}
-\todo{Konfliktdialog}
+\input{chapters/6konzept/UI}
 %
 % Testfälle
 %
-\section{Testfälle}
-Folgende Testfälle werden während der Entwicklung stetig durchgeführt. Das erfolgreiche Bestehen dieser Tests ist eine notwendige Qualitätseigenschaft der zu entwickelnden Prototypen.
-\begin{description}[leftmargin=0.7cm,style=nextline]
-\item[Netzwerkstatus:] 
-Die Anwendung muss zu jeder Zeit den korrekten Netzwerkstatus anzeigen.\\
-\item[Kontakte lesen:] 
-Die Anwendung bei jedem Start die Kontakte aus dem lokalen Speicher oder aus der \it{Datenbank} laden.\\
-\item[Kontakt anlegen:] 
-Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt mit jedem seiner Attribute anzulegen. Dazu muss er immer lokal gespeichert werden und sobald eine Internetverbindung besteht, persistiert werden.
-Das Anlegen eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.\\
-\item[Kontakt bearbeiten:] 
-Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt mit jedem seiner Attribute zu bearbeiten. Ist keine Internetverbindung vorhanden, müssen die Änderungen lokal übernommen und später, sobald sich der Netzwerkstatus ändert, synchronisiert werden.
-Das Bearbeiten eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.\\
-\item[Kontakt löschen:] 
-Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt zu löschen.
-Das Löschen eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.
-\end{description}
+\input{chapters/6konzept/testfaelle}
