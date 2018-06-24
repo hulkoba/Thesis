@@ -1,18 +1,24 @@
 const localDB = new PouchDB('contacts')
-
-localDB.allDocs({ include_docs: true }).then(callback)
-
-localDB.post(contact).then(callback)
-
+// create a contact
+localDB.put({
+  ...contact,
+  _id: new Date().toISOString()
+})
+// update a contact
 localDB.get(contact._id).then(function (doc) {
-    doc = {...contact}
-    return localDB.put(doc)
-  }).then(callback)
-
+  doc = {...contact}
+  return localDB.put(doc)
+})
+// get all contacts
+localDB.allDocs({ 
+  include_docs: true,
+  conflicts: true
+})
+// remove a contact
 localDB.get(contact._id).then(doc => {
     doc._deleted = true
-    return localDB.remove(doc)
-  }).then(callback)
+    return localDB.put(doc)
+  })
 
 rows: [
   doc: {
