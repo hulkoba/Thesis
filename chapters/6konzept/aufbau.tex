@@ -5,7 +5,7 @@ Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} die reduzie
 Die Formularkomponente hat Kontaktobjekt im internen \tt{state} gespeichert. Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} geladen (Zeile vier). So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
 In Zeile sieben ist die \tt{handleChange()} Funktion, die am Eingabefeld (Zeile 22) auf die Änderungen reagiert (Zeile zehn) und der interne \tt{state} aktualisiert (Zeile 12).\\
-Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll. Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{state}s führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.
+Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll. Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.
 % listing
 \begin{center}
 \lstinputlisting[language=REACT,
@@ -26,7 +26,7 @@ label=code:form-call}
 % Redux
 %
 \sub{Erweiterungen für \sc{amilia-rdx}}
-Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für den entsprechenden Prototypen die Implementierung von Redux vorausgesetzt.
+Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für diesen Prototypen die Implementierung von Redux vorausgesetzt.
 \subsub{Redux}
 Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
 Mit Redux hat jede Applikation genau einen \tt{store}. Dieser hat den Applikationsstatus, der via \tt{dispatch()} aktualisiert, und via \tt{getState()} gelesen werden kann.

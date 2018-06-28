@@ -36,3 +36,6 @@ rows: [
     rev: "1-15ad4a0100684ded8c9b6576dfe840a6"
   }
 ]
+
+const remoteDB = new PouchDB('http://localhost:5984/contacts')
+localDB.sync(remoteDB, [options])
