@@ -1,0 +1,58 @@
+\sub{Das Speichern der Daten}
+Das Seichern von Kontakten wird in den Prototypen unterschiedlich implementiert.
+%
+% --------------------------------------------------------------------------------- Qouch
+%
+\subsub{Daten mit PochDB und CouchDB speichern}
+Für den Protoyp \it{amilia-qouch} muss zunächst CouchDB installiert werden.
+% sudo apt-get install couchdb
+Sobald dieser Schritt erledigt ist läuft CouchDB auf \tt{localhost:5984} und ist einsatzbereit.
+Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit die sowohl Callbacks, Promises als auch asynchrone Funktionen unterstützen. 
+Das Listing \ref{code:pouch} führt alle benötigeten Funktionen auf und zeigt die notwendigen Schritte zur Synchronisation der lokalen PouchDB und CouchDB.\\
+Die lokale Datenbank wird in Zeile eins erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
+Um eine CouchDB Instanz zu erzeugen ist der Aufruf in Zeile zwei mit der URL zur CouchDB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
+Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der CouchDB, ist lediglich der Aufruf in Zeile vier erforderlich. Im optionalen Parameter können zum Beispiel FIlter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.
+%
+\begin{center}
+  \lstinputlisting[language=REACT,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Persistierung der Daten mit PouchDB und CouchDB}, 
+  label=code:pouch]{code/Pouch.js}
+\end{center}
+%
+% CREATE
+Die Zeilen sieben bis zehn zeigen wie ein Kontakt erzeugt werden kann. Bevor das geschieht wird die ID gesetzt. PouchDB bietet zur Erstellung von Objekten auch \tt{localDB.post()} an. Bei dessen Verwendung wird \tt{\_id} von PouchDB automatisch generiert. Diese Variante wird jedoch nicht empfohlen, weil dann die IDs zufällig sind, die Objekte nicht danach sortiert werden können~\cite{pouch-create}.\\
+% UPDATE
+Das Aktualisieren eines Kontakts sieht ähnlich aus. Zuerst wird der entsprechende Kontakt wie in Zeile zwölf aus der Datenbank angefragt um dann in der Datenbank aktualisiert zu werden. Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revision.\\
+% GET
+Der Aufruf \tt{localDB.allDocs()} in Zeile 17 fragt alle in der lokalen Datenbank gespeicherten Kontakte an. Ohne den Parameter \tt{include\_docs: true} werden nur die \tt{\_id} und die \tt{\_rev} Eigenschaften eines jeden gespeicherten Kontakts zurückgegeben. Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden unter dem Attribut \tt{\_conflicts} Konfliktinformationen zu jedem Kontakt gespeichert.\\
+% DELETE
+Man kann einen Kontakt in PouchDB wie in Zeile 22 mittels \tt{localDB.remove(contact)} löschen. Der Kontakt ist dann nicht wirklich gelöscht sondern wird durch ein \tt{\_deleted} Attribut als solches markiert.
+%Dann ist das Kontaktdokument mit all seinen Feldern gelöscht. Die lokale Datenbank soll sich mit CouchDB synchronisieren. Ist die Revision eines gelöschten Kontakts nicht mehr vorhanden, kann diese nicht repliziert werden. Deswegen wird der Kontakt wie in Zeile 19 als gelöscht markiert und aktualisiert.
+%
+% Redux Offline
+%
+\subsub{Daten mit Redux Offline speichern}
+Die Idee hinter Redux Offline ist, dass der Redux Store die lokale Datenbank ersetzt. Sobald der Appstatus sich ändert, also irgendwo im Code \tt{setState()} ausgeführt wird, wird er automatisch lokal gespeichert. Dazu wird intern \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird. Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung neu geladen.
+% Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\
+Wie die Daten mit Redux Offline gespeichert synchronisiert werden ist am folgenden Listing erklärt.
+\begin{center}  \lstinputlisting[language=REACT,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Speicherung der Daten mit Redux Offline}, 
+  label=code:syncrdx]{code/Redux-sync.js}
+\end{center}
+%
+Mit dem Aufruf der Aktion ADD\_CONTACT wird der Vorgang gestartet einen Kontakt hinzuzufügen. Die anzufragende URL ist im \tt{meta.offline.effect} Feld in Zeile neun festgelegt. Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON} Datei persisitiert.
+Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert. Mit diesem wird in Zeile 23 der Appstate aktualisiert und so lokal gespeichert.\\
+Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile zwölf gefeuert. Die wird im Reducer in Zeile 25 behandelt. Der \tt{state} wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.\\\\
+Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnte, beschreibt das Listing \ref{code:server}.
+%
+\begin{center}  \lstinputlisting[language=REACT,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Mögliche Serverimplementierung für das Hinzufügen eines Kontakts}, 
+  label=code:server]{code/Server.js}
+\end{center}
+%
+In Zeile zwei werden die Kontakte aus einer \gls{JSON} Datei geladen. Diese sind als Objekt in einem Array gespeichert. Bekommt der Server eine post--Anfrage, wird ein Kontaktobjekt mitgesendet. Dieser wird in Zeile fünf in einer Variable zwischengespeichert. 
+Wird der Kontakt korrekt gesendet wird er in Zeile zehn dem Array hinzugefügt. Andererseits sendet der Server den HTTP--Statuscode 400 an den Client. % bad request
+Außerdem wird mithilfe des in Node integriertem Dateisystem\footnote{siehe hierzu: \url{https://nodejs.org/api/fs.html}} Moduls die \gls{JSON} Datei neu geschrieben. Nun ist der neue Kontakt persistiert. Kommt es beim Schreiben der Datei zu keinem Fehler, sendet der Server den frisch gespeicherten Kontakt zurück an den Client.

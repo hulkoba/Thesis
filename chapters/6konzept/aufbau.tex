@@ -55,15 +55,18 @@ Redux Offline kommt mit einer vorgegebenen Konfiguration (siehe Zeile 3). Diese 
   label=code:store]{code/Redux.js}
 \end{center}
 Der gesamte Kontext der zum Synchronisieren einer Aktion erforderlich ist in einem zusätzlichen Metaattribut gespeichert. Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mit dem Metafeld dekoriert. Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
+%
 \begin{center}
   \lstinputlisting[language=REACT,
   firstline=9,lastline=20,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  caption={Aktion \tt{addContact} mit Metaattribut},
+  caption={Aktion \tt{fetchContacts} mit Metaattribut},
   label=code:react-meta]{code/Redux.js}
 \end{center}
+%
 Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs. Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll. Für den Fall dass von dem angefragtem \gls{API} der Statuscode 500 zurückkommt oder der Server nicht läuft, wird die im \tt{rollback} definierte Aktion gefeuert.\\
-Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben. Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte..
+Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben. Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
+%
 \begin{center}
   \lstinputlisting[language=REACT,
   firstline=36,lastline=50,
@@ -71,4 +74,5 @@ Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im 
   caption={Reducer mit allen Aktionen die im Meta Feld beschrieben werden},
   label=code:reducer]{code/Redux.js}
 \end{center}
+%
 In diesem Beispiel wird der Appstatus nur bei erfolgreichem Netzwerkaufruf aktualisiert. Das ist in den Zeilen sieben bis zehn nachzulesen. Und auch nur dann, wenn sich die Antwort vom Server von diesem unterscheidet.
