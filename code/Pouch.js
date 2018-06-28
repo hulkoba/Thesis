@@ -15,10 +15,10 @@ localDB.allDocs({
   conflicts: true
 })
 // remove a contact
-localDB.get(contact._id).then(doc => {
-    doc._deleted = true
-    return localDB.put(doc)
-  })
+localDB.remove(contact)
+
+
+
 
 // rows: [
 //   doc: {

@@ -1,0 +1,22 @@
+\sub{Lokales Speichern der Daten}
+Das Seichern von Kontakten wird in den Prototypen unterschiedlich implementiert.\\
+Die Idee hinter Redux Offline ist, dass der Redux Store die Datenbank ersetzt. Sobald der Appstatus sich ändert, wird er automatisch lokal gespeichert. Dazu wird \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird. Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung neu geladen. Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\\\
+Für den Prototypen \it{amilia-qouch} sind wenige Schritte notwendig. Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit die sowohl Callbacks, Promises als auch asynchrone Funktionen unterstützen. Die für den Prototypen benötigten werden anhand des Codeausschnitts \ref{code:pouch} ausgeführt.
+Die lokale Datenbank wird in Zeile eins erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.
+%
+\begin{center}
+  \lstinputlisting[language=REACT,
+  firstline=1,lastline=21,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Implementierung der von PouchDB bereitgestellten \gls{CRUD} Operationen}, 
+  label=code:pouch]{code/Pouch.js}
+\end{center}
+%
+% CREATE
+Die Zeilen drei bis fünf zeigen wie ein Kontakt erzeugt werden kann. Bevor das geschieht wird die ID gesetzt. PouchDB bietet zur Erstellung von Objekten auch \tt{localDB.post()} an. Bei dessen Verwendung wird \tt{\_id} von PouchDB automatisch generiert. Diese Variante wird jedoch nicht empfohlen, weil dann die IDs zufällig sind, die Objekte nicht danach sortiert werden können~\cite{pouch-create}.\\
+% UPDATE
+Das Aktualisieren eines Kontakts sieht ähnlich aus. Zuerst wird der entsprechende Kontakt wie in Zeile acht aus der Datenbank angefragt um dann in der Datenbank aktualisiert zu werden. Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revision.\\
+Der Aufruf \tt{localDB.allDocs()} in Zeile 13 fragt alle in der lokalen Datenbank gespeicherten Kontakte an. Ohne den Parameter \tt{include\_docs: true} werden nur die \tt{\_id} und die \tt{\_rev} Eigenschaften eines jeden gespeicherten Kontakts zurückgegeben. Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden unter dem Attribut \tt{\_conflicts} Konfliktinformationen zu jedem Kontakt gespeichert.\\
+% DELETE
+Man kann einen Kontakt in PouchDB ganz einfach mittels \tt{localDB.remove(contact)} löschen. Der Kontakt ist dann nicht wirklich gelöscht sondern wird durch ein \tt{_deleted} Attribut als solches markiert.
+%Dann ist das Kontaktdokument mit all seinen Feldern gelöscht. Die lokale Datenbank soll sich mit CouchDB synchronisieren. Ist die Revision eines gelöschten Kontakts nicht mehr vorhanden, kann diese nicht repliziert werden. Deswegen wird der Kontakt wie in Zeile 19 als gelöscht markiert und aktualisiert.
