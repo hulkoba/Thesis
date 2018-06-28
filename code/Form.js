@@ -15,9 +15,8 @@ class ContactForm extends Component {
   render () {
     return (
       <form onSubmit={this.props.addOrEditContact(this.state.contact)}>
-          <label htmlFor='contact-name'>Name</label>
+          <label>Name</label>
           <input
-            name='contact-name'
             value={this.state.contact.name}
             onChange={this.handleChange.bind(this, 'name')} />
      

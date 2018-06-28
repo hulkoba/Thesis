@@ -8,19 +8,20 @@ In Zeile sieben ist die \tt{handleChange()} Funktion, die am Eingabefeld (Zeile 
 Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll. Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.
 % listing
 \begin{center}
-\lstinputlisting[language=REACT,
-numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-caption={Limitierte Version der React Komponente \tt{ContactForm} beider Prototypen},
-label=code:react-form]{code/Form.js}
+  \lstinputlisting[language=REACT,
+  numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Limitierte Version der React Komponente \tt{ContactForm} beider Prototypen},
+  label=code:react-form]{code/Form.js}
 \end{center}
+%
 In der Elternkomponente \tt{Contacts} wird die Formularkomponente so wie es im folgenden Listing zu lesen ist, aufgerufen. Alle im Formular verfügbaren Eigenschaften werden hier übergeben.
 \lstset{language=REACT,
 caption={Aufruf der React \tt{ContactForm} Komponente},
 label=code:form-call}
 \begin{lstlisting}
-<ContactForm contact={editView.contact}
-  addOrEditContact={this.addContact}
-  handleCancel={this.toggleEdit} />
+  <ContactForm contact={editView.contact}
+    addOrEditContact={this.addContact}
+    handleCancel={this.toggleEdit} />
 \end{lstlisting}
 %
 % Redux
