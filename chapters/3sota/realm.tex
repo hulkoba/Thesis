@@ -1,21 +1,10 @@
 \section{\label{sub:realm}Realm}
-Backend für mobile Anwendungen (Java, Swift, C\#, JS). Realm Datenbank oder Realm Platform(= DB+ Object Server).
-Schreiben groß `Offline First Experience überall hin (webseite, whitepaper...)
-\begin{itemize}
-  \item lokale DB, plattformübergreifend
-  \item Object Server fungiert als Middleware-Komponente in der mobilen \gls{App}-Architektur und managed die Datensynchronisation, eventhandling und Integration in Legacy-Systeme. Kann Daten effizient und simultan synchronisieren und \b{löst in Echtzeit, automatisch Konflikte}
-  \item \b{Key-features:} Datensynchronisation in Echtzeit, Skalierbarkeit, Cross-Platform Datenmodell, Eventhandling, regelmäßige Backups, Datenintegrations API, Datensicherheit
-  \item \b{key mobile use cases:} Reactive app architectures, Offline-first experiences, mobilizing legacy apis, realtime collaboration
-\end{itemize}~\cite{realm_whitepaper}
-
-\begin{itemize}
-  \item Realtime Data Sync (sendet automatisch Änderungen in Echtzeit)
-  \item Daten-sync-Protokoll komprimiert die marginalen Änderungen (statt das ganze Objekt) in Binärformat und übergibt sie zwischen Gerät und Server.
-  \item synchronisiert die spezifischen Operationen zusammen mit den Daten
-  \item Diese zusätzlichen Informationen erfassen genau das, was man beabsichtigt hat, \b{sodass das System Konflikte automatisch auflösen kann}. Dies führt zu einer vorhersagbaren Synchronisation ohne manuellen Eingriff, der die Leistung beeinträchtigt.
-  \item (Objektorientierte) Datenbank auf dem Gerät
-  \item Echtzeit Synchronisation
-  \item Konfliktlösung benutzt OT (und vorgegebene Regeln): Man kann custom Konfliktlösungs-Regeln erstellen
-  \item Unterstützung von Transaktionen? -- Konfliktlösung passiert auf \b{Transaktionsebene}
-  \item Wenn Änderungen aufgrund einer unterbrochenen Netzwerkverbindung offline gehen oder das Gerät leer ist, gehen keine Daten verloren.
-\end{itemize}~\cite{realm_offline_whitepaper}
+Realm ist eine Backendtechnologie für mobile Anwendungen und umfasst die Realm Datenbank und den Realm Object Server. Beide Technologien sind quelloffen, jedoch nicht kostenfrei~\cite{realm}.\\
+Die Realm Datenbank ist eine objektorientierte, plattformübergreifende lokale Datenbank die eine Echtzeitsynchronisation mit dem Realm Object Server.
+Der Object Server fungiert als \gls{Middleware}-Komponente in der mobilen \gls{App} und handhabt unter anderem die Ereignisbehandlung und Datensynchronisation. Im Zusammenspiel ermöglichen die beiden Technologien die Erstellung von offlinefähigen, kollaborativen, mobilen Anwendungen~\cite{realm_whitepaper}.\\\\
+Zur Offline First Funktionalität stellt Realm eine umfassende Lösung bereit.
+Die lokale Realm Datenbank unterstützt die Echtzeitsynchronisation von Daten sodass alle Änderungen sofort automatisch gesendet werden. Das Synchronisationsprotokoll komprimiert statt dem gesamten Objekt nur die marginalen Änderungen und synchronisiert sie auf dem Endgerät und dem Server. Zusätzlich zu den Daten werden die spezifischen Operationen erfasst. \todo{Siehe OT}. 
+Wird beispielsweise ein Kontakt bearbeitet, wird neben den geänderten Daten die Information \it{update} mitgesendet.
+Dank dieser zusätzlichen Information kann der Aktionswunsch genau erfasst werden sodass das System eventuelle Konflikte automatisch auflösen kann. Das hat zur Folge, dass die Synchronisation keinen manuellen Eingriff bedarf, der die Leistung des Systems beeinträchtigen könnte.
+Zusätzlich zu dem \gls{OT} Algorithmus benutzt Realm vorgegebene Regeln zur automatischen Konfliktlösung. Es besteht die Möglichkeit eigene Regeln zu definieren.\\
+Darüber hinaus passiert die interne Konfliktlösung auf Transaktionsebene. Das heißt der Vorgang ist nur erfolgreich wenn er auch vollständig und fehlerfrei ist. Andererseits wird er zurückgesetzt. Das gewährleistet die Konsistenz der Daten und verhindert deren Verlust wenn Änderungen aufgrund einer unterbrochenen Netzwerkverbindung nicht stattfinden können~\cite{realm_offline_whitepaper}.
