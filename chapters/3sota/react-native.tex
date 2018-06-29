@@ -1,11 +1,25 @@
-\section{react-native-offline}
-React Native = JavaScript React Framework um native, mobile Apps zu bauen. blabla\\
-Behandelt online/offline Verbindung. Kann die Internetverbindung auch regelmäßig prüfen\\
-Speichert nur den Status online/offline im store. -> erlaubt so unterschiedliches Rendern von Componenten.\\
-
-\tt{const YourComponent = ({ isConnected }) => (\\
-  <Text>{isConnected ? 'I am connected to the internet!' : 'Offline :('}</Text>\\
-  );\\}\\
-  Zusammen mir Redux hat es einen `Mehrwert`:
-  Hat dann einen `Offline-\gls{Queue} um Aktionen zu wiederholen (im Intervall) \tt{meta.retry? \textcolor{gray}  {Array of actions which, once dispatched, will trigger a dismissal from the queue}} ~ oder nicht \tt{meta.dismiss? []}.\cite{rn-offline-gh}
-  % \cite{rn-offline-medium}
+\section{React Native Offline}
+React Native ist ein Framework mit dem native, mobile Apps mit JavaScript und React gebaut werden können~\cite{rn}.\\
+Die Bibliothek React Native Offline erweitert das Framework um Offlinefunktionalität.  
+React Native Offline unterstützt die Behandlung des Netzwerkstatus. Dieser kann einmalig oder regelmäßig abgefragt  werden um je nach Status z.B. einen anderen Inhalt zu rendern.\\
+Zusammen mit Redux implementiert können weitere Fähigkeiten genutzt werden.
+Genau wie Redux Offline hat React Native offline nun auch einen Offline \gls{Queue} in dem Aktionen gespeichert werden können. Allerdings nur Aktionen die fehlgeschlagen sind weil die Anwendung nicht mit dem Internet verbunden ist.
+Auch hier wird der Aktion ein Metaattribut gegeben. Dieses hat die Felder \tt{retry} und \tt{dismiss}. Das erste erwartet ein Boolean, es kann angegeben werden ob die Aktion noch einmal bei bestehender Internetverbindung ausgeführt werden soll oder nicht.
+Das Feld \tt{dismiss} erwartet ein Array. Hier können Aktionen angegeben werden die das Wiederholen der Aktion abbrechen~\cite{rn-offline-gh}.\\\\
+Ein Beispiel im folgenden Listing soll die Funktionsweise der Metaattribute besser beschreiben.
+\lstset{language=REACT,
+  caption={Beispiel React Native Offline Aktion},
+  label={code:rno}}
+\begin{lstlisting}
+const action = {
+  type: 'FETCH_CONTACT',
+  contact,
+  meta: {
+    retry: true,
+    dismiss: ['CANCEL']
+  }
+}
+\end{lstlisting}
+Bei Aufruf dieser Aktion soll ein Kontakt geladen werden. Im Metafeld ist \tt{retry} auf \tt{true} gesetzt. Wurde die Aktion im Offlinemodus versucht auszuführen, wird sie erneut aufgerufen sobald die Anwendung wieder einen Internetzugang hat.
+Die Aktionen die in \tt{dismiss} angegeben werden unterbrechen diesen Vorgang.
+Wurde also der Kontakt im Offlinemodus angefragt und dann die Aktion 'CANCEL' gefeuert, wird 'FETCH\_CONTACT' aus dem Queue gelöscht und nicht erneut ausgeführt.
