@@ -1,10 +1,10 @@
-\sub{hoodie}
+\section{hoodie}
 Benutzt CouchDB und PouchDB plus UI usw, Frameworkfunktionalität...\cite{hoodie}
 %
 % Couch
 %
-\subsub{\label{sec:couch}CouchDB}
-Apache CouchDB\tm ist ein \gls{DBMS} das seit 2005 als freie Software entwickelt wird. Die dokumentenorientierte \gls{DB} funktioniert sowohl als einzelne Instanz, als auch im Cluster, in dem ein Datenbanksserver auf einer beliebig großen Anzahl an Servern oder \glspl{VM} ausgeführt werden kann. So kann die Datenschicht beliebig skaliert werden, um die Anforderungen vieler BenutzerInnen zu erfüllen. CouchDB verwendet das HTTP--Protokoll und \gls{JSON} als Datenformat, weswegen es mit jeder Webfähigen Anwendung kompatibel ist. CouchDB wird über ein \gls{REST}ful \gls{HTTP} \gls{API} angesprochen. Mit den für \gls{REST}ful Services standardisierten Methoden z. B. GET, POST, PUT, DELETE können die Daten abgerufen und. manipuliert werden.\\
+\sub{\label{sec:couch}CouchDB}
+Apache CouchDB\tm ist ein \gls{DBMS} das seit 2005 als freie Software entwickelt wird. Die dokumentenorientierte \gls{DB} funktioniert sowohl als einzelne Instanz, als auch im Cluster, in dem ein Datenbanksserver auf einer beliebig großen Anzahl an Servern oder \glspl{VM} ausgeführt werden kann. So kann die Datenschicht beliebig skaliert werden, um die Anforderungen vieler BenutzerInnen zu erfüllen. CouchDB verwendet das \gls{HTTP}--Protokoll und \gls{JSON} als Datenformat, weswegen es mit jeder Webfähigen Anwendung kompatibel ist. CouchDB wird über ein \gls{REST}ful \gls{HTTP} \gls{API} angesprochen. Mit den für \gls{REST}ful Services standardisierten Methoden z. B. GET, POST, PUT, DELETE können die Daten abgerufen und. manipuliert werden.\\
 Das implementierte Replikationsmodell erlaubt die Synchronisation bzw. bidirektionale Replikation zu verschiedenen Geräten ist genau die Besonderheit, die CouchDB als eine Offline--Datenbank auszeichnet. Dessen Funktionsweise wird in \autoref{sec:replication} detailliert beschrieben. Dieses Protokoll ist die Grundlage für Offline First Anwendungen.
 Das Replikations-API von CouchDB bietet die Möglichkeit, eine Datenbank kontinuierlich oder selbstgesteuert mit einer anderen zu synchronisieren.
 So kann beispielsweise eine CouchDB-Instanz auf dem Mobiltelefon und eine auf dem Laptop bestehen und beide können sich bei bestehender Internetverbindung synchronisieren. Da so die gespeicherten Daten aus dem lokalen Speicher gelesen werden, sind ein schnelles Interface und eine geringe Latenz die positive Folge. Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst. So gehen keine Daten verloren und es liegt an der benutzenden Person diese zu lösen. \todo{Referenz git?}\\
@@ -13,7 +13,7 @@ CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[sub:pouch]{Po
 %
 % Pouch
 %
-\subsub{\label{sub:pouch}PouchDB}
+\sub{\label{sub:pouch}PouchDB}
 \todo{Was benutzt Poch wann? -- IndexedDB, Web SQL, LevelDB}
 Als Ergänzung zu CouchDB kann PouchDB verwendet werden. PouchDB ist eine Open--Source--JavaScript--Datenbank, die so konzipiert wurde, dass sie im Browser läuft. PouchDB ermöglicht es Anwendungen zu erstellen, die sowohl offline als auch online funktionieren. Daten können lokal gespeichert werden, sodass alle Funktionen der Anwendung auch im Offline--Modus zur Verfügung stehen.
 Daten werden unabhängig von der nächsten Anmeldung (des nächsten Onlinezugangs) zwischen \b{Clients}, CouchDB oder kompatiblen Servern synchronisiert.

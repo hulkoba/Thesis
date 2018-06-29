@@ -54,5 +54,5 @@ Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnt
 \end{center}
 %
 In Zeile zwei werden die Kontakte aus einer \gls{JSON} Datei geladen. Diese sind als Objekt in einem Array gespeichert. Bekommt der Server eine post--Anfrage, wird ein Kontaktobjekt mitgesendet. Dieser wird in Zeile fünf in einer Variable zwischengespeichert. 
-Wird der Kontakt korrekt gesendet wird er in Zeile zehn dem Array hinzugefügt. Andererseits sendet der Server den HTTP--Statuscode 400 an den Client. % bad request
+Wird der Kontakt korrekt gesendet wird er in Zeile zehn dem Array hinzugefügt. Andererseits sendet der Server den \gls{HTTP}--Statuscode 400 an den Client. % bad request
 Außerdem wird mithilfe des in Node integriertem Dateisystem\footnote{siehe hierzu: \url{https://nodejs.org/api/fs.html}} Moduls die \gls{JSON} Datei neu geschrieben. Nun ist der neue Kontakt persistiert. Kommt es beim Schreiben der Datei zu keinem Fehler, sendet der Server den frisch gespeicherten Kontakt zurück an den Client.

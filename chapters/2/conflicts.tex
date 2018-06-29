@@ -1,0 +1,37 @@
+% 1. Definition
+% 2. Konfliktmanagement
+\section{\label{sec:conflict}Konflikte}
+\todo{was ist ein Konflikt? Ab wann kann ein Konflikt vom System gelöst werden, ab wann nicht? (siehe git: gleichzeitige Änderung an unterschiedlichen Stellen: kein Problem. Gleichzeitige Änderung an derselben Stelle: Konflikt!)}\\
+Verteilte Systeme: Das ist ein mächtiger Begriff für viele Ideen und Konzepten, aber es läuft in der Regel darauf hinaus: Da sind zwei oder mehr Computer, die durch ein Netzwerk verbunden sind und es wird versucht, dass einige der Daten auf beiden Computern gleich aussehen. ==> Ein System das zuverlässig über ein Netzwerk funktioniert.\\
+Zwei Geräte, ein Server, über Netzwerk verbunden.\\\\
+Spezielle Eigenschaft von Netzwerken: Verbindung kann jederzeit abbrechen:
+Acht Irrtümer der verteilten Datenverarbeitung:
+% \begin{enumerate}
+%   \item Das Netzwerk ist zuverlässig
+%   \item Die \gls{Latenz}zeit ist gleich null
+%   \item Die Bandbreite ist unendlich
+%   \item Das Netzwerk ist (informations)sicher
+%   \item Die Netzwerkstruktur wird sich nicht ändern
+%   \item Es gibt eineN AdministratorIn
+%   \item Die Datentransportkosten sind gleich null
+%   \item Das Netzwerk ist homogen
+% \end{enumerate}
+\begin{description}[leftmargin=0.5cm,style=nextline]
+	\item[1. Das Netzwerk ist zuverlässig] ~ Der Strom kann ausfallen oder Glasfaserkabel können kaputt sein --- Das Netzwerk ist nicht zuverlässig.
+	\item[2. Die \gls{Latenz} ist gleich null] ~ Glasfaserkabel werden durch Mikrowellen (oder andere Technologien) ersetzt um Millisekunden an Zeit zu sparen. Das würde nicht passieren, wäre die \gls{Latenz} bei null. Es dauert nun mal eine gewisse Zeit(ms) wenn ein Signal eine (geografisch)weite Strecke zurücklegen muss --- Die Latenz ist nicht gleich null.
+	\item[3. Die \gls{Bandbreite} ist unendlich] ~ Daten können nicht schneller fließen als die Komponenten die sie verarbeiten (\gls{Middleware}, Datenbank \ldots) --- Die Bandbreite ist nicht unendlich.
+	\item[4. Das Netzwerk ist sicher] ~ Der \sc{Heartbeat-bug}\footnote{\url{http://heartbleed.com/} -- Zugriff: 07.04.2018}, der im Jahr 2014 behoben wurde und die Sicherheitslücke im ICE-\gls{WLAN} im Jahr 2016\footnote{\url{https://netzpolitik.org/2016/datenschutz-im-zug-deutsche-bahn-will-sicherheitsluecke-in-neuem-ice-wlan-schliessen/} -- Zugriff: 07.04.2018} sind nur zwei Beispiele die zeigen, dass das Netzwerk nicht sicher ist.
+	\item[5. Die Netzwerkstruktur wird sich nicht ändern] ~ Eine Datenbank kann beispielsweise über mehrere Server verteilt sein, die (teilweise) voneinander abhängig sind. Ein Server mit Abhängigkeiten kann ausfallen, es kann eine Aktualisierung für einen anderen Server geben --- die Struktur ändert sich.
+	\item[5. Die Netzwerkstruktur wird sich nicht ändern] ~ Eine Datenbank kann beispielsweise über mehrere Server verteilt sein, die (teilweise) voneinander abhängig sind. Ein Server mit Abhängigkeiten kann ausfallen, es kann eine Aktualisierung für einen anderen Server geben --- die Struktur ändert sich.
+	\item[6. Es gibt eineN AdministratorIn] ~ Es kann beliebig viele AdministratorInnen geben.
+	\item[7. Die Datentransportkosten sind gleich null] ~ Netflix bezahlte anfang 2014 diversen InternetanbieterInnen dafür, dass Netflix KundInnen bevorzugten Internetzugang haben.
+	\item[8. Das Netzwerk ist homogen] ~ Es gibt verschiedene Arten von Netzwer: 3G, 4G, LTE, WiFi. Wird beeinflusst durch Hardware (Smartphone, Tablet, PC, Laptop, Router \ldots)~\cite{fallacies}
+\end{description}
+\sub{Konfliktlöstungsstrategien}
+\subsub{Git}
+Beschreiben wie Git Konflikte löst.
+\sub{\gls{CAP} Theorem?}
+%
+% Couch Pouch
+%
+\input{chapters/2/couch}
