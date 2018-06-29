@@ -1,10 +1,6 @@
-\section{offline-plugin für webpack}
-webpack ist ein JavaScript `Bundler`, packt JavaScript-Dateien und oder \gls{Assets} für die Verwendung in Browsern.blabla\\
-Bietet offline experience für webpack Projekte. Benutzt \sc{ServiceWorker} und \sc{AppCache} unter der Haube --> cached nur (gebündelten) von webpack generierten \gls{Assets}. Für die anderen Dateien (z.B. index.html die nicht gebundled wird oder Modul von CDN) braucht mal ein \tt{html-plugin} oder benutzt die \tt{externals} :\\\\
-\tt{const OfflinePlugin = require('offline-plugin')\\
-  const offline = new OfflinePlugin\\\\
-  const offline = new OfflinePlugin({\\
-    externals: ['index.html'],\\
-    })}\\
-Es gibt diverse config-options für \sc{ServiceWorker} und AppCache...~\cite{webpack-gh}
-% dev\cite{webpack-dev}
+\section{Offline plugin für webpack}
+Webpack ist ein JavaScript `Bundler` und bündelt alle Skripte, Bilder und \gls{Assets} für die Verwendung in Browsern.\\
+Das Offline Plugin bietet Offlinefunktionalität für Webpackprojekte indem es die gebündelten, also von Webpack generierten \gls{Assets} cached.
+Dazu benutzt es intern den ServiceWorker und AppCache als Reserve, für den Fall dass der Browser ServiceWorker nicht unterstützt~\cite{webpack-gh}.\\
+Auch ungebundelte \gls{Assets} können über das Plugin gecached werden. Diese Dateien müssen dann in den Optionen explizit angegeben werden. Auch der ServiceWorker und der AppCache lassen sich über die Optionen konfigurieren oder auch ausschalten~\cite{webpack-opt}.\\
+Es werden allerdings nur die \gls{Assets} und nicht die von BenutzerInnen generierten Daten gecached. Diese müssen manuell im gespeichert werden.
