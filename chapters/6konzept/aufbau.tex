@@ -1,11 +1,14 @@
 \sub{Aufbau der React Komponenten ?}
-React ist eine open-source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die wiederverwendbaren Komponenten. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
-Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten nur aus den \tt{props} nehmen. \tt{Props} sind Eigenschaften die übergeben werden und nur von der Elternkomponente änderbar.
-Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} die reduzierte Version der Formularkomponente beider zu entwickelnden Prototypen beschrieben. In dieser Version wird nur der Name des Kontakts gezeigt und verändert.\\
-Die Formularkomponente hat Kontaktobjekt im internen \tt{state} gespeichert. Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
+React ist eine open-source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die Komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
+Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten aus den \tt{props} nehmen.
+\tt{Props} sind Daten die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
+Eine React Komponente hat immer eine \tt{render()}--Funktion die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll.
+Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.\\
+Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} eine beispielhafte React Komponente beschrieben.
+Sie repräsentiert ein Formular in dem der Name des Kontakts angezeigt und geändert werden kann.\\\\
+Die Formularkomponente hat ein Kontaktobjekt im internen \tt{state} gespeichert. Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} geladen (Zeile vier). So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In Zeile sieben ist die \tt{handleChange()} Funktion, die am Eingabefeld (Zeile 22) auf die Änderungen reagiert (Zeile zehn) und der interne \tt{state} aktualisiert (Zeile 12).\\
-Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll. Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.
+In Zeile sieben ist die \tt{handleChange()} Funktion, die am Eingabefeld (Zeile 22) auf die Änderungen reagiert (Zeile zehn) und den interne \tt{state} aktualisiert (Zeile 12).
 % listing
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -14,7 +17,8 @@ Eine React Komponente hat immer eine \tt{render()}--Funktion (Zeile 15) die die 
   label=code:react-form]{code/Form.js}
 \end{center}
 %
-In der Elternkomponente \tt{Contacts} wird die Formularkomponente so wie es im folgenden Listing zu lesen ist, aufgerufen. Alle im Formular verfügbaren Eigenschaften werden hier übergeben.
+In der Elternkomponente \tt{Contacts} wird die Formularkomponente so wie es im folgenden Listing zu lesen ist, aufgerufen.
+Alle im Formular verfügbaren Daten werden hier übergeben.
 \lstset{language=REACT,
 caption={Aufruf der React \tt{ContactForm} Komponente},
 label=code:form-call}
@@ -47,7 +51,7 @@ Der dritte wichtige Bestandteil von Redux sind die \tt{Reducer}. Sie spezifizier
 \subsub{Redux Offline}
 Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
 Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile fünf erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
-Redux Offline kommt mit einer vorgegebenen Konfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile acht übergeben.
+Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile drei). Diese wird dem \tt{offline store enhancer} in Zeile acht übergeben.
 \begin{center}
   \lstinputlisting[language=REACT,
   firstline=53,lastline=62,
@@ -55,7 +59,8 @@ Redux Offline kommt mit einer vorgegebenen Konfiguration (siehe Zeile 3). Diese 
   caption={Erstellen eines Stores mit Redux Offline},
   label=code:store]{code/Redux.js}
 \end{center}
-Der gesamte Kontext der zum Synchronisieren einer Aktion erforderlich ist in einem zusätzlichen Metaattribut gespeichert. Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mit dem Metafeld dekoriert. Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
+Der gesamte Kontext, der zum Synchronisieren einer Aktion erforderlich ist in einem zusätzlichen Metaattribut gespeichert.
+Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mit dem Metafeld dekoriert. Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -65,8 +70,11 @@ Der gesamte Kontext der zum Synchronisieren einer Aktion erforderlich ist in ein
   label=code:react-meta]{code/Redux.js}
 \end{center}
 %
-Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs. Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll. Für den Fall dass von dem angefragtem \gls{API} der Statuscode 500 zurückkommt oder der Server nicht läuft, wird die im \tt{rollback} definierte Aktion gefeuert.\\
-Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben. Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
+Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs.
+Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
+Für den Fall, dass von dem angefragtem \gls{API} der Statuscode 500 zurückkommt oder der Server nicht läuft, wird die im \tt{rollback} definierte Aktion gefeuert.\\
+Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben.
+Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
