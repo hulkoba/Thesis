@@ -1,16 +1,12 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
-Was bedeutet offlinefähig?\\
-\note{Harte, weiche, mittlere probleme (verschiedene Stufen von offlinefähig)}\\
-Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen.\\
-bei nativen Apps ist das Problem bei der Datenverteilung
+Definition offlinefähig\\
+Was braucht ne App um offline zu funktionieren\\
+Dabei entstehen Konfikte\\
+Was sind Konflikte? Was gibt es für Lösungsstrategien?
 %
 % Offline-First
 %
 \section{Offline First}
-%
-% Anforderungen
-%
-% \sub{Anforderungen an Offline-First Anwendungen}
 % Eine Webanwendung besteht grundsätzlich aus zwei Bestandteilen: \it{\gls{Assets}} und benutzerInnengenerierte Daten.\\
 % Um offline nutzbar zu sein, müssen einige Voraussetzungen erfüllt werden.
 % \begin{itemize}
@@ -22,6 +18,9 @@ bei nativen Apps ist das Problem bei der Datenverteilung
 % \end{itemize}
 % \todo{merge mit PWA?}
 Offline First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist um deren grundlegenden Funktionen zu nutzen.\todo{Quelle}\\
+Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen.\\
+note{Harte, weiche, mittlere probleme (verschiedene Stufen von offlinefähig)}\\
+
 Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit. Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz. Daten, die zuerst lokal gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.
 %
 % Cache ServiceWorker AppCache
