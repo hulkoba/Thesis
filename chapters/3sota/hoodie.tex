@@ -1,5 +1,16 @@
 \section{hoodie}
-Benutzt CouchDB und PouchDB plus UI usw, Frameworkfunktionalität...\cite{hoodie}
+Hoodie ist eine JavaScript Bibliothek für offlinefähige Webapplikationen, die ein komplettes Backend zur Verfügung stellt. Wird Hoodie für die Entwicklung einer Webanwendung verwendet, muss also lediglich das Frontend implementiert werden. Den Rest erledigt die Bibliothek. Über eine integrierte Programmierschnittstelle kommuniziert die Anwendung mit dem von Hoodie zur Verfügung gestelltem Backend. Über das \gls{API} können unter Anderen BenutzerInnen authentifiziert, Daten gespeichert und synchronisiert werden~\cite{hoodie}.\\
+Anhand der Abbildung \ref{fig:hoodie} wird erklärt wie Hoodie funktioniert.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{hoodie}
+  \grayRule
+  \caption[Hoodie Architektur]{Hoodie Architektur~Quelle:~\cite{hoodie-how}}
+  \label{fig:hoodie}
+\end{figure}
+Im Frontend--Bereicht ist die App zu sehen die über das Hoodie \gls{API} mit dem lokalen Speicher kommuniziert. Die Anwendung spricht niemals direkt mit dem Server oder der Datenbank. Für die lokale Speicherung der Daten benutzt Hoodie intern PouchDB, was wiederum IndexedDB verwendet. Durch das lokale Speichern sind die Daten auch offline verfügbar. Dann werden über eine \gls{REST} Schnittstelle mit einer CouchDB synchronisiert. CouchDB ist eine Datenbank mit der Superkraft des Synchronisierens und in Hoodie haben alle AnwenderInnen ihre eigene private CouchDB. Hinter der Datenbank befindet sich ein kleiner Server der auf die Daten in der CouchDB reagiert, die wiederum die Änderungen an den Client schickt.\\
+Die Architektur ist Ereignisbasiert, hinterlässt also nur Aufgaben und Nachrichten. Dadurch dass das Frontend und das Backend nicht direkt miteinander sprechen, funktionieren sie auch dann wenn die Verbindung unterbrochen wird~\cite{hoodie-how}.
+\todo{ist für schlussendliche konsistenz ausgelegt}
 %
 % Couch
 %
