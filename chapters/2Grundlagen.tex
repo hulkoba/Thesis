@@ -40,39 +40,41 @@ Die genaue Funktionsweise des Protokolls wird in \autoref{sec:replication} detai
 Dieses Protokoll ist die Grundlage für Offline First Anwendungen.
 Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit einer anderen Datenbank die dasselbe Protokoll implementiert, synchronisieren.
 Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst~\cite{couch}. Die Lösung der Konflikte muss in der Anwendung implementiert sein.
-So kann gewährleistet werden, dass keinerlei Daten verloren gehen.
+So kann gewährleistet werden, dass keinerlei Daten verloren gehen.\\\\
+CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[sub:pouch]{PouchDB} und für native iOS- und Android--\glspl{App} wurde Couchbase Lite entwickelt. Alle verwenden das CouchDB Replikationsprotokoll und können Daten miteinander replizieren und~\cite{couch}.
 %
 % Pouch
 %
-CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[sub:pouch]{PouchDB} und für native iOS- und Android--\glspl{App} wurde Couchbase Lite entwickelt. Alle können Daten miteinander replizieren und verwenden das CouchDB Replikationsprotokoll.
 \subsub{\label{sub:pouch}PouchDB}
 \todo{Was benutzt Poch wann? -- IndexedDB, Web SQL, LevelDB}
-Als Ergänzung zu CouchDB kann PouchDB verwendet werden. PouchDB ist eine Open--Source--JavaScript--Datenbank, die so konzipiert wurde, dass sie im Browser läuft. PouchDB ermöglicht es Anwendungen zu erstellen, die sowohl offline als auch online funktionieren. Daten können lokal gespeichert werden, sodass alle Funktionen der Anwendung auch im Offline--Modus zur Verfügung stehen.
+Als Ergänzung zu CouchDB kann PouchDB verwendet werden. PouchDB ist eine quelloffene JavaScript--Datenbank, die so konzipiert wurde, dass sie im Browser läuft.
+PouchDB ermöglicht es Anwendungen zu erstellen, die sowohl offline als auch online funktionieren.
+Daten können lokal gespeichert werden, sodass alle Funktionen der Anwendung auch im Offline--Modus zur Verfügung stehen.
 Daten werden unabhängig von der nächsten Anmeldung (des nächsten Onlinezugangs) zwischen \b{Clients}, CouchDB oder kompatiblen Servern synchronisiert.
 PouchDB läuft auch in Node.js\footnote{JavaScript Laufzeitumgebung, steht unter \url{https://nodejs.org/en/download/} zum Download bereit} und kann als direkte Schnittstelle zu CouchDB--kompatiblen Servern verwendet werden~\cite{pouch}.
 
-%
-% PWA
-%
-\sub{\label{sub:pwa}Progressive Web Apps \todo{raus?}}
-\Gls{PWA} ist eine Bezeichnung für eine mobil nutzbare Webseite, die eine Brücke zwischen der nativen
-Applikation und einer Webseite schlägt.
-Der Begriff \gls{PWA} wurde im Jahr 2015  von Alex Russel und seiner Frau Frances Berriman geprägt.
-Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikationen mitbringen, aber statt über App Stores installiert zu werden, im Webbrowser existieren. Die Webseiteninhalte sind ohne die Installation sofort und jederzeit für die NutzerInnen abrufbar. Schon beim zweiten Besuch der Webseite ist die Ladezeit der Daten verkürzt und sie ist offline, oder auch bei schlechter Internetverbindung nutzbar. Nach mehrmaligem Aufruf kann die \gls{PWA} über den Browser installiert und zum Startbildschirm hinzugefügt werden. Russel und Berriman legen folgende Einenschaften einer \gls{PWA} fest:
-\begin{description}[leftmargin=0.5cm,style=nextline]
-	\item[Responsive] to fit any form factor
-	\item[Connectivity independent] Progressively-enhanced with Service Workers to let them work offline
-	\item[App-like-interactions] Adopt a Shell + Content application model to create appy navigations \& interactions
-	\item[Fresh] Transparently always up-to-date thanks to the Service Worker update process
-	\item[Safe] Served via TLS (a Service Worker requirement) to prevent snooping
-	\item[Discoverable] Are identifiable as “applications” thanks to W3C Manifests and Service Worker registration scope a llowing search engines to find them
-	\item[Re-engageable] Can access the re-engagement UIs of the OS; e.g. Push Notifications
-	\item[Installable] to the home screen through browser-provided prompts, allowing users to “keep” apps they find most useful without the hassle of an app store
-	\item[Linkable] meaning they’re zero-friction, zero-install, and easy to share. The social power of URLs matters.
-\end{description}
-\todo{Näher erläutern?}~\cite{pwa}.
+% %
+% % PWA
+% %
+% \sub{\label{sub:pwa}Progressive Web Apps \todo{raus?}}
+% \Gls{PWA} ist eine Bezeichnung für eine mobil nutzbare Webseite, die eine Brücke zwischen der nativen
+% Applikation und einer Webseite schlägt.
+% Der Begriff \gls{PWA} wurde im Jahr 2015  von Alex Russel und seiner Frau Frances Berriman geprägt.
+% Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikationen mitbringen, aber statt über App Stores installiert zu werden, im Webbrowser existieren. Die Webseiteninhalte sind ohne die Installation sofort und jederzeit für die NutzerInnen abrufbar. Schon beim zweiten Besuch der Webseite ist die Ladezeit der Daten verkürzt und sie ist offline, oder auch bei schlechter Internetverbindung nutzbar. Nach mehrmaligem Aufruf kann die \gls{PWA} über den Browser installiert und zum Startbildschirm hinzugefügt werden. Russel und Berriman legen folgende Einenschaften einer \gls{PWA} fest:
+% \begin{itemize}
+% 	\item Responsive %to fit any form factor
+% 	\item Connectivity independen]% Progressively-enhanced with Service Workers to let them work offline
+% 	\item App-like-interaction]% Adopt a Shell + Content application model to create appy navigations \& interactions
+% 	\item Fresh %Transparently always up-to-date thanks to the Service Worker update process
+% 	\item Safe %Served via TLS (a Service Worker requirement) to prevent snooping
+% 	\item Discoverable %Are identifiable as “applications” thanks to W3C Manifests and Service Worker registration scope a llowing search engines to find them
+% 	\item Re-engageable %Can access the re-engagement UIs of the OS; e.g. Push Notifications
+% 	\item Installable %to the home screen through browser-provided prompts, allowing users to “keep” apps they find most useful without the hassle of an app store
+% 	\item Linkable %meaning they’re zero-friction, zero-install, and easy to share. The social power of URLs matters.
+% \end{itemize}
+% \todo{Näher erläutern?}~\cite{pwa}.
 
 %
-% Konflikte [Jan]
+% Konflikte
 %
 \input{chapters/2/conflicts}
