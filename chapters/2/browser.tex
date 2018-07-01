@@ -16,13 +16,14 @@ Das heißt alle Daten die im Session Storage gespeichert werden, existieren nich
 Der von den Browsern freigegebene Cache-Space für Web Storage variiert, ist aber meist auf 10 MB begrenzt. Der größte Nachteil ist wohl, dass Web Storage synchron arbeitet und so andere Operationen, wie zum Beispiel das Rendern der Seite, blockieren kann~\cite{webstorage-con}.
 %
 %
-\subsub{WebSQL}
+\subsub{Web SQL}
 Eine andere der lokalen Speicherung im Browser ist die Web SQL Datenbank.
 Sie hat ein asynchrones \gls{API} und unterstützt die grundlegenden SQL Abfragen. Web SQL sollte in den W3C Standards aufgenommen werden. Aus Mangel unabhängigen Implementierungen wie eine andere \gls{DB} als SQLite im Backend wurde es abgelehnt~\cite{websql}.\\
 Das Web SQL \gls{API} wird nur von den Webkit--Browsern unterstützt. Also nicht von Firefox, dem Internet Explorer oder dessen neueren Variante Edge~\cite{caniuse-websql}.
 %
 %
 \subsub{IndexedDB}
+IndexedDB ist eine weitere Variante der clientseitigen Datenspeicherung. Die auf Java"-Script basierende, objektorientierte Datenbank erlaubt neben dem Speichern von größeren Datenmengen in Form von Objekten auch das Speichern von Dateien. Durch die Verwendung von Indizes lassen sich Objekte schnell speichern und finden. Das asynchrone \gls{API} erlauben Datenbankabfragen die keinen anderen Prozess blockieren~\cite{idb}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{indexedDB}
@@ -30,8 +31,11 @@ Das Web SQL \gls{API} wird nur von den Webkit--Browsern unterstützt. Also nicht
 	\caption{Browserkompatibilität für IndexedDB, Quelle: ~\cite{caniuse-idb}}
 	\label{fig:indexedDB}
 \end{figure}
+Wie in Abbildung \ref{fig:indexedDB} zu sehen ist, wird IndexedDB von allen gängigen Browsern unterstützt. 
 %
-\subsub{IndexedDB 2}
+\subsub{IndexedDB 2.0}
+Im Januar 2018 wurde die zweite Version des IndexedDB \glspl{API} zur W3C Spezifikation hinzugefügt. Es erweitert die erste Verion um Funktionalität und verbessert die Performance~\cite{idb2}.
+Die Aktualität dieser Spezifikation spiegelt sich in der Browserunterstützung wider. Die Abbilung \ref{fig:indexedDB2} zeigt, dass die zweite Version nur von den beliebten \highlight{(haha)} Desktopbrowsern und einigen mobilen Browsern unterstützt wird. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{indexedDB2}
@@ -39,4 +43,4 @@ Das Web SQL \gls{API} wird nur von den Webkit--Browsern unterstützt. Also nicht
 	\caption{Browserkompatibilität für IndexedDB 2.0, Quelle: ~\cite{caniuse-idb}}
 	\label{fig:indexedDB2}
 \end{figure}
-https://www.w3.org/TR/IndexedDB-2/
+IndexedDB wird stetig weiterentwickelt und es gibt bereits einen Spezifikationsentwurf für die dritte Version~\cite{idb3}. 
