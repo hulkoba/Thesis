@@ -2,7 +2,7 @@
 Der zweite Schritt Daten offline verfügbar zu machen ist sie im Browser zu speichern. Einige Konzepte hierfür werden im Folgenden erläutert.
 %
 \subsub{Web Storage}
-Das Web Storage \gls{API} ist ein Web-Standard mit dessen Hilfe Daten als Schlüssel / Wert Paare im Browser gespeichert werden können. Es wird, wie Abbildung \ref{fig:webStorage} zeigt, von allen relevanten Browsern unterstützt.
+Das Web Storage \gls{API} ist ein Web-Standard mit dessen Hilfe Daten als Schlüssel / Wert Paare im Browser gespeichert werden können. Es wird, wie Abbildung \ref{fig:webStorage} zeigt, von allen, bis auf den Opera Mini,  Browsern unterstützt. Opera Mini speichert grundsätzlich keine Daten, weswegen dieser Browser auch in den nachfolgenden Bildern mit Rot markiert ist.
 Web Storage umfasst zwei Mechanismen. Den Session Storage und den Local Storage.\\
 Der Session Storage existiert nur so lange der Browser geöffnet ist.
 Das heißt alle Daten die im Session Storage gespeichert werden, existieren nicht mehr sobald der Browser geschlossen wird. Daten die im Local Storage gespeichert sind, existieren dort solange bis der Browser Cache geleert wird~\cite{webstorage}.
@@ -13,7 +13,7 @@ Das heißt alle Daten die im Session Storage gespeichert werden, existieren nich
 	\caption{Browserkompatibilität für Web Storage, Quelle: ~\cite{caniuse-ws}}
 	\label{fig:webStorage}
 \end{figure}
-Der von den Browsern freigegebene Cache-Space für Web Storage variiert, ist aber meist auf 10 MB begrenzt. Der größte Nachteil ist wohl, dass Web Storage synchron arbeitet und so andere Operationen, wie zum Beispiel das Rendern der Seite, blockieren kann~\cite{webstorage-con}.
+Der von den Browsern freigegebene Cache-Space für Web Storage variiert, ist aber meist auf 10 MB begrenzt. Der größte Nachteil ist wohl, dass Web Storage synchron arbeitet und so andere Operationen, wie zum Beispiel das Rendern der Seite, blockieren kann ~\cite{webstorage-con}.
 %
 %
 \subsub{Web SQL}
