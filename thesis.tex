@@ -9,6 +9,7 @@ headsepline, % get a line under the header
 \input{config}
 
 \begin{document}
+\nocite{*}
 \setlist{noitemsep}  %% verringert Zeilenabstand bei aufzaehlungen
 \pagestyle{empty}
 
@@ -56,7 +57,7 @@ headsepline, % get a line under the header
 %
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{alphadin}
-\bibliography{extra/literatur}
+\bibliography{extra/literatur,extra/basics}
 
 %
 % Anhang
