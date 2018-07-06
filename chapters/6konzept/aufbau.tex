@@ -30,17 +30,11 @@ label=code:form-call}
 %
 % Redux
 %
-\sub{Erweiterungen für \sc{amilia-rdx}}
+\sub{Verwendung von Redux Offline}
 Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für diesen Prototypen die Implementierung von Redux vorausgesetzt.
-\subsub{Redux}
-Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
-Mit Redux hat jede Applikation genau einen \tt{store}. Dieser hat den Applikationsstatus, der via \tt{dispatch()} aktualisiert, und via \tt{getState()} gelesen werden kann.
-Als einzige Informationsquelle für den \tt{store} dienen Aktionen. Sie senden Daten von der Anwendung mittels \tt{store.dispatch()} an den \tt{store} und beschreiben dabei nicht wie etwas passiert, sondern was passiert.\\
-Der dritte wichtige Bestandteil von Redux sind die \tt{Reducer}. Sie spezifizieren wie der Status sich als Reaktion auf die Aktionen ändert~\cite{redux}.
-% % Der Datenfluss in der Reduxarchitektur ist unidirektional.
-% Zur Veranschaulichung des Datenflusses in Redux wird anhand des Listings \ref{code:redux-dataflow} das Wechseln der Ansichten Liste und Formular beschrieben.
-% Alles beginnt mit dem Aufruf von \tt{store.dispatch(action)} von jeder beliebigen Stelle in der Anwendung. Die Aktion die beschreibt was passiert heißt \tt{toggleEdit} und sieht im Beispiel des Ansichtswechsels aus wie in Zeile drei bis fünf.\\
-% Der \tt{Store} ruft nun den \tt{Reducer} auf
+Redux ist eine JavaScript Bibliothek die Probleme im Zusammenhang mit dem \it{Zustand} einer Anwendung löst.
+Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
+Dieser Ort wird \sc{Store} genannt. Alle Änderungen der Daten im zentralen Speicher erfolgen ausschließlich über Aktionen.\\\\
 % % listing
 % \begin{center}
 % \lstinputlisting[language=REACT,
@@ -48,7 +42,7 @@ Der dritte wichtige Bestandteil von Redux sind die \tt{Reducer}. Sie spezifizier
 % caption={Datenfluss in Redux},
 % label=code:react-form]{code/Redux.js}
 % \end{center}
-\subsub{Redux Offline}
+% \subsub{Redux Offline}
 Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
 Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile fünf erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
 Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile drei). Diese wird dem \tt{offline store enhancer} in Zeile acht übergeben.
