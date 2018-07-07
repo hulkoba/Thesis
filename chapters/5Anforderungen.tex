@@ -6,10 +6,14 @@ Nach der konkreten Beschreibung dessen, was das \it{Projekt} umfassen soll, folg
 %
 \input{chapters/5anforderungen/scope}
 %
+% Funktionalität
+%
+\input{chapters/5anforderungen/functionality}
+%
 % User-Stories
 %
 \section{User-Stories}
-Aus den in Kapitel \ref{chap:szenarien} erarbeiteten Szenarien ergeben sich die folgenden User-Stories, die von der offlinefähigen Adressbuchanwendung erfüllt werden sollen.
+Aus den in \autoref{chap:szenarien} erarbeiteten Szenarien ergeben sich die folgenden User-Stories, die von der offlinefähigen Adressbuchanwendung erfüllt werden sollen.
 Ein Ziel der Arbeit ist es, EntwicklerInnen bei der Wahl einer Technologie mit der eine offlinefähige Anwendung entwickelt werden kann, zu unterstützen. Dafür wird untersucht, inwieweit die ausgewählten Technologien die Erwartungen an diese erfüllen.
 Deswegen werden zunächst die Anforderungen aus Sicht der NutzerInnen definiert, danach die aus Entwicklingsperspektive und dann die aus der Perspektive der TesterInnen.
 % Tabellen: User Stories
@@ -17,23 +21,7 @@ Deswegen werden zunächst die Anforderungen aus Sicht der NutzerInnen definiert,
 \input{chapters/5anforderungen/developer}
 \input{chapters/5anforderungen/tester}
 %
-% Funktionalität
-%
-\input{chapters/5anforderungen/functionality}
-%
 % UI
 %
 \section{Bedienoberfläche}
-Da der Schwerpunkt dieser Arbeit auf dem Umgang mit Konflikten der zu testenden offlineunterstützenden Technologien liegt, soll die Bedienoberfläche der Anwendung möglichst einfach gehalten werden.\\
-Alle Adressbucheinträge sollen in einer Liste angezeigt werden. Zum Anlegen, Editieren und Löschen eines einzelnen Eintrags soll es eine zweite Ansicht geben, auf die man per Klick auf den entsprechenden Eintrag in der Liste gelangt.
-Wenn es zum Konflikt kommt, kann dieser über ein Dialogfenster aufgelöst werden. Im Dialog muss erkennbar sein wo, bei welchem Kontakteintrag, der Konflikt auftrat.
-Außerdem müssen sich die entsprechenden Bereiche beider Versionen unterscheiden lassen und auswählbar sein. Abbildung \ref{fig:dialog} zeigt wie so ein Dialogfenster aussehen könnte.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Konfliktdialog}
-	\grayRule
-	\caption{Dialogfenster im Konfliktfall}
-	\label{fig:dialog}
-\end{figure}
-Wurde beispielsweise Amilias Telefonnummer von zwei Personen gleichzeitig bearbeitet, bildet der Dialog zwei Bereiche mit der Nummer in den unterschiedlichen Versionen ab.
-Durch Klick auf die korrekte Nummer kann entschieden werden welche Version die richtige ist und behalten wird.
+\input{chapters/5anforderungen/ui}
