@@ -50,12 +50,15 @@ Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusam
 Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der Anwendung. Er definiert die graphische Oberfläche und stellt alle notwendigen Funktionen bereit. Sie hat einen internen \tt{state} in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der \tt{state} an der blauen Schrift zu erkennen. Das Objekt \tt{editView} zeigt, welche Ansicht -- Liste oder Formular -- gerade aktuell ist und speichert den im Formular zu ladenden Kontakt. Wie das Kontaktobjekt aufgebaut ist zeigt der blaue Kasten im Diagramm. Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne \tt{state} aktualisiert und ein erneutes Rendern der Komponente eingeleitet. Dann wird entsprechend die Liste oder das Formular gerendert.\\
 Die \tt{Header}--Komponente zeigt den Netzwerkstatus der Anwendung an und hat einen Knopf, der zum \tt{ContactForm} führt.\\
 Die \tt{ContactList} wird initial gerendert. Es werden alle Kontakte als Liste dargestellt. Hier kann das Bearbeiten (\tt{handle"-On"-Edit"-Click()}) oder das Löschen (\tt{handle"-On"-De"-lete"-Click()}) des Kontakts eingeleitet werden.
+%
 \begin{figure}[H]
+  \centering
   \includegraphics[width=\textwidth]{uml}
   \grayRule
-  \caption{Komponentenarchitektur}
+  \caption[Komponentendiagramm]{Komponentendiagramm der Prototypen}
   \label{fig:uml}
 \end{figure}
+%
 Die Komponente \tt{ContactForm} zeigt, sofern vorhanden, alle im Kontakt gespeicherten Daten an. Diese können hier bearbeitet werden. Gibt es keine Kontaktdaten die geladen werden kann, kann hier ein neuer Kontakt angelegt werden. Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt (\tt{handleSubmit()}) oder abgebrochen (\tt{handleCancel()}) werden kann. Sie ist neben \tt{Contacs} die einzige Komponente mit einem internen \tt{state}. Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ``lauschen``. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
 \todo{Konflikt--Dialog}\\\\
 %
