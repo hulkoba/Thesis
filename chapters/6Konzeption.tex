@@ -10,7 +10,7 @@ Bis zu einem gewissen Status, nämlich dem der Verwendung der Technologien, sind
 % Aufbau
 %
 \section{Anwendungsaufbau}
-Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React App} erstellt. \sc{Create React App} erstellt ein Projekt mit dem gewünschten Namen, generiert eine initiale Projektstruktur (vgl. Abbildung \ref{fig:init}) und installiert die dafür benötigten Abhängigkeiten~\cite{create-react}.
+Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React App} erstellt. \sc{Create React App} erstellt ein Projekt mit dem gewünschten Namen, generiert eine initiale Projektstruktur (vgl. \autoref{fig:init}) und installiert die dafür benötigten Abhängigkeiten~\cite{create-react}.
 \begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.4\textwidth}
@@ -28,11 +28,14 @@ Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React Ap
   \caption[Create React App: initiale Testapplikation]{einer mit Create React App erstellten Testapplikation}
   \label{fig:create-react-app}
 \end{figure}
+%
 Diese sind im Verzeichnis node\_modules installiert.
-Außerdem ist ein ServiceWorker und ein App Manifest (\tt{manifest.json}) enthalten, wodurch die \gls{PWA}-- Kriterien erfüllt sind.
-Als Template gibt es nun die \tt{public/index.html}-- Datei. In der \tt{index.js}--Datei werden die React--Komponenten und der ServiceWorker initialisiert.
+Außerdem ist ein ServiceWorker
+%und ein App Manifest (\tt{manifest.json}) enthalten, wodurch die \gls{PWA}-- Kriterien erfüllt sind.
+enthalten der die \gls{Assets} cacht.
+Als Template gibt es nun die \tt{public/index.html}-- Datei. In der \tt{index.js}--Datei werden die React--Komponenten und der ServiceWorker initialisiert. 
 Alle \tt{App.*}--Dateien umfassen eine minimale Beispielanwendung.
-In der generierten \tt{package.json}--Datei (vgl. Abbildung \ref{fig:init2}), befinden sich Informationen über die Anwendung und ihre Abhängigkeiten. Im Unterpunkt \tt{scripts} werden Kommandozeilen-Aufrufe definiert und können mit dem Befehl \tt{npm run} aufgerufen werden.
+In der generierten \tt{package.json}--Datei (vgl. \autoref{fig:init2}), befinden sich Informationen über die Anwendung und ihre Abhängigkeiten. Im Unterpunkt \tt{scripts} werden Kommandozeilen-Aufrufe definiert und können mit dem Befehl \tt{npm run} aufgerufen werden.
 %
 % React Komponenten
 %
