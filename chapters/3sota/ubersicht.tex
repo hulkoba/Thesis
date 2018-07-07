@@ -1,0 +1,91 @@
+Alle oben genannten Systeme unterstützen, nach eigener Aussage, die Erstellung offlinefähiger Anwendungen.
+Die folgende Tabelle fasst die oben genannten Systeme zusammen und zeigt inwiefern die Technologien die in \autoref{chap:offlinefirst} genannten Voraussetzungen an eine Offline First \gls{App} erfüllen.
+\begin{longtable}[c]{@{}
+	>{\columncolor[HTML]{CFFCC2}}l llll@{}}
+	\toprule
+	\multicolumn{1}{p{0.33\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Produkt}} &
+	\multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Cachen der\newline \gls{Assets}}} &
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Lokale\newline Datenspeicherung}} &
+	\multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Datenbank-synchronisation}}\\
+  %
+  \hline \noalign{\vskip 0.1cm}
+	\endfirsthead
+	\endhead
+	%
+\multicolumn{1}{p{0.33\textwidth}}
+{\textbf{Offline Plugin für webpack}}
+&       
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}
+& 
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }
+&                                                                                         
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.33\textwidth}}
+{\textbf{Redux Offline}}
+&       
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }
+& 
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}
+&                                                                                         
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.33\textwidth}}
+{\textbf{React Native Offline}}
+&       
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }
+& 
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}
+&                                                                                         
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.33\textwidth}}
+{\textbf{HOODIE}}
+&       
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }
+& 
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}
+&                                                                                         
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}\\
+\midrule
+% ----------------------------------------------
+\multicolumn{1}{p{0.33\textwidth}}
+{\textbf{Realm}}
+&       
+\multicolumn{1}{p{0.2\textwidth}}
+{ -- }
+& 
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}
+&                                                                                         
+\multicolumn{1}{p{0.2\textwidth}}
+{Ja}\\
+% ----------------------------------------------
+	% end
+	\bottomrule \cellcolor[HTML]{FFFFFF}
+	\vspace{0.1cm}\\
+	\noalign{\hspace{0.0525\textwidth}\grayRule}
+	\caption{Übersicht der offlinefähigen Technologien}
+	\label{tab:stoa}\\
+\end{longtable}
+%
+%
+%
+Das Offline Plugin für webpack cacht lediglich die \gls{Assets} einer Anwendung, was sämtliche andere Technologien in dieser Tabelle jedoch nicht tun. Hierbei sollte beachtet werden, dass React Native Offline und Realm für die Entwicklung von mobilen Anwendungen gemacht sind. Dort ist das Cachen der \gls{Assets} nicht notwendig, die das Erbegnis eine auf dem Mobilgerät installierte App, mitsamt der Dateien die zur Ausführung notwendig sind, ist.\\
+Die lokale Speicherung der von den NutzerInnen generierten Daten wird von allen Technologien, bis auf das Plugin für webpack, unterstützt. Hierbei unterscheiden sich die Speicherorte der Daten.
+Eine Synchronisation zu einer Serverdatenbank stellen allein HOODIE und Realm bereit. Die restlichen Technologien stellen die Verwendung einer Serverdatenbank frei.
