@@ -10,27 +10,53 @@
 % 
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F1}} &
   \multicolumn{1}{p{0.95\textwidth}}
-  {Ich als NutzerIn möchte die Anwendung immer und überall, auch ohne Internetzugang zu nutzen.}\\
+  {Die Anwendung muss unabhängig vom Netzwerkstatus funktionieren.}\\
   \midrule
   %
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F2}} &
   \multicolumn{1}{p{0.95\textwidth}}
-  {Ich als Nutzerin möchte, dass die Kontaktliste schnell und effizient geladen wird, um Zeit zu sparen.}\\
+  {Die Anwendung soll fähig sein den Netzwerkstatus zu ändern.}\\
   \midrule
   %
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F3}} &
   \multicolumn{1}{p{0.95\textwidth}}
-  {Ich als NutzerIn möchte jeden Kontakteintrag finden, um zu wissen ob ich ihn schon gespeichert habe.}\\
+  {Die Anwendung muss fähig sein die Kontakte unabhängig vom Netzwerkstatus zu laden, sofern diese einmal aus dem Netzwerk geladen wurden.}\\
   \midrule
   %
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F4}} &
   \multicolumn{1}{p{0.95\textwidth}}
-  {Ich als NutzerIn möchte Einträge immer und überall, auch ohne Internetzugang, erstellen, editieren oder löschen können, um meine Liste zu verwalten.}\\
+  {Die Anwendung muss die Möglichkeit bieten, unabhängig vom Netzwerkstatus einen Kontakt anzulegen, zu bearbeiten oder zu löschen.}\\
   \midrule
   %
   \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F5}} &
   \multicolumn{1}{p{0.95\textwidth}}
-  {Ich als NutzerIn möchte keine in der Anwendung gespeicherten Daten verlieren.}\\
+  {Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persisitieren, identifizieren können und versionieren.}\\
+  \midrule
+    %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F6}} &
+  \multicolumn{1}{p{0.95\textwidth}}
+  {Die Anwendung muss die lokal gespeicherten Kontakte mit denen auf der Serverdatenbank persistierten synchronisieren, sobald die Anwendung mit dem Internet verbunden ist.}\\
+  \midrule
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F7}} &
+  \multicolumn{1}{p{0.95\textwidth}}
+  {Die Anwendung muss die Möglichkeit bieten die Konfliktmanagementstrategien der zu untersuchenden Technologien zu evaluieren.}\\
+  \midrule
+    %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F8}} &
+  \multicolumn{1}{p{0.95\textwidth}}
+  {Die Anwendung soll Konflikte speichern, sofern diese auftreten.}\\
+  \midrule
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F9}} &
+  \multicolumn{1}{p{0.95\textwidth}}
+  {Die Anwendung muss die Möglichkeit bieten die Konflikte zu lösen, sofern diese auftreten.}\\
+  \midrule
+  %
+  \multicolumn{1}{l}{\cellcolor[HTML]{cffcc2}\textbf{F10}} &
+  \multicolumn{1}{p{0.95\textwidth}}
+  {Die Anwendung muss sicherstellen, dass auf keinen Fall Daten verloren gehen.}\\
+  %
   % end
   \bottomrule \cellcolor[HTML]{FFFFFF}
   \vspace{0.1cm}\\
@@ -38,11 +64,6 @@
   \caption{Funktionale Anforderungen}
   \label{tab:funcreq}\\
 \end{longtable}
-
-
 %
 %
-\sub{Konfliktmanagement}
-
-    % \subitem Operationen müssen dem Objekt/Eintrag zugeordnet werden
-  % \item Delta berechnen [alle Kontakte -- lokal existierende Kontakte]
+% \sub{Konfliktmanagement}
