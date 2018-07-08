@@ -5,11 +5,7 @@
 \def \logicalclock {Eine Logische Uhr ist eine Komponente die dazu dient, dem Datenobjekt einen eindeutigen Zeitstempel zuzuweisen. Die bekanntesten Verfahren für Logische Uhren in verteilten Systemen sind die Lamport-Uhr und die Vektoruhr. Beide verwenden Zähler die sich bei jedem Ereignis erhöhen. Einfach gesagt besteht die Lamport-Uhr aus einem Zeitstempel und einem Zähler, die Vektoruhr aus einem Zeitstempel und einem Vektor -- einer Liste aus Zählern.}
 %
 %
-\todo{Muss bei Implementation nicht unbedingt zum Konflikt kommen. Szenarien beschreiben den worst case! Es geht schließlich um Konflikte.}\\
-\todo{Quellenangaben zu den Szenarien (Wikipedia, Interview...)}
-%
 \begin{description}[leftmargin=0.5cm,style=nextline]
-  %
   %
   % ID
   \item[Szenario ID0 -- UUID:]
@@ -63,8 +59,7 @@
 \subsubsection*{Ergebnis}
 Die Szenarien \it{ID0} und \it{ID1} beschreiben die Identifizierung einzelner Kontakte. Eine eindeutige Identifizierung des Kontakts ist im Szenario \it{ID0}, mittels der Verwendung einer \gls{UUID}, gewährleistet.\\
 % Die Szenarien \it{V1}, \it{V2} und \it{V4}, \it{V5} beschreiben Situationen mit demselben Ausgangspunkt. In einem Fall kommt zu keinem Konflikt, in dem nächsten schon. Deswegen können \it{V1} und \it{V2}, sowie \it{V4} und \it{V5} zusammengefasst werden.
-Es wird deutlich, dass es in jedem Fall zu einem Konflikt kommen kann. Es gilt zu unterscheiden in welchen Fällen mit Konflikten umgegangen werden kann und in welchen Daten verloren gehen.\\
-\todo{Grafik?}\\\\
+Es wird deutlich, dass es in jedem Fall zu einem Konflikt kommen kann. Es gilt zu unterscheiden in welchen Fällen mit Konflikten umgegangen werden kann und in welchen Daten verloren gehen.
 % \b{Probleme?}\\
 % ID1: sprechender Schlüssel ist nicht eindeutig\\
 % V0: Es kann zum Konflikt gehen weil die Version von allen Parteien gleichermaßen erhöht werden kann\\
