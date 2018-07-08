@@ -18,14 +18,11 @@ Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur 
 %
 % Konflikte   -------------------------------------------------------------
 %
-\section{\label{sec:konfliktszenarien}WIP Szenarien zur Konfliktentstehung}
+\section{\label{sec:konfliktszenarien}Szenarien zur Konfliktentstehung}
 Im Anwendungsbeispiel einer kollaborativen Kontaktliste können mehrere Personen die Liste verwalten. Oder eine Person benutzt die Anwendung auf mehreren Geräten, was zum selben Ergebnis führt:
 Die Komplexität wird durch mehr Parteien -- beliebig viele Clients -- erhöht.
-Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle (\it{b,c}) eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\
-\todo{Muss bei Implementation nicht unbedingt zum Konflikt kommen. Szenarien beschreiben den worst case! Es geht schließlich um Konflikte.}\\
-Folgende Situationen können eintreten:
-\todo{Quellenangaben zu den Szenarien (Wikipedia, Interview...)}
-
+Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle (\it{b,c}) eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\\\
+Aus einem Interview mit \todo{Jan Lenhardt\footnote{Eine berühmte Person}} ergeben sich unterschiedliche, angewandte Vorgehensweisen Objekte für die Verwendung in verteilten Systemen zu identifizieren und versionieren. Nachfolgend werden diese Vorgehensweisen berücksichtigend, Konfliktszenarien erarbeitet. Es ist zu erwähnen, dass es bei diesen Methoden nicht immer zu Konflikten kommen muss. Da es Thema dieser Arbeit ist, wird für jede Variante nur der ungünstigste Fall, der Konfliktfall aufgeschrieben.
 % \highlight{Damit die Einträge sortiert und gefiltert aus der Datenbank geladen werden können, werden sie mit einem Index versehen. Jeder neue Eintrag bekommt automatisch einen höheren Index. Die aktualisierten Objekte sollen ebenfalls geladen werden, aber keinen neuen Index bekommen. Deswegen gibt es neben dem Datensatz \sc{Adressbucheinträge} zusätzlich den der \sc{Aktualisierungen} mit einem sich automatisch erhöhendem Index \it{und der Referenz zum Adressbucheintrag}. \todo{eigenes Szenario?}. Mit jeder Aktualisierung oder Löschung eines Kontakts wird im Aktualisierungsdatensatz der Index durch einen neuen ersetzt. So hat jede Kontakt-ID eine Aktualisierungs-ID und ein Eintrag wird auch nach mehrmaligem Aktualisieren nicht mehrfach geladen.}\\
 %
 \input{chapters/4szenarien/konflikte}\\\\
