@@ -1,5 +1,5 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
-Eine Anwendung, die für den Offline-Gebrauch entwickelt wurde, ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit.
+Eine offlinefähige Anwendung ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit.
 Dieses Kapitel beschreibt die grundlegenden Optionen eine Anwendung offlinefähig zu machen, geht im Speziellen auf Konflikte und deren Lösungsstrategien ein. 
 %
 % Offline-First
@@ -12,7 +12,6 @@ Diese Daten müssen zuerst auf dem Endgerät gespeichert werden, um offline erre
 Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz. Daten, die zuerst auf dem Endgerät gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.\\
 Gibt es eine serverseitige Datenbank, müssen die Daten zwischen Server und Client synchronisiert werden. Ist die Anwendung kollaborativ, muss die Synchronisation zwischen allen Beteiligten stattfinden. Synchronisation erfordert den Umgang mit Konflikten, denn es dürfen auf keinen Fall Daten verloren gehen.\\\\
 % Harte, weiche, mittlere Probleme (verschiedene Stufen von offlinefähig?)
-
 Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Dateinspeicherung und deren Synchronisation mit einer serverseitigen Datenbank auf.
 %
 % Cache ServiceWorker AppCache
