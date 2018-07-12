@@ -1,4 +1,3 @@
-\sub{Aufbau der React Komponenten ?}
 React ist eine Open-Source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die Komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
 Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten aus den \tt{props} nehmen.
 \tt{Props} sind Daten die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
@@ -66,7 +65,7 @@ Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mi
 %
 Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs.
 Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
-Für den Fall, dass von dem angefragtem \gls{API} der Statuscode 500 zurückkommt oder der Server nicht läuft, wird die im \tt{rollback} definierte Aktion gefeuert.\\
+Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
 Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben.
 Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
 %

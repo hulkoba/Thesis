@@ -39,54 +39,14 @@ In der generierten \tt{package.json}--Datei (vgl. \autoref{fig:init2}), befinden
 %
 % React Komponenten
 %
-\input{chapters/6konzept/aufbau}
+\sub{Aufbau der React Komponenten}
+\input{chapters/6konzept/react-komponenten}
 %
 %
 % Architektur
 %
 \section{WIP Architektur}
-Die zu erstellenden Prototypen erhalten die Namen \it{amilia-qouch} und \it{amilia-rdx}, wobei Amilia der Name ist, der sich in den Beispielkontakten in den Szenarien wiederfindet. Die Abkürzung \it{rdx} steht für Redux und zeigt, dass dieser Prototyp \sc{Redux Offline} verwendet. Die Endung \tt{qouch} soll die Symbiose von CouchDB und PouchDB darstellen. Der Buchstabe Q klingt wie das hart ausgesprochene C in Couch und wenn man das kleine Q horizontal spiegelt, sieht man das P für Pouch.\\\\
-Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusammen, welche in \autoref{fig:uml} veranschaulicht werden. Die Abbildung stellt ein Komponentendiagramm dar. Es handelt sich hierbei nicht um das UML Komponentendiagramm, sondern um ein eigens entworfenes. Die Bezeichnung ist durch die Darstellung von React Komponenten begründet.\\\\
-Jeder Kasten repräsentiert eine Komponente, deren Bezeichnung im Kopf steht.
-Alle Komponenten auf der linken Seite können den Appstatus nicht manipulieren. Sie können nur die von der Elternkomponente durchgereichten Funktionen aufrufen. Anhand der Linien ist abzulesen auf welche Funktionen und Eigenschaften die View--Komponenten Zugriff haben.
-%
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{uml}
-  \grayRule
-  \caption[Komponentendiagramm]{Komponentendiagramm der Prototypen}
-  \label{fig:uml}
-\end{figure}
-%
-Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der Anwendung. Er definiert die graphische Oberfläche und stellt alle notwendigen Funktionen bereit. Sie hat einen internen \tt{state} in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der \tt{state} an der blauen Schrift zu erkennen.
-Das Objekt \tt{editView} zeigt, welche Ansicht -- Liste oder Formular -- gerade aktuell ist und speichert den im Formular zu ladenden Kontakt.
-Wie das Kontaktobjekt aufgebaut ist zeigt der blaue Kasten im Diagramm.
-Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne \tt{state} aktualisiert und ein erneutes Rendern der Komponente eingeleitet. Dann wird entsprechend die Liste oder das Formular gerendert.\\
-%
-Der \tt{Header} implementiert das externe Modul \tt{react-detect-offline} und kann so den Netzwerkstatus anzeigen. Die Komponente hat Zugriff auf die \tt{toggleEdit}--Funktion und einen Knopf, der an diese gebunden ist. Damit kann das Rendern des Kontaktformulars eingeleitet werden.
-Dieser Knopf soll nur angezeigt werden, wenn die Liste aktiv ist. Diese Information ist in dem  Attribut \tt{isOpen} abzulesen.\\
-Die \tt{ContactList} repräsentiert die Kontaktliste und wird initial gerendert. Hier werden alle Kontakte als Liste dargestellt.
-Es kann das Bearbeiten, durch den Aufruf der durchgereichten Funktion \tt{toggleEdit()} eingeleitet werden. Durch den Aufruf von \tt{remove"-Contact()} wird der Kontakt gelöscht.\\
-%
-Die Komponente \tt{ContactForm} zeigt, sofern vorhanden, alle im Kontakt gespeicherten Daten an.
-Diese können hier bearbeitet werden.
-Gibt es keine Kontaktdaten die geladen werden kann, kann hier ein neuer Kontakt angelegt werden.
-Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt oder abgebrochen werden kann. Für Ersteres hat sie Zugrifg auf die Funktionen \tt{addContact} und \tt{editContact}, für Letzteres kann sie \tt{toggleEdit()} aufrufen.\\
-Sie ist neben \tt{Contacs} die einzige Komponente mit einem internen \tt{state}. Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ``lauschen``. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
-\todo{Konflikt--Dialog}\\\\
-%
-% 
-%
-\todo{Backend: Implementierung bei qouch nicht notwendig. Nur Installation von Couch.\\ 
-Für Redux Offline: Server der alle \gls{CRUD} Operationen unterstützt und JSON Datei zur Persisierung ( DB Ersatz?)  um Ergebnisse nicht zu verfälschen UND Redux- store, actions, Reducer}
-% Client - Server - Modell
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{qouch-model}
-  \grayRule
-  \caption{Client-Server-Modell}
-  \label{fig:qouch-model}
-\end{figure}
+\input{chapters/6konzept/architektur}
 %
 % Speicherung & Sync
 %

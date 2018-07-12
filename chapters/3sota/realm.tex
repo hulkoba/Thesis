@@ -1,6 +1,6 @@
 \section{\label{sub:realm}Realm}
-Realm ist eine Backendtechnologie für mobile Anwendungen und umfasst die Realm Datenbank und den Realm Object Server. Beide Technologien sind quelloffen, jedoch nicht kostenfrei~\cite{realm}.\\
-Die Realm Datenbank ist eine objektorientierte, plattformübergreifende lokale Datenbank die eine Echtzeitsynchronisation mit dem Realm Object Server.
+Realm ist eine Backendtechnologie für mobile Anwendungen und umfasst die Realm Datenbank und den Realm Object Server. Die Datenbank ist quelloffen, der Object Server jedoch nicht -- dieser ist außerdem nicht kostenfrei~\cite{realm}.\\
+Die Realm Datenbank ist eine objektorientierte, plattformübergreifende lokale Datenbank die eine Echtzeitsynchronisation mit dem Realm Object Server bereitstellt.
 Der Object Server fungiert als \gls{Middleware}-Komponente in der mobilen \gls{App} und handhabt unter anderem die Ereignisbehandlung und Datensynchronisation. Im Zusammenspiel ermöglichen die beiden Technologien die Erstellung von offlinefähigen, kollaborativen, mobilen Anwendungen~\cite{realm_whitepaper}.\\\\
 Zur Offline First Funktionalität stellt Realm eine umfassende Lösung bereit.
 Die lokale Realm Datenbank unterstützt die Echtzeitsynchronisation von Daten sodass alle Änderungen sofort automatisch gesendet werden. Das Synchronisationsprotokoll komprimiert statt dem gesamten Objekt nur die marginalen Änderungen und synchronisiert sie auf dem Endgerät und dem Server. Zusätzlich zu den Daten werden die spezifischen Operationen erfasst. 
