@@ -33,14 +33,31 @@ Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der ein
 % 
 %
 Eine Backendimplementierung ist für den Prototypen \it{amilia-qouch} nicht notwendig, da dies bereits durch die Verwendung von CouchDB gegeben ist.
+Die \autoref{fig:qouch-model} skizziert die Architektur von \it{amilia-qouch}. Die Contacts Komponente fungiert als Model. Sie handhabt die Daten die in den View Komponenten angezeigt werden und speichert sie in der PouchDB.Die PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in das Model.  
 % Client - Server - Modell
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{qouch-model}
+  \includegraphics[width=0.8\textwidth]{qouch-model}
   \grayRule
-  \caption{Client-Server-Modell}
+  \caption{Client-Server-Modell des Prototypen \it{amilia-qouch}}
   \label{fig:qouch-model}
 \end{figure}
 %
 Obwohl Redux Offline nach eigener Aussage die Datenbank ersetzt~\cite{redux-offline}, stellt es keine Serverdatenbank zur Verfügung.
 Deswegen wird ein Node Server erstellt der alle \gls{CRUD} Operationen unterstützt. Die Kontakte werden in einer \gls{JSON} Datei persistiert.
+Die \autoref{fig:rdx-model} zeigt sehr gut, dass der Redux Store in \it{amilia-rdx} die PouchDB \it{amilia-pouch} ersetzt.
+Dabei handelt es sich um den Redux Store, der dank Redux Offline alle Daten in einer lokalen Datenbank speichert.
+Die im \it{amilia-qouch} verwendete CouchDB wird von dem Server und einer \gls{JSON} Datei ersetzt.
+%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{rdx-model}
+  \grayRule
+  \caption{Client-Server-Modell des Prototypen \it{amilia-rdx}}
+  \label{fig:rdx-model}
+\end{figure}
+% 
+Der Datenfluss ist derselbe wie im Model des Prototyps \it{amilia-qouch} mit dem Unterschied, dass der Store und der Server sich nicht automatisch synchronisieren.
+Der Store schickt zwar automatisch die Daten an den Server sobald er mit dem Internet verbunden ist, aber die andere Richtung ist ist das nicht implementiert.
+Deswegen werden nach jeder Aktion, die Kontakte vom Server geladen.
+% Todo: werden nur die geladen die es noch nicht gibt? 
