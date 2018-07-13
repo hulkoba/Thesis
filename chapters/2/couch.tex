@@ -7,6 +7,9 @@ Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Fehler/Konflikte 
 \it{Das CouchDB Replikationsmodell erlaubt eine nahtlose, peer-to-peer (direkte) Datensynchronisation zwischen beliebig vielen Geräten. Das CouchDB Replikationsprotokoll ist in CouchDB selbst implementiert, das die Serverkomponente abdeckt. Dann gibt es das PouchDB-Projekt, das dasselbe Protokoll in JavaScript implementiert, das auf Browser- und Node.js-Anwendungen abzielt. das deckt Ihre Kunden und dev-Server ab. Schließlich gibt es Couchbase Mobile und Cloudant Sync, die auf iOS und Android laufen und das CouchDB Synchronisationsprotokoll in Objective-C bzw. Java implementieren.}\\
 Vektoruhr~\footnote{\url{https://en.wikipedia.org/wiki/Vector_clock}} \\
 content addressable versions: Idee: Nimm den Objektinhalt (content) und jag ihn durch eine \gls{Hashfunktion}\\
+%
+Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
+%
 \subsub{schlussendliche Konsistenz}
 \subsub{Lokale Konsistenz}
 \subsub{Verteilte Konsistenz}

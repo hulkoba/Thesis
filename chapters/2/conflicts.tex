@@ -16,21 +16,24 @@ Gareth Wilson beschreibt in seinem Artikel die acht Irrtümer der verteilten Dat
   \item Die Datentransportkosten sind gleich null
   \item Das Netzwerk ist homogen
 \end{enumerate}
-Aus diesen irrtümlichen Annahmen über das Netzwerk ergeben ein Fehlerszenarien. So kann es passieren, dass der zweite Computer entweder sehr weit entfernt, sehr beschäftigt oder ausgeschaltet ist. Diese Fehlerszenarien können dazu führen, dass ein Konflikt entsteht.\\
-Anhand des folgenden Beispiels wird ein mögliches Fehlerszenario aufgegriffen.
-Zwei Personen treffen sich im Zug und verstehen sich auf Anhieb sehr gut. Person A, nennen wir sie Amilia, gibt Person B, nennen wir sie Berta, ihre Telefonnummer. Der Zug fährt durch einen Tunnel und das Netzwerk bricht ab als Berta sie in ihr Adressbuch, das in Form einer \gls{App} auf ihrem Laptop gespeichert ist, schreibt. 
-Amilia dikiert ihre Telefonnummer falsch, mit einem Zahlendreher, weil sie die Nummer noch nicht lange hat. 
+Aus diesen irrtümlichen Annahmen über das Netzwerk ergeben sich Fehlerszenarien. So kann es passieren, dass der zweite Computer entweder sehr weit entfernt, sehr beschäftigt oder ausgeschaltet ist. Diese Fehlerszenarien können dazu führen, dass ein Konflikt entsteht.\\
+Anhand des folgenden Beispiels wird ein mögliches Fehlerszenario für den Fall des unzuverlässigen Netzwerks aufgegriffen.
+Zwei Personen treffen sich im Zug und verstehen sich auf Anhieb sehr gut. Person A, nennen wir sie Amilia, gibt Person B, nennen wir sie Berta, ihre Telefonnummer. Der Zug fährt durch einen Tunnel und das Netzwerk bricht ab als Berta sie in ihr Adressbuch, das in Form einer \gls{App} auf ihrem Laptop gespeichert ist, schreibt.
+Amilia dikiert ihre Telefonnummer falsch, mit einem Zahlendreher, weil sie die Nummer noch nicht lange hat.
 Zur Sicherheit schickt Amilia Berta ihre Nummer zusätzlich per E-Mail. Berta schaltet ihren Laptop aus, weil sie sich mit Amilia unterhalten möchte.
-Am Abend ist Berta zu Hause angekommen und sie speichert Amilias Nummer aus der E-Mail in ihrem Adressbuch.
-Jetzt gibt es Amilias Telefonnummer mit unterschiedlichen Informationen in Bertas Adressbuch. Es besteht ein Konflikt.\\\\
+Am Abend ist Berta zu Hause angekommen und sie speichert Amilias Nummer aus der E-Mail in ihrem Adressbuch auf ihrem stationären Desktop PC.
+Jetzt gibt es Amilias Telefonnummer mit unterschiedlichen Informationen in Bertas Adressbuch auf verschiednene Geräten.
+Wenn Berta am nächsten Tag ihren Laptop startet und das Adressbuch sich mit dem auf dem PC synchronisiert besteht ein Konflikt. Die falsche Telefonnummer wird gespeichert und die richtige ist verloren.\\\\
 %
 %
 Konflikte sind in zwei Kategorien einzuteilen. Es gibt solche, die vom System gelöst werden können und welche die eine spezielle Behandlung brauchen.
 Gibt es eine gleichzeitige Änderung an unterschiedlichen Stellen eine Dokuments muss das kein Problem darstellen.
-Die Änderungen können einfach zusammengefügt werden. Das Dokument kann beide Aktualisierungen erhalten.
-Diese Prozedur wird \it{merge} genannt und wird unter anderem von Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung angewandt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
-Wurde eine Änderung an ein und derselben Stelle und zur gleichen Zeit durchgeführt, entsteht ein Konflikt bei dem nicht festgestellt werden kann, welche der beiden Versionen die richtige ist.
-Diese Art von Konflikten sollten von Menschen gelöst werden wenn sichergestellt werden soll, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
+Das Dokument kann beide Aktualisierungen erhalten indem die Änderungen zusammengefügt werden.
+Diese Prozedur wird \it{merge} genannt und wird unter anderem von Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung, angewandt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
+
+Die Konflikte die durch die gleiche Änderung an ein und derselben Stelle des Dokuments entstehen, benötigen eine aufwändigere Behandlung.
+Es muss festgestellt werden welche Version die korrekte ist und gespeichert werden soll.
+Zur Lösung dieses Problems wurden verschiedene Managementstrategien entworfen die im Folgenden vorgestellt werden.
 %
 %
 % \begin{description}[leftmargin=0.5cm,style=nextline]
