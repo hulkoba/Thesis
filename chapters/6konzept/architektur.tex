@@ -27,8 +27,10 @@ Gibt es keine Kontaktdaten die geladen werden kann, kann hier ein neuer Kontakt 
 Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt oder abgebrochen werden kann.
 Für Ersteres hat sie Zugrifg auf die Funktionen \tt{addContact} und \tt{editContact}, für Letzteres kann sie \tt{toggleEdit()} aufrufen.\\
 Sie ist neben \tt{Contacs} die einzige Komponente mit einem internen \tt{state}.
-Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ``lauschen``. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
-\todo{Konflikt--Dialog}\\\\
+Dieser wird für die Ereignishandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ''lauschen''. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
+\todo{Redux Offline???}\\
+Kommt es beim Lesen aller Kontakte oder beim Hinzufügen, Bearbeiten oder Löschen eines Kontakts zum Konflikt, werden mittels \tt{getConflictRevisions()} die beiden Versionen des konfliktbehafteten Kontakts ermittelt. Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfiktdialog übergeben, der sich prompt öffnet. Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts} Komponente. Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev} Funktion mit dem ausgewähltem Kontakt als Parameter auf.
+Innerhalb von \tt{chooseRev} wird der übergebene Kontakt gespeichert und die konkurrierende Version verworfen.\\\\
 %
 % 
 %
