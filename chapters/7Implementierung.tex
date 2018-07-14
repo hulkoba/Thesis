@@ -1,11 +1,24 @@
 \chapter{\label{chap:implementierung}Implementierung der Prototypen}
 In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentiertem Lösungsweg die detaillierte Beschreibung der technischen Realisierung der Prototypen vorgestellt.\\
 Nach der Beschreibung der Konfigurationsdateien wird auf die Umsetzung der Szenarien eingegangen. Im Zuge dessen werden die implementierten Algorithmen vorgestellt, wobei sich der erste mit dem Auffinden der jeweilig nächsten relevanten Ampel befasst und der zweite die jeweils empfohlene Geschwindigkeit berechnet.
+%
+%
+%
 \section{package.json?}
 Vergleichen? build Vorgang? Ich glaube das würde ich rauslassen (habe mich hier an anderen Arbeiten orientiert)
+%
+%
+%
 \section{Hauptmodul Contacts}
 wird beim Start ausgeführt\\
 Stellt zenrale Funktionen bereit... Erklärung\\
+%
+%
+%
+\section{Konfliktmanagement}
+%
+%
+%
 \section{Umsetzung der Szenarien? Anforderungen?}
 Umsetzung der Funktionalität? \\
 Wie wurde CRUD implementiert?\\
@@ -15,44 +28,10 @@ Wie kann ein Konflikt erzeugt werden?\\
 % Installationsanleitung
 %
 \section{Installationsanleitung}
-\todo{build und so}
-Beide entwickelten Prototypen sind als öffentliche Repositories auf GitHub\footnote{Software--Entwicklungs--Plattform \url{https://github.com/}} zu finden. 
-Um sie zu installieren müssen folgende Schritte ausgeführt werden.
-\sub{amilia-qouch}
-1. Zuerst muss das Repository kopiert werden:
-\lstset{language=sh, caption={},belowcaptionskip=0.3\baselineskip}
-\begin{lstlisting}
-git clone git@github.com:hulkoba/amilia-qouch.git
-# oder
-git clone https://github.com/hulkoba/amilia-qouch.git
-\end{lstlisting}
-2. Dann muss man in das Verzeichnis navigieren und alle Abhängigkeiten installieren.
-\begin{lstlisting}
-cd amilia-qouch
-npm install
-\end{lstlisting}
-3. Mittels
-\begin{lstlisting}
-npm start
-\end{lstlisting}
-wird die Anwendung gestartet.
-%
-\sub{amilia-rdx}
-1. Auch hier muss das Repository zuerst kopiert werden:
-\lstset{language=sh, caption={},belowcaptionskip=0.3\baselineskip}
-\begin{lstlisting}
-git clone git@github.com:hulkoba/amilia-rdx.git
-# oder
-git clone https://github.com/hulkoba/amilia-rdx.git
-\end{lstlisting}
-2. Schritt zwei ist identisch mit dem in der \tt{amilia-qouch} Anleitung\\
-3. Mittels
-\begin{lstlisting}
-npm run server
-npm start
-\end{lstlisting}
-wird zuerst der Server, dann die Anwendung gestartet.
+\input{chapters/7implementierung/installation}
+
 %
 % Testfälle
 %
+\section{\label{sec:impl:test}Testfälle}
 \input{chapters/7implementierung/testfaelle}
