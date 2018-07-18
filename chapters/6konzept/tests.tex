@@ -1,0 +1,116 @@
+Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können werden manuelle Tests durchgeführt.\\
+Es müssen zunächst Konflikte erstellt werden, um zu untersuchen wie die verwendeten Technologien damit umgehen. Die zu entwickelnden Prototypen müssen auf mindestens zwei Geräten funktionieren und es muss die Möglichkeit bestehen den die Verbindung zum Internet oder zum Server zu unterbrechen.
+Eine Variante Konflikte entstehen zu lassen ist, einen Kontakt an derselben Stelle zu bearbeiten während ein oder beide Geräte offline sind. Daher ist es wichtig zu wissen, in welchem Status sich die Anwendung befindet.
+Die Testdurchläufe sind immer gleich und unabhängig vom Prototypen.\\\\
+%Der genaue Ablauf eines Testlaufs sieht wie folgt aus.\\\\ 
+Zuerst wird die \gls{App} in zwei Browsern gestartet. So kann die Verwendung von zwei Geräten simuliert werden. Da die Anwendung für die Browser Firefox und Chrome entwickelt wird, findet der Testdurchlauf auch in diesen beiden Browsern statt.\\
+Es werden die Aktionen 'Kontakt anlegen', 'Kontakt bearbeiten' und 'Kontakt löschen' in unterschiedlichen Kombinationen und beiden Browsern durchgeführt.
+In der ersten Testreihe sind beide Browser mit dem Internet verbunden und der Server ist an.
+In der zweiten Testreihe wird ein Browser für eine Aktion vom Internet getrennt indem er in den Offlinemodus geschalten wird. Ist die Aktion in beiden Browsern abgeschlossen, wird der Offlinemodus des einen Browsers deaktiviert, sodass sich beide synchronisieren können.
+In der dritten Testreihe wird der Server gestoppt, sodass beide Prototypen offline sind. Nachdem eine Aktion auf beiden Geräten vollständig durchgeführt wurde, wird der Server wieder gestartet und beide Anwendungen synchronisieren sich mit dem Server, oder der CouchDB.\\
+Jede Testreihe wird einmal, in interschiedlichen Netzwerkstatus der Anwendung durchgeführt, pro Reihe gibt es drei bis vier Testdurchläufe.
+In den Testreien eins und drei wird jeder genannte Testdurchlauf genau einmal durchgeführt.
+Für die zweite Testreihe kann es, je nachdem in welchem Broswer die Aktion zuerst durchgeführt wird, unterschiedliche Ergebnisse geben.
+Deswegen wird dort jeder Testdurchlauf zwei mal durchgeführt.
+Einmal wird die Aktion in der Anwendung die mit dem Internet verbunden ist zuerst gespeichert, dann die im Offlinemodus.\\
+Die folgende Tabelle veranschaulicht die durchzuführenden Testdurchläufe.
+%
+\begin{longtable}[c]{@{}
+>{\columncolor[HTML]{CFFCC2}}l lllll@{}}
+\toprule
+    \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Nr.}}
+    & \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Firefox online}}
+    & \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Firefox offline}}
+    & \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Chrome online}}
+    & \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Chrome offline}}\\ \hline \noalign{\vskip 0.1cm}
+\endfirsthead
+\endhead
+%
+% 
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{1a}}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{1b}}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{1c}}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}\\ 
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2a}}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2b}}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2c}}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2d}}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}\\ 
+  % \midrule
+  %   \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2d}}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}\\ 
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{3a}}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{anlegen}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{3b}}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{3c}}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}\\ 
+  \midrule
+  \multicolumn{1}{p{0.05\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{3d}}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}
+    & \multicolumn{1}{p{0.2\textwidth}}{}
+    & \multicolumn{1}{p{0.2\textwidth}}{löschen}\\ 
+  % end
+  \bottomrule \cellcolor[HTML]{FFFFFF}
+  \vspace{0.1cm}\\
+  \noalign{\hspace{0.0525\textwidth}\grayRule}
+  \caption{Testdurchläufe}
+  \label{tab:konzept:tests}\\
+\end{longtable}
+%
+%
+%
+Zur Auswertung der Tests werden alle Ausgangspositionen, Vorgänge und Ergebnisse dokumentiert werden.
+Für einen Testdurchlauf wird hierfür der Kontakt und um welchen Testdurchlauf es sich handelt aufgeschrieben.
+Außerdem wird festgehalten auf welchem der beiden Geräte die Aktion zuerst durchgeführt wurde, das erwartete und das tatsächliche Ergebnis.
+\todo{Das mit dem erwartetem Ergebnis ist komisch, denn ich weiß ja was rauskommt weil ich es implementiert habe...}
