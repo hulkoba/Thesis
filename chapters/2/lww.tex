@@ -1,3 +1,4 @@
-NoSQL bietet dies, indem es einen Zeitstempel von irgendeiner Art beibehält, der ihnen hilft, zu entscheiden, welcher Schreibvorgang zuletzt kam. Datenbanken wie DynamoDB\footnote{\url{https://aws.amazon.com/de/dynamodb/faqs/What_is_a_readwrite_capacity_unit}} oder Cassandra \footnote{\url{https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html}} verwenden LWW, um Schreibvorgänge zu verarbeiten.
-Bei diesen Leuten erfordern stark konsistente Schreibvorgänge das Schreiben in ein Quorum von Shards, wodurch Sie mehr Geld kosten.
-\highlight{Bei Amazon macht LWW sinn: Warenkorb - 2 Leute haben dasselbe, letzte Produkt im Warenkorb weil sie zb offline sind. Amazon verschenkt als Entschuldigung einen 20€ Gutschein, was deutlich billiger ist als die Implementierung einen sehr komplexen Algorithmusses...}
+Der \gls{LWW} Ansatz geht davon aus, dass Schreibvorgänge immer in der richtigen Reihenfolge ausgeführt werden. Der letzte an die Datenbank gesendete Schreibvorgang wird als korrekt angenommen.
+%Konflikte werden bei dieser Strategie ignoriert
+Diese Strategie ist leicht zu implementieren da lediglich festgestellt werden muss welche Manipulation die neuere ist, was durch die Vergabe eines Zeitstempels problemlos zu errechnen ist ~\cite{lww}.\\
+%\quote{When multiple updates are applied to the same column, Cassandra uses clientprovided timestamps to resolve conflicts}
