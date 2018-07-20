@@ -1,14 +1,6 @@
 %
-% Strategien
-%
-% \section{Sync in verteilten Systemen}
-% Es stellt sich heraus, dass die Implementierung dieser Art von Echtzeit-Zusammenarbeit alles andere als trivial ist.
-% Im Folgenden werden die drei Strategien \gls{OT}, \gls{CRDT} und \gls{LWW} vorgestellt plus CouchDBs Peplikationsmodell.
-%
 % CRDT
 %
-%\input{chapters/2/crdt}
-\sub{WIP Conflict-free replicated data type}
 Die Idee von \glspl{CRDT} ist, dass jeder "Typ" (wie ein Einkaufswagen) mit Intelligenz handelt, um Konflikte automatisch zu lösen.\\\\
 CRDTs sind Objekte, die ohne teure Synchronisation aktualisiert werden können. Sie konvergieren schließlich, wenn alle gleichzeitigen Aktualisierungen kommutativ\footnote{Unverändert bei Vertauschen der Operanden} sind und wenn alle Aktualisierungen schließlich von jeder Replik ausgeführt werden ~\cite{crdt_shapiro}.
 Um diese Garantien zu geben, müssen diese Objekte bestimmte Kriterien erfüllen, welche im Folgenden beschrieben werden ~\cite{crdt_shapiro2}.
