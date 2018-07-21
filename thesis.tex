@@ -1,27 +1,31 @@
-\documentclass[a4paper,
-oneside,
-11pt,
-abstracton,
-% parskip, % add space between paragraphs
-headsepline, % get a line under the header
+\documentclass[
+	a4paper,
+	oneside,
+	11pt,
+	% abstracton,
+	% parskip, % add space between paragraphs
+	headsepline, % get a line under the header
 ]{scrreprt} %
 
 \input{config}
 
 \begin{document}
 \nocite{*}
-\setlist{noitemsep}  %% verringert Zeilenabstand bei aufzaehlungen
+% verringert Zeilenabstand bei aufzaehlungen
+\setlist{noitemsep}
 \pagestyle{empty}
 
 \input{extra/Deckblatt}
-% \input{chapters/Abstract}
 
-\renewcommand{\contentsname}{Inhalt} %Inhaltsverzeichnistitel = Inhalt
+%Inhaltsverzeichnistitel = Inhalt
+\renewcommand{\contentsname}{Inhalt}
+% Ein kleiner Abstand zu den Kapiteln im Inhaltsverzeichnis (toc)
+\addtocontents{toc}{\protect\vspace*{\baselineskip}}
 \tableofcontents
 \cleardoublepage
-\pagestyle{headings} %Ab hier die Kopf-/Fusszeilen.
-
-
+%Ab hier die Kopf-/Fusszeilen
+\pagestyle{headings}
+%
 \include{chapters/1Einleitung}
 \include{chapters/2Grundlagen}
 \include{chapters/3StateOfTheArt}
@@ -31,34 +35,29 @@ headsepline, % get a line under the header
 \include{chapters/7Implementierung}
 \include{chapters/8Test}
 \include{chapters/Fazit}
-
 %
 %	APPENDICES
 %
-
-%% Ein kleiner Abstand zu den Kapiteln im Inhaltsverzeichnis (toc)
-\addtocontents{toc}{\protect\vspace*{\baselineskip}}
 \include{extra/Acronym}
 \printglossary[type=\acronymtype, title=Abkürzungen, style=super]
 \printglossary[type=main,style=altlist]
-
 %
 %Abbildungsverzeichnis
 %
 \clearpage
 \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
-
+%
+% Quellcodeverzeichnis
+%
 \renewcommand\lstlistlistingname{Quellcodeverzeichnis}
-\lstlistoflistings%quellcodeverzeichnis
-
+\lstlistoflistings
 %
 % Literaturverzeichnis
 %
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliographystyle{alphadin}
 \bibliography{extra/literatur,extra/basics}
-
 %
 % Anhang
 %
@@ -70,8 +69,8 @@ headsepline, % get a line under the header
 \section*{CD-Inhalt}
 Auf der beigefügten CD befinden sich
 \begin{itemize}
-	\item Die schriftliche Ausarbeitung dieser Masterrarbeit im PDF-Format
-	\item Das erstellte Projekt
+	\item Die schriftliche Ausarbeitung dieser Masterarbeit im PDF-Format
+	\item Der Quellcode beider Prototypen
 \end{itemize}
-
+%
 \end{document}
