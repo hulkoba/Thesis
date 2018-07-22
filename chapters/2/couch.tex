@@ -1,24 +1,37 @@
 CouchDB verwendet Replikation um Änderungen an Dokumenten zwischen einzelnen Knoten zu synchronisieren.
-
-Dokumente werden versioniert
-
-Inkrementelle Replikation
-
-
-Aufgabe der Replikation von CouchDB ist die Synchronisation 2+n Datenbanken. Lösungen: Zuverlässige \b{Synchronisation} von Datenbanken auf verschiedenen Geräten. \b{Verteilung} der Daten über ein Cluster von DB-Instanzen die jeweils einen Teil des requests beantworten (Lastverteilung) und \b{Spiegelung} der Daten über geografisch weit verteilte Standorte.\\
-Durch die inkrementelle (schrittweise) Arbeitsweise kann CouchDB genau dort weitermachen wo es unterbrochen wurde wenn während der Replikation ein Fehler auftritt, beispielsweise durch eine ausfallende Netzwerkverbindung
-\it{Es werden auch nur die Daten übertragen, die notwendig sind, um die Datenbanken zu synchronisieren.}\\
-Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Fehler/Konflikte vernünftig zu behandeln statt anznehmen es träten keine auf (vgl. \cite{couchDB} S. 7f). Wie \hyperref[chap:conflict]{oben} beschrieben, gibt es in Verteilten Systemen einige Fehler die auftreten können.\\\\
+Die Aufgabe der Replikation von CouchDB ist die Synchronisation zweier oder mehrerer Datenbanken.
+Die Replikation in CouchDB erfolgt schrittweise. Alle Änderungen an Dokumenten werden periodisch zwischen den Servern kopiert.
+So muss die Verbindung zwischen den Servern nicht permanent bestehen, denn im Feherfall weiß CouchDB wo es unterbrochen wurde und kann an diesem Punkt die Arbeit fortsetzen.
+Außerdem ist so jeder Knoten unabhängig von den anderen und das System fällt nicht aus wenn dieser eine Knoten fehlerbehaftet ist.\\
+%
+Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Konflikte vernünftig zu behandeln statt anznehmen es träten keine auf.
+Das interne Replikationssystem besitzt eine automatische Konflikterkennung und --lösung.
+Wichtig für diesen Mechanismus sind die Revisionsnummern.
+Dokumente verden mit Revisionsnummern versioniert. Mit jeder Aktualisierung bekommt es eine neue Revision, die neben der alten gespeichert wird.
+Hat ein Dokument durch gleichzeitiges Bearbeiten in zwei unterschiedlichen datenbanke dieselbe Revisionsnumer, erkennt CouchDB den Konflikt und markiert es.
+Auch wenn CouchDb die gewinnende und die verlierende Revision festlegt, werden beide Versionen gespeichert.
+So kann im Entwicklungsprozess der Anwendung entschieden werden, wie mit den Konflikten umgegangen wird.
+Eine Variante wäre, sie von den AnwenderInnen lösen zu lassen (vgl. \cite{couchDB} S. 15ff).\\\\
+%
+%
+%
 \it{Das CouchDB Replikationsmodell erlaubt eine nahtlose, peer-to-peer (direkte) Datensynchronisation zwischen beliebig vielen Geräten. Das CouchDB Replikationsprotokoll ist in CouchDB selbst implementiert, das die Serverkomponente abdeckt. Dann gibt es das PouchDB-Projekt, das dasselbe Protokoll in JavaScript implementiert, das auf Browser- und Node.js-Anwendungen abzielt. das deckt Ihre Kunden und dev-Server ab. Schließlich gibt es Couchbase Mobile und Cloudant Sync, die auf iOS und Android laufen und das CouchDB Synchronisationsprotokoll in Objective-C bzw. Java implementieren.}\\
 content addressable versions: Idee: Nimm den Objektinhalt (content) und jag ihn durch eine \gls{Hashfunktion}\\
 %
 Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
 %
+%
+%
+\subsub{Replikation}
+%
+%
+%
+\subsub{Konfliktmanagement}
+%
 % \subsub{schlussendliche Konsistenz}
 \subsub{Eventual Consistency}
 \input{chapters/2/konsistent}
-\subsub{Lokale Konsistenz}
-\subsub{Verteilte Konsistenz}
-
-\subsub{Replikation?}
-\subsub{Konfliktmanagement}
+%Zuverlässige Synchronisation von Datenbanken auf verschiedenen Geräten.
+%Verteilung der Daten über ein Cluster von DB-Instanzen die jeweils einen Teil des requests beantworten (Lastverteilung) und \b{Spiegelung} der Daten über geografisch weit verteilte Standorte.\\
+% Durch die inkrementelle (schrittweise) Arbeitsweise kann CouchDB genau dort weitermachen wo es unterbrochen wurde wenn während der Replikation ein Fehler auftritt, beispielsweise durch eine ausfallende Netzwerkverbindung
+% \it{Es werden auch nur die Daten übertragen, die notwendig sind, um die Datenbanken zu synchronisieren.}\\
