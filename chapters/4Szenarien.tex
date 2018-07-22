@@ -6,7 +6,7 @@ Dafür werden zunächst Szenarien in der Netzwerkübetragung als Voraussetzung f
 %
 % Netzwerk Szanarien   --------------------------------------------------------
 %
-\section{\label{sec:netszenarien}Szenarien bei der Datenübertragung}
+\section{\label{chap:netszenarien}Szenarien bei der Datenübertragung}
 Im einfachen Anwendungsbeispiel einer Kontaktliste gibt es zwei Parteien die miteinander interagieren: die Anwendung als Client und der Server. Immer wenn beide Parteien miteinander kommunizieren möchten, kann eine der beiden offline sein.
 Der Client könnte zum Beispiel, ohne dass eine Technologie implementiert ist die Offlinestatus behandelt, einen Kontakt erstellen wollen. Der Kontakt kann aber nicht erstellt werden, da kein Netzwerk verfügbar ist.\\
 `Client push` steht dafür, dass der Client etwas an den Server schickt. `Server push/Client pull` beschreibt den Fall in dem der Client Daten vom Server anfragt, oder der Server Push-Nachrichten an den Client sendet.\\
@@ -18,7 +18,7 @@ Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur 
 %
 % Konflikte   -------------------------------------------------------------
 %
-\section{\label{sec:konfliktszenarien}Szenarien zur Konfliktentstehung}
+\section{\label{chap:konfliktszenarien}Szenarien zur Konfliktentstehung}
 Im Anwendungsbeispiel einer kollaborativen Kontaktliste können mehrere Personen die Liste verwalten. Oder eine Person benutzt die Anwendung auf mehreren Geräten, was zum selben Ergebnis führt:
 Die Komplexität wird durch mehr Parteien -- beliebig viele Clients -- erhöht.
 Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle \it{b} oder \it{c} eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\\\
