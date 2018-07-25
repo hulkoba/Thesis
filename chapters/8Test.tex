@@ -18,21 +18,4 @@ anlegen und bearbeiten, barbeiten und löschen, anlegen und löschen\\
 % Auswertung
 %
 \section{WIP Auswertung}
-\sub{WIP Implementierungsaufwand}
-\begin{description}[leftmargin=0.7cm,style=nextline]
-\item[Setup der App:] 
-Irrelevant und identisch wegen Create React App.\\
-\item[Einbinding der Technologien:] 
-\b{PouchDB und CouchDB:} gering, nur Installation und Anwendung der Pouch API\\
-Neue Instanz, Synchronisation ( 1 Zeile) und CRUD\\\\
-\b{Redux Offline:} komplex, da Redux eingesetzt und verstanden werden muss. Für komplexere Apps mag das generell besser sein, aber für den einfachen Anwendungsfall zu viel Overhead. Einbindung von Redux Offline war allerdings wenig aufwändig sobald Redux implementiert war.\\
-\item[Lesbarkeit des Codes:] 
-\b{PouchDB und CouchDB:} nicht mehr als erwartet und auch verständlich wenn man mit den Technologien nicht vertraut ist. Es liest sich so wie man es verwendet dank unmissverständlicher API.\\\\
-\b{Redux Offline:} Auch um den Code ohne Probleme lesen zu können muss man mit Redux vertraut sein. Ist das der Fall, ist trotzdem ein Blick in die Dokumentation von Redux Offline hilfreich, weil die Metaattribute nicht für sich selbst sprechen (effect, commit, rollback).\\
-\end{description}
-%
-\sub{WIP Offlinefunktionalität}
-\subsub{Offlinefähigkeit auf einem Gerät}
-\subsub{Offlinefähigkeit auf zwei Geräten}
-%
-\sub{WIP Konfliktmanagement}
+\input{chapters/8test/auswertung}
