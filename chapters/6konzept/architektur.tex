@@ -1,7 +1,9 @@
 Die zu erstellenden Prototypen erhalten die Namen \it{amilia-qouch} und \it{amilia-rdx}, wobei Amilia der Name ist, der sich in den Beispielkontakten in den Szenarien wiederfindet. Die Abkürzung \it{rdx} steht für Redux und zeigt, dass dieser Prototyp \sc{Redux Offline} verwendet. Die Endung \tt{qouch} soll die Symbiose von CouchDB und PouchDB darstellen. Der Buchstabe Q klingt wie das hart ausgesprochene C in Couch und wenn man das kleine Q horizontal spiegelt, sieht man das P für Pouch.\\\\
 Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusammen, welche in \autoref{fig:uml} veranschaulicht werden. Die Abbildung stellt ein Komponentendiagramm dar. Es handelt sich hierbei nicht um das UML Komponentendiagramm, sondern um ein eigens entworfenes. Die Bezeichnung ist durch die Darstellung von React Komponenten begründet.\\\\
 Jeder Kasten repräsentiert eine Komponente, deren Bezeichnung im Kopf steht.
-Alle Komponenten auf der linken Seite können den Appstatus nicht manipulieren. Sie können nur die von der Elternkomponente durchgereichten Funktionen aufrufen. Anhand der Linien ist abzulesen auf welche Funktionen und Eigenschaften die View--Komponenten Zugriff haben.
+Alle Komponenten auf der linken Seite sind View--Komponenten und können den Appstatus nicht manipulieren. Sie können nur die von der Elternkomponente durchgereichten Funktionen aufrufen.
+Anhand der Linien ist abzulesen auf welche Funktionen und Eigenschaften die View--Komponenten Zugriff haben. Es werden für jede Komponente nur die eigens implementierten Funktionen aufgelistet.\\
+Auf der rechten Seite stehen die Model--Komponenten. Sie manipulieren den Appstatus und entscheiden welche View--Komponente gerendert wird.
 %
 \begin{figure}[H]
   \centering
@@ -22,14 +24,17 @@ Die \tt{ContactList} repräsentiert die Kontaktliste und wird initial gerendert.
 Es kann das Bearbeiten, durch den Aufruf der durchgereichten Funktion \tt{toggleEdit()} eingeleitet werden. Durch den Aufruf von \tt{remove"-Contact()} wird der Kontakt gelöscht.\\
 %
 Die Komponente \tt{ContactForm} zeigt, sofern vorhanden, alle im Kontakt gespeicherten Daten an.
-Diese können hier bearbeitet werden.
-Gibt es keine Kontaktdaten die geladen werden kann, kann hier ein neuer Kontakt angelegt werden.
-Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt oder abgebrochen werden kann.
-Für Ersteres hat sie Zugrifg auf die Funktionen \tt{addContact} und \tt{editContact}, für Letzteres kann sie \tt{toggleEdit()} aufrufen.\\
-Sie ist neben \tt{Contacs} die einzige Komponente mit einem internen \tt{state}.
-Dieser wird für die Ereignisbehandler benötigt, die auf die Veränderung der einzelnen Eingabefelder zu ''lauschen''. Der zu bearbeitende Kontakt wird hier zwischengespeichert und dann als Ganzes an \tt{Contacts} gegeben.\\
-\todo{Redux Offline???}\\
-Kommt es beim Lesen aller Kontakte oder beim Hinzufügen, Bearbeiten oder Löschen eines Kontakts zum Konflikt, werden mittels \tt{getConflictRevisions()} die beiden Versionen des konfliktbehafteten Kontakts ermittelt. Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfiktdialog übergeben, der sich prompt öffnet. Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts} Komponente. Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev} Funktion mit dem ausgewähltem Kontakt als Parameter auf.
+Gibt es keine Kontaktdaten die geladen werden können, kann ein neuer Kontakt angelegt werden.
+In der View, dem \tt{ContaktForm} gibt es zum Hinzufügen und Bearbeiten des Kontakts Eingabefelder für den Namen, die E-Mail und die Telefonnummer des Kontakts.
+Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe mit denen die Aktion bestätigt oder abgebrochen werden kann.\\
+Der dazugehörige Ereignisbehandler befindet sich im \tt{FormContainer}. 
+Der ''lauscht' auf die Veränderung der einzelnen Eingabefelder und speichert alle Änderungen in einer Kopie des Kontakts im internen \tt{state} '.
+Wird die Aktion durch den entsprechenden Knopf bestätigt, wird die Kopie des Kontakts an \tt{Contacts} gegeben und dort entweder via \tt{addContact()} hinzugefügt, oder via \tt{editContact()} bearbeitet.
+Wenn die Aktion abgebrochen wird, ruft der \tt{FormContainer} die \tt{toggleEdit()} Funktion in der Hauptkomponente auf.\\\\
+%
+%
+Kommt es beim Hinzufügen, Bearbeiten oder Löschen eines Kontakts zum Konflikt, werden mittels \tt{getConflictRevisions()} die beiden Versionen des konfliktbehafteten Kontakts ermittelt.
+Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfiktdialog übergeben, der sich prompt öffnet. Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts} Komponente. Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev} Funktion mit dem ausgewähltem Kontakt als Parameter auf.
 Innerhalb von \tt{chooseRev} wird der übergebene Kontakt gespeichert und die konkurrierende Version verworfen.\\\\
 %
 % 
