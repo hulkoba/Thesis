@@ -1,0 +1,41 @@
+\sub{WIP Implementierungsaufwand}
+
+\subsub{Setup der \gls{App}}
+Irrelevant und identisch wegen Create React App.
+
+%
+\subsub{Einbinding der Technologien}
+\begin{description}[leftmargin=0.5cm,style=nextline]
+  \item[amilia-qouch]
+  gering, nur Installation und Anwendung der Pouch API\\
+  Neue Instanz, Synchronisation ( 1 Zeile) und CRUD
+  \item[amilia-rdx]
+  komplex, da Redux eingesetzt und verstanden werden muss. Für komplexere Apps mag das generell besser sein, aber für den einfachen Anwendungsfall zu viel Overhead. Einbindung von Redux Offline war allerdings wenig aufwändig sobald Redux implementiert war
+\end{description}
+%
+\subsub{Lesbarkeit des Codes}
+\begin{description}[leftmargin=0.5cm,style=nextline]
+  \item[amilia-qouch]
+  nicht mehr als erwartet und auch verständlich wenn man mit den Technologien nicht vertraut ist. Es liest sich so wie man es verwendet dank unmissverständlicher API.
+  %
+  \item[amilia-rdx] 
+  Um den Code ohne Probleme lesen zu können muss man mit Redux vertraut sein. Ist das der Fall, ist trotzdem ein Blick in die Dokumentation von Redux Offline hilfreich, weil die Metaattribute nicht für sich selbst sprechen (effect, commit, rollback).
+\end{description}
+%
+  \subsub{Menge des geschriebenen Quellcodes}
+  Beide Prototypen wurden mit React Create App erstellt. Die Menge des Codes die dadurch erzeugt wurde, wurde nicht mitgezählt. Genausowenig wie Kommentare und das geschriebene \gls{CSS}.
+  \begin{description}[leftmargin=0.5cm,style=nextline]
+    \item[amilia-qouch]
+    Dem \it{amilia-qouch} Prototypen wurden 371 Zeilen Code hinzugefügt.
+    \item[amilia-rdx] 
+    Dem \it{amilia-rdx} Prototypen wurden 582 Zeilen Code hinzugefügt.
+\end{description}
+  %
+  %
+  %
+  %
+\sub{WIP Offlinefunktionalität}
+\subsub{Offlinefähigkeit auf einem Gerät}
+\subsub{Offlinefähigkeit auf zwei Geräten}
+%
+\sub{WIP Konfliktmanagement}

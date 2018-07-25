@@ -1,0 +1,180 @@
+Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können wurden manuelle Tests durchgeführt.
+Die Art und Weise wie die Tests durchgeführt wurden, ist in \autoref{chap:konzept:test} detailliert beschrieben.\\
+App läuft auf Geräte / Browser, Aktionen werden durchgeführt.\\
+Ziel: Konfliktmanagement der Technologien testen. blabla sülz\\
+Ergebnis = Ergebnis nach der Synchronisation beider Geräte!\\ 
+erwartete Ergebnisse: was sollte auftreten wenn ich keine Daten verlieren möchte etc etc.
+Tatsächliches Ergebnis: Das Ergebnis das tatsächlich eintritt.
+Die Anwendungen sind so implementiert, dass es keine unterschiede zwischen den angezeigten Daten und denen in der Datenbank / JSON Datei gibt.
+Wenn im Ergebnis also steht: Kontact blah sieht sülz aus, heißt das er wird so in der UI angezeigt und befindet sich so in der Datenbank.\\
+Synchronisation: Neuladen bei rdx
+% 
+% 
+% 
+\sub{Online Online}
+Dies ist Durchführung der ersten Testreihe.
+Bei diesen Tests werden Aktionen ausgeführt während beide Geräte mit dem Internet verbunden sind.
+Diese Tests zeigen, dass die Anwendung grundsätzlich auf mehreren Geräten einsatzbereit ist.
+%
+\subsub{Kontakt anlegen}
+Ein Kontakt mit dem Namen 'Amilia Pond' wird in beiden Browsern nacheinander angelegt.\\\\
+\b{Erwartetes Ergebnis}\\
+Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.
+%
+\subsub{Kontakt bearbeiten}
+Der Kontakt mit dem Namen 'Amilia Pond' wird in beiden Browsern bearbeitet. Zuerst wird im Firefox die E-Mail Adresse ''amilia@pond.de'' hinzugefügt und gespeichert.
+Dann wird im Chrome die E--Mail Adresse des Kontakts geändert und gespeichert.\\\\
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakt löschen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+%
+%
+\sub{Offline Online}
+Dies ist Durchführung der zweiten Testreihe.
+Bei diesen Tests werden Aktionen ausgeführt während ein Browser mit dem Internet verbunden ist, der andere jedoch nicht.
+Der Browser ''Chrome'' wird in den Offlinestatus versetzt und "Firefox" bleibt online.
+% 
+\subsub{Kontakte anlegen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakte bearbeiten}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakt bearbeiten, selben Kontakt löschen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakte löschen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+%
+%
+\sub{Offline Offline}
+Dies ist Durchführung der dritten Testreihe.
+Bei diesen Tests werden Aktionen ausgeführt während beide Browser mit dem Internet, aber nicht mit dem Server verbunden ist.
+
+%
+\subsub{Kontakte anlegen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakte bearbeiten}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakt bearbeiten, selben Kontakt löschen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+%
+\subsub{Kontakte löschen}
+\b{Erwartetes Ergebnis}\\
+\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
+\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+% 
+% 
+% 
+% 
+\sub{Übersicht}
+Welche Erwartungen wurden von wem erfüllt und welche nicht.
+\begin{longtable}[c]{@{}
+>{\columncolor[HTML]{CFFCC2}}l llll@{}}
+\toprule
+    \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Durchlauf}}
+    & \multicolumn{1}{p{0.4\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Aktion}}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{\it{amilia-qouch}}}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{\it{amilia-rdx}}}\\ \hline \noalign{\vskip 0.2cm}
+\endfirsthead
+\endhead
+%
+% 
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Online Online}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \bottomrule
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Online Offline}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen und bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  % \midrule
+  %   \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2d}}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{löschen}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{}
+  %   & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}\\ 
+  \bottomrule
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Offline Offline}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten und löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  % end
+  \bottomrule \cellcolor[HTML]{FFFFFF}
+  \vspace{0.1cm}\\
+	\noalign{\hspace{0.0525\textwidth}\grayRule}
+  \caption{Testergebnisse}
+  \label{tab:test:tests}\\
+\end{longtable}
