@@ -10,8 +10,15 @@ Sobald dieser Schritt erledigt ist läuft CouchDB auf \tt{localhost:5984} und is
 Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit die sowohl Callbacks, Promises als auch asynchrone Funktionen unterstützen. 
 Das Listing \ref{code:pouch} führt alle benötigeten Funktionen auf und zeigt die notwendigen Schritte zur Synchronisation der lokalen PouchDB und CouchDB.\\
 Die lokale Datenbank wird in Zeile eins erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
-Um eine CouchDB Instanz zu erzeugen ist der Aufruf in Zeile zwei mit der URL zur CouchDB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
-Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der CouchDB, ist lediglich der Aufruf in Zeile vier erforderlich. Im optionalen Parameter können zum Beispiel FIlter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.
+Um eine CouchDB Instanz zu erzeugen ist der Aufruf in Zeile zwei mit der URL zur Couch"-DB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
+Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der Couch"-DB, ist lediglich der Aufruf in Zeile vier erforderlich. Im optionalen Parameter können zum Beispiel FIlter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\
+% GET
+Der Aufruf \tt{localDB.allDocs()} in Zeile sieben fragt alle in der lokalen Datenbank gespeicherten Kontakte an.
+Ohne den Parameter \tt{include\_docs: true} werden nur die ID, \tt{\_id} und die Revisionsnummer, \tt{\_rev} eines jeden gespeicherten Kontakts zurückgegeben.
+Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert. Alle konfliktbehafteten Kontakte haben nun das Attribut \tt{\_conflicts}. Dort bedindet sich eine Liste mit allen konkurrierenden Revisionen.\\\\
+%
+Für die nachfolgenden Aufrufe gibt es mehrere Varianten. Eine Anleitung zu dem Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments das Modul PouchDB Upsert zu verwenden. Jedes Mal wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden. Zum praktischen Umgang empflieht PouchDB die Aktion zu wiederholen, bis sie erfolgreich war.
+Dazu kann PouchDB Upsert verwendet werden. Es fügt ein neues Dokument hinzu wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}. Konflikte treten so trotzdem auf und alle konfliktbehafteten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.\\
 %
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -21,13 +28,15 @@ Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und d
 \end{center}
 %
 % CREATE
-Die Zeilen sieben bis zehn zeigen wie ein Kontakt erzeugt werden kann. Bevor das geschieht wird die ID gesetzt. PouchDB bietet zur Erstellung von Objekten auch \tt{localDB.post()} an. Bei dessen Verwendung wird \tt{\_id} von PouchDB automatisch generiert. Diese Variante wird jedoch nicht empfohlen, weil dann die IDs zufällig sind, die Objekte nicht danach sortiert werden können~\cite{pouch-create}.\\
+Die Zeilen 13 bis 16 zeigen wie ein Kontakt erzeugt werden kann. Bevor das geschieht wird eine ID erstellt die aus dem aktuellen Zeitstempel besteht. Diese wird dann per PouchDB Upsert in dem neuen Dokument gespeichert.\\
+% Bei dessen Verwendung wird \tt{\_id} von PouchDB automatisch generiert. Diese Variante wird jedoch nicht empfohlen, weil dann die IDs zufällig sind, die Objekte nicht danach sortiert werden können~\cite{pouch-create}.\\
 % UPDATE
-Das Aktualisieren eines Kontakts sieht ähnlich aus. Zuerst wird der entsprechende Kontakt wie in Zeile zwölf aus der Datenbank angefragt um dann in der Datenbank aktualisiert zu werden. Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revision.\\
-% GET
-Der Aufruf \tt{localDB.allDocs()} in Zeile 17 fragt alle in der lokalen Datenbank gespeicherten Kontakte an. Ohne den Parameter \tt{include\_docs: true} werden nur die \tt{\_id} und die \tt{\_rev} Eigenschaften eines jeden gespeicherten Kontakts zurückgegeben. Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden unter dem Attribut \tt{\_conflicts} Konfliktinformationen zu jedem Kontakt gespeichert. Ist ein Kontakt konfliktbehaftet hat er nun das Attribut \tt{\_conflicts}. Dort bedindet sich eine Liste mit allen konkurrierenden Revisionen.\\
+Das Aktualisieren eines Kontakts sieht sehr ähnlich aus, da die \tt{upsert} Funktion für beide Operaktionen verwendet wird.
+% Zuerst wird der entsprechende Kontakt wie in Zeile zwölf aus der Datenbank angefragt um dann in der Datenbank aktualisiert zu werden.
+Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revision.\\
 % DELETE
-Man kann einen Kontakt in PouchDB wie in Zeile 22 mittels \tt{localDB.remove(contact)} löschen. Der Kontakt ist dann nicht wirklich gelöscht sondern wird durch ein \tt{\_deleted} Attribut als solches markiert.
+Man kann einen Kontakt mit PouchDB Upsert wie in Zeile 35 löschen.
+Der Kontakt nicht wirklich gelöscht sondern wird durch ein \tt{\_deleted} Attribut als solches markiert.
 %Dann ist das Kontaktdokument mit all seinen Feldern gelöscht. Die lokale Datenbank soll sich mit CouchDB synchronisieren. Ist die Revision eines gelöschten Kontakts nicht mehr vorhanden, kann diese nicht repliziert werden. Deswegen wird der Kontakt wie in Zeile 19 als gelöscht markiert und aktualisiert.
 %
 % Redux Offline
