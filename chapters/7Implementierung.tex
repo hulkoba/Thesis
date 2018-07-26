@@ -1,29 +1,53 @@
 \chapter{\label{chap:implementierung}WIP Implementierung der Prototypen}
 In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentiertem Lösungsweg die detaillierte Beschreibung der technischen Realisierung der Prototypen vorgestellt.\\
-Nach der Beschreibung der Konfigurationsdateien wird auf die Umsetzung der Szenarien eingegangen. Im Zuge dessen werden die implementierten Algorithmen vorgestellt, wobei sich der erste mit dem Auffinden der jeweilig nächsten relevanten Ampel befasst und der zweite die jeweils empfohlene Geschwindigkeit berechnet.
-%
-%
-%
-\section{WIP package.json?}
-Vergleichen? build Vorgang? Ich glaube das würde ich rauslassen (habe mich hier an anderen Arbeiten orientiert)
+\todo{Nach der Beschreibung der Hauptkomponente wird auf die Umsetzung der Offlinefunktionalität und des Konfliktmanagements eingegangen. Im Zuge dessen wird ... vorgestellt...}
 %
 %
 %
 \section{WIP Hauptmodul Contacts}
-wird beim Start ausgeführt\\
-Stellt zenrale Funktionen bereit... Erklärung\\
+
+Kontakte lesen, anlegen, bearbeiten, löschen
+Couch ermittelt Delta über die Revisionsnummer und sendet nur die neuen Daten.
+CRUD, toggleEdit, getConflictRevisions, chooseRev()\\
+Redux: Contacts= ContactsView, ContactsContainer, reducer/actions
+%
+%
+%
+\section{WIP Offlinefunktionalität}
+Die Prototypen \it{amilia-qouch} und \it{amilia-rdx} sind vollständig offline verwendbar.
+%Das heißt, dass nach einem initialen Besuch der Webseite ​https://kamrat.xyz diese Seite auch ohne eine Internetverbindung angesteuert werden kann.
+Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden von beiden Prototypen erfüllt und sämtliche umgesetzten Funktionen sind sowohl mit als auch ohne Internetverbindung durchführbar.
+%
+%
+\sub{Datenspeicherung}
+Cachen der Assets geht erst nach den build -> ServiceWorker\\
+BenutzerInnengenerierte Daten:
+Screenshots!\\
+Redux Offline: LocalStorage\\
+PouchDB: IndexedDB
+%
+%
+\sub{Datenbanksynchronisation}
+Redux: discard überchreiben weil ROLLBACK nicht immer retried, obwohl das so in der Dokumentation steht.
+Wie wurde CRUD implementiert?\\
 %
 %
 %
 \section{WIP Konfliktmanagement}
-%
-%
-%
-\section{WIP Umsetzung der Szenarien? Anforderungen?}
-Umsetzung der Funktionalität? \\
-Wie wurde CRUD implementiert?\\
 Wie kann ein Konflikt erzeugt werden?\\
 (manuell -- siehe \ref{sub:detect})
+Modal:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{impl/Modal}
+  \grayRule
+  \caption{Konfliktdialog in Aktion}
+  \label{fig:modal}
+\end{figure}
+Modal ist nicht bei Redux offline enthalten, das es nicht die Möglichkeit bietet Konflikte zu erkennen, gescheige denn zu speichern.
+%
+%
+%
 %
 % Installationsanleitung
 %
@@ -33,5 +57,5 @@ Wie kann ein Konflikt erzeugt werden?\\
 %
 % Testfälle
 %
-\section{\label{chap:impl:test}WIP Testfälle}
+\section{\label{chap:impl:test}Testfälle}
 \input{chapters/7implementierung/testfaelle}

@@ -5,9 +5,9 @@ Die Testdurchläufe sind immer gleich und unabhängig vom Prototypen.\\\\
 %Der genaue Ablauf eines Testlaufs sieht wie folgt aus.\\\\ 
 Zuerst wird die \gls{App} in zwei Browsern gestartet. So kann die Verwendung von zwei Geräten simuliert werden. Da die Anwendung für die Browser Firefox und Chrome entwickelt wird, findet der Testdurchlauf auch in diesen beiden Browsern statt.\\
 Es werden die Aktionen 'Kontakt anlegen', 'Kontakt bearbeiten' und 'Kontakt löschen' in unterschiedlichen Kombinationen und beiden Browsern durchgeführt.
-In der ersten Testreihe sind beide Browser mit dem Internet verbunden und der Server ist an.
+In der ersten Testreihe sind beide Browser mit dem Internet verbunden und der Server ist an. Diese Testreihe soll der Untersuchung auf Kollaborationsfähigkeit, also ob Die Anwendung auf mehreren Geräten funktioniert, dienen
 In der zweiten Testreihe wird ein Browser für eine Aktion vom Internet getrennt indem er in den Offlinemodus geschalten wird. Ist die Aktion in beiden Browsern abgeschlossen, wird der Offlinemodus des einen Browsers deaktiviert, sodass sich beide synchronisieren können.
-In der dritten Testreihe wird der Server gestoppt, sodass beide Prototypen offline sind. Nachdem eine Aktion auf beiden Geräten vollständig durchgeführt wurde, wird der Server wieder gestartet und beide Anwendungen synchronisieren sich mit dem Server, oder der CouchDB.\\
+In der dritten Testreihe wird der Server gestoppt, sodass beide Prototypen offline sind. Nachdem eine Aktion auf beiden Geräten vollständig durchgeführt wurde, wird der Server wieder gestartet und beide Anwendungen synchronisieren sich mit dem Server, oder der CouchDB. In den letzten beiden Testreihen werden durch das Bearbeiten derselben Einträge aktiv Konflikte erzeugt.\\
 Jede Testreihe wird einmal, in interschiedlichen Netzwerkstatus der Anwendung durchgeführt, pro Reihe gibt es drei bis vier Testdurchläufe.
 In den Testreien eins und drei wird jeder genannte Testdurchlauf genau einmal durchgeführt.
 Für die zweite Testreihe kann es, je nachdem in welchem Broswer die Aktion zuerst durchgeführt wird, unterschiedliche Ergebnisse geben.
