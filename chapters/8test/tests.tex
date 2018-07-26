@@ -11,98 +11,31 @@ Synchronisation: Neuladen bei rdx
 % 
 % 
 % 
-\sub{Online Online}
-Dies ist Durchführung der ersten Testreihe.
-Bei diesen Tests werden Aktionen ausgeführt während beide Geräte mit dem Internet verbunden sind.
-Diese Tests zeigen, dass die Anwendung grundsätzlich auf mehreren Geräten einsatzbereit ist.
+\sub{Erste Testreihe}
+\input{chapters/8test/onon}
 %
-\subsub{Kontakt anlegen}
-Ein Kontakt mit dem Namen 'Amilia Pond' wird in beiden Browsern nacheinander angelegt.\\\\
-\b{Erwartetes Ergebnis}\\
-Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-Der Kontakteintrag mit dem Namen ''Amilia Pond'' existiert zwei mal auf jedem Gerät.
+% OFF ON
 %
-\subsub{Kontakt bearbeiten}
-Der Kontakt mit dem Namen 'Amilia Pond' wird in beiden Browsern bearbeitet. Zuerst wird im Firefox die E-Mail Adresse ''amilia@pond.de'' hinzugefügt und gespeichert.
-Dann wird im Chrome die E--Mail Adresse des Kontakts geändert und gespeichert.\\\\
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakt löschen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+\sub{Zweite Testreihe}
+\input{chapters/8test/onoff}
 %
 %
 %
-\sub{Offline Online}
-Dies ist Durchführung der zweiten Testreihe.
-Bei diesen Tests werden Aktionen ausgeführt während ein Browser mit dem Internet verbunden ist, der andere jedoch nicht.
-Der Browser ''Chrome'' wird in den Offlinestatus versetzt und "Firefox" bleibt online.
-% 
-\subsub{Kontakte anlegen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakte bearbeiten}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakt bearbeiten, selben Kontakt löschen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakte löschen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-%
-%
-\sub{Offline Offline}
-Dies ist Durchführung der dritten Testreihe.
-Bei diesen Tests werden Aktionen ausgeführt während beide Browser mit dem Internet, aber nicht mit dem Server verbunden ist.
-
-%
-\subsub{Kontakte anlegen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakte bearbeiten}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakt bearbeiten, selben Kontakt löschen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
-%
-\subsub{Kontakte löschen}
-\b{Erwartetes Ergebnis}\\
-\b{Tatsächliches Ergebnis \it{amilia-qouch}}\\
-\b{Tatsächliches Ergebnis \it{amilia-rdx}}\\
+\sub{Dritte Trestreihe}
+\input{chapters/8test/offoff}
 % 
 % 
 % 
 % 
 \sub{Übersicht}
-Welche Erwartungen wurden von wem erfüllt und welche nicht.
+Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist, und bei welchen Prototypen das der Fall war.
 \begin{longtable}[c]{@{}
 >{\columncolor[HTML]{CFFCC2}}l llll@{}}
 \toprule
-    \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Durchlauf}}
+    \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Testreihe}}
     & \multicolumn{1}{p{0.4\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Aktion}}
-    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{\it{amilia-qouch}}}
-    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{\it{amilia-rdx}}}\\ \hline \noalign{\vskip 0.2cm}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Erwartung erfüllt: \it{amilia-qouch}}}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Erwartung erfüllt: \it{amilia-rdx}}}\\ \hline \noalign{\vskip 0.2cm}
 \endfirsthead
 \endhead
 %
