@@ -1,16 +1,8 @@
 Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können wurden manuelle Tests durchgeführt.
-Die Art und Weise wie die Tests durchgeführt wurden, ist in \autoref{chap:konzept:test} detailliert beschrieben.\\
-App läuft auf Geräte / Browser, Aktionen werden durchgeführt.\\
-Ziel: Konfliktmanagement der Technologien testen. blabla sülz\\
-Ergebnis = Ergebnis nach der Synchronisation beider Geräte!\\ 
-erwartete Ergebnisse: was sollte auftreten wenn ich keine Daten verlieren möchte etc etc.
-Tatsächliches Ergebnis: Das Ergebnis das tatsächlich eintritt.
-Die Anwendungen sind so implementiert, dass es keine unterschiede zwischen den angezeigten Daten und denen in der Datenbank / JSON Datei gibt.
-Wenn im Ergebnis also steht: Kontakt blah sieht sülz aus, heißt das er wird so in der UI angezeigt und befindet sich so in der Datenbank.\\
-Synchronisation: Neuladen bei rdx\\
-Zurücksetzung der Daten nach jedem Testdurchlauf. Bei Anlegen ist die Liste leer, Bei allen anderen gibt es einen Kontakt mit dem Namen Amilia Pond.\\
-Amilia Redux ist kein push implementiert. d.h. nach jeder Aktion wird der Browsser neu geladen
-% 
+Die Art und Weise wie die Tests durchgeführt wurden, ist in \autoref{chap:konzept:test} detailliert beschrieben. Der entsprechende Prototyp läuft in den beiden Browsern Chrome und Firefox. In jedem Testdurchlauf werden unterschiedliche Aktionen in anderer Reihenfolge durchgeführt.\\\\
+Als Ergebnis wird der Zustand der \gls{App} bezeichnet wie er nach der Synchronisation beider Geräte ist.
+Das erwartete Ergebnis ist das gewünschte Ergebnis, welches eintritt wenn der Schwerpunkt bei der Verwendung der Anwendung darauf liegt, keine BenutzerInnendaten zu verlieren.\\
+Das tatsächliche Ergebnis ist, wie der Name schon sagt, das was eingetreten ist. Weicht das tatsächliche Ergebnis von dem erwarteten ab, sind die Ansprüche in diesem Testdurchlauf nicht erfüllt. 
 % 
 % 
 \sub{Erste Testreihe}
@@ -29,8 +21,8 @@ Amilia Redux ist kein push implementiert. d.h. nach jeder Aktion wird der Browss
 % 
 % 
 % 
-\sub{Übersicht}
-Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist, und bei welchen Prototypen das der Fall war.
+\sub{Übersicht der Testergebnisse}
+Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist, und bei welchen Prototypen dies der Fall war.
 \begin{longtable}[c]{@{}
 >{\columncolor[HTML]{CFFCC2}}l llll@{}}
 \toprule
@@ -83,12 +75,6 @@ Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in we
     & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
     & \multicolumn{1}{p{0.15\textwidth}}{ja}
     & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
-  % \midrule
-  %   \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2d}}
-  %   & \multicolumn{1}{p{0.2\textwidth}}{löschen}
-  %   & \multicolumn{1}{p{0.2\textwidth}}{}
-  %   & \multicolumn{1}{p{0.2\textwidth}}{}
-  %   & \multicolumn{1}{p{0.2\textwidth}}{bearbeiten}\\ 
   \bottomrule
   \bottomrule
   %
@@ -105,7 +91,7 @@ Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in we
   \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
     & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten und löschen}
     & \multicolumn{1}{p{0.15\textwidth}}{ja}
-    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
   \midrule
   \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
     & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
@@ -118,3 +104,5 @@ Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in we
   \caption{Testergebnisse}
   \label{tab:test:tests}\\
 \end{longtable}
+%
+Es ist deutlich zu erkennen, dass überall dort wo ein Kontakt bearbeitet wird, die Redux Offline \gls{App} die Erwartungen nicht erfüllt. Im folgenden \hyperref[chap:auswertung]{Abschnitt} werden die Testergebnisse ausgewertet.
