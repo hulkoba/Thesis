@@ -16,13 +16,13 @@ Dieses Protokoll ist die Grundlage für Offline First Anwendungen.
 Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit einer anderen Datenbank die dasselbe Protokoll implementiert, synchronisieren.
 Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst~\cite{couch}. Die Lösung der Konflikte muss in der Anwendung implementiert sein.
 So kann gewährleistet werden, dass keinerlei Daten verloren gehen.\\\\
-CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[sub:pouch]{PouchDB} und für native iOS- und Android--\glspl{App} wurde Couchbase Lite entwickelt.
+CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[chap:pouch]{PouchDB} und für native iOS- und Android--\glspl{App} wurde Couchbase Lite entwickelt.
 Des Weiteren gibt es noch die Datenbanken Couchbase und Cloudant.
 Alle verwenden das CouchDB Replikationsprotokoll und können Daten miteinander replizieren und~\cite{couch}.
 %
 % Pouch
 %
-\subsub{\label{sub:pouch}PouchDB}
+\subsub{\label{chap:pouch}PouchDB}
 Als Ergänzung zu CouchDB kann PouchDB verwendet werden. PouchDB ist die Java"-Script Implementierung von CouchDB.
 Sie ist quelloffen und wurde so konzipiert, dass sie in allen modernen Browsers läuft. Dort ermöglicht PouchDB es Daten zu persistieren, sodass sowohl offline als auch online verfügbar sind.
 PouchDB speichert die Daten in IndexedDB und stellt für das Abrufen und Manipulieren derer ein einheitliches \gls{API} zur Verfügung.\\

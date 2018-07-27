@@ -4,7 +4,7 @@ In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentiertem
 %
 %
 %
-\section{WIP Hauptmodul Contacts}
+\section{WIP Die Kernkomponente Contacts}
 
 Kontakte lesen, anlegen, bearbeiten, löschen
 Couch ermittelt Delta über die Revisionsnummer und sendet nur die neuen Daten.
@@ -15,16 +15,30 @@ Redux: Contacts= ContactsView, ContactsContainer, reducer/actions
 %
 \section{WIP Offlinefunktionalität}
 Die Prototypen \it{amilia-qouch} und \it{amilia-rdx} sind vollständig offline verwendbar.
-%Das heißt, dass nach einem initialen Besuch der Webseite ​https://kamrat.xyz diese Seite auch ohne eine Internetverbindung angesteuert werden kann.
 Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden von beiden Prototypen erfüllt und sämtliche umgesetzten Funktionen sind sowohl mit als auch ohne Internetverbindung durchführbar.
 %
 %
 \sub{Datenspeicherung}
-Cachen der Assets geht erst nach den build -> ServiceWorker\\
-BenutzerInnengenerierte Daten:
-Screenshots!\\
-Redux Offline: LocalStorage\\
-PouchDB: IndexedDB
+\todo{Cachen der Assets geht erst nach dem Build -> ServiceWorker}\\
+Redux Offline speichert, wie in \autoref{sub:reduxpersist} bereits beschrieben, alle im Redux Store verwalteten Daten im LocalStorage. \autoref{fig:local-rdx} zeigt alle gespeicherten, nutzerInnengenerierten Daten im LocalStorage.
+%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{impl/localRdx}
+  \grayRule
+  \caption[Gespeicherte Daten im LocalStorage]{Gespeicherte Daten des Prototypen amilia-rdx im LocalStorage,\\Screenhot: Developer Tools im Firefox Browser}
+  \label{fig:local-rdx}
+\end{figure}
+% 
+Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB. PouchDB speichert die von NutzerInnen generierten Daten in IndexedDB, vgl. \autoref{chap:pouch}. In \autoref{fig:local-qouch} sind die gespeicherten Daten in der IndexedDB zu sehen.
+%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{impl/localQouch}
+  \grayRule
+  \caption[Gespeicherte Daten in IndexedDB]{Gespeicherte Daten des Prototypen aus amilia-qouch in IndexedDB,\\Screenhot: Developer Tools im Firefox Browser}
+  \label{fig:local-qouch}
+\end{figure}
 %
 %
 \sub{Datenbanksynchronisation}
@@ -36,6 +50,30 @@ Wie wurde CRUD implementiert?\\
 \section{WIP Konfliktmanagement}
 Wie kann ein Konflikt erzeugt werden?\\
 (manuell -- siehe \ref{sub:detect})
+\begin{center}
+  \lstinputlisting[language=REACT,
+    firstline=1,lastline=12,
+    numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+    caption={Laden von konfliktbehafteten Kontakten},
+    label=code:conflicts]{code/conflicts.js}
+\end{center}
+
+\begin{center}
+  \lstinputlisting[language=REACT,
+    firstline=14,lastline=38,
+    numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+    caption={Laden von konfliktbehafteten Kontakten},
+    label=code:conflicts2]{code/conflicts.js}
+\end{center}
+
+\begin{center}
+  \lstinputlisting[language=REACT,
+    firstline=40,lastline=43,
+    numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+    caption={Laden von konfliktbehafteten Kontakten},
+    label=code:conflicts3]{code/conflicts.js}
+\end{center}
+
 Modal:
 \begin{figure}[H]
   \centering
