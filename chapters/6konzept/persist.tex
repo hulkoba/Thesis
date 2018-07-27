@@ -9,15 +9,15 @@ Für den Protoyp \it{amilia-qouch} muss zunächst CouchDB installiert werden.
 Sobald dieser Schritt erledigt ist läuft CouchDB auf \tt{localhost:5984} und ist einsatzbereit.
 Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit die sowohl Callbacks, Promises als auch asynchrone Funktionen unterstützen. 
 Das Listing \ref{code:pouch} führt alle benötigeten Funktionen auf und zeigt die notwendigen Schritte zur Synchronisation der lokalen PouchDB und CouchDB.\\
-Die lokale Datenbank wird in Zeile eins erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
-Um eine CouchDB Instanz zu erzeugen ist der Aufruf in Zeile zwei mit der URL zur Couch"-DB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
-Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der Couch"-DB, ist lediglich der Aufruf in Zeile vier erforderlich. Im optionalen Parameter können zum Beispiel FIlter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\
+Die lokale Datenbank wird in Zeile zwei erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
+Um eine CouchDB Instanz zu erzeugen ist der Aufruf in Zeile drei mit der URL zur Couch"-DB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
+Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der Couch"-DB, ist lediglich der Aufruf in Zeile fünf erforderlich. Im optionalen Parameter können zum Beispiel FIlter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\
 % GET
-Der Aufruf \tt{localDB.allDocs()} in Zeile sieben fragt alle in der lokalen Datenbank gespeicherten Kontakte an.
+Der Aufruf \tt{localDB.allDocs()} in Zeile acht fragt alle in der lokalen Datenbank gespeicherten Kontakte an.
 Ohne den Parameter \tt{include\_docs: true} werden nur die ID, \tt{\_id} und die Revisionsnummer, \tt{\_rev} eines jeden gespeicherten Kontakts zurückgegeben.
-Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert. Alle konfliktbehafteten Kontakte haben nun das Attribut \tt{\_conflicts}. Dort bedindet sich eine Liste mit allen konkurrierenden Revisionen.\\\\
+Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert. Alle konfliktbehafteten Kontakte haben nun ein \tt{\_conflicts} Attribut. Dort bedindet sich eine Liste mit allen konkurrierenden Revisionen.\\\\
 %
-Für die nachfolgenden Aufrufe gibt es mehrere Varianten. Eine Anleitung zu dem Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments das Modul PouchDB Upsert zu verwenden. Jedes Mal wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden. Zum praktischen Umgang empflieht PouchDB die Aktion zu wiederholen, bis sie erfolgreich war.
+Für die nachfolgenden Aufrufe gibt es mehrere Varianten. Eine Anleitung zu dem Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments das Modul PouchDB Upsert zu verwenden. Das wird in Zeile eins zu, PouchDB Objekt hinzugefügt. Jedes Mal wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden. Zum praktischen Umgang empflieht PouchDB die Aktion zu wiederholen, bis sie erfolgreich war.
 Dazu kann PouchDB Upsert verwendet werden. Es fügt ein neues Dokument hinzu wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}. Konflikte treten so trotzdem auf und alle konfliktbehafteten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.\\
 %
 \begin{center}

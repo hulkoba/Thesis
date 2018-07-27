@@ -1,3 +1,4 @@
+PouchDB.plugin(require('pouchdb-upsert'))
 const localDB = new PouchDB('contacts')
 const remoteDB = new PouchDB('http://localhost:5984/contacts')
 
