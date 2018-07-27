@@ -38,6 +38,6 @@ async getConflictRevisions (conflictedContact) {
 }
 
 // remove the losing revision
-async chooseRev (contact) {
+async removeRev (contact) {
   await localDB.remove(contact._id, contact._rev)
 }
