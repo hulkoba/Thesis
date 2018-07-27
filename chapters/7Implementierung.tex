@@ -17,33 +17,7 @@ Redux: Contacts= ContactsView, ContactsContainer, reducer/actions
 Die Prototypen \it{amilia-qouch} und \it{amilia-rdx} sind vollständig offline verwendbar.
 Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden von beiden Prototypen erfüllt und sämtliche umgesetzten Funktionen sind sowohl mit als auch ohne Internetverbindung durchführbar.
 %
-%
-\sub{Datenspeicherung}
-\todo{Cachen der Assets geht erst nach dem Build -> ServiceWorker}\\
-Redux Offline speichert, wie in \autoref{sub:reduxpersist} bereits beschrieben, alle im Redux Store verwalteten Daten im LocalStorage. \autoref{fig:local-rdx} zeigt alle gespeicherten, nutzerInnengenerierten Daten im LocalStorage.
-%
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{impl/localRdx}
-  \grayRule
-  \caption[Gespeicherte Daten im LocalStorage]{Gespeicherte Daten des Prototypen amilia-rdx im LocalStorage,\\Screenhot: Developer Tools im Firefox Browser}
-  \label{fig:local-rdx}
-\end{figure}
-% 
-Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB. PouchDB speichert die von NutzerInnen generierten Daten in IndexedDB, vgl. \autoref{chap:pouch}. In \autoref{fig:local-qouch} sind die gespeicherten Daten in der IndexedDB zu sehen.
-%
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{impl/localQouch}
-  \grayRule
-  \caption[Gespeicherte Daten in IndexedDB]{Gespeicherte Daten des Prototypen aus amilia-qouch in IndexedDB,\\Screenhot: Developer Tools im Firefox Browser}
-  \label{fig:local-qouch}
-\end{figure}
-%
-%
-\sub{Datenbanksynchronisation}
-Redux: discard überchreiben weil ROLLBACK nicht immer retried, obwohl das so in der Dokumentation steht.
-Wie wurde CRUD implementiert?\\
+\input{chapters/7implementierung/offline}
 %
 %
 %
