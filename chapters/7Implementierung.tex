@@ -6,11 +6,21 @@ Im Zuge dessen wird der implementierte Algorithmus zur Lösung auftretender Konf
 %
 %
 \section{Umsetzung der Funktionalität}
-Die Kernkomponente Contacts
+Die Herzstück jeder zu entwickelnden Anwendung ist die Komponente \tt{Contacts}.
+Sie beinhaltet die zentralen Funktionalitäten und entscheidet welche Anzeigeelemente gerendert werden und welche nicht.
+Im Prototypen \it{amilia-qouch} besteht sie aus der Datei \tt{Contacts.js} in der ein interne State festgelegt ist. Hier sind außerdem Funktionen implementiert über die der State manipuliert werden kann.\\
+Durch den in \autoref{chap:redux} beschriebenen, Redux--spezifischen Datenfluss ist sie auf mehrere Dateien aufgeteilt.
+\tt{Contacts.js} ist für das Rendern der anderen Komponenten zuständig. 
+In \tt{actions.js} werden die Aktionen definiert, die über die Containerkomponente \tt{ContactsContainer.js} von jeder Komponente aufgerufen werden können um den \gls{App}state zu manipulieren.
+Die Manipulation wird in der \tt{reducer.js} behandelt, wo die geänderte Kopie wieder zurück an den \tt{Store} gegeben wird und sie wieder bei der \tt{Contacts.js} ankommt.
+Der Einfachheit halber wird im Folgenden von der \tt{Contacts} Komponente geschrieben, wobei für den Redux Prototypen der Zusammenschluss dieser soeben beschriebenen Dateien gemeint ist.\\
+Die Methode \tt{componentDidMount} ist die dritte im React Komponenten--Lebenszyklus\footnote{ \url{https://reactjs.org/docs/react-component.html\#the-component-lifecycle} -- Zugriff: 28.07.1018} und wird aufgerufen sobald die Anwendung gemountet ist.
+Hier werden werden die Kontakte geladen und im \gls{App}state gespeichert.
+
+
 Kontakte lesen, anlegen, bearbeiten, löschen
-Couch ermittelt Delta über die Revisionsnummer und sendet nur die neuen Daten.
+% Couch ermittelt Delta über die Revisionsnummer und sendet nur die neuen Daten.
 CRUD, toggleEdit, getConflictRevisions, chooseRev()\\
-Redux: Contacts= ContactsView, ContactsContainer, reducer/actions
 %
 %
 %

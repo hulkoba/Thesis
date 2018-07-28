@@ -3,7 +3,10 @@
 \usepackage[english, ngerman]{babel}
 
 \usepackage[default]{lato}
+% \usepackage[defaultmono]{droidmono}
 \usepackage[T1]{fontenc}
+% \renewcommand{\ttfamily}{droidmono}
+\renewcommand{\ttdefault}{droidmono}
 
 \usepackage[bottom=30mm]{geometry} %Seitenränder
 
@@ -39,10 +42,6 @@
 
 \usepackage{enumitem}
 \linespread {1.25}\selectfont
-
-% ------------------------------------------------------------
-
-\addto\captionsngerman{\renewcommand{\abstractname}{Abstract}}
 
 %------------------------------------------------
 
@@ -98,8 +97,8 @@ toc]
 % shortcuts for font-format
 \renewcommand{\b}[1]{\textbf{#1}}
 \renewcommand{\it}[1]{\textit{#1}}
-\renewcommand{\tt}[1]{\texttt{#1}}
 \renewcommand{\sc}[1]{\textsc{#1}}
+\renewcommand{\tt}[1]{\texttt{#1}}
 
 \newcommand{\tm}{\texttrademark}
 
