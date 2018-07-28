@@ -1,4 +1,4 @@
-\chapter{\label{chap:implementierung}WIP Implementierung der Prototypen}
+\chapter{\label{chap:implementierung}Implementierung der Prototypen}
 In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentiertem Lösungsweg die detaillierte Beschreibung der technischen Realisierung der Prototypen vorgestellt.\\
 Nach der Beschreibung der Realisierung der grundlegenden Funktionen der Anwendung wird auf die Umsetzung der Offlinefunktionalität und des Konfliktmanagements eingegangen.
 Im Zuge dessen wird der implementierte Algorithmus zur Lösung auftretender Konflikte vorgestellt.
@@ -19,9 +19,23 @@ Hier werden werden die Kontakte geladen und im \gls{App}state gespeichert.
 Sobald sicht der \gls{App}state ändert wird die \tt{render} Funktion der Komponente aufgerufen. \autoref{code:render} zeigt die Renderfunktion der \tt{Contacts} Komponente.
 %
 \begin{center}
-  \lstinputlisting[language=REACT,numbers=left,xleftmargin=20pt,framexleftmargin=15pt,caption={Die Renderfunktion der Contacts Komponente}, label=code:render]{code/render.js}
+  \lstinputlisting[language=REACT,numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  caption={Die Renderfunktion der \tt{Contacts} Komponente des Prototypen \it{amilia-qouch}},
+  label=code:render]{code/render.js}
 \end{center}
 %
+Unabhängig von einem Wert im State wird der Header, in den Zeilen fünf bis sieben, gerendert.
+Im wird die Information \tt{isOpen} übergeben die aussagt ob der Editiermodus an ist, also ob das Formular gerade geöffnet ist oder nicht.
+Ihm wird auch die Funktion \tt{toggleEdit} gegeben, welche genau diese Statuseigenschaft wechselt.\\
+Die Zeilen neun bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird weiter unten im \autoref{chap:konfliktmanagement} erklärt.\\
+In den Zeilen 16 bis 27 wird anhand der \tt{isOpen} Information entschieden ob das Formular oder die Liste gerendert wird.
+Die Liste bekommt alle im \gls{App}state gespeicherten Kontakte, ebenfalls die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakt. Es ist zu beachten, dass hier bei der \tt{toggleEdit()} das \tt{bind(this, null)} fehlt. Das liegt daran, dass wenn man aus der Liste das Formular öffnet, man den 'Bearbeiten' Knopf betätigt hat und der zu bearbeitende Kontakt im Formular geladen wird. Dieser Kontakt wird dann für die Dauer seiner Bearbeitung im \tt{state.editView.contact} gespeichert.\\
+Das KontaktFormular ist aufgeteilt in eine Container-- und eine Viewkomponente, weswegen hier in \tt{Contacts} die Containerkomponente gerendert wird.
+Wo in der Viewkomponende alle beinhaltenden Elemente nur dargestellt werden, besitzt die Containerkomponente Logik.
+Der \tt{FormContainer} bekommt in Zeile 21 den zu bearbeitenden Kontakt. Ist dieser leer, wird über das Formular ein neuer angelegt.
+Des Weiteren bekommt sie die ebenfalls die \tt{toggleEdit} Funktionen und eine zum Anlegen, eine zum Bearbeiten des Kontakts (Zeilen 18 bis 20).\\\\
+In \autoref{chap:persist} wurde beschrieben wie die Daten in den Prototypen angelegt, bearbeitet und gelöscht werden. Deswegen wird hier nur gezeigt, wie diese Funktionen zum Einsatz kommen.
+
 
 %
 %
@@ -34,7 +48,7 @@ Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden vo
 %
 %
 %
-\section{Konfliktmanagement}
+\section{\label{chap:konfliktmanagement}Konfliktmanagement}
 \input{chapters/7implementierung/konfliktmanagement}
 %
 % Installationsanleitung

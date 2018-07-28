@@ -9,7 +9,7 @@ Redux Offline speichert, wie in \autoref{sub:reduxpersist} bereits beschrieben, 
   \centering
   \includegraphics[width=\textwidth]{impl/localRdx}
   \grayRule
-  \caption[Gespeicherte Daten im LocalStorage]{Gespeicherte Daten des Prototypen amilia-rdx im LocalStorage,\\Screenhot: Developer Tools im Firefox Browser}
+  \caption[Gespeicherte Daten im LocalStorage]{Gespeicherte Daten des Prototypen \it{amilia-rdx} im LocalStorage,\\Screenhot: Developer Tools im Firefox Browser}
   \label{fig:local-rdx}
 \end{figure}
 % 
@@ -19,7 +19,7 @@ Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB. Pouch
   \centering
   \includegraphics[width=\textwidth]{impl/localQouch}
   \grayRule
-  \caption[Gespeicherte Daten in IndexedDB]{Gespeicherte Daten des Prototypen aus amilia-qouch in IndexedDB,\\Screenhot: Developer Tools im Firefox Browser}
+  \caption[Gespeicherte Daten in IndexedDB]{Gespeicherte Daten des Prototypen aus \it{amilia-qouch} in IndexedDB,\\Screenhot: Developer Tools im Firefox Browser}
   \label{fig:local-qouch}
 \end{figure}
 %
@@ -35,7 +35,7 @@ Dank der angegebenen Parameter \tt{retry: true} versucht PouchDB die Synchronisa
   numbers=left,xleftmargin=20pt,
   firstline=1,lastline=5,
   framexleftmargin=15pt,
-  caption={Synchronisation zwischen PouchDB und CouchDB im Prototyp amilia-qouch},
+  caption={Synchronisation zwischen PouchDB und CouchDB im Prototyp \it{amilia-qouch}},
   label=code:sync]{code/sync.js}
 \end{center}
 Redux Offline nimmt einem auch Arbeit bei der Datensynchronisation ab. Alle Daten die sich im Queue befinden werden automatisch an den Server gesendet, sobald eine Internetverbindung besteht. Das funktioniert jedoch nicht so einfach wenn der Server nicht an ist. In der Dokumentation von Redux Offline steht, dass die Aktion solange versucht wird auszuführen, bis die Anwendung wieder mit dem Internet verbunden ist ~\cite{giving-up}. Allerdings wird die \sc{rollback} Aktion gefeuert wenn der Server nicht verfügbar ist und die Aktion wird abgebrochen.

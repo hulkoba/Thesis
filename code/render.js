@@ -10,7 +10,7 @@ render () {
         <Modal
           contactMe={modalView.contactMe}
           contactYou={modalView.contactYou}
-          chooseRev={this.chooseRev.bind(this)} />
+          removeRev={this.removeRev.bind(this)} />
       }
 
       {editView.isOpen
