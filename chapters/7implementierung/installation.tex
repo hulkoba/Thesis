@@ -1,24 +1,39 @@
 \todo{build und so}
 Beide entwickelten Prototypen sind als öffentliche Repositories auf GitHub\footnote{Software--Entwicklungs--Plattform \url{https://github.com/}} zu finden. 
 Um sie zu installieren müssen folgende Schritte ausgeführt werden.
-\sub{amilia-qouch}
+%
+%
+\sub{\label{chap:install:qouch}amilia-qouch}
+Für die Ausführung dieser Anwendung muss CouchDB installiert sein auf der ein Admin mit dem Passwort ''admin'' besteht.
+Zur Installation von CouchDB kann die Anleitung auf \url{http://docs.couchdb.org/en/2.1.2/install/index.html} verwendet werden.\\
+Dann müssen die \gls{CORS} aktiviert werden. Das ist eine Webtechnologie die es Webanwendungen erlaubt Ressourcen von einer anderen Domain zu benutzen.
+% PouchDb läuft auf ner anderen Domain als CouchDB
+Es gibt bereit ein Skript, das genau das macht. Dazu müssen die folgenden Befehle ausgeführt werden.
+%
+\lstset{language=sh, caption={},belowcaptionskip=0.3\baselineskip,xleftmargin=15pt,framexleftmargin=5pt}
+\begin{lstlisting}
+npm install -g add-cors-to-couchdb
+add-cors-to-couchdb
+\end{lstlisting}
+%
+Waren diese Schritte erfolgreich, kann die Anwendung installiert werden.\\\\
 1. Zuerst muss das Repository kopiert werden:
-\lstset{language=sh, caption={},belowcaptionskip=0.3\baselineskip}
 \begin{lstlisting}
 git clone git@github.com:hulkoba/amilia-qouch.git
 # oder
 git clone https://github.com/hulkoba/amilia-qouch.git
 \end{lstlisting}
-2. Dann muss man in das Verzeichnis navigieren und alle Abhängigkeiten installieren.
+2. Dann wird in das Verzeichnis navigiert um dort alle Abhängigkeiten zu installieren.
 \begin{lstlisting}
-cd amilia-qouch
-npm install
+cd amilia-qouch && npm install
 \end{lstlisting}
-3. Mittels
+3. Durch den Aufruf
 \begin{lstlisting}
 npm start
 \end{lstlisting}
-wird die Anwendung gestartet.
+wird die Anwendung gestartet und läuft auf \url{http://localhost:3000/}.
+%
+%
 %
 \sub{amilia-rdx}
 1. Auch hier muss das Repository zuerst kopiert werden:
@@ -28,10 +43,11 @@ git clone git@github.com:hulkoba/amilia-rdx.git
 # oder
 git clone https://github.com/hulkoba/amilia-rdx.git
 \end{lstlisting}
-2. Schritt zwei ist identisch mit dem in der \tt{amilia-qouch} Anleitung\\
-3. Mittels
+2. Schritt zwei ist identisch mit dem in der Anleitung auf \hyperref[chap:install:qouch]{\it{amilia-qouch}}\\
+3. Durch die Aufrufe
 \begin{lstlisting}
 npm run server
 npm start
 \end{lstlisting}
-wird zuerst der Server, dann die Anwendung gestartet.
+in separaten Terminalfenstern wird zuerst der Server und dann die Anwendung gestartet.
+Die Anwendung läuft nun auf \url{http://localhost:3000/}.
