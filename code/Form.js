@@ -1,29 +1,31 @@
-class ContactForm extends Component {
+class FormContainer extends Component {
   constructor (props) {
     super(props)
-    this.state = { contact: props.contact }
+    this.state = {
+      contact: props.contact
+    }
   }
 
-  handleChange (type, event) {
+  handleChange (event) {
     let contact = this.state.contact
-    if (type === 'name') {
-      contact = {...contact, name: event.target.value}
-    }
+    contact = {...contact, name: event.target.value}
     this.setState(() => ({contact: contact}))
   }
 
   render () {
     return (
-      <form onSubmit={this.props.addOrEditContact(this.state.contact)}>
-          <label>Name</label>
-          <input
-            value={this.state.contact.name}
-            onChange={this.handleChange.bind(this, 'name')} />
-     
-          <button onClick={this.props.handleCancel}>Cancel</button>
-          <button type='submit'>Save</button>
-      </form>
+      <ContactForm
+        handleChange={this.handleChange}
+        contact={this.state.contact} />
     )
   }
 }
-export default ContactForm
+
+const ContactForm = ({contact, handleChange}) => (
+  <form className='contact-form'>
+    <label>Name</label>
+    <input
+      value={contact.name}
+      onChange={this.handleChange.bind(this)} />
+  </form>
+)
