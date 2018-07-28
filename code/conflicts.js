@@ -1,4 +1,4 @@
-async getPouchDocs () {
+async function getPouchDocs () {
   const completeContacts = await localDB.allDocs({
     include_docs: true,
     conflicts: true
@@ -11,7 +11,7 @@ async getPouchDocs () {
   }
 }
 
-async getConflictRevisions (conflictedContact) {
+async function getConflictRevisions (conflictedContact) {
   let contactMe, contactYou
   
   if (equals(conflictedContact, this.state.lastEditedContact)) {
@@ -38,6 +38,6 @@ async getConflictRevisions (conflictedContact) {
 }
 
 // remove the losing revision
-async removeRev (contact) {
+async function removeRev (contact) {
   await localDB.remove(contact._id, contact._rev)
 }
