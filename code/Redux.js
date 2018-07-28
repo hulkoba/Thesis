@@ -36,16 +36,13 @@ function editView (state, action) {
 function contacts (state=[], action) {
   switch (action.type) {
     case FETCH_CONTACTS:
-      console.log('started to fetch contacts ')
       return state
 
     case FETCH_CONTACTS_COMMIT:
-      console.log('successfully fetched contacts ')
       if (state === action.payload) return state
       return action.payload
 
     case FETCH_CONTACTS_ROLLBACK:
-      console.log('failed to fetch contacts')
       return state
   }
 }

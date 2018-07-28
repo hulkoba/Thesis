@@ -44,16 +44,20 @@ Der Kontakt nicht wirklich gelöscht sondern wird durch ein \tt{\_deleted} Attri
 \subsub{Daten mit Redux Offline speichern}
 Die Idee hinter Redux Offline ist, dass der Redux Store die lokale Datenbank ersetzt. Sobald der Appstatus sich ändert, also irgendwo im Code \tt{setState()} ausgeführt wird, wird er automatisch lokal gespeichert. Dazu wird intern \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird. Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung neu geladen.
 % Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\
-Wie die Daten mit Redux Offline gespeichert synchronisiert werden ist am folgenden Listing erklärt.
+Wie die Daten mit Redux Offline gespeichert synchronisiert werden ist am folgenden Listing erklärt. Das Beispiel erklärt das Hinzugügen eines Kontakts. Die restlichen Operationen, das Bearbeiten, Löschen oder Lesen eines Kontakts sind analog dazu. 
 \begin{center}  \lstinputlisting[language=REACT,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
   caption={Speicherung der Daten mit Redux Offline}, 
   label=code:syncrdx]{code/Redux-sync.js}
 \end{center}
 %
-Mit dem Aufruf der Aktion ADD\_CONTACT wird der Vorgang gestartet einen Kontakt hinzuzufügen. Die anzufragende URL ist im \tt{meta.offline.effect} Feld in Zeile neun festgelegt. Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON} Datei persisitiert.
+Mit dem Aufruf der Aktion ADD\_CONTACT, die in Zeile drei bis 15 erzeugt wird, wird der Vorgang einen Kontakt hinzuzufügen gestartet.
+Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline} Objekts in Zeile neun festgelegt. Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON} Datei persisitiert.
 Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert. Mit diesem wird in Zeile 23 der Appstate aktualisiert und so lokal gespeichert.\\
-Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile zwölf gefeuert. Die wird im Reducer in Zeile 25 behandelt. Der \tt{state} wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.\\\\
+Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile zwölf gefeuert.
+Die wird im Reducer in Zeile 26 behandelt. Der \tt{state} wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
+Für den Fall dass die Netzwerkanfrage nicht erfolgreich war wird das \tt{meta.offline.rollback} Feld definiert.
+Hier könnte man die BenutzerInnen darüber informieren, dass etwas nicht geklappt hat. Für den Rahmen dieser Arbeit genügt es jedoch, wie es in den Zeilen zehn und elf steht, den vorherigen Status zurückzuliefern.\\\\
 Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnte, beschreibt das Listing \ref{code:server}.
 %
 \begin{center}  \lstinputlisting[language=REACT,

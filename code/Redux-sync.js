@@ -10,6 +10,7 @@ export function addContact () {
           body: JSON.stringify({contact})
         },
         commit: { type: 'ADD_CONTACT_COMMIT', meta: { contact } },
+        rollback: { type: 'ADD_CONTACT_ROLLBACK', meta: { contact } }
       }
     }
   }
@@ -25,5 +26,9 @@ function contacts (state=[], action) {
     case ADD_CONTACT_COMMIT:
       console.log('successfully added contact')
       return [...state, action.payload]
+
+      case ADD_CONTACT_ROLLBACK:
+      console.log('failed to add contact')
+      return state
   }
 }
