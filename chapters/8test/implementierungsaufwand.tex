@@ -1,39 +1,42 @@
-%
-Setup der \gls{App} ist irrelevant und identisch wegen Create React App.
-%
+% D7, D8
+Beim Vergleich des Implementierungsaufwands werden verschiedene Punkte Berücksichtigt.
+Es wird der Arbeitsaufwand betrachtet, der benötigt wird die verwendete Technologie zu verstehen und zu benutzen.
+Ebenfalls von hoher Wichtigkeit ist die Lesbarkeit des geschriebenen Quellcodes.
+Sauberer und verständlicher Code ist einfacher les-- und somit auch wartbarer. Interessant ist auch die Menge des geschriebenen Codes.
 %
 \subsub{Einbinding der Technologien}
-\begin{description}[leftmargin=0.5cm,style=nextline]
+\begin{description}[leftmargin=0cm,style=nextline]
   \item[amilia-qouch]
-  gering, nur Installation und Anwendung der Pouch API\\
-  Neue Instanz, Synchronisation ( 1 Zeile) und CRUD
+  Der Aufwand eine Anwendung mit PouchDB und CouchDB zu schreiben, ist gering.
+  Man muss nur beide Technologien installieren und im Code instanziieren.
+  PouchDB dient als Schnittstelle zu CouchDB, weswegen nur das simpel gehaltene \gls{API} von PouchDB benutzt wird.
+  Die Dokumentationen beider Technologien sind sehr ausfühlich und tragen ausgeprochen zum Verständnis der Funktionsweise bei.
+
   \item[amilia-rdx]
-  komplex, da Redux eingesetzt und verstanden werden muss. Für komplexere Apps mag das generell besser sein, aber für den einfachen Anwendungsfall zu viel Overhead. Einbindung von Redux Offline war allerdings wenig aufwändig sobald Redux implementiert war
+  Der Aufwand eine Anwendung mit Redux Offline zu schreiben, ist deutlich komplexer, da Redux eingesetzt und verstanden werden muss.
+  Die Einbindung von Redux Offline war allerdings minimal aufwändig, sobald Redux einmal implementiert war.
+  Redux ist sehr gut Dokumentiert und bietet viele Beispiele zur Anwendung.
+  Die Dokumentation von Redux Offline besteht aus einer verschachtelten Readme Datei, was die Lesbarkeit und somit das Verständnis der Funktionsweise der Technologie erschwert.
 \end{description}
 %
 \subsub{Lesbarkeit des Codes}
-\begin{description}[leftmargin=0.5cm,style=nextline]
+\begin{description}[leftmargin=0cm,style=nextline]
   \item[amilia-qouch]
-  nicht mehr als erwartet und auch verständlich wenn man mit den Technologien nicht vertraut ist. Es liest sich so wie man es verwendet dank unmissverständlicher API.
+  Auch wenn man mit den Technologien nicht vertraut ist, lässt sich der Code problemlos lesen.
+  Für die Synchronisation beider Technologien reicht eine Zeile Code und umgesetzten \gls{CRUD} Operationen sind dank unmissverständlicher API eindeutig nachvollziehbar.
   %
   \item[amilia-rdx] 
-  Um den Code ohne Probleme lesen zu können muss man mit Redux vertraut sein. Ist das der Fall, ist trotzdem ein Blick in die Dokumentation von Redux Offline hilfreich, weil die Metaattribute nicht für sich selbst sprechen (effect, commit, rollback).
+  Um den Code ohne Probleme lesen zu können sollte man mit Redux und dessen Datenfluss vertraut sein.
+  Ist das der Fall, ist ein Blick in die Dokumentation von Redux Offline hilfreich, da die verwendeten Metaattribute der Aktionen nicht unbedingt eindeutig sind.
+  Sind diese Dinge klar, ist auch der Code von \it{amilia-rdx} gut lesbar und begreiflich.
 \end{description}
 %
   \subsub{Menge des geschriebenen Quellcodes}
-  Beide Prototypen wurden mit React Create App erstellt. Die Menge des Codes die dadurch erzeugt wurde, wurde nicht mitgezählt. Genausowenig wie Kommentare und das geschriebene \gls{CSS}.
-  \begin{description}[leftmargin=0.5cm,style=nextline]
+  Beide Prototypen wurden mit React Create App erstellt.
+  Die Menge des Codes die dadurch erzeugt wurde, wurde nicht mitgezählt. Ebensowenig wurden die Kommentare und das geschriebene \gls{CSS} gezählt.
+\begin{description}[leftmargin=0cm,style=nextline]
     \item[amilia-qouch]
-    Dem \it{amilia-qouch} Prototypen wurden 371 Zeilen Code hinzugefügt.
+    Es wurden 371 Zeilen Code hinzugefügt.
     \item[amilia-rdx] 
-    Dem \it{amilia-rdx} Prototypen wurden 586 Zeilen Code hinzugefügt.
+    Es wurden 586 Zeilen Code hinzugefügt.
 \end{description}
-
-% D1 Ich als EntwicklerIn möchte die Daten lokal und auf dem Server speichern, um deren Erreichbarkeit unabhängig vom Internetstatus zu gewährleisten.
-% D2 Ich als EntwicklerIn möchte ich nur die Adressbucheinträge oder deren Aktualisierungen laden, die sich nicht schon auf dem Endgerät befinden, um Datentraffic und Ladezeiten zu sparen.
-% D3 Ich als EntwicklerIn möchte ich jeden Eintrag identifizieren, um jedem Adressbucheintrag Operationen zuzuweisen und einzelne Kontakte zu finden.
-% D4 Ich als EntwicklerIn möchte, dass jeden Eintrag versioniert ist, um zu wissen ob wann ein Eintrag bearbeitet wurde.
-% D5 Ich als EntwicklerIn möchte, dass alle von NutzerInnen vorgenommenen Änderungen beim System ankommen und keine Daten verloren gehen.
-% D6 Ich als EntwicklerIn möchte auftretende Konflikte effizient speichern, um mit ihnen umgehen können. Mit ihnen umgehen heißt: selbstständig oder von User lösen, zum konfliktfreien Zustand gelangen
-% D7 Ich als EntwicklerIn möchte eine Technologie verwenden die leicht zu verstehen und implemenieren ist, um den Arbeitsaufwand gering zu halten.
-% D8 Ich als EntwicklerIn möchte sauberen und verständlichen Code schreiben, um die Les– und Wartbarkeit zu erhöhen.
