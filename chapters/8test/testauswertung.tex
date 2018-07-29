@@ -1,12 +1,40 @@
-\subsub{Kollaborationsfähigkeit}
-Erste Testreihe: Online Online.\\
-
-Wichtig: Redux Offline ist per se nicht auf mehreren Geräten offlinefähig.
-Im Gegensatz zu Couch. Bei Redux Offline muss das Backend, das dafür obligatorisch ist, selbst implementiert werden.
-
-\sub{Offlinefunktionalität und Konfliktmanagement}
-Testreihen zwei und drei.\\
-Delete always wins\\
-last (synchronisiertes) update wins == random loss of user data!\\
-Qouch: einfaches Handling...
+Zur Auswertung der Testergebnisse werden die Testreihen gruppert.
+Die zweite und dritte Testreihe befassen sich mit der Offlinefähigkeit der Prototypen.
+Es spielt hierbei keine Rolle ob ein oder zwei der Geräte während der Testdurchläufe offline sind. Deswegen werden diese Testreihen in der Auswertung zusammengefasst.
+%
+%
+%
+\subsub{\label{chap:F1}Kollaborationsfähigkeit}
+In der ersten Testreihe sind beide Geräte die ganze Zeit mit dem Internet verbunden.
+Das Hauptaugenmerk lag auf der allgemeinen Funktionalität des jeweiligen Prototypen auf zwei Geräten.
+In der \autoref{tab:test:tests} ist abzulesen dass beide Prototypen alle Tests dieser Reihe eindeutig bestanden haben.
+Damit kann bestätigt werden, dass beide Prototypen auf zwei Geräten funktionieren, solange diese online sind.
+%
+%
+%
+\subsub{Offlinefunktionalität und Konfliktmanagement}
+Während der Testreihen zwei und drei waren entweder ein oder beide Geräte für die Ausführung bestimmter Aktionen offline.
+Der Fokus dieser Tests lag auf dem eventuell eintretenden Datenverlust im Konfliktfall.
+\autoref{tab:test:tests} zeigt, dass das Anlegen und Löschen weder bei \it{amilia-qouch}, noch bei \it{amilia-rdx} ein Problem darstellte.
+Beim Anlegen eines Kontakts war dieser auf beiden Geräten doppelt in der Liste. Auf diesem Wege ging kein Kontakt verloren.
+% Es wurde kein Algorithmus auf Anwendungsebene implementiert, der Dopplungen in 
+Auch das Löschen eines erfolgte reibungslos. Der gelöschte Kontakt war nach der Synchronisation auf keinem der Geräte vorhanden.\\
+Sowohl in der zweiten, als auch in der dritten Testreihe hat der Redux offline Prototyp beim Bearbeiten, bzw. beim Bearbeiten und Löschen eines Kontakts versagt.
+Wo im Prototypen \it{amilia-qouch} die aufgetretenen Konflikte gespeichert wurden, um sie auf Benutzungsebene zu lösen, gingen im anderen Protoypen eine der konfliktbehafteten Datensätze verloren.
+Bei gleichzeitigen Bearbeiten eines Kontakts gewann die Version, die zuletzt synchronisiert wurde. Die andere wurde überschrieben.
+% \todo{Die Daten werden bei Redux Offline im \gls{Queue} gespeichert und dort nacheinander angearbeitet. Das gleicht der Konfliktmanagementstrategie \gls{LWW}.}\\
+Wurde ein Kontakt auf einem Gerät bearbeitet und auf dem anderen gelöscht, war es in jedem Fall nicht mehr in der Liste. Löschungen haben immer Vorrang, wodurch ebenfalls Daten verloren gehen.
+% 
+%
+\subsub{Beobachtungen}
+Zusammenfassend lässt sich sagen, dass Redux Offline per se nicht auf mehreren Geräten offlinefähig ist.
+Bei den Testfällen in \autoref{chap:impl:test} die während der Entwicklung stetig -- auf einem Gerät -- durchgeführt wurden, bestand \it{amilia-rdx} jeden Test.
+Auf nur einem Gerät ist es jedoch schwierig Konflikte zu erzeugen. Deswegen ist die \gls{LWW} Strategie von Redux Offline für die Verwendung auf einem Gerät akzeptabel.\\
+Der Prototyp \it{amilia-qouch} hingegen hat alle Tests erwartungsgemäß bestanden.
+Immer wenn es zu einem Konflikt gekommen ist, konnte dieser einfach und vor allem korrekt gelöst werden.
+In keinem Testdurchlauf gingen Daten verloren.\\
+\todo{Diesen Absatz woanders hin?}
+Sobald die Anwendung auf mehreren Geräten benutzt soll, ist eine Backendimplementierung notwendig.
+Und wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
+Soll Redux Offline verwendet werden, muss beides zusätzlich implementiert werden, damit die Anwendung auf mehreren Geräten offlinefähig ist und keine Daten verloren gehen.
 %
