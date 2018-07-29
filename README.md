@@ -10,7 +10,7 @@ Untersuchung der Konfliktmanagementstrategien verschiedener offlinefähiger Syst
 * `texlive-fonts-extra`
 * `texlive-generic-extra` (glossaries)
 
-## Create pfd
+## Create pdf
 ` pdflatex [tex-filename]`
 
 1. pdflatex filename
