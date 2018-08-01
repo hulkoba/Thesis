@@ -1,29 +1,8 @@
 \sub{Datenbanksynchronisation}
-\todo{ich weiß nicht ob das die richtige Stelle ist, Couch vorzustellen...}\\
-Im Allgemeinen ist ein Synchronisationsprotokoll die Möglichkeit für zwei Partenen, beispielsweise Client und Server, den Zustand voneinander zu kennen. Der Client schickt seine Daten an den Server und umgekehrt, Konflikte werden gelöst, solange bis beide Parteien denselben Zustand haben.
+Eine Datenbanksynchronisation ist dann vonnöten, wenn die Anwendung auf mehr als einem Gerät laufen soll.
+Idealerweise wird hierfür eine Datenbank gewählt, die einen Synchronisationsalgorithmus bereitstellt.
+% Andernfalls ist dieser selbst zu implementieren, was aufgrund der Komplexität und Fehleranfälligkeit nicht ratsam ist.
+Im Allgemeinen ist ein Synchronisationsprotokoll die Möglichkeit für zwei Partenen, beispielsweise Client und Server, den Zustand voneinander zu kennen. Der Client schickt seine Daten an den Server und umgekehrt, solange bis beide Parteien denselben Zustand haben.
 Leider sind Synchronisationsprotokolle schwer zu implementieren und führen häufig zu einem frustrierenden Ergebnis: Dokumente oder Fotos werden nicht repliziert, es gibt doppelte oder verlorene Daten und alle möglichen Arten von Fehlverhalten bei kollaborativen Anwendungen.\\
-CouchDB hat ein intergiertes \hyperref[chap:replication]{Replikationsprotokoll}, das diesen Teil behandelt.  
-%
-% Couch
-%
-\subsub{\label{chap:couch}CouchDB}
-Apache CouchDB\tm ist ein \gls{DBMS} das seit 2005 als freie Software entwickelt wird. Die dokumentenorientierte \gls{DB} funktioniert sowohl als einzelne Instanz, als auch im Cluster, in dem ein Datenbanksserver auf einer beliebig großen Anzahl an Servern oder Virtuellen Masschinen ausgeführt werden kann.\\
-% So kann die Datenschicht beliebig skaliert werden, um die Anforderungen vieler BenutzerInnen zu erfüllen.
-CouchDB verwendet das \gls{HTTP}--Protokoll und \gls{JSON} als Datenformat, weswegen es mit jeder Webfähigen Anwendung kompatibel ist. CouchDB wird über ein \gls{REST}ful \gls{HTTP} \gls{API} angesprochen. So können Daten über die für den \gls{REST}ful Services standardisierten Methoden wie zum Beispiel GET, POST, PUT, DELETE abgerufen oder manipuliert werden.\\\\
-Das implementierte Replikationsmodell erlaubt die Synchronisation bzw. bidirektionale Replikation zu verschiedenen Geräten, was das besondere Merkmal von CouchDB ist. 
-Die genaue Funktionsweise des Protokolls wird in \autoref{chap:replication} detailliert beschrieben.\\
-Dieses Protokoll ist die Grundlage für Offline First Anwendungen.
-Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit einer anderen Datenbank die dasselbe Protokoll implementiert, synchronisieren.
-Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst~\cite{couch}. Die Lösung der Konflikte muss in der Anwendung implementiert sein.
-So kann gewährleistet werden, dass keinerlei Daten verloren gehen.\\\\
-CouchDB ist für Server konzipiert. Für Browser gibt es \hyperref[chap:pouch]{PouchDB} und für native iOS- und Android--\glspl{App} wurde Couchbase Lite entwickelt.
-Des Weiteren gibt es noch die Datenbanken Couchbase und Cloudant.
-Alle verwenden das CouchDB Replikationsprotokoll und können Daten miteinander replizieren und~\cite{couch}.
-%
-% Pouch
-%
-\subsub{\label{chap:pouch}PouchDB}
-Als Ergänzung zu CouchDB kann PouchDB verwendet werden. PouchDB ist die Java"-Script Implementierung von CouchDB.
-Sie ist quelloffen und wurde so konzipiert, dass sie in allen modernen Browsers läuft. Dort ermöglicht PouchDB es Daten zu persistieren, sodass sowohl offline als auch online verfügbar sind.
-PouchDB speichert die Daten in IndexedDB und stellt für das Abrufen und Manipulieren derer ein einheitliches \gls{API} zur Verfügung.\\
-Sind die Daten einmal offline gespeichert können sie, dank des CouchDB Replikationsprotokolls, sobald die Awendung wieder online ist mit CouchDB kompatiblen Servern synchronisiert werden~\cite{pouch}.
+In \autoref{chap:state} werden einige Technologien vorgestellt, die einen integrierten Synchronisationsmechanismus besitzen.
+% CouchDB hat ein intergiertes \hyperref[chap:replication]{Replikationsprotokoll}, das diesen Teil behandelt.
