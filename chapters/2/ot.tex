@@ -22,7 +22,7 @@ Wenn ein Client die Änderungen von einem anderen empfängt, werden die Änderun
 Sie nimmt zwei Operationen die auf demselben Dokument auf unterschiedlichen Geräten angewendet wurden und berechnet daraus eine neue.
 Die neue Operation wird dann nach der zweiten Operation angewendet, die erste, beabsichtigte Operation wird beibehalten~\cite{ot_paper}.\\
 %
-Die Grundidee des \gls{OT} Algorithmusses wird anhand eines Beispiels, das die \autoref{fig:ot} veranschaulicht, illustriert.\\
+Die Grundidee des \gls{OT} Algorithmus wird anhand eines Beispiels, das die \autoref{fig:ot} veranschaulicht, illustriert.\\
 Es gibt den initialen Text ''abc'', der auf den Geräten der kollaborativ arbeitenden Personen, Amilia und Rory, besteht.
 Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf ihrem Gerät den Buchstaben ''c'''.
 %
@@ -37,7 +37,7 @@ Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf ihrem Gerät 
 Die konkurrierenden Operationen sind \tt{insert(0, ''x'')}, 'Füge das Zeichen ''x'' an Stelle Null ein', und \tt{delete(2, 1)}, 'lösche ein Zeichen an der zweiten Stelle'.
 In \gls{OT} werden lokale Änderungen angewandt, so wie sie passieren. Operationen über das Netzwerk werden, bevor sie auf zuvor ausgeführte Operationen angewandt werden, transformiert.\\
 %
-Wenn die Operation von Rory zuerst ausgeführt wird, gibt es kein Problem. Der Buchstabe an zweiter Stelle wird gelöscht und danach wird an Stelle Null ein ''x'' eingefügt. Das Ergebis ist das gewünschte ''xab''.
+Wenn die Operation von Rory zuerst ausgeführt wird, gibt es kein Problem. Der Buchstabe an zweiter Stelle wird gelöscht und danach wird an Stelle Null ein ''x'' eingefügt. Das Ergebnis ist das gewünschte ''xab''.
 Im Bild ist auf der rechten Seite der Ablauf dieses Vorgangs abzulesen, wie er in \gls{OT} stattfindet.
 Rory löscht den Buchstaben ''c'' und im Dokument steht ein ''ab''.
 Alimias Editierung, \it{O2} kommt an und wird gegen \it{O1} transformiert. In diesem Fall ist das Ergebnis der Transformation dasselbe wie vorher.

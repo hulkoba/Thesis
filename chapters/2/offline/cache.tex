@@ -37,7 +37,7 @@ label={code:appcache}}
   index.js
   assets/cat.png
 \end{lstlisting}
-Alle Seiten, mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.\\
+Alle Seiten mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.\\
 In der Praxis jedoch zeigten sich zahlreiche Probleme mit dem AppCache. So wurde der Application Cache nur aktualisiert wenn sich der Inhalt der des Manifests geändert hat. Dann mussten alle Dateien neu heruntergeladen werden.
 Wurden das Manifest und eine andere Datei geändert, wurden die geänderten Dateien nicht unbedingt erneut gespeichert. Denn wenn der Server zusammen mit den Dateien keine Cache-Header sendete, so speicherte der Browser die Datei nach einem Cache-Header-Wert den er `errät`. So konnte es passieren, dass der Browser annahm, eine Datei brauche keine Aktualisierung und weiterhin die alte, gecachte Version auslieferte~\cite{noappcache}.\\
 Als Reaktion auf diese Probleme wurde der Service Worker entworfen.
@@ -57,5 +57,5 @@ Gegenwärtig besitzen -- bis auf den Internet Explorer -- sämtliche Desktop-Bro
 \end{figure}
 %
 Mit dem Service Worker können wie mit dem App Cache statische Ressourcen sofort beim ersten Besuch der Seite im Cache gespeichert werden. Es lässt sich hierbei unterscheiden, ob die Daten vor der ersten Verwendung, oder später im Cache gespeichert werden sollen. Für den ersten Fall eignen sich statische Inhalte wie Schriften oder JavaScript--Dateien, für den zweiten größere Ressourcen die nicht sofort benötigt werden.\\
-Zusätzlich bietet der Service Worker die Möglichkeit auf Interaktionen zu reagieren. Den NutzerInnen kann angeboten werden bestimmt Inhalte der Seite, wie zum Beispiel ein Video, später, bzw. offline anzuschauen. Diese werden dann im Cache gespeichert und sind somit offline verfügbar.
+Zusätzlich bietet der Service Worker die Möglichkeit auf Interaktionen zu reagieren. Den NutzerInnen kann angeboten werden bestimmte Inhalte der Seite, wie zum Beispiel ein Video, später bzw. offline anzuschauen. Diese werden dann im Cache gespeichert und sind somit offline verfügbar.
 Service Worker erlauben außerdem den Zugriff auf Push-Benachrichtigungen und das Background Sync \gls{API}. Die Hintergrundsynchronisation kann einmalig oder in festgelegten Intervallen stattfinden und ist besonders für nicht dringende Aktualisierungen wertvoll~\cite{offline_cookbook}.

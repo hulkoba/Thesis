@@ -3,7 +3,7 @@
 %
 Ein \gls{CRDT} ist eine spezielle Datenstruktur die in verteilten Systemen auf mehreren Geräten repliziert werden kann. Jede Operation wird an alle Replikate gesendet. Jedes Replikat wendet alle ankommenden Aktualisierungen an und ein Algorithmus löst alle konfliktbehafteten Aktualisierungen auf, wodurch sichergestellt ist, dass Konflikte gar nicht erst auftreten~\cite{crdt_shapiro}. Eine Synchronisation ist nicht notwendig, da die Aktualisierung sofort ausgeführt wird ~\cite{crdt_shapiro2}.\\\\
 %
-Es gibt zwei Konzepte bei Replikationsmodellen mit \glspl{CRDT}: den zusandsbasierten und den operationsbasierten Ansatz.
+Es gibt zwei Konzepte bei Replikationsmodellen mit \glspl{CRDT}: den zustandsbasierten und den operationsbasierten Ansatz.
 %In seinem Vortrag beschreibt Marc Shapiro die Funktionsweisen beider Ansätze und geht auf die Unterschiede, Vor- und Nachteile ein.
 %Bei operationsbasierten \glspl{CRDT} muss sichergestellt werden, dass die Operationen nicht verloren gehen oder dupliziert werden wenn sie zu den anderen Replikaten übertragen werden.
 %Zustandsbasierte \glspl{CRDT} haben den Nachteil, dass der gesamte Zustand, statt nur der Operation und die sich ändernden Abschnitte, zu den anderen Replikaten übertragen werden muss.
@@ -56,7 +56,7 @@ Die folgende Abbildung stellt eine operationsbasierte Replikation mit drei Gerä
 Die drei Kreise auf der linken Seite repräsentieren drei identische Datensätze auf drei Geräten. Die Datensätze \it{S1} und \it{S2} werden zeitgleich mit unterschiedlichem Kontent aktualisiert.
 Sowohl \it{S1} also auch \it{S2} wenden die vorbereitende Aktualisierungsmethode $t$ auf sich an.
 Dann, mit dessen Ergebnis, die ausführende $u$.
-Sofort senden beide Relikas die Aktualisierung an alle anderen, welche ebenfalls die ausführende Aktualisierungsmethode $u$ auf sich anwenden.\\\\
+Sofort senden beide Replikas die Aktualisierung an alle anderen, welche ebenfalls die ausführende Aktualisierungsmethode $u$ auf sich anwenden.\\\\
 Die Voraussetzung für eine konfliktfreie Replikation sind hier kommuntative Aktualisierungen.
 %Wenn $s$ der Status ist und $u$ die Aktualisierungsmethode, muss $s \bullet u \bullet u' \equiv s \bullet u' \bullet u$ gelten.
 Nur so spielt die Reihenfolge in der die Aktualisierungen bei den Replikaten ankommen keine Rolle -- das Ergebnis ist dasselbe ~\cite{crdt_shapiro2}.\\\\
