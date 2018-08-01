@@ -21,14 +21,20 @@ Dazu muss jeder Kontakt mittels einer eindeutigen ID identifiziert werden. Wenn 
 Gibt es mehr als zwei Einträge müssen diese sortiert werden, sodass ersichtlich wird welcher der aktuellste oder älteste ist, welcher Eintrag vor oder nach welchem kommt. Dazu muss jeder Kontakt versioniert werden.\\\\
 Um eine Aussage darüber zu treffen, welches der untersuchten Technologien besser für die Entwicklung einer offlinefähigen Anwendung geeignet ist und warum, ist eine Testumgebung mitzuentwickeln. Hier soll die Möglichkeit geschaffen werden, Konflikte durch gleichzeitiges Bearbeiten eines Kontakts im Offlinestatus herbeizuführen und die Testfälle auswerten zu können.\\
 Es wird ermittelt welche Strategie zur Konfliktlösung von der Technologie verwendet wird, ob die Funktionalität der Anwendung auch bei auftretenden Konflikten gewährleistet ist und ob dabei Daten verloren gehen.
-Dabei wird auch der Aufwand betrachtet, der aufgebracht werden muss die Technologie zu verwenden und wie leicht der geschriebene Quellcode zu verstehen ist.\\
+Dabei wird auch der Implementierungsaufwand betrachtet, der aufgebracht werden muss die Technologie zu verwenden und wie leicht der geschriebene Quellcode zu verstehen ist.\\\\
+%
 % was Dein Projekt umfassen soll und was nicht. Im Prinzip eine konkretere Version Deiner Zielstellung.
 % Hier legst Du auch fest,  was Du untersuchen willst und was nicht.
-\todo{Dinge, die von vornherein ausgeschlossen werden: \\
-Nur auf 2 Geräten testen\\
-perfektes UI\\
-Kein Merge von Konfliktversionen. Nur entweder, oder.\\
-Implementierungen von Push notifications bei Redux}\\\\
+%
+Um den Rahmen dieser Arbeit nicht zu sprengen, werden die Testdurchläufe auf nur zwei Geräten durchgeführt.
+Dort werden durch das Bearbeiten eines Kontakts auf beiden Geräten einfache Konflikte erzeugt.
+Auf das Zusammenführen von zwei konfliktbehafteten Versionen wird verzichtet.
+Gibt es zwei unterschiedliche Versionen eines Kontakts auf beiden Geräten wird eine fixe Version davon behalten.
+nur einfache Konflikte erzeugt.\\
+Die verwendeten Technologien werden nur an die Anwendung angepasst wenn es unbedingt notwendig ist, wenn die Grundfunktionalität der Anwendung sonst eingeschränkt wäre. Sie werden nur benutzt, denn nur so kann ein unverfälschtes Ergebnis erzielt werden.
+Es wird ebenso auf ein komplexes \gls{UI} und ein perfektes Nutzungserlebnis verzichtet.\\\\
+%
+%
 Die in \autoref{chap:konfliktszenarien} erarbeiteten Szenarien zeigen, Konflikte können immer auftreten. Werden Konflikte falsch oder gar nicht behandelt, kann es zu Datenverlust führen.
 Aus diesem Grund müssen sie als Teil der Anwendung betrachtet statt ignoriert zu werden.
 Im einfachen Konfliktfall kann das System entscheiden welches die konfliktfreie Version ist.
