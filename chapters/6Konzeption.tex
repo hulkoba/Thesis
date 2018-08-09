@@ -1,7 +1,21 @@
 \chapter{\label{chap:konzeption}Konzeption}
 Die erarbeiteten Anforderungen zur Untersuchung der Konfliktmanagementstrategien offlinefähiger Systeme werden in diesem Kapitel für die Konzeption angewendet.\\
 Es soll für jede zu untersuchende Technologie ein Prototyp entwickelt werden. Im Rahmen dieser Arbeit entsteht ein Prototyp der \sc{Redux Offline} verwendet und ein zweiter in dem PouchDB und CouchDB eingesetzt wird. Für letzteren könnte genauso gut HOODIE benutzt werden, da HOODIE sowohl PouchDB als auch CouchDB benutzt~\cite{hoodie-how}.
-Doch da für den zu entwickelnden Prototyp lediglich diese beiden Komponenten benötigt werden, wurde sich dagegen entschieden.
+Doch da für den zu entwickelnden Prototyp lediglich diese beiden Komponenten benötigt werden, wurde sich dagegen entschieden.\\
+%
+Die Wahl viel auf CouchDB und PouchDB, weil diese Technologien häufig in unterschiedlichen Artikeln, die im Zusammenhang mit Offline First Anwendungen stehen, genannt und empfohlen werden.\\
+% 
+Als einzige Technologie die neben HOODIE, bzw. CouchDB eine Datenbanksynchronisation bereitstellt, stand Realm ebenfalls zur Wahl.
+Realm unterstützt jedoch nur die Entwicklung von mobilen Anwendungen und ist außerdem zahlungspflichtig.
+Zusätzlich dazu ist der Object Server, der Teil der für die Datensynchronisation zuständig ist, und dessen Dokumentation nicht quelloffen.
+Das heißt es ist nicht nachvollziehbar welche der im Realm Whitepaper genannten Konfliktmanagementstrategien, \gls{OT} oder \gls{LWW}, angewandt wird.
+Bei Betrachtung der von Realm voreingestellten Regeln, dass Löschungen und jede letzte Aktualisierung immer gewinnen, ist kein herausstechender Synchronisationsalgorithmus zu erkennen.\\
+% 
+Aus diesen Gründen wurde als Alternative zu Realm Redux Offline gewählt. Redux ist ein mächtiges und oft verwendetes Tool ist, was sowohl in mobilen, als auch Desktopapplikationen integriert werden kann.
+Die Versprechungen von Redux Offline sind hoch und es soll untersucht werden, inwiefern diese eingehalten werden.\\
+% 
+% 
+% 
 Bis zu einem gewissen Status, nämlich dem der Verwendung der Technologien, sind beide Prototypen -- bis auf den Namen-- identisch.
 % Beginnend mit dem Aufbau der exemplarischen Anwendung werden in den folgenden Abschnitten die  der Anwendungsaufbau, Architektur  und schließlich \todo{blabla} die graphische Oberfläche aufgeführt.
 % Den Raum aller möglichen Lösungen anhand der Anforderungen auf die in irgendeinem Sinn beste / geeignetste einzuschränken:\\
@@ -30,9 +44,7 @@ Die Prototypen bestehen im Frontend aus React und wurden mit \sc{Create React Ap
 \end{figure}
 %
 Diese sind im Verzeichnis node\_modules installiert.
-Außerdem ist ein ServiceWorker
-%und ein App Manifest (\tt{manifest.json}) enthalten, wodurch die \gls{PWA}-- Kriterien erfüllt sind.
-enthalten der die \gls{Assets} cacht.
+Außerdem ist ein ServiceWorker enthalten der die \gls{Assets} cacht.
 Als Template gibt es nun die \tt{public/index.html}-- Datei. In der \tt{index.js}--Datei werden die React--Komponenten und der ServiceWorker initialisiert.
 Alle \tt{App.*}--Dateien umfassen eine minimale Beispielanwendung.
 In der generierten \tt{package.json}--Datei (vgl. \autoref{fig:init2}), befinden sich Informationen über die Anwendung und ihre Abhängigkeiten. Im Unterpunkt \tt{scripts} werden Kommandozeilen-Aufrufe definiert und können mit dem Befehl \tt{npm run} aufgerufen werden.

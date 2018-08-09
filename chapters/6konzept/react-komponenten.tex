@@ -18,8 +18,8 @@ Zusammen repräsentieren sie ein Formular in dem der Name des Kontakts angezeigt
 %
 Die Formular--Containerkomponente hat ein Kontaktobjekt im internen \tt{state} gespeichert.
 Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
-Initial wird das Kontaktobjekt über die \tt{props} in Zeile fünf geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In neun sieben steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile zwölf mit den reingegebenen Werten aktualisiert.
+Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
+In neun sieben steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile 12 mit den reingegebenen Werten aktualisiert.
 Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange} Funktion. 
 % listing
 \begin{center}
@@ -30,8 +30,8 @@ Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der 
   label=code:react-form-view]{code/Form.js}
 \end{center}
 %
-Die beiden Parameter sind in der Zeile eins des folgenden Listings wiederzufinden.
-Die Viewkomponente macht nichts anderes als die ihr übergebenen Daten anzuzeigen. Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion, in der Zeile fünf, aufgerufen.
+Die beiden Parameter sind in der Zeile 1 des folgenden Listings wiederzufinden.
+Die Viewkomponente macht nichts anderes als die ihr übergebenen Daten anzuzeigen. Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion, in der Zeile 5, aufgerufen.
 Diese Komponente besitzt keinerlei Logik.
 %
 % Redux
@@ -43,11 +43,11 @@ Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, au
 Dieser Ort wird \sc{Store} genannt. Alle Änderungen der Daten im zentralen Speicher erfolgen ausschließlich über Aktionen.\\\\
 %
 Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
-Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile fünf erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
-Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile drei). Diese wird dem \tt{offline store enhancer} in Zeile acht übergeben.
+Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
+Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile 8 übergeben.
 \begin{center}
   \lstinputlisting[language=REACT,
-  firstline=53,lastline=62,
+  firstline=50,lastline=62,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
   caption={Erstellen eines Stores mit Redux Offline},
   label=code:store]{code/Redux.js}
@@ -63,8 +63,8 @@ Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mi
   label=code:react-meta]{code/Redux.js}
 \end{center}
 %
-Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile sechs.
-Bei \tt{commit} in Zeile sieben wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
+Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
+Bei \tt{commit} in Zeile 7 wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
 Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
 Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben.
 Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
@@ -77,4 +77,4 @@ Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen 
   label=code:reducer]{code/Redux.js}
 \end{center}
 %
-In diesem Beispiel wird der \gls{App}status nur bei erfolgreichem Netzwerkaufruf aktualisiert. Das ist in den Zeilen sechs bis acht nachzulesen. Und auch nur dann, wenn sich die Antwort vom Server von diesem unterscheidet.
+In diesem Beispiel wird der \gls{App}status nur bei erfolgreichem Netzwerkaufruf aktualisiert. Das ist in den Zeilen 6 bis 8 nachzulesen. Und auch nur dann, wenn sich die Antwort vom Server von diesem unterscheidet.

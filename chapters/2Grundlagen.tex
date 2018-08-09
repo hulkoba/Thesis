@@ -1,15 +1,17 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
-Eine offlinefähige Anwendung ist sowohl mit, als auch ohne Internetverbindung vollständig einsatzbereit.
+Eine offlinefähige Anwendung ist sowohl mit, als auch ohne Internetverbindung einsatzbereit.
 Dieses Kapitel beschreibt die grundlegenden Optionen eine Anwendung offlinefähig zu machen, geht im Speziellen auf Konflikte und deren Lösungsstrategien ein.
 %
 % Offline-First
 %
 \section{\label{chap:offlinefirst}Offline First}
-Offline First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist, um deren grundlegenden Funktionen zu nutzen.
+Offline First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist, um deren grundlegenden Funktionen zu nutzen ~\cite{offline}.
 Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen. Um Webanwendungen offlinefähig zu machen, erfordert es einige Grundvoraussetzungen.\\
 Eine Webanwendung besteht aus zwei Bestandteilen. Den Daten die von den BenutzerInnen generiert werden und den \gls{Assets}. \gls{Assets} sind alle Bestandteile der \gls{App} die für die erfolgreiche Ansicht im Browser benötigt werden. Das sind \gls{HTML}-- und \gls{CSS}--Dateien sowie Skripte und Mediendateien wie zum Beispiel Bilder.\\
 Diese Daten müssen zuerst auf dem Endgerät gespeichert werden, um offline erreichbar zu sein.
-Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz. Daten, die zuerst auf dem Endgerät gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.\\
+Einmal gespeichert, ist das Laden der Ressourcen aus dem Cache, auch bei bestehender Internetverbindung, schneller als aus dem Netz ~\cite{jakearchibald}.
+% Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz.
+Daten, die zuerst auf dem Endgerät gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.\\
 Gibt es eine serverseitige Datenbank, müssen die Daten zwischen Server und Client synchronisiert werden. Ist die Anwendung kollaborativ, muss die Synchronisation zwischen allen Beteiligten stattfinden. Synchronisation erfordert den Umgang mit Konflikten, denn es dürfen auf keinen Fall Daten verloren gehen.\\\\
 % Harte, weiche, mittlere Probleme (verschiedene Stufen von offlinefähig?)
 Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Dateinspeicherung und deren Synchronisation mit einer serverseitigen Datenbank auf.

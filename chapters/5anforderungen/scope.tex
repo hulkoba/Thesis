@@ -7,7 +7,7 @@ Die Offlinefunktionalität soll durch die verwendeten Technologien gegeben sein 
 Geschieht eine dieser Operationen offline, werden die Daten bei wieder bestehender Internetverbindung synchronisiert. Im einfachen Fall erfolgt die Synchronisation zwischen der Server und Client.
 Da die Beispielanwendung kollaborativ ist, erfolgt die sie zwischen allen beteiligten Parteien.
 % Synchronisation erfordert in jedem Fall den Umgang mit Konflikten.
-Der Schwerpunkt liegt auf den Konflikten die entstehen können, wenn die Internetverbindung abbricht.
+Der Schwerpunkt liegt auf den Konflikten die entstehen können, wenn keine Internetverbindung besteht.
 Dabei sind Aspekte aus unterschiedlichen Rollen zu betrachten. So werden die Rollen der AnwenderInnen, der EntwicklerInnen und die der TesterInnen berücksichtigt.\\\\
 %
 %
@@ -29,8 +29,7 @@ Dabei wird auch der Implementierungsaufwand betrachtet, der aufgebracht werden m
 Um den Rahmen dieser Arbeit nicht zu sprengen, werden die Testdurchläufe auf nur zwei Geräten durchgeführt.
 Dort werden durch das Bearbeiten eines Kontakts auf beiden Geräten einfache Konflikte erzeugt.
 Auf das Zusammenführen von zwei konfliktbehafteten Versionen wird verzichtet.
-Gibt es zwei unterschiedliche Versionen eines Kontakts auf beiden Geräten wird eine fixe Version davon behalten.
-nur einfache Konflikte erzeugt.\\
+Gibt es zwei unterschiedliche Versionen eines Kontakts auf beiden Geräten wird eine davon behalten.\\
 Die verwendeten Technologien werden nur an die Anwendung angepasst wenn es unbedingt notwendig ist, wenn die Grundfunktionalität der Anwendung sonst eingeschränkt wäre. Sie werden nur benutzt, denn nur so kann ein unverfälschtes Ergebnis erzielt werden.
 Es wird ebenso auf ein komplexes \gls{UI} und ein perfektes Nutzungserlebnis verzichtet.\\\\
 %
@@ -43,4 +42,5 @@ Die Aktualisierungen finden in unterschiedlichen Bereichen statt und sind deshal
 Die oben erarbeiteten \hyperref[chap:konfliktszenarien]{Konfliktszenarien} beschreiben die Konflikte die nicht vom System gelöst werden können.
 Diese sollen effizient gespeichert werden.
 % \it{Wichtig hierbei ist die Möglichkeit immer zu einem konfliktfreien Status zu gelangen -- unabhängig davon wie viele Konflikte es gibt.}\\
-Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt und angeboten werden die Konflikte zu lösen. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.
+Jeder Fehlerfall muss kommuniziert werden. Wenn es konliktbehaftete Daten gibt muss dies mitgeteilt und angeboten werden die Konflikte zu lösen.
+% Nur so kann sichergestellt werden, dass keine Daten verloren gehen.

@@ -2,7 +2,7 @@
 Eine Datenbanksynchronisation ist dann vonnöten, wenn die Anwendung auf mehr als einem Gerät laufen soll.
 Idealerweise wird hierfür eine Datenbank gewählt, die einen Synchronisationsalgorithmus bereitstellt.
 % Andernfalls ist dieser selbst zu implementieren, was aufgrund der Komplexität und Fehleranfälligkeit nicht ratsam ist.
-Im Allgemeinen ist ein Synchronisationsprotokoll die Möglichkeit für zwei Partenen, beispielsweise Client und Server, den Zustand voneinander zu kennen. Der Client schickt seine Daten an den Server und umgekehrt, solange bis beide Parteien denselben Zustand haben.
+Im Allgemeinen ist ein Synchronisationsprotokoll die Möglichkeit für zwei Parteien, beispielsweise Client und Server, den Zustand voneinander zu kennen. Der Client schickt seine Daten an den Server und umgekehrt, solange bis beide Parteien denselben Zustand haben.
 Leider sind Synchronisationsprotokolle schwer zu implementieren und führen häufig zu einem frustrierenden Ergebnis: Dokumente oder Fotos werden nicht repliziert, es gibt doppelte oder verlorene Daten und alle möglichen Arten von Fehlverhalten bei kollaborativen Anwendungen.\\
 In \autoref{chap:state} werden einige Technologien vorgestellt, die einen integrierten Synchronisationsmechanismus besitzen.
 % CouchDB hat ein intergiertes \hyperref[chap:replication]{Replikationsprotokoll}, das diesen Teil behandelt.

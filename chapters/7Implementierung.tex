@@ -24,10 +24,10 @@ Sobald sicht der \gls{App}state ändert wird die \tt{render} Funktion der Kompon
   label=code:render]{code/render.js}
 \end{center}
 %
-Unabhängig von einem Wert im State wird der Header, in den Zeilen fünf bis sieben, gerendert.
+Unabhängig von einem Wert im State wird der Header, in den Zeilen 5 bis 7, gerendert.
 Im wird die Information \tt{isOpen} übergeben die aussagt ob der Editiermodus an ist, also ob das Formular gerade geöffnet ist oder nicht.
 Ihm wird auch die Funktion \tt{toggleEdit} gegeben, welche genau diese Statuseigenschaft wechselt.\\
-Die Zeilen neun bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird weiter unten im \autoref{chap:konfliktmanagement} erklärt.\\
+Die Zeilen 9 bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird weiter unten im \autoref{chap:konfliktmanagement} erklärt.\\
 In den Zeilen 16 bis 27 wird anhand der \tt{isOpen} Information entschieden ob das Formular oder die Liste gerendert wird.
 Die Liste bekommt alle im \gls{App}state gespeicherten Kontakte, ebenfalls die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakt. Es ist zu beachten, dass hier bei der \tt{toggleEdit()} das \tt{bind(this, null)} fehlt. Das liegt daran, dass wenn man aus der Liste das Formular öffnet, man den 'Bearbeiten' Knopf betätigt hat und der zu bearbeitende Kontakt im Formular geladen wird. Dieser Kontakt wird dann für die Dauer seiner Bearbeitung im \tt{state.editView.contact} gespeichert.\\
 Das KontaktFormular ist aufgeteilt in eine Container-- und eine Viewkomponente, weswegen hier in \tt{Contacts} die Containerkomponente gerendert wird.

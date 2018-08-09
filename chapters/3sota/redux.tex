@@ -12,7 +12,7 @@ Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
 Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
 Dieser Ort wird \sc{Store} genannt und jede Applikation hat genau einen davon. 
 Als einzige Informationsquelle für den Store als zentralen Speicher dienen Aktionen. 
-Sie senden Daten von der Anwendung mittels \tt{store.dispatch()} an den \sc{store} und beschreiben dabei nicht wie etwas passiert, sondern was passiert.
+Sie senden Daten von der Anwendung mittels \tt{store.dispatch()} an den \sc{store} und beschreiben dabei was passiert, nicht wie etwas passiert.
 Der dritte wichtige Bestandteil von Redux sind die \sc{Reducer}. Sie spezifizieren wie der Status sich als Reaktion auf die Aktionen ändert~\cite{redux}.\\
 Der Datenfluss in der Reduxarchitektur ist unidirektional. Zur Veranschaulichung wird anhand der folgenden Abbildung der Redux Datenfluss beschrieben.
 %
@@ -25,7 +25,7 @@ Der Datenfluss in der Reduxarchitektur ist unidirektional. Zur Veranschaulichung
 \end{figure}
 % 
 Zuerst sendet die View eine Aktion an den Store. Dieser empfängt die Aktion und schickt sie zusammen mit dem Applikationsstatus an den \sc{Reducer}.
-Der \sc{Reducer} erstellt eine Kopie des Status, verändert diese und schickt sie wieder zurück an den \sc{Store}. Der \sc{Store} ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rendern der View aus.
+Der \sc{Reducer} erstellt eine Kopie des Status, verändert diese und schickt sie wieder zurück an den \sc{Store}. Der \sc{Store} ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rendern der View aus ~\cite{reduxflow}.
 % 
 % Redux Offline
 % 

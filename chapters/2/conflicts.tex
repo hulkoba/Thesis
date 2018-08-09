@@ -1,5 +1,5 @@
 % 1. Definition
-Als Konflikt wird die Situation beschrieben in der es ein Dokument mit unterschiedlichen Informationen in mehreren Geräten oder Datenbanken gespeichert ist (vgl. ~\cite{couchDB} S. 153).
+Als Konflikt wird die Situation beschrieben in der verschiedene Versionen des gleichen Dokuments auf mehreren Geräten oder Datenbanken gespeichert sind (vgl. ~\cite{couchDB} S. 153).
 Konflikte gehören in verteilten Systemen zur Realität und lassen sich nicht vermeiden.
 Ein verteiltes System ist per Definition ein Zusammenschluss unabhängiger Computer, die sich für die NutzerInnen als ein einziges System präsentieren (vgl. ~\cite{tanenbaum} S. 2).
 Einfacher gesagt besteht ein verteiltes System, sobald zwei oder mehrere Computer über das Netzwerk miteinander verbunden sind.
@@ -21,14 +21,16 @@ Zwei Personen treffen sich im Zug und verstehen sich auf Anhieb sehr gut. Person
 Amilia diktiert ihre Telefonnummer falsch, mit einem Zahlendreher, weil sie die Nummer noch nicht lange hat.
 Zur Sicherheit schickt Amilia Rory ihre Nummer zusätzlich per E-Mail. Rory schaltet ihren Laptop aus, weil er sich mit Amilia unterhalten möchte.
 Am Abend ist Rory zu Hause angekommen und sie speichert Amilias Nummer aus der E-Mail in ihrem Adressbuch auf seinem stationären Desktop PC.
-Jetzt gibt es Amilias Telefonnummer mit unterschiedlichen Informationen in Rorys Adressbuch auf verschiednene Geräten.
-Wenn Rory am nächsten Tag seinen Laptop startet und das Adressbuch sich mit dem auf dem PC synchronisiert entsteht ein Konflikt. Die falsche Telefonnummer wird gespeichert und die richtige ist verloren.\\\\
+Jetzt gibt es Amilias Telefonnummer mit unterschiedlichen Informationen in Rorys Adressbuch auf verschiedenen Geräten.
+Wenn Rory am nächsten Tag seinen Laptop startet und das Adressbuch sich mit dem auf dem PC synchronisiert entsteht ein Konflikt.
+Die korrekte Telefonnummer vom stationären PC befindet sich bereits auf dem Server und wird nun, da sich jetzt das Adressbuch auf dem Laptop mit dem Server synchronisiert, von der Nummer mit dem Zahlendreher überschrieben.
+Die falsche Telefonnummer wird gespeichert und die richtige ist verloren.\\\\
 %
 %
 Konflikte sind in zwei Kategorien einzuteilen. Es gibt solche, die vom System gelöst werden können und welche die eine spezielle Behandlung brauchen.
 Gibt es eine gleichzeitige Änderung an unterschiedlichen Stellen eine Dokuments muss das kein Problem darstellen.
 Das Dokument kann beide Aktualisierungen erhalten indem die Änderungen zusammengefügt werden.
-Diese Prozedur wird \it{merge} genannt und wird unter anderem von Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung, angewandt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
+Diese Prozedur wird \it{merge} genannt und ist durch Systeme wie Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung, jeder EntwicklerIn bekannt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
 
 Die Konflikte die durch die gleiche Änderung an ein und derselben Stelle des Dokuments entstehen, benötigen eine aufwändigere Behandlung.
 Es muss festgestellt werden welche Version die korrekte ist und gespeichert werden soll.
