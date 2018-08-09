@@ -1,7 +1,7 @@
 \section{Die graphische Oberfläche}
 Aus den minimalen Anforderungen an die graphische Oberfläche ergibt sich das Design. Anhand der folgenden Abbildungen werden die gefertigten Entwürfe der BenutzerInnenoberfläche dargestellt.\\\\
 Diese Listenansicht in Abbildung \ref{fig:list} besteht aus dem Header / Kopf und den Listeneinträgen. Sie zeigt die Kontakteinträge in beiden Netzwerkstatus: online (Abbildung \ref{fig:list-online}) und offline (\ref{fig:list-offline}).\\\\
-Im Header ist abzulesen ob die Anwendung gerade eine Netzwerkverbindung hat oder nicht. Für eine bessere Prägnanz wurden hierzu unterstützend die Farben Rot für keine Verbindung und Grün für eine bestehende Netzwerkverbindung gewählt. Rechts im Header gibt es einen Knopf mit dem man in die Ansicht gelangt in der ein Kontakt hinzugefügt werden kann.\\
+Im Header ist abzulesen, ob die Anwendung gerade eine Netzwerkverbindung hat oder nicht. Für eine bessere Prägnanz wurden hierzu unterstützend die Farben Rot für keine Verbindung und Grün für eine bestehende Netzwerkverbindung gewählt. Rechts im Header gibt es einen Knopf mit dem man in die Ansicht gelangt in der ein Kontakt hinzugefügt werden kann.\\
 In der Liste sieht man die Namen der Person und jeweils einen Knopf zum Bearbeiten oder Löschen. Mit der Betätigung des `Delete`--Knopfs wird der entsprechende Eintrag in der Liste gelöscht
 \begin{figure}[H]
   \centering
@@ -39,9 +39,9 @@ Ein Kontakt hat einen Namen, eine E-Mailadresse und eine Telefonnummer. In diese
   \caption{Die Editieransicht in beiden Netzwerkstatus}
   \label{fig:edit}
 \end{figure}
-Sobald ein Konflikt entstanden ist soll sich ein Dialog öffnen, der den nutzenden Personen darüber informiert welcher Kontakteintrag konfliktbehaftet ist und mit welcher Version er konkurriert.
-Anhand des Dialoginhalts kann unterschieden werden welche Version die lokal gespeicherte ist und welche vom Server kommt.
+Sobald ein Konflikt entstanden ist soll sich ein Dialog öffnen, der die nutzenden Personen darüber informiert welcher Kontakteintrag konfliktbehaftet ist und mit welcher Version er konkurriert.
+Anhand des Dialoginhalts kann unterschieden werden, welche Version die lokal gespeicherte ist und welche vom Server kommt.
 Der Dialog beinhaltet außerdem zwei unterschiedlich farbige Knöpfe die jeweils den Kontakteintrag in einer anderen Version anzeigen.
 Durch Klick auf einen Knopf wird die entsprechende Version des Kontakts gespeichert und die andere verworfen.
 So kann ein Mensch entscheiden welche Version behalten werden soll und es wird sichergestellt dass keine Daten verloren gehen.\\
-\todo{Für die Implementierung des Konfliktdialogs ist es notwendig, dass die zu untersuchenden Technologien die Möglichkeit bieten Konflikte zu speichern oder wenigstens als solche zu identifizieren, sodass sie manuell gespeichert werden können.}
+Für die Implementierung des Konfliktdialogs ist es notwendig, dass die zu untersuchenden Technologien die Möglichkeit bieten Konflikte zu speichern oder wenigstens als solche zu identifizieren, sodass sie manuell gespeichert werden können.

@@ -1,5 +1,5 @@
 \sub{\label{chap:persist}Das Speichern der Daten}
-Das Seichern von Kontakten wird in den Prototypen unterschiedlich implementiert.
+Das Speichern von Kontakten wird in den Prototypen unterschiedlich implementiert.
 %
 % --------------------------------------------------------------------------------- Qouch
 %
@@ -17,8 +17,11 @@ Der Aufruf \tt{localDB.allDocs()} in Zeile acht fragt alle in der lokalen Datenb
 Ohne den Parameter \tt{include\_docs: true} werden nur die ID, \tt{\_id} und die Revisionsnummer, \tt{\_rev} eines jeden gespeicherten Kontakts zurückgegeben.
 Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert. Alle konfliktbehafteten Kontakte haben nun ein \tt{\_conflicts} Attribut. Dort bedindet sich eine Liste mit allen konkurrierenden Revisionen.\\\\
 %
-Für die nachfolgenden Aufrufe gibt es mehrere Varianten. Eine Anleitung zu dem Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments das Modul PouchDB Upsert zu verwenden. Das wird in Zeile eins zu, PouchDB Objekt hinzugefügt. Jedes Mal wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden. Zum praktischen Umgang empflieht PouchDB die Aktion zu wiederholen, bis sie erfolgreich war.
-Dazu kann PouchDB Upsert verwendet werden. Es fügt ein neues Dokument hinzu wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}. Konflikte treten so trotzdem auf und CouchDB wählt eine gewinnende Version aus. Alle Konflikte werden immenrnoch gespeichert und die beteiligten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.
+Für die nachfolgenden Aufrufe gibt es mehrere Varianten. Eine Anleitung zu dem Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments das Modul PouchDB Upsert zu verwenden. Das wird in Zeile eins zum PouchDB Objekt hinzugefügt.
+Jedes Mal wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden. Zum praktischen Umgang empflieht PouchDB die Aktion zu wiederholen, bis sie erfolgreich war.
+Dazu kann PouchDB Upsert verwendet werden.
+Es fügt ein neues Dokument hinzu, wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}. Konflikte treten so trotzdem auf und CouchDB wählt eine gewinnende Version aus.
+Alle Konflikte werden immenrnoch gespeichert und die beteiligten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
