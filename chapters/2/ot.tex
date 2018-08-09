@@ -19,7 +19,7 @@ Die Operationen erfolgen auf der lokalen Kopie und die Änderungen werden an all
 %
 Um konkurrierende Operationen zu behandeln, gibt es die \tt{transform} Funktion.
 Wenn ein Client die Änderungen von einem anderen empfängt, werden die Änderungen vor ihrer Ausführung transformiert.
-Sie nimmt zwei Operationen die auf demselben Dokument auf unterschiedlichen Geräten angewendet wurden und berechnet daraus eine neue.
+Sie nimmt zwei Operationen, die auf demselben Dokument auf unterschiedlichen Geräten angewendet wurden und berechnet daraus eine neue.
 Die neue Operation wird dann nach der zweiten Operation angewendet, die erste, beabsichtigte Operation wird beibehalten~\cite{ot_paper}.\\
 %
 Die Grundidee des \gls{OT} Algorithmus wird anhand eines Beispiels, das die \autoref{fig:ot} veranschaulicht, illustriert.\\

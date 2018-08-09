@@ -23,7 +23,7 @@ Dadurch, dass das Frontend und das Backend nicht direkt miteinander sprechen, is
 % CouchDB
 % 
 \sub{\label{chap:couch}CouchDB}
-Apache CouchDB\tm ist ein \gls{DBMS} das seit 2005 als freie Software entwickelt wird. Die dokumentenorientierte Datenbank funktioniert sowohl als einzelne Instanz, als auch im Cluster. In einem Cluster kann ein Datenbanksserver auf einer beliebig großen Anzahl an Servern oder Virtuellen Maschinen ausgeführt werden.\\
+Apache CouchDB\tm ist ein \gls{DBMS}, das seit 2005 als freie Software entwickelt wird. Die dokumentenorientierte Datenbank funktioniert sowohl als einzelne Instanz, als auch im Cluster. In einem Cluster kann ein Datenbanksserver auf einer beliebig großen Anzahl an Servern oder virtuellen Maschinen ausgeführt werden.\\
 % So kann die Datenschicht beliebig skaliert werden, um die Anforderungen vieler BenutzerInnen zu erfüllen.
 CouchDB verwendet das \gls{HTTP}--Protokoll und \gls{JSON} als Datenformat, weswegen es in jeder webfähigen Anwendung leicht zu integrieren ist. CouchDB wird über ein \gls{REST}ful \gls{HTTP} \gls{API} angesprochen. So können Daten über die für den \gls{REST}ful Services standardisierten Methoden wie zum Beispiel GET, POST, PUT, DELETE abgerufen oder manipuliert werden.\\\\
 %
@@ -31,7 +31,7 @@ CouchDB verwendet das \gls{HTTP}--Protokoll und \gls{JSON} als Datenformat, wesw
 Das implementierte Replikationsmodell erlaubt die Synchronisation bzw. bidirektionale Replikation zu verschiedenen Geräten, was das besondere Merkmal von CouchDB ist.
 Die genaue Funktionsweise des Protokolls ist in \autoref{chap:replication} detailliert beschrieben.\\
 % 
-Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit einer anderen Datenbank die dasselbe Protokoll implementiert, synchronisieren.
+Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit einer anderen Datenbank, die dasselbe Protokoll implementiert, synchronisieren.
 Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst~\cite{couch}. Die Lösung der Konflikte muss in der Anwendung implementiert sein.
 So kann gewährleistet werden, dass keinerlei Daten verloren gehen.\\\\
 %
@@ -45,6 +45,6 @@ Alle verwenden das CouchDB \hyperref[chap:replication]{Replikationsprotokoll} un
 \sub{\label{chap:pouch}PouchDB}
 % Als Ergänzung zu CouchDB kann PouchDB verwendet werden.
 PouchDB ist die Java"-Script Implementierung von CouchDB.
-Sie ist quelloffen und wurde so konzipiert, dass sie in allen modernen Browsers läuft. Dort ermöglicht PouchDB es Daten zu persistieren, sodass sowohl offline als auch online verfügbar sind.
+Sie ist quelloffen und wurde so konzipiert, dass sie in allen modernen Browsern läuft. Dort ermöglicht PouchDB es Daten zu persistieren, sodass diese sowohl offline als auch online verfügbar sind.
 PouchDB speichert die Daten in IndexedDB und stellt für das Abrufen und Manipulieren derer ein einheitliches \gls{API} zur Verfügung.\\
-Sind die Daten einmal offline gespeichert können sie, dank des CouchDB \hyperref[chap:replication]{Replikationsprotokolls}, sobald die Awendung wieder online ist mit CouchDB kompatiblen Servern synchronisiert werden~\cite{pouch}.
+Sind die Daten einmal offline gespeichert, können sie dank des CouchDB \hyperref[chap:replication]{Replikationsprotokolls}, sobald die Awendung wieder online ist, mit CouchDB kompatiblen Servern synchronisiert werden~\cite{pouch}.
