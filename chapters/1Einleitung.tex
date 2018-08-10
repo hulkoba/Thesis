@@ -1,23 +1,23 @@
 \chapter{\label{chap:einleitung}Einführung}
 \section{Motivation}
+
+Heutzutage haben mehr als drei Milliarden Menschen Zugang zum Internet~\cite{dev-report}.\\
+Es herrscht die weit verbreitete Annahme, dass die Erreichbarkeit dieser Menschen sowohl standortgebunden als auch mobil über das Internet stets gewährleistet ist.\\
+Doch instabile Datenverbindungen sind ein allgegenwärtig. Während der Fahrt durch Tunnel, bei Stromausfällen, auf Großveranstaltungen oder sogar bei einem Aufenthalt in einer beliebten Urlaubsregion kann es zu Verbindungsproblemen kommen ~\cite{offline_ux, ndr}.
 \begin{quote}
 	We live in a disconnected \& battery powered world, but our technology and best practices are a leftover from the always connected \& steadily powered past.
 	\cite{offlinefirst}
 \end{quote}
-
-Heutzutage besitzen mehr als fünf Milliarden Menschen ein Mobiltelefon und drei Milliarden haben Zugang zum Internet~\cite{dev-report}.\\\\
-langsame Verbindungen, Unterbrechungen. Auch bei 3G und 4G ist die Latenz schrecklich (Lie-Fi?) -> Offline-First Apps können eine bessere User experience bieten.\\
-Offline First ist ein großer Begriff, es werden mehr und mehr Anwendungen offlinefähig entwickelt,\\
-Was erwarte ich von einer offline fähigen App?\\
-es gibt viele Technologien die das unterstützen, wie zb Frameworks mit denen offlinefähige Anwendungen entwickelt werden können.\\
-Es soll untersucht werden auf welche Punkte bei der Entwicklung einer solchen App geachtet werden muss.
-Was ist wichtig? Wo liegt der Fokus? 
-Auf was muss bei der Entwicklung einer offlinefähigen Anwendung geachtet werden?
-Viele vergessen Konflikte / behandeln sie als Fehler oder ignorieren sie.
-\note{konkret werden. Definition offlinefähig}\\
+Offline First ist ein großer Begriff, dessen Ansatz immer häufiger in den Fokus der Softwareentwicklung gelangt. Es werden mehr Anwendungen, die offline funktionieren, entwickelt~\cite{heise}.
+Gleichzeitig gibt es mehr Technologien, die die Entwicklung dieser Anwendungen erleichtern.\\
+In dieser Arbeit soll untersucht werden, auf welche Punkte bei der Entwicklung einer offlinefähigen \gls{App} geachtet werden muss.
+Die Anforderungen an eine alleinstehende, offlinefähige Anwendung sind weniger hoch als die an eine kollaborative, offlinefähige Anwendung.
+Sobald eine Anwendung auf mehreren Geräten läuft, können durch paralleles Arbeiten Konflikte entstehen.
+Wie diese offlinefähigen Technologien mit Konflikten umgehen, soll im Rahmen dieser Arbeit untersucht werden.
 %
 % Ziel
 %
+\clearpage
 \section{Zielstellung}
 Ziel dieser Masterarbeit ist es, offlinefähige Prototypen unter Verwendung der zu untersuchenden Systeme zu entwickeln, um das Verhalten bei Konflikten zu evaluieren.
 Die Arbeit soll den Blick auf die Voraussetzungen an offlinefähige Anwendungen schärfen und so die Wahl der verwendeten Technologien für Entwicklung dieser \glspl{App} erleichtern.
@@ -26,4 +26,4 @@ Ein weiteres Kriterium ist der Implementierungsaufwand, der für die Einbindung 
 %
 Zur Untersuchung der Konfliktmanagementstrategien offlinefähiger Systeme soll eine beispielhafte Anwendung betrachtet werden. Ein offlinefähiges Adressbuch, welches mehrere Personen benutzen können.
 Des Weiteren werden bestehende Konfliktmanagementstrategien, sowie verschiedene Technologien vorgestellt, die die Entwicklung offlinefähiger Anwendungen unterstützen.\\
-Für die Evaluation der zu entwickelnden Anwendung werden manuelle Tests durchgeführt, auf denen die Auswertung der oben genannten Kriterien erfolgt.
+Für die Evaluation der zu entwickelnden Anwendung werden manuelle Tests durchgeführt, auf denen die Auswertung der oben genannten Aspekte erfolgt.
