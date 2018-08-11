@@ -1,19 +1,23 @@
-\chapter{\label{chap:fazit}WIP Zusammenfassung und Ausblick}
+65\chapter{\label{chap:fazit}WIP Zusammenfassung und Ausblick}
 
 Sobald die Anwendung auf mehreren Geräten benutzt soll, ist eine Backendimplementierung notwendig.
 Und wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
 Soll Redux Offline verwendet werden, muss beides zusätzlich implementiert werden, damit die Anwendung auf mehreren Geräten offlinefähig ist und keine Daten verloren gehen.
 
 Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.\\
-
+% 
+% 
+% 
+ 
 Interessant wäre es andere, 'richtige' Datenbanklösungen zu untersuchen. 
 Realm ist leider kostenpflichtig, wäre aber äußerst spannend weil Realm so viel verspricht.\\
 Argumente gegen Realm:
 \begin{itemize}
   \item benutzt für Update LWW
   \item wenn Löschen immer gewinnt, gehen auch Daten erloren
-  \item Object Server ist nict Open Source. Dort befindet sich aber die Logik für die Synchronisation. Es ist also nicht nazulesen und nur spärlich dokumentiert
+  \item Object Server ist nict Open Source. Dort befindet sich aber die Logik für die Synchronisation. Es ist also nicht nachzulesen und nur spärlich dokumentiert
 \end{itemize}
-Pouch hat eine äüßerst gute und ausführliche Dokumentation.\\\\
-Interessant: mongoDB stitch \\
-Es ist aufällig, dass alleDatenbanklösungen für mobil sind. Als gäbe aus am Deskop keine Konflikte...
+% 
+% 
+% 
+Interessant: mongoDB stitch ~\cite{stitch}
