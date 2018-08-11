@@ -11,7 +11,7 @@ Der \gls{CRDT} Datentyp ist auf spezialisierte Datenstrukturen wie Listen und Z�
 Da gibt es beispielsweise die Datenbank Cassandra, dessen einzige Konfliktmanagementstrategie \gls{LWW} ist~\cite{cassandralww}.
 Aber auch die Datenbanklösung Realm verwendet \gls{LWW} für Datenaktualisierungen, und eine abgewandelte Version davon für das Löschen von Objekten, denn Löschungen gewinnen immer.
 Das Speichern aller Aktionen und Abarbeitung dieser in einer \gls{Queue}, so wie Redux offline es handhabt, ist ebenfalls eine Variante des \gls{LWW} Ansatzes. So gewinnen die Aktionen, die zuletzt ausgeführt werden.\\
-Der Nachteil dieser Strategie ist es, dass NutzerInnendaten willkührlich verloren gehen.\\\\
+Der Nachteil dieser Strategie ist, dass NutzerInnendaten willkührlich verloren gehen.\\\\
 % 
 % 
 % 
