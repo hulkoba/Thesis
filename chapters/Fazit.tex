@@ -1,14 +1,28 @@
 \chapter{\label{chap:fazit}Zusammenfassung und Ausblick}
-
+Das Thema Offline First ist sehr interessant und die offlinefähige Anwendungen erfreuen sich immer größerer Beliebtheit.
+Die Entwicklung dieser Anwendungen wird auch in Zukunft weiterhin von verschiedenen, unterstützenden Technologien vorangetrieben werden.
+Das Thema des Konfliktmanagements geht mit Offline First \glspl{App} einher, wird jedoch nicht von allen offlinefähigen Systemen hinreichend betrachtet.\\\\
+% \\\\
+Das mag unter anderem daran liegen, dass die meisten bestehenden Konzepte zur Konfliktlösung nicht auf alle Datenobjekte anwendbar sind.
+Der Operational Transformation Algorithmus ist eine Lösung für kollaborative Textverarbeitung. Er ist jedoch nur für Text, in verschiedener Form, konzipiert und nicht für allgemeine Datenobjekte.
+%  offline ?
+Der \gls{CRDT} Datentyp ist auf spezialisierte Datenstrukturen wie Listen und Zähler beschränkt und kann ebenfalls nicht auf ein generisches \gls{JSON}--Datenobjekt angewandt werden, was die Verwendung dessen stark einschränkt.\\
+Überraschend viele Systeme verwenden den Last-Write-Wins Ansatz in der einen oder anderen Form.
+Da gibt es beispielsweise die Datenbank Cassandra, dessen einzige Konfliktmanagementstrategie \gls{LWW} ist~\cite{cassandralww}.
+Aber auch die Datenbanklösung Realm verwendet \gls{LWW} für Datenaktualisierungen, und eine abgewandelte Version davon für das Löschen von Objekten, denn Löschungen gewinnen immer.
+Das Speichern aller Aktionen und Abarbeitung dieser in einer \gls{Queue}, so wie Redux offline es handhabt, ist ebenfalls eine Variante des \gls{LWW} Ansatzes. So gewinnen die Aktionen, die zuletzt ausgeführt werden.\\
+Der Nachteil dieser Strategie ist es, dass NutzerInnendaten willkührlich verloren gehen.\\\\
+% 
+% 
+% 
 Sobald die Anwendung auf mehreren Geräten benutzt soll, ist eine Backendimplementierung notwendig.
 Und wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
 Soll Redux Offline verwendet werden, muss beides zusätzlich implementiert werden, damit die Anwendung auf mehreren Geräten offlinefähig ist und keine Daten verloren gehen.
-
 Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.\\
+
 % 
 % 
 % 
- 
 Interessant wäre es andere, 'richtige' Datenbanklösungen zu untersuchen. 
 Realm ist leider kostenpflichtig, wäre aber äußerst spannend weil Realm so viel verspricht.\\
 Argumente gegen Realm:

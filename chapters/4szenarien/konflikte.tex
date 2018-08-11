@@ -1,3 +1,21 @@
+% 
+% 
+% 
+% 
+% 
+% 
+% Resolving conflicts with vector clocks
+
+% The original Dynamo, like the open-source Voldemort and Riak, was a key/value database. Thus, objects would need to be serialized in a format such as json. For example, I might have a user object with key jbellis and value of {'email': 'jbellis@example.com', 'phone': '555-5555'}. We'll call this initial value V0.
+
+% Next, suppose we update the email address, changing the value to V1 of {'email': 'jbellis@illustration.com', 'phone': '555-5555'}. Some failure causes this to only be written to one replica. Later, we update the phone number, but we read from a different replica so we start from the original value V0 (with the original email address), so we write V2 {'email': 'jbellis@example.com', 'phone': '444-4444'}.
+
+% (Note that failure -- whether actual machine failure, network failure, or even load shedding -- can cause "conflicting" updates even with a single client and no concurrency.)
+
+% Since our object values are opaque blobs to this system, a naive last-write-wins conflict resolution policy will result in discarding the V1 email address change in favor of the V2 phone number update. This is why it's so easy to lose data using last-write-wins conflict resolution in a key/value system like Riak.
+
+% Vector clocks solve this problem by allowing the database to push conflict resolution back out to the client. Skipping a lot of details, the database would retain both V1 and V2, and when a client next reads key jbellis, it would return both versions and tell the client, "you figure out what you want the value to be now." The client can then deserialize the objects and merge the separately updated fields without data loss to the intended value of {'email': 'jbellis@illustration.com', 'phone': '444-4444'}.
+% https://www.datastax.com/dev/blog/why-cassandra-doesnt-need-vector-clocks
 %
 % Footnotes
 %
