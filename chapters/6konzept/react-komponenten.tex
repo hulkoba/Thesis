@@ -40,7 +40,7 @@ Diese Komponente besitzt keinerlei Logik.
 Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für diesen Prototypen die Implementierung von Redux vorausgesetzt.
 Redux ist eine JavaScript Bibliothek die Probleme im Zusammenhang mit dem \it{Zustand} einer Anwendung löst.
 Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
-Dieser Ort wird \sc{Store} genannt. Alle Änderungen der Daten im zentralen Speicher erfolgen ausschließlich über Aktionen.\\\\
+Dieser Ort wird Store genannt. Alle Änderungen der Daten im zentralen Speicher erfolgen ausschließlich über Aktionen.\\\\
 %
 Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
 Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
