@@ -7,13 +7,14 @@ Redux Offline kann nur zusammen mit Redux verwendet werden~\cite{redux-req}. Des
 % Alles beginnt mit dem Aufruf von \tt{store.dispatch(action)} von jeder beliebigen Stelle in der Anwendung. Die Aktion die beschreibt was passiert heißt \tt{toggleEdit} und sieht im Beispiel des Ansichtswechsels aus wie in Zeile drei bis fünf.\\
 % Der \tt{Store} ruft nun den \tt{Reducer} auf
 \sub{\label{chap:redux}Redux}
-Redux ist eine JavaScript Bibliothek die Probleme im Zusammenhang mit dem \it{Zustand} einer Anwendung löst.
+Redux ist eine JavaScript Bibliothek die Probleme im Zusammenhang mit dem Zustand, dem sogenannten \gls{App}state einer Anwendung löst.
 Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
-Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
-Dieser Ort wird \sc{Store} genannt und jede Applikation hat genau einen davon. 
+Es gibt einen zentralen Ort, in dem der Zustand der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
+Dieser Ort wird Store genannt und jede Applikation hat genau einen davon. 
 Als einzige Informationsquelle für den Store als zentralen Speicher dienen Aktionen. 
-Sie senden Daten von der Anwendung mittels \tt{store.dispatch()} an den \sc{store} und beschreiben dabei was passiert, nicht wie etwas passiert.
-Der dritte wichtige Bestandteil von Redux sind die \sc{Reducer}. Sie spezifizieren wie der Status sich als Reaktion auf die Aktionen ändert~\cite{redux}.\\
+Aktionen beschreiben was passiert ist und senden Daten von der Anwendung an den Store.
+Eine Aktion könnte beispielsweise die Information beinhalten, dass es eine Aktualisierung gab und auf welchem Objekt diese Aktualisierung stattgefunden hat.
+Der dritte wichtige Bestandteil von Redux sind die Reducer. Sie spezifizieren wie der \gls{App}state sich als Reaktion auf die Aktionen ändert~\cite{redux}.\\
 Der Datenfluss in der Reduxarchitektur ist unidirektional. Zur Veranschaulichung wird anhand der folgenden Abbildung der Redux Datenfluss beschrieben.
 %
 \begin{figure}[H]
@@ -24,25 +25,26 @@ Der Datenfluss in der Reduxarchitektur ist unidirektional. Zur Veranschaulichung
   \label{fig:rdx-dataflow}
 \end{figure}
 % 
-Zuerst sendet die View eine Aktion an den Store. Dieser empfängt die Aktion und schickt sie zusammen mit dem Applikationsstatus an den \sc{Reducer}.
-Der \sc{Reducer} erstellt eine Kopie des Status, verändert diese und schickt sie wieder zurück an den \sc{Store}. Der \sc{Store} ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rendern der View aus ~\cite{reduxflow}.
+Zuerst sendet die View eine Aktion an den Store. Dieser empfängt die Aktion und schickt sie zusammen mit dem Applikationsstatus an den Reducer.
+Der Reducer erstellt eine Kopie des Status, verändert diese und schickt sie wieder zurück an den Store.
+Der Store ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rendern der View aus ~\cite{reduxflow}.
 % 
 % Redux Offline
 % 
 \sub{Redux Offline}
-Redux Offline erweitert Redux um einen persistenten \sc{Store} mit Offline-First Technologie und  ist kompatibel mit allen *View Frameworks wie React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.
+Redux Offline erweitert Redux um einen persistenten Store mit Offline-First Technologie und  ist kompatibel mit allen *View Frameworks wie React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.
 Es umfasst unter anderem netzwerkfähige \gls{API}-Aufrufe, das Persistieren des Zustands der Anwendung, das Speichern von Aktionen, die Behandlung von Fehlern und erneute Versuche die Verbindung wieder herzustellen.
 Redux Offline verspricht nicht, die Webanwendung komplett offlinefähig zu machen. Um \gls{Assets} zwischenzuspeichern, muss zusätzlich noch ein ServiceWorker implementiert sein ~\cite{redux-offline-gh}.\\
-Die Idee hinter Redux Offline ist, dass der Redux \sc{Store} die Datenbank ersetzt~\cite{redux-offline}. Bei jeder Änderung wird der Redux \sc{Store} auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. Für das Speichern der Daten in einer lokalen Datenbank wird intern \hyperref[sub:reduxpersist]{Redux Persist} verwendet.\\\\
+Die Idee hinter Redux Offline ist, dass der Redux Store die Datenbank ersetzt~\cite{redux-offline}. Bei jeder Änderung wird der Redux Store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen. Für das Speichern der Daten in einer lokalen Datenbank wird intern \hyperref[sub:reduxpersist]{Redux Persist} verwendet.\\\\
 Eine mit Redux Offline erstellte Anwendung funktioniert ohne weitere Codeimplementierung offline im Lesemodus, da das Lesen und Schreiben aus der lokalen Datenbank bereits eigebunden ist.
 Damit die Anwendung auch im Schreibmodus offline funktioniert, müssen einige Anpassungen vorgenommen werden.
 Sämtliche Daten der Anwendung können nur über Aktionen manipuliert werden. 
-Alle netzwerkgebundenen Aktionen werden  in einem \sc{store}internem \gls{Queue} gespeichert und müssen mit einem Metaattribut dekoriert werden um offline arbeiten zu können. Durch die Metaattribute weiß die Anwendung was vor der eigentlichen Ausführung der Aktion und was danach zu tun ist. 
+Alle netzwerkgebundenen Aktionen werden  in einem storeinternem \gls{Queue} gespeichert und müssen mit einem Metaattribut dekoriert werden um offline arbeiten zu können. Durch die Metaattribute weiß die Anwendung was vor der eigentlichen Ausführung der Aktion und was danach zu tun ist. 
 Es gibt drei Metadaten die Redux Offline interpretieren kann:\\
 \tt{meta.offline.effect} - Die initiale Aktion wird ausgeführt. Hier kann eine URL angegeben werden die Redux Offline anfragen soll.\\
 \tt{meta.offline.commit} - Hier wird die Aktion definiert die ausgeführt wird sobald die Netzwerkanfrage erfolgreich ist.\\
 \tt{meta.offline.rollback} - Hier kann die Aktion angegeben werden, die bei  permanent fehlgeschlagener Internetverbindung oder wenn der Server einen Serverfehler zurückgibt gefeuert wird.
-Dann fügt Redux Offline dem \sc{Appstate} automatisch ein \tt{offline} Objekt hinzu. Dort wird unter anderem ein Array namens \tt{outbox} verwaltet wird.
+Dann fügt Redux Offline dem \gls{App}state automatisch ein \tt{offline} Objekt hinzu. Dort wird unter anderem ein Array namens \tt{outbox} verwaltet wird.
 Dieses Array repräsentiert den \gls{Queue}. Hier werden die Aktionen inklusive Metadaten gespeichert, um bei bestehender Internetverbindung abgearbeitet zu werden~\cite{redux-offline-docs}.
 Die von Jani Eväkallio erstellte Grafik \ref{fig:redux-offline} veranschaulicht die oben erklärte Architektur.
 %
@@ -55,14 +57,16 @@ Die von Jani Eväkallio erstellte Grafik \ref{fig:redux-offline} veranschaulicht
 \end{figure}
 %
 Links ist eine Aktion zu sehen die Zeug machen möchte. Sie hat ein Mateattribut das weitere Aktionen definiert. Eine Aktion für den Erfolg und eine für den Fehlschlag von `DO\_STUFF`.
-In der Mitte ist der \sc{Store} zu sehen. Der \sc{Store} kennt den Netzwerkstatus und hat den \gls{Queue} namens \tt{outbox} in dem Aktionen mitsamt ihrer Metafelder gespeichert werden. Rechts befindet sich das \gls{API}, das über die \gls{Middleware} mit dem \sc{Store} redet.\\
-Wird die Aktion 'DO\_STUFF' gefeuert gelangt sie in den \sc{Store}, damit dieser den \sc{AppState} aktualisieren kann, und wird ersteinmal im \gls{Queue} gespeichert. Ist die Anwendung online, wird sie sofort abgearbeitet. Wenn nicht wird sie dort gespeichert bis die Anwendung wieder eine Verbindung zum Internet hat.   
+In der Mitte ist der Store zu sehen.
+Der Store kennt den Netzwerkstatus und hat den \gls{Queue} namens \tt{outbox} in dem Aktionen mitsamt ihrer Metafelder gespeichert werden. Rechts befindet sich das \gls{API}, das über die \gls{Middleware} mit dem Store redet.\\
+Wird die Aktion 'DO\_STUFF' gefeuert gelangt sie in den Store, damit dieser den \gls{App}State aktualisieren kann, und wird ersteinmal im \gls{Queue} gespeichert.
+Ist die Anwendung online, wird sie sofort abgearbeitet. Wenn nicht wird sie dort gespeichert bis die Anwendung wieder eine Verbindung zum Internet hat.   
 % \subsub{Konflikte}
 %
 % redux persist
 %
 \sub{\label{sub:reduxpersist}Redux Persist}
-Redux Persist ist eine Bibliothek, die als Wrapper für den Redux Store funktioniert. Mit Redux Persist wird der \tt{state} automatisch lokal, per default im LocalStorage, gespeichert~\cite{redux-persist}.
+Redux Persist ist eine Bibliothek, die als Wrapper für den Redux Store funktioniert. Mit Redux Persist wird der State automatisch lokal, per default im LocalStorage, gespeichert~\cite{redux-persist}.
 Es kann konfiguriert werden wo die Daten gespeichert werden. Hier gibt es diverse Möglichkeiten wie zum Beispiel im SessionStorage, per localForage oder in Dateisystemen~\cite{redux-persist-gh}. LocalForage ist eine Bibliothek mit der Daten in IndexedDB, WebSQL gespeichert werden können. Wenn der Browser die Speichermöglichkeiten nicht unterstützt, wird der LocalStorage genommen~\cite{localforage}.\\
 Es ist auch möglich einen eigenen Speicher zu konfigurieren. Die einzige Voraussetzung hierfür ist, das \gls{API} muss die Standardmethoden \tt{setItem}, \tt{getitem} und \tt{removeItem} implementieren und Promises unterstützen~\cite{redux-persist-gh}.
 %

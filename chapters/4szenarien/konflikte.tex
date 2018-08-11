@@ -7,25 +7,25 @@
 %
 \begin{description}[leftmargin=0.5cm,style=nextline]
   % ID
-  \item[Szenario ID0 -- UUID:]
+  \item[Methode ID0 -- UUID:]
     Zur Identifizierung eines Adressbucheintrags wird eine \gls{UUID} verwendet. Es wird sowohl auf dem Client als auch auf dem Server ein Kontakt mit dem Namen `Amilia Pond` erstellt.
     Währenddessen tritt Fall \it{b} oder \it{c} ein und beide Parteien können nicht miteinander kommunizieren. Nach der Synchronisation existieren zwei Kontakteinträge mit gleichem Namen, aber unterschiedlicher ID.
     Sie sind voneinander zu unterscheiden und können einzeln behandelt werden.\\
-  \item[Szenario ID1 -- sprechender Schlüssel:]
+  \item[Methode ID1 -- sprechender Schlüssel:]
     Zur Identifizierung eines Adressbucheintrags wird ein sprechender Schlüssel\footnote{\naturalkey} verwendet.
     Es wird sowohl auf dem Client als auch auf dem Server ein Kontakt mit dem Namen `Amilia Pond` und dem sprechenden Schlüssel `amiliapond` erstellt. Währenddessen tritt Fall \it{b} oder \it{c} ein.
     Es ist nicht zu ermitteln, ob derselbe Kontakt doppelt angelegt wurde, wenn beide Kontakteinträge sich unterscheiden, welcher der beiden korrekt ist oder ob es sich bei den Einträgen um zwei Personen mit demselben Namen handelt.\\
   %
   %
   % Version
-  \item[Szenario V0 -- Versionsnummer:]
+  \item[Methode V0 -- Versionsnummer:]
     Zur Versionierung eines Adressbucheintrags werden Versionsnummern verwendet. Der Kontakt `Amilia` hat die Version `1.0.0`.
     Sowohl auf dem Client, als auch auf dem Server wird der Kontakt bearbeitet und aktualisiert und geben ihm beide die Versonsnummer `2.0.0`.
     Währenddessen tritt Fall \it{b} oder \it{c} ein und beide Parteien können nicht miteinander Kommunizieren.
     Bei der Synchronisation entsteht ein Konflikt weil es zwei unterschiedliche Einträge mit derselben Verion gibt.\\
   %
   % Zeitstempel
-  \item[Szenario V1  -- Zeitstempel:]
+  \item[Methode V1  -- Zeitstempel:]
     Zur Versionierung eines Adressbucheintrags wird ein Zeitstempel verwendet. Der Kontakt `Amilia` hat die initiale Version `2018-04-03 10:00:00Z`.
     Amilia ist umgezogen und ihre Adresse ändert sich. Der Eintrag wird bearbeitet und hat nun die Version `2018-04-13 11:44:22Z`.
     Während der Editierung tritt Fall \it{b} oder \it{c} ein.
@@ -37,7 +37,7 @@
     Des Weiteren gibt es die Möglichkeit, dass auf dem einen Gerät die Hausnummer berichtigt wurde und auf einem anderen, zur ungefähr selben Zeit, ein Zusatz zur Adresse gespeichert wird. Das könnte die Etage sein in der Amilia wohnt. Dann gibt es zwei Versionen mit unterschiedlichen Zeitstempeln und eine davon wird in jedem Fall verworfen. Auch wenn beide Versionen richtig sind.\\
   %
   % Logische Uhr
-  \item[Szenario V2 -- Logische Uhr:]
+  \item[Methode V2 -- Logische Uhr:]
     Weil der Zeitstempel so fehleranfällig ist, wurde die Logische Uhr zur Versionierung von Objekten in Verteilten Systemen die Logische Uhr entwickelt.\\
     Zur Versionierung eines Adressbucheintrags wird eine Logische Uhr\footnote{\logicalclock} verwendet. Der Kontakt `Amilia` hat die Version \todo{Beispiel Logische Uhr?}.
     Amilias Adresse ändert sich und wird auf dem Client angepasst.
@@ -47,13 +47,13 @@
     %
     % Hash
     % hash:  { name: Amilia Pond, phone: 0152397645, email: Amilia@pond.com }
-  \item[Szenario V3 -- Inhaltsbasierte Version:]% CAV fail
+  \item[Methode V3 -- Inhaltsbasierte Version:]% CAV fail
     Zur Versionierung eines Adressbucheintrags wird eine inhaltsbasierte Version verwendet. Um eine Zuordnung zwischen Inhalt und Version machen zu können kommen \Gls{Hash}funktionen zum Einsatz. Hierbei wird als Version der Hashwert des Adressbucheintrags gespeichert.\\
     Dem Kontakt `Amilia` ist die Version `5560348cec1b08c3d53e1508b4a46868` zugeordnet. Amilias Telefonnummer ändert sich und wird auf dem Client angepasst, während dieser offline ist.
     Im selben Status berichtigt der Client die Telefonnummer. Bei der Synchronisation kommt es zum Konflikt, da es nun zwei Einträge mit unterschiedlichem Inhalt, aber identischer Version gibt und nicht festzustellen ist welche Version die neuere ist.\\
     %
     % Hash Liste
-  \item[Szenario V4 -- Liste von inhaltsbasierten Versionen:]
+  \item[Methode V4 -- Liste von inhaltsbasierten Versionen:]
     Zur Versionierung eines Adressbucheintrags wird eine geordnete Liste von inhaltsbasierten Versionen verwendet.
     Dem Kontakt `Amilia` ist eine Liste von Verionen mit einem Eintrag `5560348cec1b08c3d53e1508b4a46868` zugeordnet.
     Amilias Telefonnummer ändert sich und wird auf dem Client angepasst, während dieser offline ist. Im selben Status berichtigt der Client die Telefonnummer.
@@ -75,6 +75,6 @@
 % ERGEBNIS
 %
 \subsubsection*{Ergebnis}
-Die Szenarien \it{ID0} und \it{ID1} beschreiben die Identifizierung einzelner Kontakte. Eine eindeutige Identifizierung des Kontakts ist im Szenario \it{ID0}, mittels der Verwendung einer \gls{UUID}, gewährleistet.
+Die Methoden \it{ID0} und \it{ID1} beschreiben die Identifizierung einzelner Kontakte. Eine eindeutige Identifizierung des Kontakts ist im Methode \it{ID0}, mittels der Verwendung einer \gls{UUID}, gewährleistet.
 % Die Szenarien \it{V1}, \it{V2} und \it{V4}, \it{V5} beschreiben Situationen mit demselben Ausgangspunkt. In einem Fall kommt zu keinem Konflikt, in dem nächsten schon. Deswegen können \it{V1} und \it{V2}, sowie \it{V4} und \it{V5} zusammengefasst werden.
 Es wird deutlich, dass es in jedem Fall zu einem Konflikt kommen kann. Es gilt zu unterscheiden in welchen Fällen mit Konflikten umgegangen werden muss weil sonst Daten verloren gehen.
