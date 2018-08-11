@@ -15,8 +15,13 @@ Der Nachteil dieser Strategie ist, dass NutzerInnendaten willkührlich verloren 
 % 
 % 
 % 
-Sobald die Anwendung auf mehreren Geräten benutzt soll, ist eine Backendimplementierung notwendig.
-Und wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
+Ein weiterer Punkt, der von vielen offlinefähigen Systemen ausgelassen wird, ist die Datenbanksynchronisation.
+Die meisten in \autoref{chap:state} aufgeführten Frameworks und Bibliotheken stellen eine Lösung für die lokale Datenspeicherung bereit. 
+Aber sobald die Anwendung auf mehreren Geräten benutzt wird, ist eine Backendimplementierung notwendig.
+Wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
+Bei der Datensynchronisation zwischen dem lokalen Speicher und einer Serverdatenbank kann es immer zu Konflikten kommen.
+Diese müssen gespeichert, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\\\
+% 
 Soll Redux Offline verwendet werden, muss beides zusätzlich implementiert werden, damit die Anwendung auf mehreren Geräten offlinefähig ist und keine Daten verloren gehen.
 Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.\\
 
