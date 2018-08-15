@@ -21,7 +21,8 @@ Die meisten in \autoref{chap:state} aufgeführten Frameworks und Bibliotheken st
 Aber sobald die Anwendung auf mehreren Geräten benutzt wird, ist eine Backendimplementierung notwendig.
 Wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
 Bei der Datensynchronisation zwischen dem lokalen Speicher und einer Serverdatenbank kann es immer zu Konflikten kommen.
-Diese müssen gespeichert, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\\\
+Diese müssen gespeichert, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\
+Es muss also bei der Wahl einer Technologie zur Erstellung einer offlinefähigen Anwendung darauf geachtet werden, dass diese Technologie eine vernünftige Datenbanklösung bereitstellt, die sich dieser Problematik widmet und sie erfolgreich löst.\\\\
 %
 %
 %
@@ -47,17 +48,23 @@ Die Ergebnisse wären unter Umständen besser für den Redux Offline Prototypen 
 %
 %
 %
+Die Untersuchungen lassen sich auf weitere offlinefähige Systeme auswerten.
+Da die Konfliktmanagementstrategien untersucht werden, sollte der Fokus auf Datenbanklösungen liegen.
+Denn bei der Verwendung der \gls{App} auf nur einem Gerät und ohne eine Serveranwendung müssen keine Konflikte behandelt werden, da sie nicht auftreten.\\
+Die Datenbanklösung Realm ist sehr interessant, da sie verspricht Konflikte in Offline First Anwendungen ohne Datenverlust zu lösen.
+Die Untersuchung von Realm ist unter Anderem deswegen spannend, weil sie diese Versprechungen trotz der Verwendung des Last-Write-Wins Ansatzes und des Vorrangs von Löschungen machen.\\\\
+%
+%
+%
 
-Erweiterungen:\\
-Interessant wäre es andere, 'richtige' Datenbanklösungen zu untersuchen. 
-Realm ist leider kostenpflichtig, wäre aber äußerst spannend weil Realm so viel verspricht.\\
-Argumente gegen Realm:
-\begin{itemize}
-  \item benutzt für Update LWW
-  \item wenn Löschen immer gewinnt, gehen auch Daten erloren
-  \item Object Server ist nict Open Source. Dort befindet sich aber die Logik für die Synchronisation. Es ist also nicht nachzulesen und nur spärlich dokumentiert
-\end{itemize}
+% Realm ist leider kostenpflichtig, wäre aber äußerst spannend weil Realm so viel verspricht.\\
+% Argumente gegen Realm:
+% \begin{itemize}
+%   \item benutzt für Update LWW
+%   \item wenn Löschen immer gewinnt, gehen auch Daten erloren
+%   \item Object Server ist nict Open Source. Dort befindet sich aber die Logik für die Synchronisation. Es ist also nicht nachzulesen und nur spärlich dokumentiert
+% \end{itemize}
 %
 %
 %
-Interessant: mongoDB stitch ~\cite{stitch}
+TODO: mongoDB stitch ~\cite{stitch}
