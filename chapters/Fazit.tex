@@ -5,29 +5,50 @@ Das Thema des Konfliktmanagements geht mit Offline First \glspl{App} einher, wir
 % \\\\
 Das mag unter anderem daran liegen, dass die meisten bestehenden Konzepte zur Konfliktlösung nicht auf alle Datenobjekte anwendbar sind.
 Der Operational Transformation Algorithmus ist eine Lösung für kollaborative Textverarbeitung. Er ist jedoch nur für Text, in verschiedener Form, konzipiert und nicht für allgemeine Datenobjekte.
-%  offline ?
+% offline ?
 Der \gls{CRDT} Datentyp ist auf spezialisierte Datenstrukturen wie Listen und Zähler beschränkt und kann ebenfalls nicht auf ein generisches \gls{JSON}--Datenobjekt angewandt werden, was die Verwendung dessen stark einschränkt.\\
 Überraschend viele Systeme verwenden den Last-Write-Wins Ansatz in der einen oder anderen Form.
 Da gibt es beispielsweise die Datenbank Cassandra, dessen einzige Konfliktmanagementstrategie \gls{LWW} ist~\cite{cassandralww}.
 Aber auch die Datenbanklösung Realm verwendet \gls{LWW} für Datenaktualisierungen, und eine abgewandelte Version davon für das Löschen von Objekten, denn Löschungen gewinnen immer.
-Das Speichern aller Aktionen und Abarbeitung dieser in einer \gls{Queue}, so wie Redux offline es handhabt, ist ebenfalls eine Variante des \gls{LWW} Ansatzes. So gewinnen die Aktionen, die zuletzt ausgeführt werden.\\
+Das Speichern aller Aktionen und Abarbeitung dieser in einer \gls{Queue}, so wie Redux Offline es handhabt, ist ebenfalls eine Variante des \gls{LWW} Ansatzes.
+So gewinnen die Aktionen, die zuletzt ausgeführt werden.\\
 Der Nachteil dieser Strategie ist, dass NutzerInnendaten willkührlich verloren gehen.\\\\
-% 
-% 
-% 
+%
+%
+%
 Ein weiterer Punkt, der von vielen offlinefähigen Systemen ausgelassen wird, ist die Datenbanksynchronisation.
-Die meisten in \autoref{chap:state} aufgeführten Frameworks und Bibliotheken stellen eine Lösung für die lokale Datenspeicherung bereit. 
+Die meisten in \autoref{chap:state} aufgeführten Frameworks und Bibliotheken stellen keine Lösung für die lokale Datenspeicherung bereit. 
 Aber sobald die Anwendung auf mehreren Geräten benutzt wird, ist eine Backendimplementierung notwendig.
 Wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
 Bei der Datensynchronisation zwischen dem lokalen Speicher und einer Serverdatenbank kann es immer zu Konflikten kommen.
 Diese müssen gespeichert, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\\\
-% 
-Soll Redux Offline verwendet werden, muss beides zusätzlich implementiert werden, damit die Anwendung auf mehreren Geräten offlinefähig ist und keine Daten verloren gehen.
-Diese Art von Konflikten sollten von Menschen gelöst werden. Nur so kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.\\
+%
+%
+%
+Die im Rahmen dieser Arbeit entwickelten Prototypen können eine Kontaktliste kollaborativ verwalten.
+Da beide Prototypen mit dem Werkzeug Create React App erstellt wurde, welches einnen ServiceWorker mitliefert, werden nach dem Deploy die \gls{Assets} gecacht werden.\\\\
+Der Prototyp \it{amilia-qouch} speichert die erstellten Kontakte zunächst mit Hilfe von Pouch"-DB in der Browserdatenbank IndexedDB und repliziert sie dann zu der CouchDB Serverdatenbank.
+Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, werden diese in der CouchDB mittels des internen \hyperref[chap:replication]{Replikationsprotokolls} gespeichert und können clientseitig aufgelöst werden.
+Nur durch die Konfliktlösung durch Menschen kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
+Somit erfüllt \it{amilia-qouch} sämtliche in \autoref{chap:offlinefirst} genannten Voraussetzungen an eine offlinefähige Anwendung.\\\\
+%
+Der Prototyp \it{amilia-rdx} speichert die erstellten Kontakte mit Hilfe von Redux Offline im LocalStorage.
+Da Redux Offline keine Datenbanklösung bereitstellt, wurde ein einfacher Server entwickelt, über den die Daten in einer \gls{JSON}--Datei persisitiert werden.
+Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, werden diese mittels des \gls{LWW} Ansatz gelöst.
+Bei gleichzeitiger Löschung und Bearbeitung eines Kontakts hat die Löschung Vorrang.
+Das hat zur Folge, dass willkürlich Daten verloren gehen, wodurch nicht alle \hyperref[chap:offlinefirst]{Voraussetzungen} an eine offlinefähige Anwendung erfüllt sind.\\\\
+%
+%
+Die Evaluierung wurde in mehrere Testphasen unterteilt. Zuerst wurden manuelle Tests zur Offlinefähigkeit und zum Konfliktmanagement durchgeführt die anschließend \hyperref[chap:testauswertung]{ausgewertet} wurden. Die Ergebnisse der Tests untermalen die Resultate aus den \hyperref[chap:auswertunganforderungen]{Überprüfungen}, welche gestellten Anforderungen an eine offlinefähige \gls{App} von den entwickelten Prototypen erfüllt wurden.
+Aufgrund der Tatsache, dass unter Verwendung des mit Redux Offline erstellten Prototypen Daten verloren gehen, hat diese Anwendung die Tests nicht bestanden.\\
+Auch in der Auswertung aus Entwicklungsperspektive, in der der Implementierungsauwand, die Codelesbarkeit und die Menge des geschriebenen Quellcodes begutachtet wurden, schneidet \it{amilia-rdx} schlechter als \it{amilia-qouch} ab.
+Es ist zu erwähnen, dass die Auswertung unter der Annahme stattfand, mit keiner der verwendeten Technologien vertraut zu sein.
+Die Ergebnisse wären unter Umständen besser für den Redux Offline Prototypen ausgefallen, wenn von der Kenntnis der Verwendung von Redux augegangen wäre.\\\\
+%
+%
+%
 
-% 
-% 
-% 
+Erweiterungen:\\
 Interessant wäre es andere, 'richtige' Datenbanklösungen zu untersuchen. 
 Realm ist leider kostenpflichtig, wäre aber äußerst spannend weil Realm so viel verspricht.\\
 Argumente gegen Realm:
@@ -36,7 +57,7 @@ Argumente gegen Realm:
   \item wenn Löschen immer gewinnt, gehen auch Daten erloren
   \item Object Server ist nict Open Source. Dort befindet sich aber die Logik für die Synchronisation. Es ist also nicht nachzulesen und nur spärlich dokumentiert
 \end{itemize}
-% 
-% 
-% 
+%
+%
+%
 Interessant: mongoDB stitch ~\cite{stitch}
