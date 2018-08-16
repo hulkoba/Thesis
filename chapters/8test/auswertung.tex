@@ -6,46 +6,46 @@
 %
 \sub{\label{chap:auswertunganforderungen}Erfüllung der Anforderungen}
 In \autoref{chap:funktionaleanforderungen} wurden die funktionalen Anforderungen an eine offlinefähige, kollaborative Anwendung erarbeitet.
-Es wird überprüft welche dieser Anforderungen in den Prototypen erüllt wurden und welche nicht.
+Es wird überprüft, welche dieser Anforderungen in den Prototypen erüllt wurden und welche nicht.
 %
 \begin{description}[leftmargin=0cm,style=nextline]
   \item[F1 Die Anwendung muss auf mindestens zwei Geräten funktionieren.]
-    Die Auswertung der ersten Testreihe in \autoref{chap:F1} zeugt, dass beide Prototypen auf zwei Geräten funktionieren, sofern beide Geräte mit dem Internet verbunden sind.
+    Die Auswertung der ersten Testreihe in \autoref{chap:F1} zeigt, dass beide Prototypen auf zwei Geräten funktionieren, sofern beide Geräte mit dem Internet verbunden sind.
     Da die Testdurchläufe nur auf zwei Geräten durchgeführt wurden, ist keine Aussage darüber zu treffen, ob die Anwendung auch auf mehr als zwei Geräten uneingeschränkt funktioniert.\\
   %
-  \item[F2 Die Anwendung soll fähig sein den Netzwerkstatus zu ändern.]
+  \item[F2 Die Anwendung soll fähig sein, den Netzwerkstatus zu ändern.]
     Diese Anforderung ist indirekt erfüllt. Die Prototypen wurden für die Browser Firefox und Chrome entwickelt.
-    Beide ermöglichen es in den Einstellungen den Offlinemodus zu aktivieren und so die Anwendung vom Internet zu trennen.
+    Beide ermöglichen es in den Einstellungen, den Offlinemodus zu aktivieren und so die Anwendung vom Internet zu trennen.
     Auch durch das Ausschalten des Servers kann die Verbindung zwischen den beiden Geräten, auf denen die Anwendung läuft, unterbrochen werden.\\
 %
   \item[F3 Die Anwendung muss den Netzwerkstatus erkenntlich machen.]
     Im Header eines jeden Prototypen wird der aktuelle Netzwerkstatus der Anwendung korrekt angezeigt.
     Dafür wird das externe Modul React Detect Offline verwendet, dem die Adresse des Servers übergeben wird.
     Über diese Adresse wird alle fünf Sekunden geprüft, ob der Server erreichbar ist.
-    Deswegen ist mit einer leichten zeitlichen Abweichung in der Anzeige zu rechnen.\\
+    Aus letzterem folgt, dass mit einer leichten zeitlichen Abweichung in der Anzeige zu rechnen ist.\\
 %
-  \item[F4 Die Anwendung muss fähig sein die Kontakte unabhängig vom Netzwerkstatus zu laden, sofern diese einmal aus dem Netzwerk geladen wurden.]
-    Einmal geladen, werden alle Kontakte in beiden Prototypen aus dem lokalen Speicher gelesen wenn die Anwendung offline ist oder der Server nicht läuft.
-    Der \it{amilia-rdx} Prototyp liest die Kontakte dann aus dem LocalStorage und der \it{amilia-qouch} Prototyp aus IndexedDB.\\
+  \item[F4 Die Anwendung muss fähig sein, die Kontakte unabhängig vom Netzwerkstatus zu laden, sofern diese einmal aus dem Netzwerk geladen wurden.]
+    Einmal geladen, werden alle Kontakte in beiden Prototypen aus dem lokalen Speicher gelesen, wenn die Anwendung offline ist oder der Server nicht läuft.
+    Der \it{amilia-qouch} Prototyp liest die Kontakte dann aus der IndexedDB und der \it{amilia-rdx} Prototyp aus dem LocalStorage.\\
 %
   \item[F5 Die Anwendung muss die Möglichkeit bieten, unabhängig vom Netzwerkstatus einen Kontakt anzulegen, zu bearbeiten oder zu löschen.]
     Während der Entwicklung wurden stetig Tests zur Offlinefunktionalität auf einem Gerät durchgeführt (siehe \autoref{chap:impl:test}).
     Diese bestätigen, dass in jedem Prototypen unabhängig vom Netzwerkstatus jederzeit ein Kontakt angelegt, bearbeitet oder gelöscht werden kann.\\
 %
-  \item[F6 Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persisitieren, identifizieren können und versionieren.]
+  \item[F6 Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persistieren, identifizieren können und versionieren.]
     Auch diese Anforderung erfüllen beide Prototypen. Die lokale Speicherung erfolgt, wie bereits beschrieben, im LocalStorage oder in IndexedDB.
-    Serverseitig werden die Kontakte im Prototypen \it{amilia-qouch} in einer CouchDB persisitert.
+    Serverseitig werden die Kontakte im Prototypen \it{amilia-qouch} in einer CouchDB persistiert.
     Da Redux Offline keine serverseitige Datenbank zur Verfügung stellt, werden die Daten in diesem Prototypen in einer serverseitigen \gls{JSON} Datei gespeichert.
     Die Identifizierung der Kontakte erfolgt in beiden Prototypen über einen Zeitstempel.
-    In \it{amilia-rdx} erfolgt die Versionierung ebenfalls über den Zeitstempel. Der Prototyp verwendet hierzu eine Revisionsnummer.
+    In \it{amilia-rdx} erfolgt die Versionierung ebenfalls über den Zeitstempel. Der Prototyp \it{amilia-qouch} verwendet hierzu eine Revisionsnummer.
     Diese Revisionsnummer ist der Dreh-- und Angelpunkt für das Konfliktmanagement in CouchDB.\\
 %
   \item[F7 Die Anwendung muss die lokal gespeicherten Kontakte mit denen auf der Serverdatenbank persistierten synchronisieren, sobald die Anwendung mit dem Internet verbunden ist.]
-    Ist die Anwendung offline oder der Server ausgeschaltet, werden alle Aktionen die während diesen Zeitraums durchgeführt werden mit der Serverdatenbank, bzw. der \gls{JSON} Datei synchronisiert. Diese Funktionalität wird von allen in den Prototypen verwendeten Technologien bereitgestellt.\\
+    Ist die Anwendung offline oder der Server ausgeschaltet, werden alle Aktionen die während dieses Zeitraums durchgeführt werden, mit der Serverdatenbank, bzw. der \gls{JSON} Datei synchronisiert. Diese Funktionalität wird von allen in den Prototypen verwendeten Technologien bereitgestellt.\\
 %
-  \item[F8 Die Anwendung muss die Möglichkeit bieten die Konfliktmanagementstrategien der zu untersuchenden Technologien zu evaluieren.]
-  Um die Konfliktmanagementstrategien der verwendeten Technologien untersuchen zu können müssen Konflikte herbeigeführt werden.
-  Die Möglichkeit die Anwendung auf zwei Geräten nutzen zu können und diese vom Internet zu trennen macht den Vorgang durchführbar.
+  \item[F8 Die Anwendung muss die Möglichkeit bieten, die Konfliktmanagementstrategien der zu untersuchenden Technologien zu evaluieren.]
+  Um die Konfliktmanagementstrategien der verwendeten Technologien untersuchen zu können, müssen Konflikte herbeigeführt werden.
+  Die Möglichkeit, die Anwendung auf zwei Geräten nutzen zu können und diese vom Internet zu trennen, macht den Vorgang durchführbar.
   Die Visualisierung des Netzwerkstatus im Header der Kontaktliste vereinfacht diesen Vorgang.
   Die in \autoref{chap:manuelletests} durchgeführten manuellen Tests waren nur aufgrund dieser Funktionalitäten ausführbar. Die Auswertung erfolgte in \autoref{chap:auswertung}, wodurch diese Anforderung erfüllt ist.\\
 %
@@ -53,16 +53,17 @@ Es wird überprüft welche dieser Anforderungen in den Prototypen erüllt wurden
     Redux Offline bietet keine Möglichkeit Konflikte zu speichern, weswegen diese Funktionalität für \it{amilia-rdx} nicht umgesetzt werden konnte.
     Im anderen Prototypen werden die Revisionsnummern der konfliktbehafteten Kontakte im Kontakt gespeichert, wodurch der Prototyp \it{amilia-qouch} diese Anforderung erfüllt.\\
 %
-  \item[F10 Die Anwendung muss die Möglichkeit bieten die Konflikte zu lösen, sofern diese auftreten.]
-    Wenn Konflikte auftreten, werden sie in beiden Prototypen gelöst. Im Redux Offline Prototypen wird dazu im Groben die \gls{LWW} Strategie verwendet. Bei Löschungen ist es egal welche Änderung zuletzt durchgeführt wurde. Löschungen gewinnen immer.
+  \item[F10 Die Anwendung muss die Möglichkeit bieten, Konflikte zu lösen, sofern diese auftreten.]
+    Wenn Konflikte auftreten, werden sie in beiden Prototypen gelöst. Im Redux Offline Prototypen wird dazu im Groben die \gls{LWW} Strategie verwendet.
+    Bei Löschungen ist es egal, welche Änderung zuletzt durchgeführt wurde. Löschungen gewinnen immer.
     Im CouchDB Prototypen werden Konflikte zuerst automatisch durch den in \autoref{chap:replication} beschriebenen Algorithmus gelöst.
-    Da dieser Algorithmus die gewinnende Version mehr oder weniger zufällog auswählt, werden alle konfliktbehafteten Versionen gespeichert.
+    Da dieser Algorithmus die gewinnende Version mehr oder weniger zufällig auswählt, werden alle konfliktbehafteten Versionen gespeichert.
     So können sie auf Anwendungsebene gelöst werden, was über den Modaldialog passiert.\\
 %
   \item[F11 Die Anwendung muss sicherstellen, dass auf keinen Fall Daten verloren gehen.]
     Durch das praktische Konfliktmanagement in CouchDB gehen im Prototypen keine Daten verloren.
     In \it{amilia-rdx} gehen in jeder getesteten Konfliktsituation Daten verloren.
-    Durch die automatische Festlegung der gewinnenden Version, wird die andere überschrieben. Unabhängig davon welche die richtige Version ist.
+    Durch die automatische Festlegung der gewinnenden Version wird die andere überschrieben, unabhängig davon, welche die richtige Version ist.
 \end{description}
 %
 \sub{Implementierungsaufwand}

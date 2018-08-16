@@ -1,18 +1,18 @@
 \chapter{\label{chap:fazit}Zusammenfassung und Ausblick}
-Das Thema Offline First ist sehr interessant und die offlinefähige Anwendungen erfreuen sich immer größerer Beliebtheit.
+Das Thema Offline First ist sehr interessant und offlinefähige Anwendungen erfreuen sich immer größerer Beliebtheit.
 Die Entwicklung dieser Anwendungen wird auch in Zukunft weiterhin von verschiedenen, unterstützenden Technologien vorangetrieben werden.
-Das Thema des Konfliktmanagements geht mit Offline First \glspl{App} einher, wird jedoch nicht von allen offlinefähigen Systemen hinreichend betrachtet.\\\\
+Das Thema des Konfliktmanagements geht mit Offline First \glspl{App} einher, wird jedoch nicht von allen offlinefähigen Systemen hinreichend beachtet.
 % \\\\
-Das mag unter anderem daran liegen, dass die meisten bestehenden Konzepte zur Konfliktlösung nicht auf alle Datenobjekte anwendbar sind.
-Der Operational Transformation Algorithmus ist eine Lösung für kollaborative Textverarbeitung. Er ist jedoch nur für Text, in verschiedener Form, konzipiert und nicht für allgemeine Datenobjekte.
+Das mag unter anderem daran liegen, dass die meisten bestehenden Konzepte zur Konfliktlösung nicht auf alle Datenobjekte anwendbar sind.\\\\
+Der Operational Transformation Algorithmus ist eine Lösung für kollaborative Textverarbeitung. Er ist jedoch nur für Text in verschiedener Form konzipiert und nicht für allgemeine Datenobjekte.
 % offline ?
 Der \gls{CRDT} Datentyp ist auf spezialisierte Datenstrukturen wie Listen und Zähler beschränkt und kann ebenfalls nicht auf ein generisches \gls{JSON}--Datenobjekt angewandt werden, was die Verwendung dessen stark einschränkt.\\
 Überraschend viele Systeme verwenden den Last-Write-Wins Ansatz in der einen oder anderen Form.
-Da gibt es beispielsweise die Datenbank Cassandra, dessen einzige Konfliktmanagementstrategie \gls{LWW} ist~\cite{cassandralww}.
-Aber auch die Datenbanklösung Realm verwendet \gls{LWW} für Datenaktualisierungen, und eine abgewandelte Version davon für das Löschen von Objekten, denn Löschungen gewinnen immer.
+Da gibt es beispielsweise die Datenbank Cassandra, deren einzige Konfliktmanagementstrategie \gls{LWW} ist~\cite{cassandralww}.
+Aber auch die Datenbanklösung Realm verwendet \gls{LWW} für Datenaktualisierungen und eine abgewandelte Version davon für das Löschen von Objekten, denn Löschungen gewinnen immer.
 Das Speichern aller Aktionen und Abarbeitung dieser in einer \gls{Queue}, so wie Redux Offline es handhabt, ist ebenfalls eine Variante des \gls{LWW} Ansatzes.
-So gewinnen die Aktionen, die zuletzt ausgeführt werden.\\
-Der Nachteil dieser Strategie ist, dass NutzerInnendaten willkührlich verloren gehen.\\\\
+So gewinnen die Aktionen, die zuletzt ausgeführt werden.
+Der Nachteil dieser Strategie ist, dass NutzerInnendaten willkürlich verloren gehen.\\\\
 %
 %
 %
@@ -21,7 +21,7 @@ Die meisten in \autoref{chap:state} aufgeführten Frameworks und Bibliotheken st
 Aber sobald die Anwendung auf mehreren Geräten benutzt wird, ist eine Backendimplementierung notwendig.
 Wenn die Anwendung zusätzlich offlinefähig sein soll, bedarf es einen Synchronisationsalgorithmus.
 Bei der Datensynchronisation zwischen dem lokalen Speicher und einer Serverdatenbank kann es immer zu Konflikten kommen.
-Diese müssen gespeichert, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\
+Diese müssen gespeichert werden, um von den NutzerInnen gelöst werden zu können. Nur so kann sichergestellt werden, dass keine Daten verloren gehen.\\
 Es muss also bei der Wahl einer Technologie zur Erstellung einer offlinefähigen Anwendung darauf geachtet werden, dass diese Technologie eine vernünftige Datenbanklösung bereitstellt, die sich dieser Problematik widmet und sie erfolgreich löst.\\\\
 %
 %
@@ -34,13 +34,14 @@ Nur durch die Konfliktlösung durch Menschen kann sichergestellt werden, dass di
 Somit erfüllt \it{amilia-qouch} sämtliche in \autoref{chap:offlinefirst} genannten Voraussetzungen an eine offlinefähige Anwendung.\\\\
 %
 Der Prototyp \it{amilia-rdx} speichert die erstellten Kontakte mit Hilfe von Redux Offline im LocalStorage.
-Da Redux Offline keine Datenbanklösung bereitstellt, wurde ein einfacher Server entwickelt, über den die Daten in einer \gls{JSON}--Datei persisitiert werden.
+Da Redux Offline keine Datenbanklösung bereitstellt, wurde ein einfacher Server entwickelt, über den die Daten in einer \gls{JSON}--Datei persistiert werden.
 Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, werden diese mittels des \gls{LWW} Ansatz gelöst.
 Bei gleichzeitiger Löschung und Bearbeitung eines Kontakts hat die Löschung Vorrang.
 Das hat zur Folge, dass willkürlich Daten verloren gehen, wodurch nicht alle \hyperref[chap:offlinefirst]{Voraussetzungen} an eine offlinefähige Anwendung erfüllt sind.\\\\
 %
 %
-Die Evaluierung wurde in mehrere Testphasen unterteilt. Zuerst wurden manuelle Tests zur Offlinefähigkeit und zum Konfliktmanagement durchgeführt die anschließend \hyperref[chap:testauswertung]{ausgewertet} wurden. Die Ergebnisse der Tests untermalen die Resultate aus den \hyperref[chap:auswertunganforderungen]{Überprüfungen}, welche gestellten Anforderungen an eine offlinefähige \gls{App} von den entwickelten Prototypen erfüllt wurden.
+Die Evaluierung wurde in mehrere Testphasen unterteilt. Zuerst wurden manuelle Tests zur Offlinefähigkeit und zum Konfliktmanagement durchgeführt, die anschließend \hyperref[chap:testauswertung]{ausgewertet} wurden.
+Die Ergebnisse dieser Tests untermalen die Resultate aus den \hyperref[chap:auswertunganforderungen]{Überprüfungen}, welche gestellten Anforderungen an eine offlinefähige \gls{App} von den entwickelten Prototypen erfüllt wurden.
 Aufgrund der Tatsache, dass unter Verwendung des mit Redux Offline erstellten Prototypen Daten verloren gehen, hat diese Anwendung die Tests nicht bestanden.\\
 Auch in der Auswertung aus Entwicklungsperspektive, in der der Implementierungsauwand, die Codelesbarkeit und die Menge des geschriebenen Quellcodes begutachtet wurden, schneidet \it{amilia-rdx} schlechter als \it{amilia-qouch} ab.
 Es ist zu erwähnen, dass die Auswertung unter der Annahme stattfand, mit keiner der verwendeten Technologien vertraut zu sein.

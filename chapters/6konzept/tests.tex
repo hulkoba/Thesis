@@ -1,21 +1,24 @@
 Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können, werden manuelle Tests durchgeführt.\\
-Es müssen zunächst Konflikte erstellt werden, um zu untersuchen wie die verwendeten Technologien damit umgehen.
-Die in \autoref{chap:szenarien} erarbeiteten Szenarien zeigen auf, dass das es immer zu Konflikten kommen kann wenn die Internetverbindung abbricht.
-Deswegen werden Konflikte erstellt indem die Verbindung zum Netzwerk unterbrochen wird.\\
-Die zu entwickelnden Prototypen müssen auf mindestens zwei Geräten funktionieren und es muss die Möglichkeit bestehen den die Verbindung zum Internet und zum Server zu unterbrechen.
+Es müssen zunächst Konflikte erstellt werden, um zu untersuchen, wie die verwendeten Technologien damit umgehen.
+Die in \autoref{chap:szenarien} erarbeiteten Szenarien zeigen auf, dass es immer zu Konflikten kommen kann, wenn die Internetverbindung abbricht.
+Deswegen werden Konflikte erstellt, indem die Verbindung zum Netzwerk unterbrochen wird.\\
+Die zu entwickelnden Prototypen müssen auf mindestens zwei Geräten funktionieren und es muss die Möglichkeit bestehen, die Verbindung zum Internet und zum Server zu unterbrechen.
 Eine Variante Konflikte entstehen zu lassen ist, einen Kontakt an derselben Stelle zu bearbeiten während ein oder beide Geräte offline sind. Daher ist es wichtig zu wissen, in welchem Status sich die Anwendung befindet.
 Die Testdurchläufe sind immer gleich und unabhängig vom Prototypen.\\\\
+%
+%
 %Der genaue Ablauf eines Testlaufs sieht wie folgt aus.\\\\ 
 Zuerst wird die \gls{App} in zwei Browsern gestartet. So kann die Verwendung von zwei Geräten simuliert werden. Da die Anwendung für die Browser Firefox und Chrome entwickelt wird, findet der Testdurchlauf auch in diesen beiden Browsern statt.\\
-Es werden die Aktionen 'Kontakt anlegen', 'Kontakt bearbeiten' und 'Kontakt löschen' in unterschiedlichen Kombinationen und beiden Browsern durchgeführt.
-In der ersten Testreihe sind beide Browser mit dem Internet verbunden und der Server ist an. Diese Testreihe soll der Untersuchung auf Kollaborationsfähigkeit, also ob Die Anwendung auf mehreren Geräten funktioniert, dienen
-In der zweiten Testreihe wird ein Browser für eine Aktion vom Internet getrennt indem er in den Offlinemodus geschalten wird. Ist die Aktion in beiden Browsern abgeschlossen, wird der Offlinemodus des einen Browsers deaktiviert, sodass sich beide synchronisieren können.
-In der dritten Testreihe wird der Server gestoppt, sodass beide Prototypen offline sind. Nachdem eine Aktion auf beiden Geräten vollständig durchgeführt wurde, wird der Server wieder gestartet und beide Anwendungen synchronisieren sich mit dem Server, oder der CouchDB. In den letzten beiden Testreihen werden durch das Bearbeiten derselben Einträge aktiv Konflikte erzeugt.\\
-Jede Testreihe wird einmal, in interschiedlichen Netzwerkstatus der Anwendung durchgeführt, pro Reihe gibt es drei bis vier Testdurchläufe.
-In den Testreien eins und drei wird jeder genannte Testdurchlauf genau einmal durchgeführt.
+Es werden die Aktionen ''Kontakt anlegen'', ''Kontakt bearbeiten'' und ''Kontakt löschen'' in unterschiedlichen Kombinationen und beiden Browsern durchgeführt.
+In der ersten Testreihe sind beide Browser mit dem Internet verbunden und der Server ist an. Diese Testreihe soll der Untersuchung auf Kollaborationsfähigkeit dienen, also ob die Anwendung auf mehreren Geräten funktioniert.
+In der zweiten Testreihe wird ein Browser für eine Aktion vom Internet getrennt, indem er in den Offlinemodus geschaltet wird. Ist die Aktion in beiden Browsern abgeschlossen, wird der Offlinemodus des einen Browsers deaktiviert, sodass sich beide synchronisieren können.
+In der dritten Testreihe wird der Server gestoppt, sodass beide Prototypen offline sind. Nachdem eine Aktion auf beiden Geräten vollständig durchgeführt wurde, wird der Server wieder gestartet und beide Anwendungen synchronisieren sich mit dem Server oder der CouchDB. In den letzten beiden Testreihen werden durch das Bearbeiten derselben Einträge aktiv Konflikte erzeugt.\\
+Jede Testreihe wird einmal in unterschiedlichen Netzwerkstatus der Anwendung durchgeführt, pro Reihe gibt es drei bis vier Testdurchläufe.
+In den Testreihen eins und drei wird jeder genannte Testdurchlauf genau einmal durchgeführt.
 Für die zweite Testreihe kann es, je nachdem in welchem Broswer die Aktion zuerst durchgeführt wird, unterschiedliche Ergebnisse geben.
 Deswegen wird dort jeder Testdurchlauf zwei mal durchgeführt.
-Einmal wird die Aktion in der Anwendung die mit dem Internet verbunden ist zuerst gespeichert, dann die im Offlinemodus.\\
+%
+Zuerst wird die Aktion in der Anwendung die mit dem Internet verbunden ist ausgeführt und gespeichert, danach in der Anwendung, die sich im Offlinemodus befindet.\\
 Die folgende Tabelle veranschaulicht die durchzuführenden Testdurchläufe.
 %
 \begin{longtable}[c]{@{}
@@ -116,5 +119,5 @@ Die folgende Tabelle veranschaulicht die durchzuführenden Testdurchläufe.
 %
 %
 Zur Auswertung der Tests werden alle Ausgangspositionen, Vorgänge und Ergebnisse dokumentiert.
-Für einen Testdurchlauf wird hierfür der Kontakt und um welchen Testdurchlauf es sich handelt aufgeschrieben.
-Außerdem wird festgehalten auf welchem der beiden Geräte die Aktion zuerst durchgeführt wurde, das erwartete und das tatsächliche Ergebnis.
+Für einen Testdurchlauf wird hierfür der Kontakt und um welchen Testdurchlauf es sich handelt, aufgeschrieben.
+Außerdem wird festgehalten auf welchem der beiden Geräte die Aktion zuerst durchgeführt wurde, was das erwartete und was das tatsächliche Ergebnis war.

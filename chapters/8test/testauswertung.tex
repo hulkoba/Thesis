@@ -1,13 +1,13 @@
-Zur Auswertung der Testergebnisse werden die Testreihen gruppert.
+Zur Auswertung der Testergebnisse werden die Testreihen gruppiert.
 Die zweite und dritte Testreihe befassen sich mit der Offlinefähigkeit der Prototypen.
-Es spielt hierbei keine Rolle ob ein oder zwei der Geräte während der Testdurchläufe offline sind. Deswegen werden diese Testreihen in der Auswertung zusammengefasst.
+Es spielt hierbei keine Rolle, ob ein oder zwei der Geräte während der Testdurchläufe offline sind. Deswegen werden diese Testreihen in der Auswertung zusammengefasst.
 %
 %
 %
 \subsub{\label{chap:F1}Kollaborationsfähigkeit}
 In der ersten Testreihe sind beide Geräte die ganze Zeit mit dem Internet verbunden.
 Das Hauptaugenmerk lag auf der allgemeinen Funktionalität des jeweiligen Prototypen auf zwei Geräten.
-In der \autoref{tab:test:tests} ist abzulesen dass beide Prototypen alle Tests dieser Reihe eindeutig bestanden haben.
+In der \autoref{tab:test:tests} ist abzulesen, dass beide Prototypen alle Tests dieser Reihe eindeutig bestanden haben.
 Damit kann bestätigt werden, dass beide Prototypen auf zwei Geräten funktionieren, solange diese online sind.
 %
 %
@@ -18,19 +18,19 @@ Der Fokus dieser Tests lag auf dem eventuell eintretenden Datenverlust im Konfli
 \autoref{tab:test:tests} zeigt, dass das Anlegen und Löschen weder bei \it{amilia-qouch}, noch bei \it{amilia-rdx} ein Problem darstellte.
 Beim Anlegen eines Kontakts war dieser auf beiden Geräten doppelt in der Liste. Auf diesem Wege ging kein Kontakt verloren.
 % Es wurde kein Algorithmus auf Anwendungsebene implementiert, der Dopplungen in 
-Auch das Löschen eines erfolgte reibungslos. Der gelöschte Kontakt war nach der Synchronisation auf keinem der Geräte vorhanden.\\
+Auch das Löschen eines Kontakts erfolgte reibungslos. Der gelöschte Kontakt war nach der Synchronisation auf keinem der Geräte mehr vorhanden.\\
 Sowohl in der zweiten, als auch in der dritten Testreihe hat der Redux offline Prototyp beim Bearbeiten, bzw. beim Bearbeiten und Löschen eines Kontakts versagt.
-Wo im Prototypen \it{amilia-qouch} die aufgetretenen Konflikte gespeichert wurden, um sie auf Benutzungsebene zu lösen, gingen im anderen Protoypen eine der konfliktbehafteten Datensätze verloren.
-Bei gleichzeitigen Bearbeiten eines Kontakts gewann die Version, die zuletzt synchronisiert wurde. Die andere wurde überschrieben.
+Wo im Prototypen \it{amilia-qouch} die aufgetretenen Konflikte gespeichert wurden, um sie auf Benutzungsebene zu lösen, gingen im anderen Protoypen \it{amilia-rdx} einer der konfliktbehafteten Datensätze verloren.
+Bei gleichzeitigem Bearbeiten eines Kontakts gewann die Version, die zuletzt synchronisiert wurde, die andere wurde überschrieben.
 % \todo{Die Daten werden bei Redux Offline im \gls{Queue} gespeichert und dort nacheinander angearbeitet. Das gleicht der Konfliktmanagementstrategie \gls{LWW}.}\\
 Wurde ein Kontakt auf einem Gerät bearbeitet und auf dem anderen gelöscht, war es in jedem Fall nicht mehr in der Liste. Löschungen haben immer Vorrang, wodurch ebenfalls Daten verloren gehen.
 % 
 %
 \subsub{Beobachtungen}
 Zusammenfassend lässt sich sagen, dass Redux Offline per se nicht auf mehreren Geräten offlinefähig ist.
-Bei den Testfällen in \autoref{chap:impl:test} die während der Entwicklung stetig -- auf einem Gerät -- durchgeführt wurden, bestand \it{amilia-rdx} jeden Test.
-Auf nur einem Gerät ist es jedoch schwierig Konflikte zu erzeugen. Deswegen ist die \gls{LWW} Strategie von Redux Offline für die Verwendung auf einem Gerät akzeptabel.\\
+Bei den Testfällen in \autoref{chap:impl:test}, die während der Entwicklung stetig -- auf einem Gerät -- durchgeführt wurden, bestand \it{amilia-rdx} jeden Test.
+Auf nur einem Gerät ist es jedoch schwierig, Konflikte zu erzeugen. Deswegen ist die \gls{LWW} Strategie von Redux Offline für die Verwendung auf einem Gerät akzeptabel.\\
 Der Prototyp \it{amilia-qouch} hingegen hat alle Tests erwartungsgemäß bestanden.
-Immer wenn es zu einem Konflikt gekommen ist, konnte dieser über den Konfliktdialog einfach und vor allem korrekt gelöst werden.
+Immer wenn es zu einem Konflikt gekommen war, konnte dieser über den Konfliktdialog einfach und vor allem korrekt gelöst werden.
 In keinem Testdurchlauf gingen Daten verloren.
 %

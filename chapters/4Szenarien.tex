@@ -1,27 +1,31 @@
 \chapter{\label{chap:szenarien}Szenarien}
 Alle in Kapitel \ref{chap:state} angeführten Technologien haben die Unterstützung der Erstellung von offlinefähigen Anwendungen gemeinsam.
-Prinzipiell sollte eine Offline First Anwendung in der Lage sein, mit fehlender Internetverbindung zu funktionieren und mit auftretenden Konflikten so umgehen zu können, dass keine Daten verloren gehen.
+Prinzipiell sollte eine Offline First Anwendung in der Lage sein, trotz fehlender Internetverbindung zu funktionieren und mit auftretenden Konflikten so umzugehen, dass keine Daten verloren gehen.
 Sie muss die Fälle behandeln können, die sich aus den folgenden Szenarien ergeben.
 Dafür werden zunächst Szenarien in der Netzwerkübetragung als Voraussetzung für die der Konfliktentstehung aufgezeigt.
 %
-% Netzwerk Szanarien   --------------------------------------------------------
+% Netzwerk Szanarien --------------------------------------------------------
 %
 \section{\label{chap:netszenarien}Szenarien bei der Datenübertragung}
-Im einfachen Anwendungsbeispiel einer Kontaktliste gibt es zwei Parteien die miteinander interagieren: die Anwendung als Client und der Server. Immer wenn beide Parteien miteinander kommunizieren möchten, kann eine der beiden offline sein.
+Im einfachen Anwendungsbeispiel einer Kontaktliste gibt es zwei Parteien, die miteinander interagieren: die Anwendung als Client und der Server. Immer wenn beide Parteien miteinander kommunizieren möchten, kann eine der beiden offline sein.
 Der Client könnte zum Beispiel, ohne dass eine Technologie implementiert ist die Offlinestatus behandelt, einen Kontakt erstellen wollen. Der Kontakt kann aber nicht erstellt werden, da kein Netzwerk verfügbar ist.\\
-`Client push` steht dafür, dass der Client etwas an den Server schickt. `Server push/Client pull` beschreibt den Fall in dem der Client Daten vom Server anfragt, oder der Server Push-Nachrichten an den Client sendet.
+`Client push` steht dafür, dass der Client etwas an den Server schickt. `Server push/Client pull` beschreibt den Fall, in dem der Client Daten vom Server anfragt, oder der Server Push-Nachrichten an den Client sendet.
 %
 \input{chapters/4szenarien/netzwerk}
-Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur Konfliktentstehung relevant. Die Anfrage schlägt fehl und die Anfrage ist erfolgreich aber die Antwort schlägt fehl.
+Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur Konfliktentstehung relevant.
+% Die Anfrage schlägt fehl und die Anfrage ist erfolgreich aber die Antwort schlägt fehl.
 %
 %
-% Konflikte   -------------------------------------------------------------
+% Konflikte-------------------------------------------------------------
 %
 \section{\label{chap:konfliktszenarien}Szenarien zur Konfliktentstehung}
 Im Anwendungsbeispiel einer kollaborativen Kontaktliste können mehrere Personen die Liste verwalten. Oder eine Person benutzt die Anwendung auf mehreren Geräten, was zum selben Ergebnis führt:
 Die Komplexität wird durch mehr Parteien -- beliebig viele Clients -- erhöht.
-Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operarionen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle \it{b} oder \it{c} eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\\\
-Aus einem Interview mit \todo{Jan Lenhardt\footnote{Eine berühmte Person}} ergeben sich unterschiedliche, angewandte Vorgehensweisen Objekte für die Verwendung in verteilten Systemen zu identifizieren und versionieren. Nachfolgend werden diese Vorgehensweisen berücksichtigend, Konfliktszenarien erarbeitet. Es ist zu erwähnen, dass es bei diesen Methoden nicht immer zu Konflikten kommen muss. Da es Thema dieser Arbeit ist, wird für jede Variante nur der ungünstigste Fall, der Konfliktfall aufgeschrieben.
+Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD} Operationen kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle \it{b} oder \it{c} eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\\\
+Laut den Aussagen von \todo{Jan Lenhardt\footnote{Eine berühmte Person}}, die er in einem Interview getroffen hat, ergeben sich unterschiedliche, angewandte Vorgehensweisen, Objekte für die Verwendung in verteilten Systemen zu identifizieren und versionieren.
+Nachfolgend werden diese Vorgehensweisen berücksichtigend, Konfliktszenarien dargestellt.
+Es ist zu erwähnen, dass es bei diesen Methoden nicht immer zu Konflikten kommen muss.
+Da es Thema dieser Arbeit ist, wird für jede Variante nur der ungünstigste Fall, der Konfliktfall beschrieben.
 % \note{Damit die Einträge sortiert und gefiltert aus der Datenbank geladen werden können, werden sie mit einem Index versehen. Jeder neue Eintrag bekommt automatisch einen höheren Index. Die aktualisierten Objekte sollen ebenfalls geladen werden, aber keinen neuen Index bekommen. Deswegen gibt es neben dem Datensatz \sc{Adressbucheinträge} zusätzlich den der \sc{Aktualisierungen} mit einem sich automatisch erhöhendem Index \it{und der Referenz zum Adressbucheintrag}. \todo{eigenes Szenario?}. Mit jeder Aktualisierung oder Löschung eines Kontakts wird im Aktualisierungsdatensatz der Index durch einen neuen ersetzt. So hat jede Kontakt-ID eine Aktualisierungs-ID und ein Eintrag wird auch nach mehrmaligem Aktualisieren nicht mehrfach geladen.}\\
 %
 \input{chapters/4szenarien/konflikte}\\\\

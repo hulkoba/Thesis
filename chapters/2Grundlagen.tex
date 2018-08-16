@@ -1,20 +1,23 @@
 \chapter{\label{chap:grundlagen}Grundlagen}
 Eine offlinefähige Anwendung ist sowohl mit, als auch ohne Internetverbindung einsatzbereit.
-Dieses Kapitel beschreibt die grundlegenden Optionen eine Anwendung offlinefähig zu machen, geht im Speziellen auf Konflikte und deren Lösungsstrategien ein.
+Dieses Kapitel beschreibt die grundlegenden Optionen, eine Anwendung offlinefähig zu machen und geht im Speziellen auf Konflikte und deren Lösungsstrategien ein.
 %
 % Offline-First
 %
 \section{\label{chap:offlinefirst}Offline First}
 Offline First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist, um deren grundlegenden Funktionen zu nutzen ~\cite{offline}.
-Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen. Um Webanwendungen offlinefähig zu machen, sind einige Grundvoraussetzungen erforderlich.\\
-Eine Webanwendung besteht aus zwei Bestandteilen, den Daten die von den BenutzerInnen generiert werden und den \gls{Assets}. \gls{Assets} sind alle Bestandteile der \gls{App} die für die erfolgreiche Ansicht im Browser benötigt werden. Das sind \gls{HTML}-- und \gls{CSS}--Dateien sowie Skripte und Mediendateien wie zum Beispiel Bilder.\\
+Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen.
+Um Webanwendungen offlinefähig zu machen, sind einige Grundvoraussetzungen erforderlich.\\
+Eine Webanwendung besteht aus zwei Bestandteilen, den Daten die von den BenutzerInnen generiert werden und den \gls{Assets}.
+\gls{Assets} sind alle Bestandteile der \gls{App} die für die erfolgreiche Ansicht im Browser benötigt werden.
+Das sind \gls{HTML}-- und \gls{CSS}--Dateien sowie Skripte und Mediendateien wie zum Beispiel Bilder.\\
 Diese Daten müssen zuerst auf dem Endgerät gespeichert werden, um offline erreichbar zu sein.
-Einmal gespeichert, ist das Laden der Ressourcen aus dem Cache, auch bei bestehender Internetverbindung, schneller als aus dem Netz ~\cite{jakearchibald}.
+Einmal gespeichert, ist das Laden der Ressourcen aus dem Cache, auch bei bestehender Internetverbindung, schneller, als aus dem Netz ~\cite{jakearchibald}.
 % Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz.
 Daten, die zuerst auf dem Endgerät gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.\\
 Gibt es eine serverseitige Datenbank, müssen die Daten zwischen Server und Client synchronisiert werden. Ist die Anwendung kollaborativ, muss die Synchronisation zwischen allen Beteiligten stattfinden. Synchronisation erfordert den Umgang mit Konflikten, denn es dürfen auf keinen Fall Daten verloren gehen.\\\\
 % Harte, weiche, mittlere Probleme (verschiedene Stufen von offlinefähig?)
-Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Dateinspeicherung und deren Synchronisation mit einer serverseitigen Datenbank auf.
+Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Datenspeicherung und deren Synchronisation mit einer serverseitigen Datenbank auf.
 %
 % Cache ServiceWorker AppCache
 %
@@ -33,7 +36,7 @@ Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Dateinspeich
 % \sub{\label{sub:pwa}Progressive Web Apps \todo{raus?}}
 % \Gls{PWA} ist eine Bezeichnung für eine mobil nutzbare Webseite, die eine Brücke zwischen der nativen
 % Applikation und einer Webseite schlägt.
-% Der Begriff \gls{PWA} wurde im Jahr 2015  von Alex Russel und seiner Frau Frances Berriman geprägt.
+% Der Begriff \gls{PWA} wurde im Jahr 2015 von Alex Russel und seiner Frau Frances Berriman geprägt.
 % Dieser beschreibt Webseiten, die die positiven Funktionen von nativen Applikationen mitbringen, aber statt über App Stores installiert zu werden, im Webbrowser existieren. Die Webseiteninhalte sind ohne die Installation sofort und jederzeit für die NutzerInnen abrufbar. Schon beim zweiten Besuch der Webseite ist die Ladezeit der Daten verkürzt und sie ist offline, oder auch bei schlechter Internetverbindung nutzbar. Nach mehrmaligem Aufruf kann die \gls{PWA} über den Browser installiert und zum Startbildschirm hinzugefügt werden. Russel und Berriman legen folgende Einenschaften einer \gls{PWA} fest:
 % \begin{itemize}
 % 	\item Responsive %to fit any form factor
@@ -53,7 +56,7 @@ Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Dateinspeich
 %
 \section{Konfliktmanagementstrategien}
 Diese Arbeit untersucht die Konfliktmanagementstrategien offlinefähiger Systeme.
-Nachdem in \autoref{chap:offlinefirst} beschrieben, wurde was eine Anwendung offlinefähig macht, wird in diesem Abschnitt definiert, was ein Konflikt ist und wie er entsteht.
+Nachdem in \autoref{chap:offlinefirst} beschrieben wurde, was eine Anwendung offlinefähig macht, wird in diesem Abschnitt definiert, was ein Konflikt ist und wie er entsteht.
 %
 \sub{\label{chap:conflict}Konflikte}
 \input{chapters/2/conflicts}

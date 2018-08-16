@@ -4,16 +4,16 @@ Das erfolgreiche Bestehen dieser Tests ist eine notwendige Qualitätseigenschaft
 \item[Netzwerkstatus:] 
 Die Anwendung muss zu jeder Zeit den korrekten Netzwerkstatus anzeigen.\\
 \item[Kontakte lesen:] 
-Die Anwendung muss bei jedem Start die Kontakte aus dem lokalen Speicher oder aus der Datenbank, bzw der \gls{JSON} Datei laden.\\
+Die Anwendung muss bei jedem Start die Kontakte aus dem lokalen Speicher oder aus der Datenbank, bzw. der \gls{JSON} Datei laden.\\
 \item[Kontakt anlegen:] 
 Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt mit jedem seiner Attribute anzulegen.
-Dazu muss er immer lokal gespeichert werden und sobald eine Internetverbindung besteht, persistiert werden.
+Dazu muss der Kontakt immer lokal gespeichert werden und sobald eine Internetverbindung besteht, persistiert werden.
 Das Anlegen eines Kontakts im Offlinestatus ist für die Konfliktherbeiführung erforderlich.\\
 \item[Kontakt bearbeiten:] 
-Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt mit jedem seiner Attribute zu bearbeiten.
+Die Anwendung muss zu jedem Zeitpunkt in der Lage sein, einen Kontakt mit jedem seiner Attribute zu bearbeiten.
 Ist keine Internetverbindung vorhanden, müssen die Änderungen lokal übernommen und später, sobald sich der Netzwerkstatus ändert, synchronisiert werden.
 Das Bearbeiten eines Kontakts im Offlinestatus ist für die Konfliktforcierung erforderlich.\\
 \item[Kontakt löschen:] 
-Die Anwendung muss zu jedem Zeitpunkt in der Lage sein einen Kontakt zu löschen.
+Die Anwendung muss zu jedem Zeitpunkt in der Lage sein, einen Kontakt löschen zu können.
 Das Löschen eines Kontakts im Offlinestatus ist für die Konfliktherbeiführung erforderlich.
 \end{description}

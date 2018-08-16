@@ -1,5 +1,5 @@
 Der \gls{LWW} Ansatz geht davon aus, dass Schreibvorgänge immer in der richtigen Reihenfolge ausgeführt werden. Der letzte an die Datenbank gesendete Schreibvorgang wird als korrekt angenommen.
 %Konflikte werden bei dieser Strategie ignoriert
-Diese Strategie ist leicht zu implementieren da lediglich festgestellt werden muss welche Manipulation die neuere ist.
+Diese Strategie ist leicht zu implementieren, da lediglich festgestellt werden muss, welche Manipulation die neuere ist.
 Das kann beispielsweise durch die Vergabe eines Zeitstempels, sofern alle Uhren synchron sind, problemlos errechnet werden ~\cite{lww}.
 %\quote{When multiple updates are applied to the same column, Cassandra uses clientprovided timestamps to resolve conflicts}

@@ -1,5 +1,5 @@
 % 1. Definition
-Als Konflikt wird die Situation beschrieben, in der verschiedene Versionen des gleichen Dokuments auf mehreren Geräten oder Datenbanken gespeichert sind (vgl. ~\cite{couchDB} S. 153).
+Als Konflikt wird die Situation bezeichnet, in der verschiedene Versionen des gleichen Dokuments auf mehreren Geräten oder Datenbanken gespeichert sind (vgl. ~\cite{couchDB} S. 153).
 Konflikte gehören in verteilten Systemen zur Realität und lassen sich nicht vermeiden.
 Ein verteiltes System ist per Definition ein Zusammenschluss unabhängiger Computer, die sich für die NutzerInnen als ein einziges System präsentieren (vgl. ~\cite{tanenbaum} S. 2).
 Einfacher gesagt, besteht ein verteiltes System, sobald zwei oder mehrere Computer über das Netzwerk miteinander verbunden sind.
@@ -16,8 +16,9 @@ Gareth Wilson beschreibt in seinem Artikel die acht Irrtümer zur verteilten Dat
   \item Das Netzwerk ist homogen
 \end{enumerate}
 Aus diesen irrtümlichen Annahmen über das Netzwerk ergeben sich Fehlerszenarien. So kann es passieren, dass der zweite Computer entweder sehr weit entfernt, sehr beschäftigt oder ausgeschaltet ist. Diese Fehlerszenarien können dazu führen, dass ein Konflikt entsteht.\\
+%
 Anhand des folgenden Beispiels wird ein mögliches Fehlerszenario für den Fall des unzuverlässigen Netzwerks aufgegriffen.
-Zwei Personen treffen sich im Zug und verstehen sich auf Anhieb sehr gut. Person A, nennen wir sie Amilia, gibt Person B, nennen wir sie Rory, ihre Telefonnummer. Der Zug fährt durch einen Tunnel und das Netzwerk bricht ab als Rory Amilias Nummer in sein Adressbuch, das in Form einer \gls{App} auf seinem Laptop gespeichert ist, schreibt.
+Zwei Personen treffen sich im Zug und verstehen sich auf Anhieb sehr gut. Person A, nennen wir sie Amilia, gibt Person B, nennen wir sie Rory, ihre Telefonnummer. Der Zug fährt durch einen Tunnel und das Netzwerk bricht ab, als Rory Amilias Nummer in sein Adressbuch, das in Form einer \gls{App} auf seinem Laptop gespeichert ist, schreibt.
 Amilia diktiert ihre Telefonnummer falsch, mit einem Zahlendreher, weil sie die Nummer noch nicht lange hat.
 Zur Sicherheit schickt Amilia Rory ihre Nummer zusätzlich per E-Mail. Rory schaltet seinen Laptop aus, weil er sich mit Amilia unterhalten möchte.
 Am Abend ist Rory zu Hause angekommen und er speichert Amilias Nummer aus der E-Mail in seinem Adressbuch auf seinem stationären Desktop PC.
@@ -27,12 +28,12 @@ Die korrekte Telefonnummer vom stationären PC befindet sich bereits auf dem Ser
 Die falsche Telefonnummer wird gespeichert und die richtige ist verloren.\\\\
 %
 %
-Konflikte sind in zwei Kategorien einzuteilen. Es gibt solche, die vom System selbst gelöst werden können und welche, die eine spezielle Behandlung brauchen.
-Gibt es eine gleichzeitige Änderung an unterschiedlichen Stellen eines Dokuments muss das kein Problem darstellen.
+Konflikte sind in zwei Kategorien einzuteilen. Es gibt solche, die vom System selbst gelöst werden können und solche, die eine spezielle Behandlung brauchen.
+Gibt es eine gleichzeitige Änderung an unterschiedlichen Stellen eines Dokuments, muss das kein Problem darstellen.
 Das Dokument kann beide Aktualisierungen erhalten, indem die Änderungen zusammengefügt werden.
-Diese Prozedur wird \it{merge} genannt und ist durch Systeme wie Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung, jeder EntwicklerIn bekannt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
+Diese Prozedur wird \it{merge} genannt und ist durch Systeme wie Git\footnote{git steht unter \url{https://git-scm.com/downloads} zum Download bereit}, einer Software zur verteilten Versionsverwaltung, den meisten EntwicklerInnnen bekannt. Diese Art Konflikt kann selbstständig vom System gelöst werden.\\
 
-Die Konflikte, die durch die gleiche Änderung an ein und derselben Stelle des Dokuments entstehen, benötigen eine aufwändigere Behandlung.
+Die Konflikte, die durch verschiedene Änderungen an ein und derselben Stelle des Dokuments entstehen, benötigen eine aufwändigere Behandlung.
 Es muss festgestellt werden, welche Version die korrekte ist und gespeichert werden soll.
 Die Wiederherstellung der Datenkonsistenz bei Konflikten kann dazu führen, dass einige oder alle Aktualisierungen ganz oder teilweise gelöscht werden.
 Zur Lösung dieses Problems wurden verschiedene Managementstrategien entworfen, die im Folgenden vorgestellt werden.

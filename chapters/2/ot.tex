@@ -1,30 +1,30 @@
 % \note{siehe woot}\\
 \gls{OT} ist eine weit verbreitete Technik zur Unterstützung von Funktionalitäten in \gls{kollaborativ}er Software.
-Sie stammt aus einer im Jahre 1989 veröffentlichten Forschungsarbeit und wurde ursprünglich nur für die gemeinsame Bearbeitung von Klartext-Dokumenten entwickelt~\cite{ot_paper}. Etwas später wurden einige Unvollständigkeiten im Algorithmus entdeckt und es wurden unabhängig voneinander verschiedene Lösungsvorschläge gebracht ~\cite{ot-later}.
+Sie stammt aus einer 1989 veröffentlichten Forschungsarbeit und wurde ursprünglich nur für die gemeinsame Bearbeitung von Klartext-Dokumenten entwickelt~\cite{ot_paper}. Etwas später wurden einige Unvollständigkeiten im Algorithmus entdeckt und es wurden unabhängig voneinander verschiedene Lösungsvorschläge erarbeitet ~\cite{ot-later}.
 Heute unterstützt \gls{OT} zusätzlich das \gls{kollaborativ}e Bearbeiten von \gls{HTML}, RTF und XML Dokumenten, Adobe Flash\footnote{ Browserplugin, steht unter \url{https://get.adobe.com/de/flashplayer/} zum Download bereit} Grafiken und Dokumenten in CAD\footnote{ CAD, engl.: computer-aided design, deutsch: rechnerunterstütztes Konstruieren} Tools wie Autodesk Maya\footnote{ 3D Design Software. steht unter \url{https://www.autodesk.com/products/maya/free-trial} zum Download bereit}.
-Des Weiteren können mit \gls{OT} Dateien die in Microsoft Office\footnote{ Bürosoftware, steht unter \url{https://products.office.com/de-de/compare-all-microsoft-office-products?tab=1} zum Download bereit} enthalten sind wie Word Dokumente, PowerPoint Folien und Excel Tabellen kollaborativ bearbeitet werden, aber auch Dokumente in webbasierte Anwendungen wie Google Docs\footnote{ Webanwendung, mit der Dokumente erstellt und kollaborativ bearbeitet werden können, \url{https://docs.google.com}} und Google Wave\footnote{ Google Wave war eine von Google vorgestelle Webanwendung zur Kommunikation und kollaborativer Zusammenarbeit}~\cite{ot-faq}.\\\\
+Des Weiteren können mit \gls{OT} Dateien die in Microsoft Office\footnote{ Bürosoftware, steht unter \url{https://products.office.com/de-de/compare-all-microsoft-office-products?tab=1} zum Download bereit} enthalten sind wie Word Dokumente, PowerPoint Folien und Excel Tabellen kollaborativ bearbeitet werden, aber auch Dokumente in webbasierten Anwendungen wie Google Docs\footnote{ Webanwendung, mit der Dokumente erstellt und kollaborativ bearbeitet werden können, \url{https://docs.google.com}} und Google Wave\footnote{ Google Wave war eine von Google vorgestelle Webanwendung zur Kommunikation und kollaborativer Zusammenarbeit}~\cite{ot-faq}.\\\\
 %
 %
 Operational Transform ist ein Algorithmus für die Transformationen von Operationen, die auf Dokumente mit unterschiedlichen Zustand angewendet werden, um diese Dokumente in den identischen Zustand zu versetzen.
 Jede Änderung an einem freigegebenen Dokument wird als Operation dargestellt.
-Eine Operation ist die Repräsentation einer Änderung an einem Dokument und zeichnet im Wesentlichen den Unterschied zwischen einer und der nachfolgenden Version eines Dokuments auf.
+Eine Operation ist die Repräsentation einer Änderung an einem Dokument und zeichnet im Wesentlichen den Unterschied zwischen der aktuellen und der nachfolgenden Version eines Dokuments auf.
 Die Anwendung einer Operation auf das aktuelle Dokument führt zu einem neuen Dokumentstatus.
-Es gibt beispielsweise die Operation \it{Einfügen}. 
-Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument. Die Operation die beschreibt 'Füge den Buchstaben x an dritter Stelle im Dokument ein' sieht so aus: (\tt{insert('x', 3)}).
+Es gibt beispielsweise die Operation ''Einfügen''. 
+Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument. Die Operation, die beschreibt ''Füge den Buchstaben x an dritter Stelle im Dokument ein'' sieht so aus: (\tt{insert('x', 3)}).
 Für die Position kann ein Koordinatensystem ermittelt werden, Zeilennummer und die Position in einer Zeile, oder das Dokument wie eine Folge von Zeichen behandeln werden.\\
 %
 \Gls{kollaborativ}e Systeme, die \gls{OT} verwenden, benutzen normalerweise den replizierten Dokumentenspeicher.
-Das heißt auf jedem Gerät befindet sich eine eigene Kopie des Dokuments.
+Das heißt, auf jedem Gerät befindet sich eine eigene Kopie des Dokuments.
 Die Operationen erfolgen auf der lokalen Kopie und die Änderungen werden an alle anderen Geräte weitergegeben.\\\\
 %
 Um konkurrierende Operationen zu behandeln, gibt es die \tt{transform} Funktion.
 Wenn ein Client die Änderungen von einem anderen empfängt, werden die Änderungen vor ihrer Ausführung transformiert.
-Sie nimmt zwei Operationen, die auf demselben Dokument auf unterschiedlichen Geräten angewendet wurden und berechnet daraus eine neue.
-Die neue Operation wird dann nach der zweiten Operation angewendet, die erste, beabsichtigte Operation wird beibehalten~\cite{ot_paper}.\\
+Sie nimmt zwei Operationen, die auf demselben Dokument, aber auf unterschiedlichen Geräten angewendet wurden und berechnet daraus eine neue.
+Die neue Operation wird dann nach der zweiten Operation angewendet. Die erste, beabsichtigte Operation wird beibehalten~\cite{ot_paper}.\\
 %
 Die Grundidee des \gls{OT} Algorithmus wird anhand eines Beispiels, das die \autoref{fig:ot} veranschaulicht, illustriert.\\
 Es gibt den initialen Text ''abc'', der auf den Geräten der kollaborativ arbeitenden Personen, Amilia und Rory, besteht.
-Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf ihrem Gerät den Buchstaben ''c'''.
+Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf seinem Gerät den Buchstaben ''c'''.
 %
 \begin{figure}[h]
   \centering
@@ -34,22 +34,30 @@ Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf ihrem Gerät 
   \label{fig:ot}
 \end{figure}
 %
-Die konkurrierenden Operationen sind \tt{insert(0, ''x'')}, 'Füge das Zeichen ''x'' an Stelle Null ein', und \tt{delete(2, 1)}, 'lösche ein Zeichen an der zweiten Stelle'.
-In \gls{OT} werden lokale Änderungen angewandt, so wie sie passieren. Operationen über das Netzwerk werden, bevor sie auf zuvor ausgeführte Operationen angewandt werden, transformiert.\\
+Die konkurrierenden Operationen sind \tt{insert(0, ''x'')}, 'Füge das Zeichen ''x'' an Stelle Null ein, und \tt{delete(2, 1)}, ''lösche ein Zeichen an der zweiten Stelle''.
+In \gls{OT} werden lokale Änderungen angewandt, so wie sie passieren.
+Operationen über das Netzwerk werden, bevor sie auf zuvor ausgeführte Operationen angewandt werden, transformiert.\\
 %
 Wenn die Operation von Rory zuerst ausgeführt wird, gibt es kein Problem. Der Buchstabe an zweiter Stelle wird gelöscht und danach wird an Stelle Null ein ''x'' eingefügt. Das Ergebnis ist das gewünschte ''xab''.
 Im Bild ist auf der rechten Seite der Ablauf dieses Vorgangs abzulesen, wie er in \gls{OT} stattfindet.
 Rory löscht den Buchstaben ''c'' und im Dokument steht ein ''ab''.
-Alimias Editierung, \it{O2} kommt an und wird gegen \it{O1} transformiert. In diesem Fall ist das Ergebnis der Transformation dasselbe wie vorher.
-Die Ausführung von Rories Änderung hat keinen Einfluss auf die von Amilia. Wird Amilias Änderung auf ''ab'' angewendet, wird das ''x'' an erster Stelle hinzugefügt und das Ergebnis, ''xab'' ist identisch mit dem auf Amilias Seite.\\
+Amilias Editierung, \it{O2} kommt an und wird gegen \it{O1} transformiert. In diesem Fall ist das Ergebnis der Transformation dasselbe wie vorher.
+Die Ausführung von Rories Änderung hat keinen Einfluss auf die von Amilia.
+Wird Amilias Änderung auf ''ab'' angewendet, wird das ''x'' an erster Stelle hinzugefügt und das Ergebnis, ''xab'' ist identisch mit dem auf Amilias Seite.\\
 %
-Würde nämlich die Operation von Amilia zuerst ausgeführt werden, gäbe es Problem. Dann würde der Buchstabe ''b'' gelöscht, da er sich, nachdem das ''x'' eingefügt wurde, an zweiter Stelle steht. Das Ergebnis nach der ersten Operation wäre ''xac''. Die Dokumentenstatus wären nicht identisch.\\
+Würde allerdings die Operation von Amilia zuerst ausgeführt werden, gäbe es ein Problem.
+Dann würde der Buchstabe ''b'' gelöscht, da er sich, nachdem das ''x'' eingefügt wurde, an zweiter Stelle steht.
+Das Ergebnis nach der ersten Operation wäre ''xac''. Die Dokumentenstatus wären nicht identisch.\\
 %
-Auf der linken Seite wird die Operation \it{O2} zuerst ausgeführt im Dokument steht ''xabc''. Dann kommt \it{O1} auf Amilias Gerät an und wird zu \it{O2'} transformiert. Die neue Operation ist nun \tt{delete(1, 3)}, 'lösche ein Zeichen an dritter Stelle'. Der Positionsparameter wurde um eins hochgesetzt, weil das Einfügen des Buchstabens ''x'', durch die konkurrierenden Operation, beachtet wurde. Wird nun \it{O2'} auf der Operation \it{O1} angewendet, wird der korrekte Buchstabe gelöscht und das Ergebnis ist, wie auf Rories Seite, ein ''xab''.
-Wird die Operation \tt{delete(1, 2)} gegen die Operation von Amilia transformiert, wird berücksichtigt, dass Amilia ein Zeichen vor der Position zwei eingefügt hat.\\\\
+Auf der linken Seite wird die Operation \it{O2} zuerst ausgeführt im Dokument steht ''xabc''.
+Dann kommt \it{O1} auf Amilias Gerät an und wird zu \it{O2'} transformiert. Die neue Operation ist nun \tt{delete(1, 3)}, ''lösche ein Zeichen an dritter Stelle''. Der Positionsparameter wurde um eins hochgesetzt, weil das Einfügen des Buchstabens ''x'' durch die konkurrierenden Operation beachtet wurde.
+Wird nun \it{O2'} auf der Operation \it{O1} angewendet, wird der korrekte Buchstabe gelöscht und das Ergebnis ist, wie auf Rories Seite ''xab''.
+Wird die Operation \tt{delete(1, 2)} gegen die Operation von Amilia transformiert, wird berücksichtigt, dass Amilia ein Zeichen vor der Position eins eingefügt hat.\\\\
 %
 %
-Zuammenfassend besteht die Grundidee von \gls{OT} darin, eine Operation in eine neue Form umzuwandeln. Die neue Form ergibt sich aus den Auswirkungen zuvor durchgeführter Operationen. So können die transformierten Operationen die korrekte Wirkung erzielen und eine Konsistenz der replizierten Dokumente sicherstellen~\cite{ot-later}.
+Zuammenfassend besteht die Grundidee von \gls{OT} darin, eine Operation in eine neue Form umzuwandeln.
+Die neue Form ergibt sich aus den Auswirkungen zuvor durchgeführter Operationen.
+So können die transformierten Operationen die korrekte Wirkung erzielen und eine Konsistenz der replizierten Dokumente sicherstellen~\cite{ot-later}.
 %
 % Kritik
 %

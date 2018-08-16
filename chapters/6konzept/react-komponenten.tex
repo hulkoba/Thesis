@@ -1,12 +1,16 @@
-React ist eine Open-Source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung die für die Anzeige und Interaktion zuständig ist. Ein Vorteil von React sind die Komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
+React ist eine Open-Source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
+Ein Vorteil von React sind die Komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
 Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten aus den \tt{props} nehmen.
-\tt{Props} sind Daten die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
-Eine React Komponente hat immer eine \tt{render()}--Funktion die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt was dargestellt werden soll.
+\tt{Props} sind Daten, die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
+Eine React Komponente hat immer eine \tt{render()}--Funktion, die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt, was dargestellt werden soll.
 Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.\\\\
-React Komponenten können in zwei Kategorien aufgeteilt werden. Die eine Kategorie ist die Containerkomponente. Sie dienen als Datenquelle und in ihnen steckt die Logik wie etwas funktioniert. Sie stellen außerdem Callbackfunktionen für die Viewkomponenten bereit.
-Viewkomponenten haben keine andere Zuständigkeit als die Daten, die sie über ihre \tt{props} erhalten, anzuzeigen und ggf. die ebenfalls empfangenden Callbackfunktionen aufzurufen ~\cite{react-components}.\\
+React Komponenten können in zwei Kategorien aufgeteilt werden.
+Die eine Kategorie ist die Containerkomponente.
+Sie dienen als Datenquelle und in ihnen steckt die Logik wie etwas funktioniert.
+Sie stellen außerdem Callbackfunktionen für die Viewkomponenten bereit.
+Viewkomponenten haben keine andere Zuständigkeit als die Daten, die sie über ihre \tt{props} erhalten, anzuzeigen und ggf. die ebenfalls empfangenen Callbackfunktionen aufzurufen ~\cite{react-components}.\\
 Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} eine beispielhafte React Containerkomponente, und im \autoref{code:react-form-view} die dazugehörige Viewkomponente beschrieben.
-Zusammen repräsentieren sie ein Formular in dem der Name des Kontakts angezeigt und geändert werden kann.
+Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeigt und geändert werden kann.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -19,7 +23,7 @@ Zusammen repräsentieren sie ein Formular in dem der Name des Kontakts angezeigt
 Die Formular--Containerkomponente hat ein Kontaktobjekt im internen \tt{state} gespeichert.
 Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In neun sieben steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile 12 mit den reingegebenen Werten aktualisiert.
+In Zeile 9 steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile 12 mit den eingegebenen Werten aktualisiert.
 Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange} Funktion. 
 % listing
 \begin{center}
@@ -31,19 +35,20 @@ Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der 
 \end{center}
 %
 Die beiden Parameter sind in der Zeile 1 des folgenden Listings wiederzufinden.
-Die Viewkomponente macht nichts anderes als die ihr übergebenen Daten anzuzeigen. Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion, in der Zeile 5, aufgerufen.
+Die Viewkomponente macht nichts anderes, als die ihr übergebenen Daten anzuzeigen.
+Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion in der Zeile 5 aufgerufen.
 Diese Komponente besitzt keinerlei Logik.
 %
 % Redux
 %
 \sub{Verwendung von Redux Offline}
 Redux Offline kann nur zusammen mit Redux verwendet werden. Deswegen ist für diesen Prototypen die Implementierung von Redux vorausgesetzt.
-Redux ist eine JavaScript Bibliothek die Probleme im Zusammenhang mit dem \it{Zustand} einer Anwendung löst.
+Redux ist eine JavaScript Bibliothek, die Probleme im Zusammenhang mit dem \it{Zustand} einer Anwendung löst.
 Es gibt einen zentralen Ort, in dem der \it{Zustand} der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
 Dieser Ort wird Store genannt. Alle Änderungen der Daten im zentralen Speicher erfolgen ausschließlich über Aktionen.\\\\
 %
-Redux Offline ist eine erweiternde Bibliothek für Redux dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
-Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
+Redux Offline ist eine erweiternde Bibliothek für Redux, dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
+Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion, die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
 Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile 8 übergeben.
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -52,8 +57,9 @@ Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem
   caption={Erstellen eines Stores mit Redux Offline},
   label=code:store]{code/Redux.js}
 \end{center}
-Der gesamte Kontext, der zum Synchronisieren einer Aktion erforderlich ist in einem zusätzlichen Metaattribut gespeichert.
-Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mit dem Metafeld dekoriert. Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
+Der gesamte Kontext, der zum Synchronisieren einer Aktion erforderlich ist, ist in einem zusätzlichen Metaattribut gespeichert.
+Damit die Anwendung weiß, wie die Aktionen verarbeitet werden sollen, wird sie mit dem Metafeld dekoriert.
+Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -63,18 +69,19 @@ Damit die Anwendung weiß wie die Aktionen verarbeitet werden sollen wird sie mi
   label=code:react-meta]{code/Redux.js}
 \end{center}
 %
-Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
+Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion, die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
 Bei \tt{commit} in Zeile 7 wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
-Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
+Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt, wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
 Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben.
-Das Listing \ref{code:reducer} illustriert wie das im entsprechendem Prototypen umgesetzt werden könnte.
+Das Listing \ref{code:reducer} illustriert, wie das im entsprechendem Prototypen umgesetzt werden könnte.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
   firstline=36,lastline=50,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  caption={Reducer mit allen Aktionen die im Meta Feld beschrieben werden},
+  caption={Reducer mit allen Aktionen die im Metafeld beschrieben werden},
   label=code:reducer]{code/Redux.js}
 \end{center}
 %
-In diesem Beispiel wird der \gls{App}status nur bei erfolgreichem Netzwerkaufruf aktualisiert. Das ist in den Zeilen 6 bis 8 nachzulesen. Und auch nur dann, wenn sich die Antwort vom Server von diesem unterscheidet.
+In den Zeilem 6 bis 8 ist nachzulesen, wie sich der \gls{App}status bei erfolgreichem Netzwerkaufruf aktualisiert.
+Der Status aktualisiert sich nur, wenn sich die Antwort vom Server von diesem unterscheidet.

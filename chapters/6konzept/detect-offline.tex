@@ -1,13 +1,16 @@
 \sub{\label{sub:detect}Verbindungsstatus feststellen und ändern}
-Für die Überprüfung der Verbindung zum Server wird das Modus React Detect Offline verwendet. Es beobachtet den Online-- und Offlinestatus und bietet zwei Komponenten entsprechend des Status den Inhalt rendern. Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
+Für die Überprüfung der Verbindung zum Server wird das Modul React Detect Offline verwendet.
+Es bietet zwei Komponenten, die entsprechend des Netzwerkstatus den ihnen gegebenen Inhalt rendern.
+Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
 %
 \begin{center}
 \lstinputlisting[language=REACT,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
 \end{center}
 %
-Das Modul verfolgt kontinuierlich den Onlinestatus des Browsers indem es auf die Online- und Offlineereignisse der Webspezifikation reagiert. Zusätzlich fragt es alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente. Verschiedene Parameter wie die URL oder das Intervall in dem die URL aufgerufen wird können konfiguriert werden~\cite{react-detect}. \\\\
+Das Modul verfolgt kontinuierlich den Onlinestatus des Browsers, indem es auf die Online- und Offlineereignisse der Webspezifikation reagiert. Zusätzlich fragt es alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente.
+Verschiedene Parameter wie die URL oder das Intervall, in dem die URL aufgerufen wird, können konfiguriert werden~\cite{react-detect}. \\\\
 %
-Der Verbindungsstatus eines Geräts kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chrome laufen.\\
+Der Verbindungsstatus eines Gerätes kann im Browser geändert werden. Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chrome laufen.\\
 In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt `Sonstiges` oder dem Punkt `Web-Entwickler` `Offline arbeiten` auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
 In Chrome öffnet man dazu die Entwicklertools, geht auf `Netzwerk` und klickt auf die Checkbox `Offline` am oberen Rand. Dieselbe Checkbox ist auch im `Application`--Tab unter `Service Workers` zu finden.\\
-Sollen der Offlinestatus für zwei oder mehr Geräte hergestellt werden, kann der Server oder die CouchDB gestoppt werden. Damit der Status in der Oberfläche abgelesen werden kann, muss dem React Detect Offline Modul die entsprechende URL übergeben werden.
+Soll der Offlinestatus für zwei oder mehr Geräte hergestellt werden, kann der Server oder die CouchDB gestoppt werden. Damit der Status in der Oberfläche abgelesen werden kann, muss dem React Detect Offline Modul die entsprechende URL übergeben werden.

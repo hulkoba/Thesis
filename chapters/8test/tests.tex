@@ -1,8 +1,12 @@
 Um das Konfliktmanagement der zu testenden Technologien untersuchen zu können wurden manuelle Tests durchgeführt.
-Die Art und Weise wie die Tests durchgeführt wurden, ist in \autoref{chap:konzept:test} detailliert beschrieben. Der entsprechende Prototyp läuft in den beiden Browsern Chrome und Firefox. In jedem Testdurchlauf werden unterschiedliche Aktionen in anderer Reihenfolge durchgeführt.\\\\
-Als Ergebnis wird der Zustand der \gls{App} bezeichnet wie er nach der Synchronisation beider Geräte ist.
-Das erwartete Ergebnis ist das gewünschte Ergebnis, welches eintritt wenn der Schwerpunkt bei der Verwendung der Anwendung darauf liegt, keine BenutzerInnendaten zu verlieren.\\
-Das tatsächliche Ergebnis ist, wie der Name schon sagt, das was eingetreten ist. Weicht das tatsächliche Ergebnis von dem erwarteten ab, sind die Ansprüche in diesem Testdurchlauf nicht erfüllt. 
+Die Art und Weise, wie die Tests durchgeführt wurden, ist in \autoref{chap:konzept:test} detailliert beschrieben.
+Der entsprechende Prototyp läuft in den beiden Browsern Chrome und Firefox. In jedem Testdurchlauf werden unterschiedliche Aktionen in anderer Reihenfolge durchgeführt.\\\\
+%
+%
+Als Ergebnis wird der Zustand der \gls{App} bezeichnet, wie er nach der Synchronisation beider Geräte ist.
+Das erwartete Ergebnis ist das gewünschte Ergebnis, welches eintritt, wenn keine BenutzerInnendaten verloren gehen.\\
+Das tatsächliche Ergebnis ist, wie der Name schon sagt, das was eingetreten ist.
+Weicht das tatsächliche Ergebnis von dem erwarteten ab, sind die Ansprüche in diesem Testdurchlauf nicht erfüllt. 
 % 
 % 
 \sub{Erste Testreihe}
@@ -22,7 +26,8 @@ Das tatsächliche Ergebnis ist, wie der Name schon sagt, das was eingetreten ist
 % 
 % 
 \sub{Übersicht der Testergebnisse}
-Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist, und bei welchen Prototypen dies der Fall war.
+Die folgende Tabelle gibt eine Übersicht der Testergebnisse.
+Sie zeigt an, in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist und bei welchen Prototypen dies der Fall war.
 \begin{longtable}[c]{@{}
 >{\columncolor[HTML]{CFFCC2}}l llll@{}}
 \toprule
@@ -105,6 +110,6 @@ Die folgende Tabelle gibt eine Übersicht der Testergebnisse. Sie zeigt an in we
   \label{tab:test:tests}\\
 \end{longtable}
 %
-Es ist deutlich zu erkennen, dass überall dort wo ein Kontakt bearbeitet wird, die Redux Offline \gls{App} die Erwartungen nicht erfüllt.
-Überall dort wo die Erwartungen nicht erfüllt worden sind, sind Daten verloren gegangen.
+Es ist deutlich zu erkennen, dass überall dort, wo ein Kontakt bearbeitet wird, die Redux Offline \gls{App} die Erwartungen nicht erfüllt.
+Überall dort, wo die Erwartungen nicht erfüllt worden sind, sind Daten verloren gegangen.
 Im folgenden \hyperref[chap:auswertung]{Abschnitt} werden die Testergebnisse ausgewertet.
