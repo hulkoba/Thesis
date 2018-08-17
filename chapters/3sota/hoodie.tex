@@ -1,7 +1,7 @@
 \section{HOODIE}
 HOODIE ist eine JavaScript Bibliothek für offlinefähige Webapplikationen, die ein komplettes Backend zur Verfügung stellt.
 Wird HOODIE für die Entwicklung einer Webanwendung verwendet, muss also lediglich das Frontend implementiert werden.
-Den Rest erledigt die Bibliothek. Über eine integrierte Programmierschnittstelle kommuniziert die Anwendung mit dem von HOODIE zur Verfügung gestelltem Backend.
+Den Rest erledigt die Bibliothek. Über eine integrierte Programmierschnittstelle kommuniziert die Anwendung mit dem von HOODIE bereitgestelltem Backend.
 Über das \gls{API} können unter anderem BenutzerInnen authentifiziert, Daten gespeichert und synchronisiert werden~\cite{hoodie}.\\
 Anhand der Abbildung \ref{fig:hoodie} wird erklärt wie HOODIE funktioniert.
 %
@@ -20,7 +20,8 @@ Durch das lokale Speichern sind die Daten auch offline verfügbar. Dann werden s
 In HOODIE haben alle AnwenderInnen ihre eigene private CouchDB.
 Hinter der Datenbank befindet sich ein Server der auf die Daten in der CouchDB reagiert, die wiederum die Änderungen an den Client schickt ~\cite{hoodie-how}.
 So können NutzerInnen nur auf ihre eigenen Daten zugreifen. Wenn es mehrere Geräte gibt, die mit einem Account assoziiert werden, werden die Änderungen von einem Gerät zuerst auf die serverseitige CouchDB synchronisiert, um dann von dort in die lokalen Datenbanken der anderen Geräte zu gelangen.\\
-Dadurch, dass das Frontend und das Backend nicht direkt miteinander sprechen, ist die Funktionalität beider Komponenten auch dann gewährleistet, wenn die Verbindung zwischen ihnen unterbrochen wird~\cite{hoodie-how}.
+Das Frontend spricht nie direkt mit dem Backend, sondern zunächst mit der lokalen Datenbank.
+Dadurch ist die Funktionalität beider Komponenten auch dann gewährleistet, wenn die Verbindung zwischen ihnen unterbrochen wird~\cite{hoodie-how}.
 % 
 % CouchDB
 % 
@@ -37,7 +38,8 @@ Das implementierte Replikationsmodell erlaubt die Synchronisation bzw. bidirekti
 Die genaue Funktionsweise des Protokolls ist in \autoref{chap:replication} detailliert beschrieben.\\
 % 
 Dank des Replikations--\gls{API} kann kann sich eine CouchDB kontinuierlich und eigenständig mit jeder anderen Datenbank, die dasselbe Protokoll implementiert, synchronisieren.
-Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert, jedoch nicht von selbst aufgelöst~\cite{couch}. Die Lösung der Konflikte muss in der Anwendung implementiert sein.
+Wenn Konflikte auftreten, beispielsweise durch gleichzeitiges Bearbeiten eines Dokuments von zwei Personen ohne Netzwerkverbindung, werden diese als solche markiert und gespeichert, jedoch nicht von selbst aufgelöst~\cite{couch}.
+Die Lösung der Konflikte muss in der Anwendung implementiert sein.
 So kann gewährleistet werden, dass keinerlei Daten verloren gehen.\\\\
 %
 %
