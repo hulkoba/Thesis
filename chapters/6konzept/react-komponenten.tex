@@ -15,7 +15,7 @@ Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeig
 \begin{center}
   \lstinputlisting[language=REACT,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  firstline=1, lastline=24,
+  firstline=1, lastline=22,
   caption={Eine React Containerkomponente},
   label=code:react-form]{code/Form.js}
 \end{center}
@@ -25,16 +25,16 @@ Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt
 Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
 In Zeile 9 steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile 12 mit den eingegebenen Werten aktualisiert.
 Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange} Funktion. 
+Die beiden Parameter sind in der Zeile 1 des folgenden Listings wiederzufinden.
 % listing
 \begin{center}
   \lstinputlisting[language=REACT,
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
-  firstline=25, lastline=33,
+  firstline=24, lastline=33,
   caption={Eine React Viewkomponente},
   label=code:react-form-view]{code/Form.js}
 \end{center}
 %
-Die beiden Parameter sind in der Zeile 1 des folgenden Listings wiederzufinden.
 Die Viewkomponente macht nichts anderes, als die ihr übergebenen Daten anzuzeigen.
 Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion in der Zeile 5 aufgerufen.
 Diese Komponente besitzt keinerlei Logik.
@@ -50,6 +50,7 @@ Dieser Ort wird Store genannt. Alle Änderungen der Daten im zentralen Speicher 
 Redux Offline ist eine erweiternde Bibliothek für Redux, dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
 Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion, die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
 Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile 8 übergeben.
+%
 \begin{center}
   \lstinputlisting[language=REACT,
   firstline=50,lastline=62,
@@ -57,6 +58,7 @@ Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem
   caption={Erstellen eines Stores mit Redux Offline},
   label=code:store]{code/Redux.js}
 \end{center}
+%
 Der gesamte Kontext, der zum Synchronisieren einer Aktion erforderlich ist, ist in einem zusätzlichen Metaattribut gespeichert.
 Damit die Anwendung weiß, wie die Aktionen verarbeitet werden sollen, wird sie mit dem Metafeld dekoriert.
 Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen.

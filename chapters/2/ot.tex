@@ -40,7 +40,7 @@ Amilia fügt lokal vor dem ''abc'' ein ''x'' ein, Rory löscht auf seinem Gerät
   \label{fig:ot}
 \end{figure}
 %
-Die konkurrierenden Operationen sind \tt{insert(0, ''x'')}, 'Füge das Zeichen ''x'' an Stelle Null ein, und \tt{delete(2, 1)}, ''lösche ein Zeichen an der zweiten Stelle''.
+Die konkurrierenden Operationen sind \tt{insert(0, ''x'')}, ''Füge das Zeichen ''x'' an Stelle Null ein'', und \tt{delete(1, 2)}, ''lösche ein Zeichen an der zweiten Stelle''.
 In \gls{OT} werden lokale Änderungen angewandt, so wie sie passieren.
 Operationen über das Netzwerk werden, bevor sie auf zuvor ausgeführte Operationen angewandt werden, transformiert.\\
 %
@@ -58,7 +58,7 @@ Das Ergebnis nach der ersten Operation wäre ''xac''. Die Dokumentenstatus wäre
 Auf der linken Seite wird die Operation \it{O2} zuerst ausgeführt im Dokument steht ''xabc''.
 Dann kommt \it{O1} auf Amilias Gerät an und wird zu \it{O2'} transformiert. Die neue Operation ist nun \tt{delete(1, 3)}, ''lösche ein Zeichen an dritter Stelle''. Der Positionsparameter wurde um eins hochgesetzt, weil das Einfügen des Buchstabens ''x'' durch die konkurrierenden Operation beachtet wurde.
 Wird nun \it{O2'} auf der Operation \it{O1} angewendet, wird der korrekte Buchstabe gelöscht und das Ergebnis ist, wie auf Rories Seite ''xab''.
-Wird die Operation \tt{delete(1, 2)} gegen die Operation von Amilia transformiert, wird berücksichtigt, dass Amilia ein Zeichen vor der Position eins eingefügt hat.\\\\
+Wird die Operation von Rory, \tt{delete(1, 2)}, gegen die Operation von Amilia transformiert, wird berücksichtigt, dass Amilia ein Zeichen vor der Position zwei, der Poition des von Rory gelöschten Zeichens, eingefügt hat.\\\\
 %
 %
 Zuammenfassend besteht die Grundidee von \gls{OT} darin, eine Operation in eine neue Form umzuwandeln.
