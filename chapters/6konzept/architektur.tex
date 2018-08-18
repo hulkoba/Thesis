@@ -17,10 +17,10 @@ Auf der rechten Seite stehen die Model--Komponenten. Sie manipulieren den Appsta
 %
 Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der Anwendung.
 Hier wird die graphische Oberfläche definiert und es werden alle notwendigen Funktionen bereitgestellt.
-Die Komponente hat einen internen \tt{state} in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der \tt{state} an der blauen Schrift zu erkennen.
+Die Komponente hat einen internen State in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der State an der blauen Schrift zu erkennen.
 Das Objekt \tt{editView} zeigt, welche Ansicht -- Liste oder Formular -- gerade aktuell ist und speichert den im Formular zu ladenden Kontakt.
 Wie das Kontaktobjekt aufgebaut ist, zeigt der blaue Kasten im Diagramm.
-Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne \tt{state} aktualisiert und ein erneutes Rendern der Komponente eingeleitet. Dann wird entsprechend die Liste oder das Formular gerendert.\\
+Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne State aktualisiert und ein erneutes Rendern der Komponente eingeleitet. Dann wird entsprechend die Liste oder das Formular gerendert.\\
 %
 Der \tt{Header} implementiert das externe Modul \tt{react-detect-offline} und kann so den Netzwerkstatus anzeigen. Die Komponente hat Zugriff auf die \tt{toggleEdit}--Funktion und einen Knopf, der an diese gebunden ist. Damit kann das Rendern des Kontaktformulars eingeleitet werden.
 Dieser Knopf soll nur angezeigt werden, wenn die Liste aktiv ist. Diese Information ist in dem Attribut \tt{isOpen} abzulesen.\\
@@ -32,7 +32,7 @@ Gibt es keine Kontaktdaten, die geladen werden können, kann ein neuer Kontakt a
 In der View, dem \tt{ContactForm}, gibt es zum Hinzufügen und Bearbeiten des Kontakts Eingabefelder für den Namen, die E-Mail und die Telefonnummer des Kontakts.
 Zusätzlich zu den Eingabefeldern für jedes Kontaktattribut hat sie zwei Knöpfe, mit denen die Aktion bestätigt oder abgebrochen werden kann.\\
 Der dazugehörige Ereignisbehandler befindet sich im \tt{FormContainer}. 
-Der ''lauscht'' auf die Veränderung der einzelnen Eingabefelder und speichert alle Änderungen in einer Kopie des Kontakts im internen \tt{state}.
+Der ''lauscht'' auf die Veränderung der einzelnen Eingabefelder und speichert alle Änderungen in einer Kopie des Kontakts im internen State.
 Wird die Aktion durch den entsprechenden Knopf bestätigt, wird die Kopie des Kontakts an \tt{Contacts} gegeben und dort entweder via \tt{addContact()} hinzugefügt oder via \tt{editContact()} bearbeitet.
 Wenn die Aktion abgebrochen wird, ruft der \tt{FormContainer} die \tt{toggleEdit()} Funktion in der Hauptkomponente auf.\\\\
 %

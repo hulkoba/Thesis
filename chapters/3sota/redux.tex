@@ -5,7 +5,7 @@ Redux Offline kann nur zusammen mit Redux verwendet werden~\cite{redux-req}. Des
 % Redux
 %
 % Alles beginnt mit dem Aufruf von \tt{store.dispatch(action)} von jeder beliebigen Stelle in der Anwendung. Die Aktion die beschreibt was passiert heißt \tt{toggleEdit} und sieht im Beispiel des Ansichtswechsels aus wie in Zeile drei bis fünf.\\
-% Der \tt{Store} ruft nun den \tt{Reducer} auf
+% Der \tt{Store} ruft nun den Reducer auf
 \sub{\label{chap:redux}Redux}
 % Redux ist eine JavaScript Bibliothek, die Probleme im Zusammenhang mit dem Zustand, dem sogenannten \gls{App}state einer Anwendung, löst.
 Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
@@ -35,7 +35,7 @@ Der Store ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rend
 Redux Offline erweitert Redux um einen persistenten Store mit Offline-First Technologie und ist kompatibel mit allen *View Frameworks wie React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.
 Es umfasst unter anderem netzwerkfähige \gls{API}-Aufrufe, das Persistieren des Zustands der Anwendung, das Speichern von Aktionen, die Behandlung von Fehlern und erneute Versuche, die Verbindung wieder herzustellen.
 Redux Offline verspricht nicht, die Webanwendung komplett offlinefähig zu machen.
-Um \gls{Assets} zwischenzuspeichern, muss zusätzlich noch ein ServiceWorker implementiert sein ~\cite{redux-offline-gh}.\\
+Um \gls{Assets} zwischenzuspeichern, muss zusätzlich noch ein Service Worker implementiert sein ~\cite{redux-offline-gh}.\\
 Die Idee hinter Redux Offline ist, dass der Redux Store die Datenbank ersetzt~\cite{redux-offline}.
 Bei jeder Änderung wird der Redux Store auf dem Datenträger gespeichert, und bei jedem Start automatisch neugeladen.
 Für das Speichern der Daten in einer lokalen Datenbank wird intern \hyperref[sub:reduxpersist]{Redux Persist} verwendet.\\\\

@@ -62,7 +62,7 @@ Mit dem Aufruf der Aktion ADD\_CONTACT, die in Zeile 3 bis 15 erzeugt wird, wird
 Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline} Objekts in Zeile 9 festgelegt. Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON} Datei persisitiert.
 Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert. Mit diesem wird in Zeile 23 der Appstate aktualisiert und so lokal gespeichert.\\
 Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile 12 gefeuert.
-Die wird im Reducer in Zeile 26 behandelt. Der \tt{state} wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
+Die wird im Reducer in Zeile 26 behandelt. Der State wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
 Für den Fall, dass die Netzwerkanfrage nicht erfolgreich war, wird das \tt{meta.offline.rollback} Feld definiert.
 Hier könnte man die BenutzerInnen darüber informieren, dass etwas nicht geklappt hat.
 Für den Rahmen dieser Arbeit genügt es jedoch, den vorherigen Status zurückzuliefern, wie es in den Zeilen 10 und 11 steht.\\\\

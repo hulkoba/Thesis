@@ -1,9 +1,9 @@
 React ist eine Open-Source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
 Ein Vorteil von React sind die Komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
-Eine Komponente kann einen internen \tt{state} besitzen, oder die Daten aus den \tt{props} nehmen.
+Eine Komponente kann einen internen State besitzen, oder die Daten aus den \tt{props} nehmen.
 \tt{Props} sind Daten, die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
-Eine React Komponente hat immer eine \tt{render()}--Funktion, die die Daten aus dem \tt{state} oder den \tt{props} liest und zurückgibt, was dargestellt werden soll.
-Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des \tt{states} führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.\\\\
+Eine React Komponente hat immer eine \tt{render()}--Funktion, die die Daten aus dem State oder den \tt{props} liest und zurückgibt, was dargestellt werden soll.
+Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des States führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.\\\\
 React Komponenten können in zwei Kategorien aufgeteilt werden.
 Die eine Kategorie ist die Containerkomponente.
 Sie dienen als Datenquelle und in ihnen steckt die Logik wie etwas funktioniert.
@@ -20,10 +20,10 @@ Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeig
   label=code:react-form]{code/Form.js}
 \end{center}
 %
-Die Formular--Containerkomponente hat ein Kontaktobjekt im internen \tt{state} gespeichert.
+Die Formular--Containerkomponente hat ein Kontaktobjekt im internen State gespeichert.
 Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In Zeile 9 steht die \tt{handleChange} Funktion, die den internen \tt{state} in Zeile 12 mit den eingegebenen Werten aktualisiert.
+In Zeile 9 steht die \tt{handleChange} Funktion, die den internen State in Zeile 12 mit den eingegebenen Werten aktualisiert.
 Die Viewkomponente wird wie in in den Zeilen 17 bis 19 aufgerufen. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange} Funktion. 
 Die beiden Parameter sind in der Zeile 1 des folgenden Listings wiederzufinden.
 % listing
@@ -74,7 +74,7 @@ Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen
 Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion, die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
 Bei \tt{commit} in Zeile 7 wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
 Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt, wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
-Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im \tt{Reducer} beschrieben.
+Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im Reducer beschrieben.
 Das Listing \ref{code:reducer} illustriert, wie das im entsprechendem Prototypen umgesetzt werden könnte.
 %
 \begin{center}
