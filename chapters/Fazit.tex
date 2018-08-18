@@ -33,7 +33,7 @@ Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, wer
 Nur durch die Konfliktlösung durch Menschen kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
 Somit erfüllt \it{amilia-qouch} sämtliche in \autoref{chap:offlinefirst} genannten Voraussetzungen an eine offlinefähige Anwendung.\\\\
 %
-Der Prototyp \it{amilia-rdx} speichert die erstellten Kontakte mit Hilfe von Redux Offline im LocalStorage.
+Der Prototyp \it{amilia-rdx} speichert die erstellten Kontakte mit Hilfe von Redux Offline im Local Storage.
 Da Redux Offline keine Datenbanklösung bereitstellt, wurde ein einfacher Server entwickelt, über den die Daten in einer \gls{JSON}--Datei persistiert werden.
 Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, werden diese mittels des \gls{LWW} Ansatz gelöst.
 Bei gleichzeitiger Löschung und Bearbeitung eines Kontakts hat die Löschung Vorrang.

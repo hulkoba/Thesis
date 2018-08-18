@@ -26,14 +26,14 @@ Es wird überprüft, welche dieser Anforderungen in den Prototypen erüllt wurde
 %
   \item[F4 Die Anwendung muss fähig sein, die Kontakte unabhängig vom Netzwerkstatus zu laden, sofern diese einmal aus dem Netzwerk geladen wurden.]
     Einmal geladen, werden alle Kontakte in beiden Prototypen aus dem lokalen Speicher gelesen, wenn die Anwendung offline ist oder der Server nicht läuft.
-    Der \it{amilia-qouch} Prototyp liest die Kontakte dann aus der IndexedDB und der \it{amilia-rdx} Prototyp aus dem LocalStorage.\\
+    Der \it{amilia-qouch} Prototyp liest die Kontakte dann aus der IndexedDB und der \it{amilia-rdx} Prototyp aus dem Local Storage.\\
 %
   \item[F5 Die Anwendung muss die Möglichkeit bieten, unabhängig vom Netzwerkstatus einen Kontakt anzulegen, zu bearbeiten oder zu löschen.]
     Während der Entwicklung wurden stetig Tests zur Offlinefunktionalität auf einem Gerät durchgeführt (siehe \autoref{chap:impl:test}).
     Diese bestätigen, dass in jedem Prototypen unabhängig vom Netzwerkstatus jederzeit ein Kontakt angelegt, bearbeitet oder gelöscht werden kann.\\
 %
   \item[F6 Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persistieren, identifizieren können und versionieren.]
-    Auch diese Anforderung erfüllen beide Prototypen. Die lokale Speicherung erfolgt, wie bereits beschrieben, im LocalStorage oder in IndexedDB.
+    Auch diese Anforderung erfüllen beide Prototypen. Die lokale Speicherung erfolgt, wie bereits beschrieben, im Local Storage oder in IndexedDB.
     Serverseitig werden die Kontakte im Prototypen \it{amilia-qouch} in einer CouchDB persistiert.
     Da Redux Offline keine serverseitige Datenbank zur Verfügung stellt, werden die Daten in diesem Prototypen in einer serverseitigen \gls{JSON} Datei gespeichert.
     Die Identifizierung der Kontakte erfolgt in beiden Prototypen über einen Zeitstempel.
