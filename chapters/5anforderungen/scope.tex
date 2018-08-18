@@ -14,10 +14,13 @@ Dabei sind Aspekte aus unterschiedlichen Rollen zu betrachten. So werden die Rol
 Beim ersten Start der Anwendung müssen, sofern vorhanden, alle Kontakte geladen werden. Sobald sie einmal geladen sind, sollen sie auch offline verfügbar sein.
 Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar ist, sollte er wenigstens so lange auf dem Client gespeichert werden, bis er vollständig beim Server angekommen ist.
 Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät, eine auf dem Server.\\
-Danach sollen nur die Einträge geladen werden, die nicht auf dem Gerät existieren. Die Daten würden sonst doppelt geladen werden und der Server hätte mehr zu arbeiten, was wiederum die Antwortzeit verlängern würde.
+Danach sollen nur die Einträge geladen werden, die nicht auf dem Gerät existieren.
+Andernfalls werden unnötige Mengen von daten über das Netzwerk gesendet. Das soll vermieden werden.
+% Die Daten würden sonst doppelt geladen werden und der Server hätte mehr zu arbeiten, was wiederum die Antwortzeit verlängern würde.
 Dazu muss ermittelt werden können, welche Daten neu angelegt oder aktualisiert wurden.
 Der Server muss also in der Lage sein die Einträge zu sortieren und nur bestimmte Einträge zu versenden und die Anwendung muss wissen, welche Daten sie bereits hat. Wird ein Eintrag angelegt, bearbeitet oder gelöscht, müssen alle Parteien wissen, um welchen Kontakt es sich handelt.
-Dazu muss jeder Kontakt mittels einer eindeutigen ID identifizierbar sein. Wenn es zwei Kontakteinträge mit derselben ID gibt, muss feststellbar sein, welcher Eintrag der aktuellere ist.\\
+Dazu muss jeder Kontakt mittels einer eindeutigen ID identifizierbar sein.
+Wenn es mehrere Kontakteinträge mit derselben ID gibt, muss feststellbar sein, welcher Eintrag der aktuellere ist.\\
 Gibt es mehr als zwei Einträge, müssen diese sortiert werden, sodass ersichtlich wird welcher der aktuellste oder älteste ist, welcher Eintrag vor oder nach welchem kommt. Dazu muss jeder Kontakt versioniert werden.\\\\
 Um eine Aussage darüber zu treffen, welche der untersuchten Technologien besser für die Entwicklung einer offlinefähigen Anwendung geeignet ist und warum, ist eine Testumgebung mitzuentwickeln. Hier soll die Möglichkeit geschaffen werden, Konflikte durch gleichzeitiges Bearbeiten eines Kontakts im Offlinestatus herbeizuführen und die Testfälle auswerten zu können.\\
 Es wird ermittelt welche Strategie zur Konfliktlösung von der Technologie verwendet wird, ob die Funktionalität der Anwendung auch bei auftretenden Konflikten gewährleistet ist und ob dabei Daten verloren gehen.
