@@ -27,7 +27,7 @@ Es muss also bei der Wahl einer Technologie zur Erstellung einer offlinefähigen
 %
 %
 Die im Rahmen dieser Arbeit entwickelten Prototypen können eine Kontaktliste kollaborativ verwalten.
-Da beide Prototypen mit dem Werkzeug Create React App erstellt wurde, welches einnen ServiceWorker mitliefert, werden nach dem Deploy die \gls{Assets} gecacht werden.\\\\
+Da beide Prototypen mit dem Werkzeug Create React App erstellt wurde, welches einnen Service Worker mitliefert, werden nach dem Deploy die \gls{Assets} gecacht werden.\\\\
 Der Prototyp \it{amilia-qouch} speichert die erstellten Kontakte zunächst mit Hilfe von Pouch"-DB in der Browserdatenbank IndexedDB und repliziert sie dann zu der CouchDB Serverdatenbank.
 Wenn Konflikte durch gleichzeitiges Bearbeiten desselben Kontakts entstehen, werden diese in der CouchDB mittels des internen \hyperref[chap:replication]{Replikationsprotokolls} gespeichert und können clientseitig aufgelöst werden.
 Nur durch die Konfliktlösung durch Menschen kann sichergestellt werden, dass die korrekte Änderung gespeichert wird und keine Daten verloren gehen.
