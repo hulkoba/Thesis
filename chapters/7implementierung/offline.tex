@@ -50,13 +50,14 @@ Allerdings wird, wenn der Server nicht verfügbar ist, die Aktion abgebrochen un
   numbers=left,xleftmargin=20pt,
   firstline=6,
   framexleftmargin=15pt,
-  caption={Discard Konfiguration für amilia-rdx},
+  caption={Discard--Konfiguration für amilia-rdx},
   label=code:discard]{code/sync.js}
 \end{center}
 %
 Die Discard--Konfiguration bestimmt wann eine Aktion abgebrochen und wann sie immer wieder neu gestartet wird.
-Im \autoref{code:discard} ist in den Zeilen 1 bis 4 abzulesen wie diese Konfiguration überschrieben wird.
+Im \autoref{code:discard} ist in den Zeilen 1 bis 4 abzulesen wie diese Konfiguration überschrieben werden kann.
 Nun wird die Aktion nur abgebrochen, wenn der Server verfügbar ist und einen \gls{HTTP}--Status von 400 bis 500 zurückgibt.
+Die 4xx Statuscodes werden geliefert, wenn die Ursache des Scheiterns der Anfrage clientseitig verantwortet wird. Der \gls{HTTP}--Statuscode 500 wird bei einem internen Serverfehler als Antwort geliefert. 
 In den darauffolgenden Zeilen wird die eigens implementierte Konfiguration mit der Standardkonfiguration von Redux Offline zusammengeführt.
 Alle Daten werden nun auch nach einem Serverausfall an den Server gesendet.\\
 Im Gegensatz zum \it{amilia-qouch}--Prototypen werden die Daten nur in eine Richtung automatisch gesendet.

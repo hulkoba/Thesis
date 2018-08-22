@@ -6,7 +6,7 @@ Hier sind außerdem Funktionen implementiert über die der State manipuliert wer
 Durch den in \autoref{chap:redux} beschriebenen Redux--spezifischen Datenfluss ist sie auf mehrere Dateien aufgeteilt.
 \tt{Contacts.js} ist für das Rendern der anderen Komponenten zuständig. 
 In \tt{actions.js} werden die Aktionen definiert, die über die Containerkomponente \tt{ContactsContainer.js} von jeder Komponente aufgerufen werden können um den \gls{App}state zu manipulieren.
-Die Manipulation wird in der \tt{reducer.js} behandelt, wo die geänderte Kopie wieder an den Store zurück gegeben wird und sie wieder bei der \tt{Contacts.js} ankommt.
+Die Manipulation wird in der \tt{reducer.js} behandelt, wo die geänderte Kopie wieder an den Store zurückgegeben wird und sie wieder bei der \tt{Contacts.js} ankommt.
 Der Einfachheit halber wird im Folgenden von der Contacts--Komponente geschrieben, wobei für den Redux--Prototypen der Zusammenschluss dieser soeben beschriebenen Dateien gemeint ist.\\\\
 %
 % 
@@ -24,7 +24,7 @@ Unabhängig von einem Wert im State wird der Header in den Zeilen 5 bis 7 gerend
 In Zeile 6 wird ihm die Information \tt{isOpen} übergeben, die aussagt, ob der Editiermodus aktiv ist, also ob das Formular gerade geöffnet ist oder nicht.
 Ihm wird auch die Funktion \tt{toggleEdit} übergeben, welche genau diese Statuseigenschaft wechselt.\\
 %
-Die Zeilen 9 bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird weiter unten im \autoref{chap:konfliktmanagement} erklärt.\\
+Die Zeilen 9 bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird im \autoref{chap:konfliktmanagement} erklärt.\\
 %
 In den Zeilen 16 bis 27 wird anhand der \tt{isOpen}--Information entschieden ob das Formular oder die Liste gerendert wird.
 Der Liste werden alle im \gls{App}state gespeicherten Kontakte, ebenfalls die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakts gegeben.

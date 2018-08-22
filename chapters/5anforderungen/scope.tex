@@ -15,7 +15,7 @@ Beim ersten Start der Anwendung müssen, sofern vorhanden, alle Kontakte geladen
 Damit ein Datensatz, wie zum Beispiel ein Adressbucheintrag, offline erreichbar ist, sollte er wenigstens so lange auf dem Client gespeichert werden, bis er vollständig beim Server angekommen ist.
 Im aktuellen Anwendungsfall bedeutet das, es gibt zwei Kopien des Adressbucheintrags. Eine auf dem Anwendungsgerät, eine auf dem Server.\\
 Danach sollen nur die Einträge geladen werden, die nicht auf dem Gerät existieren.
-Andernfalls werden unnötige Mengen von daten über das Netzwerk gesendet. Das soll vermieden werden.
+Andernfalls werden unnötige Mengen von Daten über das Netzwerk gesendet. Das soll vermieden werden.
 % Die Daten würden sonst doppelt geladen werden und der Server hätte mehr zu arbeiten, was wiederum die Antwortzeit verlängern würde.
 Dazu muss ermittelt werden können, welche Daten neu angelegt oder aktualisiert wurden.
 Der Server muss also in der Lage sein die Einträge zu sortieren und nur bestimmte Einträge zu versenden und die Anwendung muss wissen, welche Daten sie bereits hat. Wird ein Eintrag angelegt, bearbeitet oder gelöscht, müssen alle Parteien wissen, um welchen Kontakt es sich handelt.

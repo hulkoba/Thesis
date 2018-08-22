@@ -40,7 +40,8 @@ label={code:appcache}}
 \end{lstlisting}
 Alle Seiten mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.\\
 In der Praxis jedoch zeigten sich zahlreiche Probleme mit dem App Cache. So wurde der Application Cache nur aktualisiert, wenn sich der Inhalt des Manifests geändert hat. Dann mussten alle Dateien neu heruntergeladen werden.
-Wurden das Manifest und eine andere Datei geändert, wurden die geänderten Dateien nicht unbedingt erneut gespeichert. Denn wenn der Server zusammen mit den Dateien keine Cache-Header sendete, so speicherte der Browser die Datei nach einem Cache-Header-Wert den er ''errät''. So konnte es passieren, dass der Browser annahm, eine Datei brauche keine Aktualisierung und weiterhin die alte, gecachte Version auslieferte~\cite{noappcache}.\\
+Änderungen des Manifests oder anderer Dateien bedeuteten nicht zwingend eine erneute Speicherung dieser Dateien.
+Denn wenn der Server zusammen mit den Dateien keine Cache-Header sendete, so speicherte der Browser die Datei nach einem Cache-Header-Wert den er ''errät''. So konnte es passieren, dass der Browser annahm, eine Datei brauche keine Aktualisierung und weiterhin die alte, gecachte Version auslieferte~\cite{noappcache}.\\
 Als Reaktion auf diese Probleme wurde der Service Worker entworfen.
 %
 % Service Worker
