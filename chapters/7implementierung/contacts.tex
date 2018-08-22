@@ -3,14 +3,14 @@ Sie beinhaltet die zentralen Funktionalitäten und entscheidet welche Anzeigeele
 Im Prototypen \it{amilia-qouch} besteht sie aus der Datei \tt{Contacts.js} in der ein interne State festgelegt ist.
 Hier sind außerdem Funktionen implementiert über die der State manipuliert werden kann.\\
 %
-Durch den in \autoref{chap:redux} beschriebenen, Redux--spezifischen Datenfluss ist sie auf mehrere Dateien aufgeteilt.
+Durch den in \autoref{chap:redux} beschriebenen Redux--spezifischen Datenfluss ist sie auf mehrere Dateien aufgeteilt.
 \tt{Contacts.js} ist für das Rendern der anderen Komponenten zuständig. 
 In \tt{actions.js} werden die Aktionen definiert, die über die Containerkomponente \tt{ContactsContainer.js} von jeder Komponente aufgerufen werden können um den \gls{App}state zu manipulieren.
 Die Manipulation wird in der \tt{reducer.js} behandelt, wo die geänderte Kopie wieder an den Store zurück gegeben wird und sie wieder bei der \tt{Contacts.js} ankommt.
 Der Einfachheit halber wird im Folgenden von der \tt{Contacts} Komponente geschrieben, wobei für den Redux Prototypen der Zusammenschluss dieser soeben beschriebenen Dateien gemeint ist.\\\\
 %
 % 
-Die Methode \tt{componentDidMount} ist die dritte im React Komponenten--Lebenszyklus\footnote{ \url{https://reactjs.org/docs/react-component.html\#the-component-lifecycle} -- Zugriff: 28.07.1018} und wird aufgerufen sobald die Anwendung gemountet ist.
+Die Methode \tt{componentDidMount} ist die dritte im React Komponenten--Lebenszyklus\footnote{ \url{https://reactjs.org/docs/react-component.html\#the-component-lifecycle} -- Zugriff: 28.07.1018} und wird aufgerufen sobald die Anwendung an die DOM Elemente gemountet ist.
 Hier werden die Kontakte geladen und im \gls{App}state gespeichert.
 Sobald sicht der \gls{App}state ändert wird die \tt{render} Funktion der Komponente aufgerufen. \autoref{code:render} zeigt die Renderfunktion der \tt{Contacts} Komponente.
 %
@@ -21,11 +21,11 @@ Sobald sicht der \gls{App}state ändert wird die \tt{render} Funktion der Kompon
 \end{center}
 %
 Unabhängig von einem Wert im State wird der Header in den Zeilen 5 bis 7 gerendert.
-Im wird die Information \tt{isOpen} übergeben die aussagt ob der Editiermodus an ist, also ob das Formular gerade geöffnet ist oder nicht.
+Ihm wird die Information \tt{isOpen} übergeben die aussagt ob der Editiermodus an ist, also ob das Formular gerade geöffnet ist oder nicht.
 Ihm wird auch die Funktion \tt{toggleEdit} gegeben, welche genau diese Statuseigenschaft wechselt.\\
 Die Zeilen 9 bis 14 gibt es nur im \it{amilia-qouch} Prototypen. Näheres dazu wird weiter unten im \autoref{chap:konfliktmanagement} erklärt.\\
 In den Zeilen 16 bis 27 wird anhand der \tt{isOpen} Information entschieden ob das Formular oder die Liste gerendert wird.
-Die Liste bekommt alle im \gls{App}state gespeicherten Kontakte, ebenfalls die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakt. Es ist zu beachten, dass hier bei der \tt{toggleEdit()} das \tt{bind(this, null)} fehlt. Das liegt daran, dass wenn man aus der Liste das Formular öffnet, man den 'Bearbeiten' Knopf betätigt hat und der zu bearbeitende Kontakt im Formular geladen wird. Dieser Kontakt wird dann für die Dauer seiner Bearbeitung im \tt{state.editView.contact} gespeichert.\\
+Die Liste bekommt alle im \gls{App}state gespeicherten Kontakte, ebenfalls die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakts. Es ist zu beachten, dass hier bei der \tt{toggleEdit()} das \tt{bind(this, null)} fehlt. Das liegt daran, dass wenn man aus der Liste das Formular öffnet, man den 'Bearbeiten' Knopf betätigt hat und der zu bearbeitende Kontakt im Formular geladen wird. Dieser Kontakt wird dann für die Dauer seiner Bearbeitung im \tt{state.editView.contact} gespeichert.\\
 Das Kontaktformular ist aufgeteilt in eine Container-- und eine Viewkomponente, weswegen hier in \tt{Contacts} die Containerkomponente gerendert wird.
 Wo in der Viewkomponende alle beinhalteten Elemente nur dargestellt werden, besitzt die Containerkomponente Logik.
 Der \tt{FormContainer} bekommt in Zeile 21 den zu bearbeitenden Kontakt.
@@ -33,4 +33,4 @@ Ist dieser leer, wird über das Formular ein neuer angelegt.
 Des Weiteren bekommt er ebenfalls die \tt{toggleEdit} Funktion, eine zum Anlegen und eine zum Bearbeiten des Kontakts (Zeilen 18 bis 20).\\\\
 %
 %
-In \autoref{chap:persist} wurde beschrieben wie die Daten in den Prototypen angelegt, bearbeitet und gelöscht werden. Darauf verweisend wird hier nur gezeigt, wie diese Funktionen zum Einsatz kommen.
+In \autoref{chap:persist} wurde beschrieben wie die Daten in den Prototypen angelegt, bearbeitet und gelöscht werden. Darauf verweisend wird hier nun gezeigt, wie diese Funktionen zum Einsatz kommen.

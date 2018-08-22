@@ -6,7 +6,7 @@
 %
 \sub{\label{chap:auswertunganforderungen}Erfüllung der Anforderungen}
 In \autoref{chap:funktionaleanforderungen} wurden die funktionalen Anforderungen an eine offlinefähige, kollaborative Anwendung erarbeitet.
-Es wird überprüft, welche dieser Anforderungen in den Prototypen erüllt wurden und welche nicht.
+Es wird überprüft, welche dieser Anforderungen prototypisch erüllt wurden und welche nicht.
 %
 \begin{description}[leftmargin=0cm,style=nextline]
   \item[F1 Die Anwendung muss auf mindestens zwei Geräten funktionieren.]
@@ -32,7 +32,7 @@ Es wird überprüft, welche dieser Anforderungen in den Prototypen erüllt wurde
     Während der Entwicklung wurden stetig Tests zur Offlinefunktionalität auf einem Gerät durchgeführt (siehe \autoref{chap:impl:test}).
     Diese bestätigen, dass in jedem Prototypen unabhängig vom Netzwerkstatus jederzeit ein Kontakt angelegt, bearbeitet oder gelöscht werden kann.\\
 %
-  \item[F6 Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persistieren, identifizieren können und versionieren.]
+  \item[F6 Die Anwendung muss alle Kontakte sowohl lokal als auch serverseitig persistieren. Die Konntakte müssen identifiziert und versioniert werden.]
     Auch diese Anforderung erfüllen beide Prototypen. Die lokale Speicherung erfolgt, wie bereits beschrieben, im Local Storage oder in IndexedDB.
     Serverseitig werden die Kontakte im Prototypen \it{amilia-qouch} in einer CouchDB persistiert.
     Da Redux Offline keine serverseitige Datenbank zur Verfügung stellt, werden die Daten in diesem Prototypen in einer serverseitigen \gls{JSON} Datei gespeichert.
@@ -40,7 +40,7 @@ Es wird überprüft, welche dieser Anforderungen in den Prototypen erüllt wurde
     In \it{amilia-rdx} erfolgt die Versionierung ebenfalls über den Zeitstempel. Der Prototyp \it{amilia-qouch} verwendet hierzu eine Revisionsnummer.
     Diese Revisionsnummer ist der Dreh-- und Angelpunkt für das Konfliktmanagement in CouchDB.\\
 %
-  \item[F7 Die Anwendung muss die lokal gespeicherten Kontakte mit denen auf der Serverdatenbank persistierten synchronisieren, sobald die Anwendung mit dem Internet verbunden ist.]
+  \item[F7 Die Anwendung muss die lokal gespeicherten Kontakte mit denen in der Serverdatenbank persistierten synchronisieren, sobald die Anwendung mit dem Internet verbunden ist.]
     Ist die Anwendung offline oder der Server ausgeschaltet, werden alle Aktionen die während dieses Zeitraums durchgeführt werden, mit der Serverdatenbank, bzw. der \gls{JSON} Datei synchronisiert. Diese Funktionalität wird von allen in den Prototypen verwendeten Technologien bereitgestellt.\\
 %
   \item[F8 Die Anwendung muss die Möglichkeit bieten, die Konfliktmanagementstrategien der zu untersuchenden Technologien zu evaluieren.]

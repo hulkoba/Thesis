@@ -13,13 +13,13 @@ Damit kann bestätigt werden, dass beide Prototypen auf zwei Geräten funktionie
 %
 %
 \subsub{Offlinefunktionalität und Konfliktmanagement}
-Während der Testreihen zwei und drei waren entweder ein oder beide Geräte für die Ausführung bestimmter Aktionen offline.
+Während der zweiten und dritten Testreihe waren entweder ein oder beide Geräte für die Ausführung bestimmter Aktionen offline.
 Der Fokus dieser Tests lag auf dem eventuell eintretenden Datenverlust im Konfliktfall.
 \autoref{tab:test:tests} zeigt, dass das Anlegen und Löschen weder bei \it{amilia-qouch}, noch bei \it{amilia-rdx} ein Problem darstellte.
-Beim Anlegen eines Kontakts war dieser auf beiden Geräten doppelt in der Liste. Auf diesem Wege ging kein Kontakt verloren.
+Beim Anlegen eines Kontakts war dieser auf beiden Geräten doppelt gelistet. Auf diesem Wege ging kein Kontakt verloren.
 % Es wurde kein Algorithmus auf Anwendungsebene implementiert, der Dopplungen in 
 Auch das Löschen eines Kontakts erfolgte reibungslos. Der gelöschte Kontakt war nach der Synchronisation auf keinem der Geräte mehr vorhanden.\\
-Sowohl in der zweiten, als auch in der dritten Testreihe hat der Redux offline Prototyp beim Bearbeiten, bzw. beim Bearbeiten und Löschen eines Kontakts versagt.
+Sowohl in der zweiten, als auch in der dritten Testreihe hat der Redux Offline Prototyp beim Bearbeiten, bzw. beim Bearbeiten und Löschen eines Kontakts versagt.
 Wo im Prototypen \it{amilia-qouch} die aufgetretenen Konflikte gespeichert wurden, um sie auf Benutzungsebene zu lösen, gingen im anderen Protoypen \it{amilia-rdx} einer der konfliktbehafteten Datensätze verloren.
 Bei gleichzeitigem Bearbeiten eines Kontakts gewann die Version, die zuletzt synchronisiert wurde, die andere wurde überschrieben.
 % \todo{Die Daten werden bei Redux Offline in der \gls{Queue} gespeichert und dort nacheinander angearbeitet. Das gleicht der Konfliktmanagementstrategie \gls{LWW}.}\\

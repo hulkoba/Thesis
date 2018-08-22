@@ -18,7 +18,7 @@ Zusätzlich zu dem \gls{OT} Algorithmus benutzt Realm vorgegebene Regeln zur aut
 In Realm gibt es drei Grundregeln, die die hauptsächlichen Aktivitäten abdecken.
 Neue Einträge in Listen werden zeitlich sortiert. Für den Fall dass zwei Objekte gleichzeitig zur selben Liste hinzugefügt werden, wird das mit dem neueren Zeitstempel hinter dem älteren Objekt gespeichert.
 Löschungen haben immer Vorrang; auch dann, wenn das auf dem einen Gerät gelöschte Objekt auf einem anderen zu einem späteren Zeitpunkt bearbeitet wurde.
-Für die Aktualisierungen wird \gls{LWW} angewandt, die letzte Aktualisierung gewinnt.
+Für die Aktualisierungen wird die Konfliktmanagementstrategie \gls{LWW} angewandt, die letzte Aktualisierung gewinnt.
 Wird ein Objekt auf zwei Geräten bearbeitet, wird das mit dem neueren Zeitstempel behalten.\\ 
 Es besteht auch die Möglichkeit, eigene Regeln zu definieren oder die bestehenden zu überschreiben ~\cite{realm_conflict}.
 % Eine Regel könnte zum Beispiel sein, dass alle Änderungen die von der Nutzerin, nennen wir sie Amilia Pond, gemacht werden den Vorrang haben. Das ist keine gute Regel, denn dabei würden definitiv Daten verloren gehen wenn eine andere Person eine andere Änderung an derselben Stelle wie Amilia Pond macht, aber sie soll ja nur als Beispiel dienen.\\

@@ -8,7 +8,8 @@
 \gls{OT} ist eine weit verbreitete Technik zur Unterstützung von Funktionalitäten in \gls{kollaborativ}er Software.
 Sie stammt aus einer 1989 veröffentlichten Forschungsarbeit und wurde ursprünglich nur für die gemeinsame Bearbeitung von Klartext-Dokumenten entwickelt~\cite{ot_paper}. Etwas später wurden einige Unvollständigkeiten im Algorithmus entdeckt und es wurden unabhängig voneinander verschiedene Lösungsvorschläge erarbeitet ~\cite{ot-later}.
 Heute unterstützt \gls{OT} zusätzlich das \gls{kollaborativ}e Bearbeiten von \gls{HTML}, RTF und XML Dokumenten, Adobe Flash\footnote{\flash} Grafiken und Dokumenten in CAD\footnote{\cad} Tools wie Autodesk Maya\footnote{\maya}.
-Des Weiteren können mit \gls{OT} Dateien die in Microsoft Office\footnote{\msoffice} enthalten sind wie Word Dokumente, PowerPoint Folien und Excel Tabellen kollaborativ bearbeitet werden, aber auch Dokumente in webbasierten Anwendungen wie Google Docs\footnote{\gdocs} und Google Wave\footnote{\gwave}~\cite{ot-faq}.\\\\
+Des Weiteren können mit \gls{OT} Dateien die in Microsoft Office\footnote{\msoffice} enthalten sind, kollaborativ bearbeitet werden. Hierzu gehören Word Dokumente, PowerPoint Folien und Excel Tabellen.
+Aber auch Dokumente in webbasierten Anwendungen werden unterstützt, wie Google Docs\footnote{\gdocs} und Google Wave\footnote{\gwave}~\cite{ot-faq}.\\\\
 %
 %
 Operational Transform ist ein Algorithmus für die Transformationen von Operationen, die auf Dokumente mit unterschiedlichen Zustand angewendet werden, um diese Dokumente in den identischen Zustand zu versetzen.
@@ -16,7 +17,7 @@ Jede Änderung an einem freigegebenen Dokument wird als Operation dargestellt.
 Eine Operation ist die Repräsentation einer Änderung an einem Dokument und zeichnet im Wesentlichen den Unterschied zwischen der aktuellen und der nachfolgenden Version eines Dokuments auf.
 Die Anwendung einer Operation auf das aktuelle Dokument führt zu einem neuen Dokumentstatus.
 Es gibt beispielsweise die Operation ''Einfügen''. 
-Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument. Die Operation, die beschreibt ''Füge den Buchstaben x an dritter Stelle im Dokument ein'' sieht so aus: (\tt{insert('x', 3)}).
+Das Einfügen besteht aus dem eingefügten Text und dessen Position im Dokument. Die Operation, die beschreibt ''Füge den Buchstaben x an dritter Stelle im Dokument ein'' sieht so aus: \tt{insert('x', 3)}.
 Für die Position kann ein Koordinatensystem ermittelt werden, Zeilennummer und die Position in einer Zeile, oder das Dokument wie eine Folge von Zeichen behandeln werden.\\
 %
 \Gls{kollaborativ}e Systeme, die \gls{OT} verwenden, benutzen normalerweise den replizierten Dokumentenspeicher.

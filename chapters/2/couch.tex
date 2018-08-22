@@ -4,8 +4,10 @@ CouchDB verwendet Replikation um Änderungen an Dokumenten zwischen zwei oder me
 %. These databases can live on the same server or on two different servers—CouchDB doesn’t make a distinction. If you change one copy of the database, replication will send these changes to the other copy. 
 Hierbei werden nur die Dokumente übertragen, die neu sind oder sich geändert haben.
 Die Replikation in CouchDB erfolgt schrittweise. Alle Änderungen an Dokumenten werden periodisch zwischen den Servern kopiert.
-Wenn der Replikationsprozess unterbrochen wurde, weil eine Datenbank keinen Internetzugang hat, haben zwei sich replizierende Datenbanken unterschiedliche Daten gespeichert -- einen inkonsistenten Status.
+Wenn der Replikationsprozess unterbrochen wurde, weil eine Datenbank keinen Internetzugang hat, haben zwei sich replizierende Datenbanken unterschiedliche Daten gespeichert.
+% Es besteht ein inkonsistenter Status.
 Bei wieder bestehender Internetverbindung wird die Replikation erneut ausgelöst und CouchDB setzt an dem Punkt, an dem es aufgehört hat, die Arbeit fort.\\\\
+%
 %
 Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Konflikte vernünftig zu behandeln, statt anzunehmen, es träten keine auf.
 Das interne Replikationssystem besitzt eine automatische Konflikterkennung und --lösung.\\
@@ -13,6 +15,8 @@ Wichtig für diesen Mechanismus sind die Revisionsnummern.
 Dokumente werden mit Revisionsnummern versioniert. Mit jeder Aktualisierung bekommt es eine neue Revision, die neben der alten gespeichert wird (vgl. \cite{couchDB} S. 15ff \& S. 150ff). 
 Eine Revisionsnummer in CouchDB kann wie folgt aussehen \tt{2-5560348cec1b08c3d53e1508b4a46868} und ist in zwei Bereiche zu teilen. Die Zahl vor dem Strich erhöht sich mit jeder neuen Revision des Dokuments, also mit jeder Aktualisierung. Alles hinter dem Strich ist ein md5--\gls{Hash} aus dem Dokumenteninhalt, den Dateianhängen und dem \tt{\_deleted} Attribut\footnote{ Dokumente werden in CouchDB nicht ohne Weiteres gelöscht. Stattdessen werden sie als solches markiert.}.
 Jede Revision hat außerdem eine Liste von vorherigen Revisionen.\\\\
+%
+%
 Hat ein Dokument durch gleichzeitiges Bearbeiten in zwei unterschiedlichen Datenbanken dieselbe Revisionsnumer, erkennt CouchDB den Konflikt und markiert das Dokument, indem das Attribut \tt{\_conficts} den Wert \tt{true} bekommt.
 Dann entscheidet CouchDB, welche Version gewinnt und welche verliert.
 CouchDB wird nie zwei Versionen zusammenführen.
