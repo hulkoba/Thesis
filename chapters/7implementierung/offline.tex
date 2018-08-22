@@ -40,9 +40,9 @@ Dank der angegebenen Parameter \tt{retry: true} versucht PouchDB die Synchronisa
   label=code:sync]{code/sync.js}
 \end{center}
 % 
-Redux Offline nimmt einem auch Arbeit bei der Datensynchronisation ab.
-Alle Daten die sich in der Queue befinden, werden automatisch an den Server gesendet, sobald eine Internetverbindung besteht.
-Das funktioniert jedoch nicht so einfach wenn der Server nicht erreichbar ist.
+Redux Offline nimmt den EntwicklerInnen auch Arbeit bei der Datensynchronisation ab.
+Alle Daten, die sich in der Queue befinden, werden automatisch an den Server gesendet, sobald eine Internetverbindung besteht.
+Das funktioniert jedoch nicht so einfach, wenn der Server nicht erreichbar ist.
 In der Dokumentation von Redux Offline steht, dass die Aktion so oft wiederholt wird, bis die Anwendung wieder mit dem Internet verbunden ist ~\cite{giving-up}.
 Allerdings wird, wenn der Server nicht verfügbar ist, die Aktion abgebrochen und die \sc{rollback} Aktion gefeuert.
 \begin{center}
@@ -54,9 +54,10 @@ Allerdings wird, wenn der Server nicht verfügbar ist, die Aktion abgebrochen un
   label=code:discard]{code/sync.js}
 \end{center}
 %
-Die Discard Konfiguration bestimmt wann eine Aktion abgebrochen und wann sie immer wieder neu gestartet wird.
-Im \autoref{code:discard} ist in den Zeilen 1 bis 4 abzulesen wie diese Konfiguration überschrieben wird. Nun wird die Aktion nur abgebrochen wenn der Server verfügbar ist und einen \gls{HTTP} Status zwischen 400 und 500 zurückgibt.
+Die Discard--Konfiguration bestimmt wann eine Aktion abgebrochen und wann sie immer wieder neu gestartet wird.
+Im \autoref{code:discard} ist in den Zeilen 1 bis 4 abzulesen wie diese Konfiguration überschrieben wird.
+Nun wird die Aktion nur abgebrochen, wenn der Server verfügbar ist und einen \gls{HTTP}--Status von 400 bis 500 zurückgibt.
 In den darauffolgenden Zeilen wird die eigens implementierte Konfiguration mit der Standardkonfiguration von Redux Offline zusammengeführt.
 Alle Daten werden nun auch nach einem Serverausfall an den Server gesendet.\\
-Im Gegensatz zum \it{amilia-qouch} Prototypen werden die Daten nur in eine Richtung automatisch gesendet.
+Im Gegensatz zum \it{amilia-qouch}--Prototypen werden die Daten nur in eine Richtung automatisch gesendet.
 Es gibt keine Implementierung einer automatischen Replikation der Daten vom Server zum lokalen Speicher.

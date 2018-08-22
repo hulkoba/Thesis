@@ -11,18 +11,19 @@ Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit, 
 Das Listing \ref{code:pouch} führt alle benötigeten Funktionen auf und zeigt die notwendigen Schritte zur Synchronisation der lokalen PouchDB und CouchDB.\\
 Die lokale Datenbank wird in Zeile 2 erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
 %
-Um eine CouchDB Instanz zu erzeugen, ist der Aufruf in Zeile 3 mit der URL zur Couch"-DB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB Instanz.
-Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der Couch"-DB, ist lediglich der Aufruf in Zeile 5 erforderlich. Im optionalen Parameter können zum Beispiel Filter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\
+Um eine CouchDB--Instanz zu erzeugen, ist der Aufruf in Zeile 3 mit der URL zur CouchDB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB--Instanz.
+Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der CouchDB, ist lediglich der Aufruf in Zeile 5 erforderlich. Im optionalen Parameter können zum Beispiel Filter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\
 % GET
 Der Aufruf \tt{localDB.allDocs()} in Zeile 8 fragt alle in der lokalen Datenbank gespeicherten Kontakte an.
 Ohne den Parameter \tt{include\_docs: true} werden nur die ID \tt{\_id} und die Revisionsnummer \tt{\_rev} eines jeden gespeicherten Kontakts zurückgegeben.
-Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert. Alle konfliktbehafteten Kontakte haben nun ein \tt{\_conflicts} Attribut.
+Ist die Option \tt{conflicts} auf \tt{true} gesetzt, werden Konfliktinformationen zu jedem Kontakt gespeichert.
+Alle konfliktbehafteten Kontakte haben nun ein \tt{\_conflicts}--Attribut.
 Dort befindet sich eine Liste mit allen konkurrierenden Revisionen.\\\\
 %
 Für die nachfolgenden Aufrufe gibt es mehrere Varianten.
-Eine Anleitung zum Umgang mit Konflikten in der PouchDB Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments, das Modul PouchDB Upsert zu verwenden.
-Das wird in Zeile 1 zum PouchDB Objekt hinzugefügt.
-Jedes Mal, wenn eine der \gls{CRUD} Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden.
+Eine Anleitung zum Umgang mit Konflikten in der PouchDB--Dokumentation empfiehlt für das Erstellen, Aktualisieren und Löschen eines Dokuments, das Modul PouchDB Upsert zu verwenden.
+Das wird in Zeile 1 zum PouchDB--Objekt hinzugefügt.
+Jedes Mal, wenn eine der \gls{CRUD}--Operationen auf einem Dokument ausgeführt wird und das \gls{API} eine Revision verlangt, kann ein Konfliktfehler geworfen werden.
 Das Modul PouchDB Upsert wiederholt die Aktion solange, bis sie erfolgreich ist.
 Es fügt ein neues Dokument hinzu, wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}.
 Konflikte treten so trotzdem auf und CouchDB wählt eine gewinnende Version aus.
@@ -40,9 +41,9 @@ Die Zeilen 13 bis 16 zeigen, wie ein Kontakt erzeugt werden kann. Bevor das gesc
 Diese wird dann per PouchDB Upsert in dem neuen Dokument gespeichert.\\
 % Bei dessen Verwendung wird \tt{\_id} von PouchDB automatisch generiert. Diese Variante wird jedoch nicht empfohlen, weil dann die IDs zufällig sind, die Objekte nicht danach sortiert werden können~\cite{pouch-create}.\\
 % UPDATE
-Das Aktualisieren eines Kontakts sieht sehr ähnlich aus, da die \tt{upsert} Funktion für beide Operationen verwendet wird.
+Das Aktualisieren eines Kontakts sieht sehr ähnlich aus, da die \tt{upsert}--Funktion für beide Operationen verwendet wird.
 % Zuerst wird der entsprechende Kontakt wie in Zeile zwölf aus der Datenbank angefragt um dann in der Datenbank aktualisiert zu werden.
-Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revision.\\
+Mit jedem Update bekommt ein Kontakt von PouchDB eine neue Revisionsnummer.\\
 % DELETE
 Man kann einen Kontakt mit PouchDB Upsert wie in den Zeilen 26 bis 29 löschen.
 Der Kontakt wird hierbei nicht wirklich gelöscht sondern wird durch ein \tt{\_deleted} Attribut als solches markiert.
@@ -67,13 +68,15 @@ Das Beispiel erklärt das Hinzufügen eines Kontakts. Die restlichen Operationen
 \end{center}
 %
 Mit dem Aufruf der Aktion ADD\_CONTACT, die in Zeile 3 bis 15 erzeugt wird, wird der Vorgang ''einen Kontakt hinzuzufügen'' gestartet.
-Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline} Objekts in Zeile 9 festgelegt. Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON} Datei persisitiert.
-Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert. Mit diesem wird in Zeile 23 der Appstate aktualisiert und so lokal gespeichert.\\
+Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline}--Objekts in Zeile 9 festgelegt.
+Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON}--Datei persisitiert.
+Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert.
+Mit diesem wird in Zeile 23 der \gls{App}state aktualisiert und so lokal gespeichert.\\
 Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile 12 gefeuert.
 Die wird im Reducer in Zeile 26 behandelt. Der State wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
-Für den Fall, dass die Netzwerkanfrage nicht erfolgreich war, wird das \tt{meta.offline.rollback} Feld definiert.
+Für den Fall, dass die Netzwerkanfrage nicht erfolgreich war, wird das \tt{meta.offline.rollback}--Feld definiert.
 Hier könnte man die BenutzerInnen darüber informieren, dass etwas nicht geklappt hat.
-Für den Rahmen dieser Arbeit genügt es jedoch, den vorherigen Status zurückzuliefern, wie es in den Zeilen 10 und 11 steht.\\\\
+Um den Rahmen dieser Arbeit nicht zu sprengen, genügt es jedoch, den vorherigen Status zurückzuliefern, wie es in den Zeilen 10 und 11 steht.\\\\
 Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnte, beschreibt das Listing \ref{code:server}.
 %
 \begin{center}  \lstinputlisting[language=REACT,
@@ -82,9 +85,9 @@ Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnt
   label=code:server]{code/Server.js}
 \end{center}
 %
-In Zeile 2 werden die Kontakte aus einer \gls{JSON} Datei geladen. Diese sind als Objekt in einem Array gespeichert.
+In Zeile 2 werden die Kontakte aus einer \gls{JSON}--Datei geladen. Diese sind als Objekt in einem Array gespeichert.
 Bekommt der Server eine Anfrage zum Erstellen eines Kontakts, wird ein Kontaktobjekt mitgesendet. Dieses wird in Zeile 5 in einer Variable zwischengespeichert. 
-Wird der Kontakt korrekt gesendet wird er in Zeile 10 dem Array hinzugefügt.
+Wird der Kontakt korrekt gesendet, wird er in Zeile 10 dem Array hinzugefügt.
 Andererseits sendet der Server den \gls{HTTP}--Statuscode 400 an den Client. % bad request
-Außerdem wird mithilfe des in Node integrierten Dateisystem\footnote{siehe hierzu: \url{https://nodejs.org/api/fs.html}} Moduls die \gls{JSON} Datei neu geschrieben.
+Außerdem wird mithilfe des in Node integrierten Dateisystem\footnote{siehe hierzu: \url{https://nodejs.org/api/fs.html}}--Moduls die \gls{JSON}--Datei neu geschrieben.
 Nun ist der neue Kontakt persistiert. Kommt es beim Schreiben der Datei zu keinem Fehler, sendet der Server den frisch gespeicherten Kontakt zurück an den Client.

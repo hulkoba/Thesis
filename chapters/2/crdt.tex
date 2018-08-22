@@ -3,7 +3,7 @@
 %
 Ein \gls{CRDT} ist eine spezielle Datenstruktur, die in verteilten Systemen auf mehreren Geräten repliziert werden kann. Jede Operation wird an alle Replikate gesendet. Jedes Replikat wendet alle ankommenden Aktualisierungen an und ein Algorithmus löst alle konfliktbehafteten Versionen auf, wodurch sichergestellt ist, dass Konflikte gar nicht erst auftreten~\cite{crdt_shapiro}. Eine Synchronisation ist nicht notwendig, da jede Aktualisierung sofort auf dem Datenobjekt ausgeführt wird ~\cite{crdt_shapiro2}.\\\\
 %
-Es gibt zwei Konzepte bei Replikationsmodellen mit \glspl{CRDT}: den zustandsbasierten und den operationsbasierten Ansatz.
+Es gibt zwei Konzepte bei Replikationsmodellen mit \glspl{CRDT}: Den zustandsbasierten und den operationsbasierten Ansatz.
 %In seinem Vortrag beschreibt Marc Shapiro die Funktionsweisen beider Ansätze und geht auf die Unterschiede, Vor- und Nachteile ein.
 %Bei operationsbasierten \glspl{CRDT} muss sichergestellt werden, dass die Operationen nicht verloren gehen oder dupliziert werden wenn sie zu den anderen Replikaten übertragen werden.
 %Zustandsbasierte \glspl{CRDT} haben den Nachteil, dass der gesamte Zustand, statt nur der Operation und die sich ändernden Abschnitte, zu den anderen Replikaten übertragen werden muss.
@@ -26,11 +26,11 @@ Die folgende Abbildung stellt eine zustandsbasierte Replikation mit drei Geräte
 Die drei Kreise auf der linken Seite repräsentieren drei identische Datensätze auf drei Geräten.
 Die Datensätze \it{S1} und \it{S2} werden zeitgleich mit unterschiedlichem Content aktualisiert.
 Kurz darauf, weiter rechts im Bild, sendet \it{S1} seinen neuen Status an \it{S2}.
-\it{S2} führt die beiden Status, den von \it{S1} empfangenen und den eigenen, aktualisierten, in der \tt{merge} Funktion $m$ zusammen.
+\it{S2} führt die beiden Status, den von \it{S1} empfangenen und den eigenen, aktualisierten, in der \tt{merge}--Funktion $m$ zusammen.
 Dann schickt es den eigenen, neuen Status an \it{S3} und \it{S1}, welche ebenfalls den empfangenen mit dem eigenen Status zusammenführen. Beide Aktualisierungen haben nun alle Geräte erreicht und alle Daten sind identisch.\\\\
 %
 Damit die Replikation konfliktfrei funktioniert, müssen einige Voraussetzungen erfüllt sein.
-Der Status, den ein \gls{CRDT} hat, muss ein Semi--Gitter, also eine geordnete Menge abbilden.
+Der Status, den ein \gls{CRDT} hat, muss ein ''Semi--Gitter'', also eine geordnete Menge abbilden.
 Die Aktualisierungen müssen zunehmend sein, ein Status kann beispielsweise eine Zahl sein und die Aktualisierung ist die Operation, die sie inkrementiert.
 Die \tt{merge} Funktion muss die kleinste obere Grenze der letzten Aktualisierung berechnen.
 Nur wenn ein Objekt diese Eigenschaften erfüllt, ist es dem \gls{CRDT} zugehörig ~\cite{crdt_shapiro2}
@@ -40,7 +40,7 @@ Nur wenn ein Objekt diese Eigenschaften erfüllt, ist es dem \gls{CRDT} zugehör
 \subsub{Operationsbasierter Ansatz}
 Wenn ein Replikat eine Aktualisierung von einem Client empfängt, wird es ebenfalls zuerst auf den lokalen Status angewandt.
 Im Gegensatz zum zustandsbasiertem Ansatz wird nicht der gesamte Status des Replikats gesendet, sondern nur der Aktualisierungsvorgang.
-Ein weiterer Unterschied ist das Fehlen der \tt{merge} Funktion. Statt ihrer gibt es im operationsbasierten Ansatz zwei \tt{update} Methoden: eine vorbereitende Aktualisierungsfunktion und eine ausführende. Erstere wird auf dem Replikat angewandt, umgehend gefolgt von der zweiten.
+Ein weiterer Unterschied ist das Fehlen der \tt{merge}--Funktion. Statt ihrer gibt es im operationsbasierten Ansatz zwei \tt{update}--Methoden: eine vorbereitende Aktualisierungsfunktion und eine ausführende. Erstere wird auf dem Replikat angewandt, umgehend gefolgt von der zweiten.
 Über ein Kommunikationsprotokoll wird die Aktualisierung an alle anderen Replikas asynchron versendet.
 Über das Protokoll wird sichergestellt, dass die Nachricht nur einmal überliefert wird.
 Die restlichen Replikas wenden die Operation mit der ausführenden Aktualisierungsmethode auf sich an~\cite{crdt_shapiro2}.
@@ -56,8 +56,8 @@ Die folgende Abbildung stellt eine operationsbasierte Replikation mit drei Gerä
 %
 Die drei Kreise auf der linken Seite repräsentieren drei identische Datensätze auf drei Geräten.
 Die Datensätze \it{S1} und \it{S2} werden zeitgleich mit unterschiedlichem Kontent aktualisiert.
-Sowohl \it{S1} also auch \it{S2} wenden die vorbereitende Aktualisierungsmethode $t$ auf sich an.
-Dann, mit deren Ergebnis, die ausführende $u$.
+Sowohl \it{S1} als auch \it{S2} wenden die vorbereitende Aktualisierungsmethode $t$ auf sich an.
+Dann mit deren Ergebnis die ausführende $u$.
 Sofort senden beide Replikas die Aktualisierung an alle anderen, welche ebenfalls die ausführende Aktualisierungsmethode $u$ auf sich anwenden.\\\\
 Die Voraussetzung für eine konfliktfreie Replikation sind hier kommunitative Aktualisierungen.
 %Wenn $s$ der Status ist und $u$ die Aktualisierungsmethode, muss $s \bullet u \bullet u' \equiv s \bullet u' \bullet u$ gelten.

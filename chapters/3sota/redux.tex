@@ -9,7 +9,7 @@ Deswegen ist für die Verwendung von Redux Offline die Implementierung von Redux
 % Der \tt{Store} ruft nun den Reducer auf
 \sub{\label{chap:redux}Redux}
 % Redux ist eine JavaScript Bibliothek, die Probleme im Zusammenhang mit dem Zustand, dem sogenannten \gls{App}state einer Anwendung, löst.
-Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScriptanwendungen.
+Redux ist eine Bibliothek zur Zustandsverwaltung in JavaScript--Anwendungen.
 Es gibt einen zentralen Ort, in dem der Zustand der App gespeichert ist, auf den von jeder Komponente aus zugegriffen werden kann.
 Dieser Ort wird Store genannt und jede Applikation hat genau einen davon. 
 Als einzige Informationsquelle für den Store als zentralen Speicher dienen Aktionen. 
@@ -33,7 +33,7 @@ Der Store ersetzt nun den alten mit dem neuen Status und löst ein erneutes Rend
 % Redux Offline
 % 
 \sub{Redux Offline}
-Redux Offline erweitert Redux um einen persistenten Store mit Offline First Technologie und ist kompatibel mit allen *View Frameworks wie React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.
+Redux Offline erweitert Redux um einen persistenten Store mit Offline First--Technologie und ist kompatibel mit allen *View Frameworks wie React\footnote{JavaScript Bibliothek: \url{https://reactjs.org/}}, Vue\footnote{JavaScript Framework: \url{https://vuejs.org/}}, oder Angular\footnote{JavaScript Framework: \url{https://www.angular.io}}~\cite{redux-offline-compabilaty}.
 Es umfasst unter anderem netzwerkfähige \gls{API}-Aufrufe, das Persistieren des Zustands der Anwendung, das Speichern von Aktionen, die Behandlung von Fehlern und erneute Versuche, die Verbindung wieder herzustellen.
 Redux Offline verspricht nicht, die Webanwendung komplett offlinefähig zu machen.
 Um \gls{Assets} zwischenzuspeichern, muss zusätzlich noch ein Service Worker implementiert sein ~\cite{redux-offline-gh}.\\
@@ -58,11 +58,11 @@ Die von Jani Eväkallio erstellte Grafik \ref{fig:redux-offline} veranschaulicht
   \centering
   \includegraphics[width=0.8\textwidth]{redux-offline-new}
   \grayRule
-  \caption[Redux Offline]{Redux Offline Architektur~Quelle:~\cite{redux-offline}}
+  \caption[Redux Offline]{Redux Offline--Architektur -- Quelle:~\cite{redux-offline}}
   \label{fig:redux-offline}
 \end{figure}
 %
-Links ist eine Aktion zu sehen, die etwas machen möchte. Sie hat ein Metaattribut das weitere Aktionen definiert, eine Aktion für den Erfolg und eine für den Fehlschlag von `DO\_STUFF`.
+Links ist eine Aktion zu sehen, die ''Zeug'' machen möchte. Sie hat ein Metaattribut das weitere Aktionen definiert, eine Aktion für den Erfolg und eine für den Fehlschlag von `DO\_STUFF`.
 In der Mitte ist der Store zu sehen.
 Der Store kennt den Netzwerkstatus und umfasst die \gls{Queue} namens \tt{outbox} in dem Aktionen mitsamt ihrer Metafelder gespeichert werden.
 Rechts befindet sich das \gls{API}, das über die \gls{Middleware} mit dem Store kommuniziert.\\
@@ -76,7 +76,7 @@ Wenn nicht, wird sie erst einmal in der \gls{Queue} gespeichert bis die Anwendun
 \sub{\label{sub:reduxpersist}Redux Persist}
 Redux Persist ist eine Bibliothek, die als Wrapper für den Redux Store funktioniert.
 Mit Redux Persist wird der State automatisch lokal, per default im Local Storage, gespeichert~\cite{redux-persist}.
-Es kann konfiguriert werden wo die Daten gespeichert werden.
+Es kann konfiguriert werden, wo die Daten gespeichert werden.
 Hierfür gibt es diverse Möglichkeiten, wie zum Beispiel im Session Storage, per localForage oder in Dateisystemen~\cite{redux-persist-gh}.
 LocalForage ist eine Bibliothek, mit der Daten in der IndexedDB oder in WebSQL gespeichert werden können.
 Wenn der Browser die Speichermöglichkeiten nicht unterstützt, wird der Local Storage genommen~\cite{localforage}.\\

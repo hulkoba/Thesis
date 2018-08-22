@@ -4,14 +4,14 @@ Es bietet zwei Komponenten, die entsprechend des Netzwerkstatus den ihnen gegebe
 Der folgende Codeausschnitt zeigt eine Verwendung dieser beiden Komponenten. Ist die Anwendung online, wird `you are online` gerendert. Im anderen Fall ~`you are offline`.
 %
 \begin{center}
-\lstinputlisting[language=REACT,caption={Beispiel einer React Detect Offline Implementierung}, label=code:react-detect]{code/Header.js}
+\lstinputlisting[language=REACT,caption={Beispiel einer React Detect Offline--Implementierung}, label=code:react-detect]{code/Header.js}
 \end{center}
 %
 Das Modul verfolgt kontinuierlich den Onlinestatus des Browsers, indem es auf die Online- und Offlineereignisse der Webspezifikation reagiert. Zusätzlich fragt es alle fünf Sekunden die URL \url{https://ipv4.icanhazip.com} ab und rendert je nach Verbindungsstatus die entsprechende Komponente.
 Verschiedene Parameter wie die URL oder das Intervall, in dem die URL aufgerufen wird, können konfiguriert werden~\cite{react-detect}. \\\\
 %
 Der Verbindungsstatus eines Gerätes kann im Browser geändert werden.
-Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chrome laufen.\\
+Die Prototypen, die im Rahmen dieser Arbeit entwickelt werden, sollen in den Browsern Firefox und Chrome lauffähig sein.\\
 In Firefox lässt sich der Netzwerkstatus über das Einstellungsmenü ändern. Dort kann man entweder unter dem Punkt ''Sonstiges'' oder dem Punkt ''Web-Entwickler'' ''Offline arbeiten'' auswählen und ist vom Internet getrennt. Dieser Status lässt sich über den selben Weg rückgängig machen.\\
 In Chrome öffnet man dazu die Entwicklertools, geht auf ''Netzwerk'' und klickt auf die Checkbox ''Offline'' am oberen Rand. Dieselbe Checkbox ist auch im ''Application''--Tab unter ''Service Workers'' zu finden.\\
-Soll der Offlinestatus für zwei oder mehr Geräte hergestellt werden, kann der Server oder die CouchDB gestoppt werden. Damit der Status in der Oberfläche abgelesen werden kann, muss dem React Detect Offline Modul die URL vom Server übergeben werden.
+Soll der Offlinestatus für zwei oder mehr Geräte hergestellt werden, kann der Server oder die CouchDB gestoppt werden. Damit der Status in der Oberfläche abgelesen werden kann, muss dem React Detect Offline--Modul die URL vom Server übergeben werden.

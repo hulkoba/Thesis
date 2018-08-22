@@ -3,12 +3,13 @@ Um sie zu installieren müssen folgende Schritte ausgeführt werden.
 %
 %
 \sub{\label{chap:install:qouch}amilia-qouch}
-Für die Ausführung dieser Anwendung muss CouchDB installiert sein auf der ein User ''Admin'' mit dem Passwort ''admin'' besteht.
-Zur Installation von CouchDB kann die Anleitung auf \url{http://docs.couchdb.org/en/2.1.2/install/index.html} verwendet werden.\\
+Für die Ausführung dieser Anwendung muss CouchDB auf dem Anwendungsgerät installiert sein.
+Zur Installation von CouchDB kann die Anleitung auf \url{http://docs.couchdb.org/en/2.1.2/install/index.html} verwendet werden.
+Es muss außerdem ein User ''admin'' mit dem Passwort ''admin'' existieren, um auf die Datenbank zugreifen zu können.\\
 Dann müssen die \gls{CORS} Optionen aktiviert werden.
-Das ist eine Webtechnologie, die es Webanwendungen erlaubt, Ressourcen von einer anderen Domain zu benutzen.
-% PouchDb läuft auf ner anderen Domain als CouchDB
-Es gibt bereits ein Skript, das genau das macht. Dazu müssen die folgenden Befehle ausgeführt werden.
+Das ist eine Webtechnologie, die es Webanwendungen erlaubt, Ressourcen von einer anderen, entfernten Domain zu benutzen.
+% PouchDb läuft auf einer anderen Domain als CouchDB
+Es gibt bereits ein Skript, das dies durchführt. Dazu müssen die folgenden Befehle ausgeführt werden.
 %
 \lstset{language=sh, caption={},belowcaptionskip=0.3\baselineskip,xleftmargin=15pt,framexleftmargin=5pt}
 \begin{lstlisting}

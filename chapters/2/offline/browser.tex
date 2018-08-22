@@ -1,5 +1,5 @@
 \sub{Speichern der generierten Daten}
-Um NutzerInnenspezifische Daten offline verfügbar zu machen können sie im Browser gespeichert werden. Einige Methoden hierfür werden im Folgenden erläutert.
+Um nutzerInnenspezifische Daten offline verfügbar zu machen, können sie im Browser gespeichert werden. Einige Methoden hierfür werden im Folgenden erläutert.
 %
 \subsub{Web Storage}
 Das Web Storage \gls{API} ist ein Web-Standard, mit dessen Hilfe Daten als Schlüssel / Wert Paare im Browser gespeichert werden können. Es wird, wie Abbildung \ref{fig:webStorage} zeigt, von allen Browsern, bis auf den Opera Mini unterstützt. Opera Mini speichert grundsätzlich keine Daten, weswegen dieser Browser in den nachfolgenden Bildern mit Rot markiert ist.
@@ -19,8 +19,8 @@ Der größte Nachteil ist, dass Web Storage synchron arbeitet und so andere Oper
 %
 %
 \subsub{Web SQL}
-Eine andere Form der lokalen Speicherung im Browser ist die Web SQL Datenbank.
-Sie hat ein asynchrones \gls{API} und unterstützt die grundlegenden SQL Abfragen. Web SQL sollte in den W3C Standards aufgenommen werden. Aus Mangel an unabhängigen Implementierungen wie z.B. eine andere \gls{DB} als SQLite im Backend, wurde es abgelehnt~\cite{websql}.\\
+Eine andere Form der lokalen Speicherung im Browser ist die Web SQL--Datenbank.
+Sie hat ein asynchrones \gls{API} und unterstützt die grundlegenden SQL--Abfragen. Web SQL sollte in den W3C Standards aufgenommen werden. Aus Mangel an unabhängigen Implementierungen wie z.B. eine andere \gls{DB} als SQLite im Backend, wurde es abgelehnt~\cite{websql}.\\
 Das Web SQL \gls{API} wird nur von den Webkit--Browsern unterstützt, also nicht von Firefox, dem Internet Explorer oder dessen neueren Variante Edge~\cite{caniuse-websql}.
 %
 %
@@ -36,7 +36,7 @@ IndexedDB ist eine weitere Variante der clientseitigen Datenspeicherung. Die auf
 Wie in Abbildung \ref{fig:indexedDB} zu sehen ist, wird IndexedDB von allen gängigen Browsern unterstützt. 
 %
 \subsub{IndexedDB 2.0}
-Im Januar 2018 wurde die zweite Version des IndexedDB \glspl{API} zur W3C Spezifikation hinzugefügt. Es erweitert die erste Version um Funktionalität und verbessert die Performance~\cite{idb2}.
+Im Januar 2018 wurde die zweite Version des IndexedDB--\glspl{API} zur W3C Spezifikation hinzugefügt. Es erweitert die erste Version um Funktionalität und verbessert die Performance~\cite{idb2}.
 Die Aktualität dieser Spezifikation spiegelt sich in der Browserunterstützung wider. Die \autoref{fig:indexedDB2} zeigt, dass die zweite Version nur von den gängigen Desktopbrowsern und einigen mobilen Browsern unterstützt wird. Die IndexedDB 2.0 Unterstüzung in Edge wird von Microsoft geplant~\cite{edge}.
 \begin{figure}[H]
 	\centering

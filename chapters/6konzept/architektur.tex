@@ -1,9 +1,11 @@
 Die zu erstellenden Prototypen erhalten die Namen \it{amilia-qouch} und \it{amilia-rdx}, wobei Amilia der Name ist, der sich in den Beispielkontakten in den Szenarien wiederfindet.
 Die Abkürzung \it{rdx} steht für Redux und zeigt, dass dieser Prototyp Redux Offline verwendet.
-Die Endung \it{qouch} soll die Symbiose von CouchDB und PouchDB darstellen. Der Buchstabe Q klingt wie das hart ausgesprochene C in Couch und wenn man das kleine Q horizontal spiegelt, sieht man das P für Pouch.\\\\
+Die Endung \it{qouch} soll das Zusammenspiel von CouchDB und PouchDB darstellen. Der Buchstabe Q klingt wie das hart ausgesprochene C in Couch und wenn man das kleine Q horizontal spiegelt, sieht man das P für Pouch.\\\\
+%
+%
 Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusammen, welche in \autoref{fig:uml} veranschaulicht werden. Die Abbildung stellt ein Komponentendiagramm dar.
 Es handelt sich hierbei nicht um das UML Komponentendiagramm, sondern um ein eigens entworfenes.
-Die Bezeichnung ist durch die Darstellung von React Komponenten begründet.\\\\
+Die Bezeichnung ist durch die Darstellung von React--Komponenten begründet.\\\\
 %
 %
 Jeder Kasten repräsentiert eine Komponente, deren Bezeichnung im Kopf steht.
@@ -23,7 +25,7 @@ Auf der rechten Seite stehen die Model--Komponenten. Sie manipulieren den Appsta
 %
 Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der Anwendung.
 Hier wird die graphische Oberfläche definiert und es werden alle notwendigen Funktionen bereitgestellt.
-Die Komponente hat einen internen State in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der State an der blauen Schrift zu erkennen.
+Die Komponente hat einen internen State in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der Status an der blauen Schrift zu erkennen.
 Das Objekt \tt{editView}  speichert den im Formular zu ladenden Kontakt und zeigt welche Ansicht gerade aktuell ist. Ist das Attribut \tt{isOpen} auf \tt{true} gesetzt, wird das Formular gerendert, andernfalls die Kontaktliste.
 Wie das Kontaktobjekt aufgebaut ist, zeigt der blaue Kasten im Diagramm.
 Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne State aktualisiert, wodurch ein erneutes Rendern der Komponente eingeleitet wird. Dann wird entsprechend die Liste oder das Formular gerendert.\\
@@ -47,15 +49,17 @@ Wenn die Aktion abgebrochen wird, ruft der \tt{FormContainer} die \tt{toggleEdit
 %
 %
 Kommt es beim Hinzufügen, Bearbeiten oder Löschen eines Kontakts zum Konflikt, werden mittels \tt{getConflictRevisions()} die beiden Versionen des konfliktbehafteten Kontakts ermittelt.
-Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfliktdialog übergeben, der sich prompt öffnet. Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts} Komponente. Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev} Funktion mit dem ausgewähltem Kontakt als Parameter auf.
+Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfliktdialog übergeben, der sich prompt öffnet.
+Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts}--Komponente.
+Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev}--Funktion mit dem ausgewähltem Kontakt als Parameter auf.
 Innerhalb von \tt{chooseRev} wird der übergebene Kontakt gespeichert und die konkurrierende Version verworfen.\\\\
 %
 % BACKEND
 %
 Eine Backendimplementierung ist für den Prototypen \it{amilia-qouch} nicht notwendig, da dies bereits durch die Verwendung von CouchDB gegeben ist.
 Die \autoref{fig:qouch-model} skizziert die Architektur von \it{amilia-qouch}.
-Die Contacts Komponente fungiert als Model.
-Sie handhabt die Daten, die in den View Komponenten angezeigt werden und speichert sie in PouchDB.
+Die \tt{Contacts}--Komponente fungiert als Model.
+Sie handhabt die Daten, die in den Viewkomponenten angezeigt werden und speichert sie in PouchDB.
 PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in das Model.
 % Client - Server - Modell
 \begin{figure}[H]
@@ -67,11 +71,11 @@ PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in da
 \end{figure}
 %
 Obwohl Redux Offline nach eigener Aussage die Datenbank ersetzt~\cite{redux-offline}, stellt es keine Serverdatenbank zur Verfügung.
-Deswegen wird ein Node Server erstellt, der alle \gls{CRUD} Operationen unterstützt.
-Die Kontakte werden in einer \gls{JSON} Datei persistiert.\\
+Deswegen wird ein Node--Server erstellt, der alle \gls{CRUD} Operationen unterstützt.
+Die Kontakte werden in einer \gls{JSON}--Datei persistiert.\\
 Die \autoref{fig:rdx-model} zeigt, dass der Redux Store in \it{amilia-rdx} PouchDB in \it{amilia-qouch} ersetzt.
 Dabei handelt es sich um den Redux Store, der dank Redux Offline alle Daten in einer lokalen Datenbank speichert.
-Die im \it{amilia-qouch} verwendete CouchDB wird von dem Server und einer \gls{JSON} Datei ersetzt.
+Die im \it{amilia-qouch} verwendete CouchDB wird durch den Server und einer \gls{JSON}--Datei ersetzt.
 %
 \begin{figure}[H]
   \centering
@@ -81,7 +85,7 @@ Die im \it{amilia-qouch} verwendete CouchDB wird von dem Server und einer \gls{J
   \label{fig:rdx-model}
 \end{figure}
 % 
-Der Datenfluss ist derselbe wie im Model des Prototyps \it{amilia-qouch} mit dem Unterschied, dass der Store und der Server sich nicht automatisch synchronisieren.
+Der Datenfluss ist derselbe wie im Model des Prototyps \it{amilia-qouch}, mit dem Unterschied, dass der Store und der Server sich nicht automatisch synchronisieren.
 Der Store schickt zwar automatisch die Daten an den Server sobald er mit dem Internet verbunden ist, aber in die andere Richtung ist das nicht implementiert.
 Deswegen werden nach jeder Aktion die Kontakte vom Server geladen.
 % Todo: werden nur die geladen die es noch nicht gibt? 

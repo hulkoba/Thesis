@@ -5,7 +5,7 @@ React Native Offline unterstützt die Behandlung des Netzwerkstatus.
 Dieser kann einmalig oder regelmäßig abgefragt werden, um je nach Status z.B. einen anderen Inhalt zu rendern.\\
 Zusammen mit Redux implementiert, können weitere Fähigkeiten genutzt werden.
 Genau wie Redux Offline hat React Native Offline eine Offline \gls{Queue}, in der Aktionen gespeichert werden können.
-Allerdings nur solche Aktionen, die fehlgeschlagen sind weil die Anwendung nicht mit dem Internet verbunden ist.
+Allerdings nur solche Aktionen, die fehlgeschlagen sind, weil die Anwendung nicht mit dem Internet verbunden ist.
 Auch hier wird der Aktion ein Metaattribut gegeben. Dieses hat die Felder \tt{retry} und \tt{dismiss}.
 Das erste Feld erwartet ein Boolean. Hier kann angegeben werden ob die Aktion noch einmal bei bestehender Internetverbindung ausgeführt werden soll oder nicht.
 Das Feld \tt{dismiss} erwartet ein Array. Hier können Aktionen angegeben werden, die das Wiederholen der Aktion abbrechen~\cite{rn-offline-gh}.\\\\

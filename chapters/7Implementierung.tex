@@ -1,20 +1,20 @@
 \chapter{\label{chap:implementierung}Implementierung der Prototypen}
-In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentiertem Lösungsweg die detaillierte Beschreibung der technischen Realisierung der Prototypen vorgestellt.\\
+In diesem Kaptitel wird nach dem in Kapitel \ref{chap:konzeption} präsentierten Lösungsweg die detaillierte Beschreibung der technischen Realisierung der Prototypen vorgestellt.\\
 Nach der Beschreibung der Realisierung der grundlegenden Funktionen der Anwendung wird auf die Umsetzung der Offlinefunktionalität und des Konfliktmanagements eingegangen.
 Im Zuge dessen wird der implementierte Algorithmus zur Lösung auftretender Konflikte vorgestellt.
 %
 %
 %
-\section{Die Contacts Komponente}
+\section{Die Contacts--Komponente}
 \input{chapters/7implementierung/contacts}
 %
 %
 %
 \section{Offlinefunktionalität}
 Die Prototypen \it{amilia-qouch} und \it{amilia-rdx} sind offline verwendbar.
-Daten, die von NutzerInnen generiert sind, werden sowohl lokal als auch in der Serverdatenbank gespeichert.
-Der Service Worker ist für die Livenutzung ausgelegt und funktioniert im Entwicklungsmodus nicht. Die \gls{Assets} werden erst nach dem Deploy gecacht.
-Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden im Livemodus von beiden Prototypen erfüllt.
+Daten, die von NutzerInnen generiert werden, werden sowohl lokal als auch in der Serverdatenbank gespeichert.
+Der Service Worker ist für die Live--Nutzung ausgelegt und funktioniert im Entwicklungsmodus nicht. Die \gls{Assets} werden erst nach dem Deploy gecacht.
+Alle in \autoref{chap:offlinefirst} beschriebenen Grundvoraussetzungen werden im Live--Modus von beiden Prototypen erfüllt.
 Sämtliche umgesetzten Funktionen sind bereits im Entwicklungsmodus sowohl mit, als auch ohne Internetverbindung durchführbar.
 %
 \input{chapters/7implementierung/offline}

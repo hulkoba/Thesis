@@ -1,17 +1,17 @@
-React ist eine Open-Source Bibliothek, die dazu dient, die View-Komponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
+React ist eine Open--Source--Bibliothek, die dazu dient, die Viewkomponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
 Ein Vorteil von React sind die komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
 %
 Eine Komponente kann einen internen State besitzen, oder die Daten aus den \tt{props} nehmen.
 \tt{Props} sind Daten, die von der Elternkomponente übergeben werden und können auch nur von dieser manipuliert werden.
-Eine React Komponente hat immer eine \tt{render()}--Funktion, die die Daten aus dem State oder den \tt{props} liest und zurückgibt, was dargestellt werden soll.
+Eine React--Komponente hat immer eine \tt{render()}--Funktion, die die Daten aus dem State oder den \tt{props} liest und zurückgibt, was dargestellt werden soll.
 Hier wird das zur Komponente gehörende \gls{HTML} erzeugt. Jede Änderung des States führt einen erneuten Aufruf der \tt{render()}--Funktion mit sich.\\\\
 %
 %
-React Komponenten können in zwei Kategorien aufgeteilt werden, Containerkomponenten und Viewkomponenten.
+React--Komponenten können in zwei Kategorien aufgeteilt werden, Containerkomponenten und Viewkomponenten.
 Containerkomponenten dienen als Datenquelle und in ihnen steckt die Logik wie etwas funktioniert.
 Sie stellen außerdem Callbackfunktionen für die Viewkomponenten bereit.
 Viewkomponenten haben keine andere Zuständigkeit als die Daten, die sie über ihre \tt{props} erhalten, anzuzeigen und ggf. die ebenfalls empfangenen Callbackfunktionen aufzurufen ~\cite{react-components}.\\
-Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} eine beispielhafte React Containerkomponente, und im \autoref{code:react-form-view} die dazugehörige Viewkomponente beschrieben.
+Zur Veranschaulichung wird anhand des Listings \ref{code:react-form} eine beispielhafte Containerkomponente, und im \autoref{code:react-form-view} die dazugehörige Viewkomponente beschrieben.
 Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeigt und geändert werden kann.
 %
 \begin{center}
@@ -25,8 +25,8 @@ Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeig
 Die Formular--Containerkomponente hat ein Kontaktobjekt im internen State gespeichert.
 Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In Zeile 9 steht die \tt{handleChange} Funktion, die den internen State in Zeile 12 mit den eingegebenen Werten aktualisiert.
-Eine Viewkomponente wird wie in in den Zeilen 17 bis 19 eingebunden. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange} Funktion. 
+In Zeile 9 steht die \tt{handleChange}--Funktion, die den internen State in Zeile 12 mit den eingegebenen Werten aktualisiert.
+Eine Viewkomponente wird wie in in den Zeilen 17 bis 19 eingebunden. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange}--Funktion. 
 Die beiden Parameter sind in Zeile 1 des folgenden Listings wiederzufinden.
 % listing
 \begin{center}
@@ -38,7 +38,7 @@ Die beiden Parameter sind in Zeile 1 des folgenden Listings wiederzufinden.
 \end{center}
 %
 Die Viewkomponente macht nichts anderes, als die ihr übergebenen Daten anzuzeigen.
-Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange} Funktion in der Zeile 5 aufgerufen.
+Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange}--Funktion in der Zeile 5 aufgerufen.
 Diese Komponente besitzt keinerlei Logik.
 %
 % Redux
@@ -71,9 +71,9 @@ Die Aktion zum Lesen der Kontakte könnte dann wie im folgenden Listing aussehen
   label=code:react-meta]{code/Redux.js}
 \end{center}
 %
-Das erste \tt{meta.offline} Feld beschreibt die Netzwerkaktion, die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
+Das erste \tt{meta.offline}--Feld beschreibt die Netzwerkaktion, die ausgeführt werden soll, also den Aufruf an die angegebene URL in Zeile 6.
 Bei \tt{commit} in Zeile 7 wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf augeführt werden soll.
-Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP} Statuscode zurückkommt, wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
+Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP}--Statuscode zurückkommt, wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
 Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im Reducer beschrieben.
 Das Listing \ref{code:reducer} illustriert, wie das prototypisch umgesetzt werden könnte.
 %

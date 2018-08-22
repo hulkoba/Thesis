@@ -37,7 +37,7 @@
     Zur Versionierung eines Adressbucheintrags werden Versionsnummern verwendet. Der Kontakt ''Amilia'' hat die Version ''1.0.0''.
     Sowohl auf dem Client, als auch auf dem Server wird der Kontakt bearbeitet und aktualisiert und beide geben ihm die Versonsnummer ''2.0.0''.
     Währenddessen tritt Fall \it{b} oder \it{c} ein und beide Parteien können nicht miteinander kommunizieren.
-    Bei der Synchronisation entsteht ein Konflikt weil es zwei unterschiedliche Einträge mit derselben Verion gibt.\\
+    Bei der Synchronisation entsteht ein Konflikt weil es zwei unterschiedliche Einträge mit derselben Version gibt.\\
   %
   % Zeitstempel
   \item[Methode V1 -- Zeitstempel:]
@@ -45,7 +45,7 @@
     Amilia ist umgezogen und ihre Adresse ändert sich. Der Eintrag wird bearbeitet und hat nun die Version ''2018-04-13 11:44:22Z''.
     Während der Editierung tritt Fall \it{b} oder \it{c} ein.
     Es stellt sich heraus, dass die Hausnummer einen Zahlendreher hat und es wird sofort, immer noch offline, berichtigt. ''Amilia'' hat nun die Version ''2018-04-13 11:45:33Z''.\\
-    Der Server hat eine eigene Uhr mit spätere Uhrzeit als der Client.
+    Der Server hat eine eigene Uhr mit späterer Uhrzeit als der Client.
     So hat nach der Synchronisation der später korrigierte Eintrag einen früheren Zeitstempel.
     Es wird die falsche, alte Adresse gespeichert, die korrekte hat den älteren Zeitstempel und wird verworfen.\\
     Diese Variante funktioniert in vielen Fällen gut. Trotzdem kommt es selbst in großen Firmen wie z.B. Google zu Problemen\footnote{\google}, wenn verschiedene Geräte eine eigene Uhr besitzen.\\

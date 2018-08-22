@@ -24,9 +24,8 @@ Das muss in der Anwendung implementiert sein.
 Die Entscheidung darüber, welche Version gewinnt, erfolgt über den Längenvergleich der Revisionslisten.
 Die Version mit der längsten Liste aus vorherigen Revisionen gewinnt. Sind beide Listen gleich lang, gewinnt die Revision die laut alphabetischer Sortierung am größten ist.\\
 Auch wenn CouchDB die gewinnende und die verlierende Revision festlegt, werden beide Versionen gespeichert.
-Die gewinnende Revision wird als letztes gespeichert, die verlierende davor. Diese Konfliktlösungsstrategie wird auf allen CouchDB Instanzen angewandt, weswegen dazu keine Internetverbindung notwendig ist.
-Dadurch, dass alle Instanzen denselben Algorithmus verwenden, werden die Revisionen immer in identischer Reihenfolge gespeichert.
-Dadurch bleiben die Daten konsistent.\\
+Die gewinnende Revision wird als letztes gespeichert, die verlierende davor. Diese Konfliktlösungsstrategie wird auf allen CouchDB--Instanzen angewandt, weswegen dazu keine Internetverbindung notwendig ist.
+Dadurch, dass alle Instanzen denselben Algorithmus verwenden, werden die Revisionen immer in identischer Reihenfolge gespeichert und die Daten bleiben konsistent.\\
 Jetzt kann im Entwicklungsprozess der Anwendung entschieden werden, wie mit den Konflikten umgegangen wird.
 Es kann aus beiden Versionen eine festgelegt werden, die behalten wird oder es können beide zusammengeführt werden (vgl. \cite{couchDB} S. 153ff).
 %

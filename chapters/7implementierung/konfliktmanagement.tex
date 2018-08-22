@@ -1,13 +1,13 @@
 Konflikte werden in beiden Prototypen manuell erzeugt, wobei die Vorgehensweise identisch ist.
 Wie ein Konflikt herbeigeführt werden kann, wird in \autoref{chap:konzept:test} beschrieben.
-Durch das regelmäßige Anfragen an den Server wird dargestellt, ob sich die Anwendung im Onlinestatus befindet oder nicht.
-Konflikte können erzeugt werden, wenn ein oder beide Geräte auf denen die Anwendung läuft, nicht mit dem Internet verbunden ist.
-Die Anzeige im Header dient der Kontrolle über diesen Status.
+Durch das regelmäßige Anfragen an den Server wird ermittelt, ob sich die Anwendung im Onlinestatus befindet oder nicht.
+Konflikte können erzeugt werden, wenn mindestens ein Gerät auf dem die Anwendung läuft, nicht mit dem Internet verbunden ist.
+Die Anzeige des Netzwerkstatus im Header dient der Kontrolle über diesen Status.
 Die folgenden Codeausschnitte illustrieren das Konfliktmanagement im Prototypen \it{amilia-qouch}.\\
 Konflikte werden in CouchDB gespeichert, damit in der Anwendung entschieden werden kann wie damit umgegangen wird.
 Im \autoref{code:conflicts} werden alle Kontakteinträge geladen.
 Weil der Parameter in Zeile 3 als Option mitgegeben wird, sind Konfliktinformationen für jeden Kontakt verfügbar.
-Gibt es unterschiedliche Versionen eines Kontaktes kommt er mit dem Attribut \tt{\_conflicts} beim Client an, und zwar in Form eine Liste aus allen korrelierenden Revisionsnummern.
+Gibt es unterschiedliche Versionen eines Kontaktes kommt er mit dem Attribut \tt{\_conflicts} beim Client an, und zwar in Form einer Liste aus allen korrelierenden Revisionsnummern.
 In Zeile 7 wird der erste konfliktbehaftete Kontakt, der vom Server kommt, ermittelt.
 Wenn es einen Konflikt gibt, wird die Funktion \tt{getConflictRevisions} in Zeile 10 aufgerufen.
 %
