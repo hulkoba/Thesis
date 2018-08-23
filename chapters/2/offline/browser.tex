@@ -2,7 +2,7 @@
 Um nutzerInnenspezifische Daten offline verfügbar zu machen, können sie im Browser gespeichert werden. Einige Methoden hierfür werden im Folgenden erläutert.
 %
 \subsub{Web Storage}
-Das Web Storage \gls{API} ist ein Web-Standard, mit dessen Hilfe Daten als Schlüssel / Wert Paare im Browser gespeichert werden können. Es wird, wie Abbildung \ref{fig:webStorage} zeigt, von allen Browsern, bis auf den Opera Mini unterstützt. Opera Mini speichert grundsätzlich keine Daten, weswegen dieser Browser in den nachfolgenden Bildern mit Rot markiert ist.
+Das Web Storage \gls{API} ist ein Web-Standard, mit dessen Hilfe Daten als Schlüssel / Wert Paare im Browser gespeichert werden können. Es wird, wie Abbildung \ref{fig:webStorage} zeigt, von allen Browsern, bis auf den Opera Mini unterstützt. Opera Mini speichert grundsätzlich keine Daten~\cite{opera}, weswegen dieser Browser in den nachfolgenden Bildern mit Rot markiert ist.
 Web Storage umfasst zwei Mechanismen, den Session Storage und den Local Storage.\\
 Der Session Storage existiert nur so lange das Browserfenster geöffnet ist.
 Das heißt, dass alle Daten die im Session Storage gespeichert werden, nicht mehr existieren sobald der Browser oder das Browserfenster geschlossen wird.
@@ -21,7 +21,7 @@ Der größte Nachteil ist, dass Web Storage synchron arbeitet und so andere Oper
 \subsub{Web SQL}
 Eine andere Form der lokalen Speicherung im Browser ist die Web SQL--Datenbank.
 Sie hat ein asynchrones \gls{API} und unterstützt die grundlegenden SQL--Abfragen. Web SQL sollte in den W3C Standards aufgenommen werden. Aus Mangel an unabhängigen Implementierungen wie z.B. eine andere \gls{DB} als SQLite im Backend, wurde es abgelehnt~\cite{websql}.\\
-Das Web SQL \gls{API} wird nur von den Webkit--Browsern unterstützt, also nicht von Firefox, dem Internet Explorer oder dessen neueren Variante Edge~\cite{caniuse-websql}.
+Das Web SQL \gls{API} wird nur von den webkitbasierten Browsern unterstützt, also nicht von Firefox, dem Internet Explorer oder dessen neueren Variante Edge~\cite{caniuse-websql}.
 %
 %
 \subsub{IndexedDB}
