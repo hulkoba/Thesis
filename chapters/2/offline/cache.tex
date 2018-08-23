@@ -10,7 +10,7 @@ Im Juni 2016\footnote{siehe \url{https://github.com/w3c/html/pull/444/commits}} 
 In der Theorie stellte sich der Application Cache als einfach anwendbar und unproblematisch dar. Um eine webbasierte Anwendung offline auszuliefern, benötigte es eine Textdatei -- der \tt{cache manifest}-Datei -- mit der Endung \tt{.appcache}. Dort wurden alle Ressourcen aufgelistet, welche der Browser cachen sollte.
 Diese Datei wurde über das \tt{manifest}-Attribut in die \gls{HTML}-Dateien der Webanwendung eingebunden.
 %
-\lstset{language=HTML,
+\lstset{language=HTML,basicstyle=\small,
 caption={Beispiel einer \gls{HTML}-Datei mit einer Manifest-Attribut Einbindung},label={code:appcache_html}}
 \begin{lstlisting}
   <!DOCTYPE html>
@@ -41,7 +41,7 @@ label={code:appcache}}
 Alle Seiten mit dem manifest-Attribut und die, die explizit in der Textdatei beschrieben wurden, wurden vom Browser gespeichert~\cite{appcache}.\\
 In der Praxis jedoch zeigten sich zahlreiche Probleme mit dem App Cache. So wurde der Application Cache nur aktualisiert, wenn sich der Inhalt des Manifests geändert hat. Dann mussten alle Dateien neu heruntergeladen werden.
 Änderungen des Manifests oder anderer Dateien bedeuteten nicht zwingend eine erneute Speicherung dieser Dateien.
-Denn wenn der Server zusammen mit den Dateien keine Cache-Header sendete, so speicherte der Browser die Datei nach einem Cache-Header-Wert den er ''errät''. So konnte es passieren, dass der Browser annahm, eine Datei brauche keine Aktualisierung und weiterhin die alte, gecachte Version auslieferte~\cite{noappcache}.\\
+Denn wenn der Server zusammen mit den Dateien keine Cache-Header mit einem Gültigkeitsdatum sendete, speicherte der Browser die Datei nach dem bereits gespeicherten Gültigkeitsdatum. So konnte es passieren, dass der Browser annahm, eine Datei brauche keine Aktualisierung und weiterhin die alte, gecachte Version auslieferte~\cite{noappcache}.\\
 Als Reaktion auf diese Probleme wurde der Service Worker entworfen.
 %
 % Service Worker

@@ -9,7 +9,7 @@ Wenn der Replikationsprozess unterbrochen wurde, weil eine Datenbank keinen Inte
 Bei wieder bestehender Internetverbindung wird die Replikation erneut ausgelöst und CouchDB setzt an dem Punkt, an dem es aufgehört hat, die Arbeit fort.\\\\
 %
 %
-Das Besondere an CouchDB ist, dass es darauf ausgerichtet ist, Konflikte vernünftig zu behandeln, statt anzunehmen, es träten keine auf.
+CouchDB ist darauf ausgerichtet, Konflikte vernünftig zu behandeln, statt anzunehmen, es träten keine auf.
 Das interne Replikationssystem besitzt eine automatische Konflikterkennung und --lösung.\\
 Wichtig für diesen Mechanismus sind die Revisionsnummern.
 Dokumente werden mit Revisionsnummern versioniert. Mit jeder Aktualisierung bekommt es eine neue Revision, die neben der alten gespeichert wird (vgl. \cite{couchDB} S. 15ff \& S. 150ff). 

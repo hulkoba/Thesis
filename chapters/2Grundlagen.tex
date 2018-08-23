@@ -8,6 +8,7 @@ Dieses Kapitel beschreibt die grundlegenden Optionen, eine Anwendung offlinefäh
 Offline First heißt, die Bestandteile einer Anwendung so zu verwalten, dass nach der ersten Verwendung keine Internetverbindung mehr notwendig ist, um deren grundlegenden Funktionen zu nutzen ~\cite{offline}.
 Native \Glspl{App} existieren und funktionieren grundsätzlich solange offline, bis sie versuchen online Daten abzurufen.
 Um Webanwendungen offlinefähig zu machen, sind einige Grundvoraussetzungen erforderlich.\\
+Anders als native \glspl{App} werden Webanwendungen nicht auf dem Gerät installiert, sondern in der Regel über einen Webbrowser genutzt.
 Eine Webanwendung besteht aus zwei Bestandteilen, den Daten die von den BenutzerInnen generiert werden und den \gls{Assets}.
 \gls{Assets} sind alle Bestandteile der \gls{App} die für die erfolgreiche Ansicht im Browser benötigt werden.
 Das sind \gls{HTML}-- und \gls{CSS}--Dateien sowie Skripte und Mediendateien wie zum Beispiel Bilder.\\
@@ -15,7 +16,7 @@ Diese Daten müssen zuerst auf dem Endgerät gespeichert werden, um offline erre
 Einmal gespeichert, ist das Laden der Ressourcen aus dem Cache, auch bei bestehender Internetverbindung, schneller, als aus dem Netz ~\cite{jakearchibald}.
 % Bei einer bestehenden Internetverbindung ist das Laden der Ressourcen aus dem Cache schneller als aus dem Netz.
 Daten, die zuerst auf dem Endgerät gespeichert werden, gehen auch bei plötzlichen Verbindungsverlust nicht verloren.\\
-Gibt es eine serverseitige Datenbank, müssen die Daten zwischen Server und Client synchronisiert werden. Ist die Anwendung kollaborativ, muss die Synchronisation zwischen allen Beteiligten stattfinden. Synchronisation erfordert den Umgang mit Konflikten, denn es dürfen auf keinen Fall Daten verloren gehen.\\\\
+Gibt es eine serverseitige Datenhaltung, müssen die Daten zwischen Server und Client synchronisiert werden. Ist die Anwendung kollaborativ, muss die Synchronisation zwischen allen Beteiligten stattfinden.\\\\
 % Harte, weiche, mittlere Probleme (verschiedene Stufen von offlinefähig?)
 Dieser Abschnitt zeigt die verschiedenen Möglichkeiten der lokalen Datenspeicherung und deren Synchronisation mit einer serverseitigen Datenbank auf.
 %

@@ -9,7 +9,7 @@ Für den Protoyp \it{amilia-qouch} muss zunächst CouchDB installiert und gestar
 Sobald dieser Schritt erledigt ist, läuft CouchDB auf \tt{localhost:5984} und ist einsatzbereit.
 Das asynchrone \gls{API} von PouchDB stellt alle notwendigen Funktionen bereit, die sowohl Callbacks, Promises als auch asynchrone Funktionen unterstützen. 
 Das Listing \ref{code:pouch} führt alle benötigeten Funktionen auf und zeigt die notwendigen Schritte zur Synchronisation der lokalen PouchDB und CouchDB.\\
-Die lokale Datenbank wird in Zeile 2 erstellt. Wenn es die Datenbank mit dem Namen `contacts` bereits gibt, wird sie gestartet.\\
+Die lokale Datenbank wird in Zeile 2 erstellt. Wenn es die Datenbank mit dem Namen ''contacts'' bereits gibt, wird sie gestartet.\\
 %
 Um eine CouchDB--Instanz zu erzeugen, ist der Aufruf in Zeile 3 mit der URL zur CouchDB--Datenbank notwendig. Auch hier erstellt PouchDB die Datenbank, sofern sie noch nicht existiert. PouchDB funktioniert nun als Client zu einer online CouchDB--Instanz.
 Zur kontinuierlichen Synchronisation beider Instanzen, der lokalen PouchDB und der CouchDB, ist lediglich der Aufruf in Zeile 5 erforderlich. Im optionalen Parameter können zum Beispiel Filter oder Einstellungen zum wiederholten Synchronisationsversuch im Falle eines Fehlschlags gesetzt werden ~\cite{pouch_options}.\\

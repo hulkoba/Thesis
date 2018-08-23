@@ -42,7 +42,7 @@ Dank der angegebenen Parameter \tt{retry: true} versucht PouchDB die Synchronisa
 % 
 Redux Offline nimmt den EntwicklerInnen auch Arbeit bei der Datensynchronisation ab.
 Alle Daten, die sich in der Queue befinden, werden automatisch an den Server gesendet, sobald eine Internetverbindung besteht.
-Das funktioniert jedoch nicht so einfach, wenn der Server nicht erreichbar ist.
+Das funktioniert jedoch nicht, wenn der Server nicht erreichbar ist.
 In der Dokumentation von Redux Offline steht, dass die Aktion so oft wiederholt wird, bis die Anwendung wieder mit dem Internet verbunden ist ~\cite{giving-up}.
 Allerdings wird, wenn der Server nicht verfügbar ist, die Aktion abgebrochen und die \sc{rollback} Aktion gefeuert.
 \begin{center}

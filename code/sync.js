@@ -8,7 +8,7 @@ const discard = (error, _action, _retries) => {
   return response && response.status >= 400 && response.status <= 500
 }
 
-// apply dircard to config
+// apply discard to config
 const store = createStore(
   reducer,
   compose(

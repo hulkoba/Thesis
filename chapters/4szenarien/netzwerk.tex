@@ -4,24 +4,29 @@
 \item[Szenario C0 -- Client push:]
 Der Client erstellt einen Adressbucheintrag, hat den Status \sc{online} und der Server ist erreichbar. Sowohl Anfrage als auch Antwort sind erfolgreich. Der Kontakt wird erfolgreich erstellt.\\
 \item[Szenario C1 -- Client push:]
-Der Client erstellt einen Adressbucheintrag, hat den Status \sc{offline} und der Server ist nicht erreichbar. Die Anfrage schlägt fehl.\\
+Der Client erstellt einen Adressbucheintrag, hat den Status \sc{offline} und es können keine Daten an den Server gesendet werden. Die Anfrage schlägt fehl.\\
 \item[Szenario C2 -- Client push:]
-Der Client erstellt einen Adressbucheintrag und hat den Status \sc{online}. Die Anfrage wird gestartet und währenddessen bricht die Internetverbindung ab. Die Anfrage `wartet` bis ein Timeout getriggert wird und schlägt dann fehl. Wärend des Wartens ist der Client blockiert.\\
+Der Client erstellt einen Adressbucheintrag und hat den Status \sc{online}. Die Anfrage wird gestartet und währenddessen bricht die Internetverbindung ab.
+Die Anfrage ''wartet'' bis ein Timeout getriggert wird und schlägt dann fehl. Wärend des Wartens ist der Client blockiert.\\
 % \item[Szenario C3 -- Client push:]
 % Der Client erstellt einen Adressbucheintrag und hat den Status \sc{online}. Die Anfrage wird gestartet und währenddessen bricht die Internetverbindung ab. Die Anfrage ist teilweise erfolgreich. Nur ein Teil der Telefonnummer kommen beim Server an.\\
 % client pull / server push
 \item[Szenario S0 -- Server push/Client pull:]
-Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an, hat den Status \sc{online} und der Server ist erreichbar. Sowohl Anfrage als auch Antwort sind erfolgreich. Die Liste wird komplett ausgeliefert.\\
+Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an, hat den Status \sc{online} und der Server ist erreichbar.
+Sowohl Anfrage als auch Antwort sind erfolgreich. Die Liste wird komplett ausgeliefert.\\
+%
 \item[Szenario S1 -- Server push/Client pull:]
-Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an. Dieser hat den Status \sc{offline} und ist nicht erreichbar. Die Antwort schlägt fehl.\\
+Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an. Als dieser die angefragten Kontakte bearbeitet, um sie in der gewünschten Reihenfolge zu schicken, fällt der Strom aus. Die Daten können nicht gesendet werden, die Antwort schlägt fehl.\\
+%
 \item[Szenario S2 -- Server push/Client pull:]
 Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}.
-Während der Server antwortet, bricht die Internetverbindung ab. Die Antwort `wartet` bis ein Timeout getriggert wird und schlägt dann fehl.
+Während der Server antwortet, bricht die Internetverbindung ab. Die Antwort ''wartet'' bis ein Timeout getriggert wird und schlägt dann fehl.
 Wärend des Wartens ist der Client blockiert.\\
 \item[Szenario S3 -- Server push/Client pull:]
-Der Client fordert eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}.
-Während der Server antwortet, bricht die Internetverbindung ab. Die Antwort ist teilweise erfolgreich.
-Nur ein Teil der angefragten Daten kommt beim Client an.
+Der Client fordert initial eine Liste aller gespeicherten Kontakte vom Server an und hat den Status \sc{online}.
+Während der Server antwortet, bricht die Internetverbindung ab.
+Nur ein Teil der angefragten Daten, die \gls{HTML}--Datei der Anwendung und Metadaten der Kontaktliste, kommen beim Client an.
+Die Antwort ist teilweise erfolgreich.
 \end{description}
 %
 %
