@@ -3,30 +3,43 @@ Die Abkürzung \it{rdx} steht für Redux und zeigt, dass dieser Prototyp Redux O
 Die Endung \it{qouch} soll das Zusammenspiel von CouchDB und PouchDB darstellen. Der Buchstabe Q klingt wie das hart ausgesprochene C in Couch und wenn man das kleine Q horizontal spiegelt, sieht man das P für Pouch.\\\\
 %
 %
-Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusammen, welche in \autoref{fig:uml} veranschaulicht werden. Die Abbildung stellt ein Komponentendiagramm dar.
+Beide Prototypen setzen sich aus den nachfolgend beschriebenen Komponenten zusammen, welche in \autoref{fig:uml} veranschaulicht werden.
+Die Abbildung stellt ein Komponentendiagramm dar.
 Es handelt sich hierbei nicht um das UML Komponentendiagramm, sondern um ein eigens entworfenes.
 Die Bezeichnung ist durch die Darstellung von React--Komponenten begründet.\\\\
 %
 %
 Jeder Kasten repräsentiert eine Komponente, deren Bezeichnung im Kopf steht.
-Alle Komponenten auf der linken Seite sind View--Komponenten und können den Appstatus nicht manipulieren.
+In dem Teilbereich darunter sind der State oder die Props der Komponente abzulesen. Bei Containerkomponenten handelt es sich um den Status. Die Viewkomponenten haben keinen eigenen State, bei Ihnen stehen an dieser Stelle die Props.\\
+Alle Komponenten, bei denen im Namen das Wort ''Container'' vorkommt, sind Containerkomponenten, beinhalten Logik und entscheiden welche Viewkomponente gerendert wird.
+Die anderen sind Viewkomponenten und können im Gegensatz zu den Containerkomponenten den Appstatus nicht manipulieren.
 Sie können nur die von der Elternkomponente durchgereichten Funktionen aufrufen.
-Anhand der Linien ist abzulesen auf welche Funktionen und Eigenschaften die View--Komponenten Zugriff haben.
-Es werden für jede Komponente nur die eigens implementierten Funktionen aufgelistet.\\
-Auf der rechten Seite stehen die Model--Komponenten. Sie manipulieren den Appstatus und entscheiden welche View--Komponente gerendert wird.
+Anhand der Linien ist abzulesen auf welche Funktionen und Eigenschaften die Viewkomponenten Zugriff haben.
+Kursiv geschriebene Werte kennzeichnen externe Module, die von der Komponente verwendet werden.
+Es werden für jede Komponente, bis auf ''Contacts'', nur die eigens implementierten Funktionen aufgelistet. Um besser nachvollziehen zu können, welche Funktionen und Eigenschaften von der Contacts--Komponente an die Kindkomponenten durchgereicht werden, werden diese in grauer Schrift aufgezählt.
 %
-\begin{figure}[ht]
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{umlsimple}
+%   \grayRule
+%   \caption[Komponentendiagramm]{Komponentendiagramm der Prototypen}
+%   \label{fig:umlsimple}
+% \end{figure}
+\begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{uml}
+  \includegraphics[width=\textwidth]{uml2}
   \grayRule
   \caption[Komponentendiagramm]{Komponentendiagramm der Prototypen}
   \label{fig:uml}
 \end{figure}
 %
-Die Komponente \tt{Contacts} fungiert als Container und ist das Herzstück der Anwendung.
+%
+Die Komponente \tt{ContactsContainer} ist das Herzstück der Anwendung.
 Hier wird die graphische Oberfläche definiert und es werden alle notwendigen Funktionen bereitgestellt.
-Die Komponente hat einen internen State in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind. Im Diagramm ist der Status an der blauen Schrift zu erkennen.
-Das Objekt \tt{editView}  speichert den im Formular zu ladenden Kontakt und zeigt welche Ansicht gerade aktuell ist. Ist das Attribut \tt{isOpen} auf \tt{true} gesetzt, wird das Formular gerendert, andernfalls die Kontaktliste.
+Die Komponente hat einen internen State in dem sowohl die Kontaktliste, als auch die Daten für das Formular gespeichert sind.
+Im Diagramm ist der Status an der blauen Schrift zu erkennen.
+Das Objekt \tt{editView} speichert den im Formular zu ladenden Kontakt und zeigt welche Ansicht gerade aktuell ist.
+Ist das Attribut \tt{isOpen} auf \tt{true} gesetzt, wird das Formular gerendert, andernfalls die Kontaktliste.
 Wie das Kontaktobjekt aufgebaut ist, zeigt der blaue Kasten im Diagramm.
 Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne State aktualisiert, wodurch ein erneutes Rendern der Komponente eingeleitet wird. Dann wird entsprechend die Liste oder das Formular gerendert.\\
 %
@@ -37,6 +50,8 @@ Dieser Knopf soll nur angezeigt werden, wenn die Liste aktiv ist. Diese Informat
 Die \tt{ContactList} repräsentiert die Kontaktliste und wird initial gerendert. Hier werden alle Kontakte als Liste dargestellt.
 Das Bearbeiten kann durch den Aufruf der durchgereichten Funktion \tt{toggleEdit()} eingeleitet werden.
 Durch den Aufruf von \tt{remove"-Contact()} wird der Kontakt gelöscht.\\
+%
+Die Komponente \tt{Contacts} gehört als Viewkomponente zu \tt{ContactsContainers}. Je nach Wert des Attributs \tt{isOpen}, wird hier entweder die Kontaktliste oder das Formular gerendert. Die restlichen, grau geschriebenen Eigenschaften und Methoden werden an die Kondkomponenten durchgereicht.\\
 %
 Die Komponente \tt{ContactForm} zeigt, sofern vorhanden, alle im Kontakt gespeicherten Daten an.
 Gibt es keine Kontaktdaten, die geladen werden können, kann ein neuer Kontakt angelegt werden.
@@ -58,8 +73,8 @@ Innerhalb von \tt{chooseRev} wird der übergebene Kontakt gespeichert und die ko
 %
 Eine Backendimplementierung ist für den Prototypen \it{amilia-qouch} nicht notwendig, da dies bereits durch die Verwendung von CouchDB gegeben ist.
 Die \autoref{fig:qouch-model} skizziert die Architektur von \it{amilia-qouch}.
-Die \tt{Contacts}--Komponente fungiert als Model.
-Sie handhabt die Daten, die in den Viewkomponenten angezeigt werden und speichert sie in PouchDB.
+% TODO:
+Die Containerkomponenten handhaben die Daten, die in den Viewkomponenten angezeigt werden und speichert sie in PouchDB.
 PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in das Model.
 % Client - Server - Modell
 \begin{figure}[H]
