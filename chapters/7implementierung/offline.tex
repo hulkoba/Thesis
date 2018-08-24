@@ -3,7 +3,7 @@
 %
 \sub{Datenspeicherung}
 Redux Offline speichert, wie in \autoref{sub:reduxpersist} beschrieben, alle im Redux Store verwalteten Daten im Local Storage.
-\autoref{fig:local-rdx} zeigt alle gespeicherten, nutzerInnengenerierten Daten im Local Storage.
+\autoref{fig:local-rdx} zeigt alle gespeicherten Daten im Local Storage.
 %
 \begin{figure}[H]
   \centering
@@ -13,7 +13,8 @@ Redux Offline speichert, wie in \autoref{sub:reduxpersist} beschrieben, alle im 
   \label{fig:local-rdx}
 \end{figure}
 % 
-Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB. PouchDB speichert die von NutzerInnen generierten Daten in IndexedDB, vgl. \autoref{chap:pouch}. In \autoref{fig:local-qouch} sind die gespeicherten Daten in der IndexedDB zu sehen.
+Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB.
+PouchDB speichert die von NutzerInnen generierten Daten in IndexedDB, vgl. \autoref{chap:pouch}. In \autoref{fig:local-qouch} sind die gespeicherten Daten in der IndexedDB zu sehen.
 %
 \begin{figure}[H]
   \centering
@@ -22,6 +23,8 @@ Der Prototyp \it{amilia-qouch} nutzt zur lokalen Datenspeicherung PouchDB. Pouch
   \caption[Gespeicherte Daten in IndexedDB]{Gespeicherte Daten des Prototypen aus \it{amilia-qouch} in IndexedDB,\\Screenshot: Developer Tools im Firefox Browser}
   \label{fig:local-qouch}
 \end{figure}
+%
+Es ist zu beachten, dass der Prototyp \it{amilia-rdx} den gesamten \gls{App}state der Anwendung persistiert und nicht nur die erstellten Kontakte, so wie es beim Prototypen \it{amilia-qouch} der Fall ist.
 %
 % SYNC
 %
@@ -42,9 +45,10 @@ Dank der angegebenen Parameter \tt{retry: true} versucht PouchDB die Synchronisa
 % 
 Redux Offline nimmt den EntwicklerInnen auch Arbeit bei der Datensynchronisation ab.
 Alle Daten, die sich in der Queue befinden, werden automatisch an den Server gesendet, sobald eine Internetverbindung besteht.
+% Ist der Client offline, werden Aktionen solange versucht auszuführen, bis die Anwendung wieder mit dem internet verbunden ist.
 Das funktioniert jedoch nicht, wenn der Server nicht erreichbar ist.
 In der Dokumentation von Redux Offline steht, dass die Aktion so oft wiederholt wird, bis die Anwendung wieder mit dem Internet verbunden ist ~\cite{giving-up}.
-Allerdings wird, wenn der Server nicht verfügbar ist, die Aktion abgebrochen und die \sc{rollback} Aktion gefeuert.
+Allerdings wird die Aktion abgebrochen und die \sc{rollback} Aktion gefeuert, wenn der Server nicht verfügbar ist.
 \begin{center}
   \lstinputlisting[language=REACT,
   numbers=left,xleftmargin=20pt,
