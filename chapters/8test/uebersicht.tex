@@ -1,0 +1,87 @@
+Die folgende Tabelle gibt eine Übersicht der Testergebnisse.
+Sie zeigt an, in welchem Testdurchlauf das erwartete Ergebnis eingetreten ist und bei welchen Prototypen dies der Fall war.
+\begin{longtable}[c]{@{}
+>{\columncolor[HTML]{CFFCC2}}l llll@{}}
+\toprule
+    \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Testreihe}}
+    & \multicolumn{1}{p{0.4\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Aktion}}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Test \newline bestanden: \it{amilia-qouch}}}
+    & \multicolumn{1}{p{0.15\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{Test \newline bestanden: \it{amilia-rdx}}}\\ \hline \noalign{\vskip 0.2cm}
+\endfirsthead
+\endhead
+%
+% 
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{1. Online Online}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \bottomrule
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{2. Online Offline}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten und löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen und bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \bottomrule
+  \bottomrule
+  %
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{3. Offline Offline}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt anlegen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt bearbeiten und löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{nein}\\ 
+  \midrule
+  \multicolumn{1}{p{0.2\textwidth}}{\cellcolor[HTML]{cffcc2}\textbf{}}
+    & \multicolumn{1}{p{0.4\textwidth}}{Kontakt löschen}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}
+    & \multicolumn{1}{p{0.15\textwidth}}{ja}\\ 
+  % end
+  \bottomrule \cellcolor[HTML]{FFFFFF}
+  \vspace{0.1cm}\\
+	\noalign{\hspace{0.0525\textwidth}\grayRule}
+  \caption{Testergebnisse}
+  \label{tab:test:tests}\\
+\end{longtable}
+%
+Es ist deutlich zu erkennen, dass überall dort, wo ein Kontakt bearbeitet wird, die Redux Offline--\gls{App} die Erwartungen nicht erfüllt.
+Immer dann, wenn die Erwartungen nicht erfüllt worden sind, sind Daten verloren gegangen.
+Im folgenden \hyperref[chap:auswertung]{Abschnitt} werden die Testergebnisse ausgewertet.
