@@ -75,7 +75,7 @@ Das erste \tt{meta.offline}--Feld beschreibt die Netzwerkaktion, die ausgeführt
 Bei \tt{commit} in Zeile 7 wird festgelegt welche Aktion bei erfolgreichem Netzwerkaufruf ausgeführt werden soll.
 Für den Fall, dass von dem angefragtem \gls{API} ein 4xx oder 5xx \gls{HTTP}--Statuscode zurückkommt, wird die im \tt{rollback} definierte Aktion gefeuert ~\cite{redux-offline-npm}.\\
 Die Aktionen beschreiben nur was passiert. Wie der Status sich ändert, wird im Reducer beschrieben.
-Das Listing \ref{code:reducer} illustriert, wie das prototypisch umgesetzt werden könnte.
+Das Listing \ref{code:reducer} illustriert, wie das prototypisch umgesetzt werden könnte.\\
 %
 \begin{center}
   \lstinputlisting[language=REACT,

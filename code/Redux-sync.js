@@ -6,7 +6,8 @@ export function addContact () {
     meta: {
       offline: {
         effect: { 
-          url: `${API}/contacts`, method: 'POST',
+          url: `${API}/contacts`,
+          method: 'POST',
           body: JSON.stringify({contact})
         },
         commit: { type: 'ADD_CONTACT_COMMIT', meta: { contact } },

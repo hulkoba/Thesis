@@ -8,12 +8,12 @@ Konflikte werden in CouchDB gespeichert, damit in der Anwendung entschieden werd
 Im \autoref{code:conflicts} werden alle Kontakteinträge geladen.
 Weil der Parameter in Zeile 3 als Option mitgegeben wird, sind Konfliktinformationen für jeden Kontakt verfügbar.
 Gibt es unterschiedliche Versionen eines Kontaktes kommt er mit dem Attribut \tt{\_conflicts} beim Client an, und zwar in Form einer Liste aus allen korrelierenden Revisionsnummern.
-In Zeile 7 wird der erste konfliktbehaftete Kontakt, der vom Server kommt, ermittelt.
-Wenn es einen Konflikt gibt, wird die Funktion \tt{getConflictRevisions} in Zeile 10 aufgerufen.
+In Zeile 8 wird der erste konfliktbehaftete Kontakt, der vom Server kommt, ermittelt.
+Wenn es einen Konflikt gibt, wird die Funktion \tt{getConflictRevisions()} in Zeile 11 aufgerufen.
 %
 \begin{center}
   \lstinputlisting[language=REACT,
-    firstline=1,lastline=12,
+    firstline=1,lastline=13,
     numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
     caption={Das Laden von konfliktbehafteten Kontakten},
     label=code:conflicts]{code/conflicts.js}
@@ -35,7 +35,7 @@ Die beiden Kontaktversionen werden ebenfalls in den State geladen, um im Dialog 
 %
 \begin{center}
   \lstinputlisting[language=REACT,
-    firstline=14,lastline=38,
+    firstline=15,lastline=39,
     numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
     caption={Das Ermitteln von konkurrierenden Kontaktversionen},
     label=code:conflicts2]{code/conflicts.js}

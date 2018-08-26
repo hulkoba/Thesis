@@ -3,6 +3,7 @@ async function getPouchDocs () {
     include_docs: true,
     conflicts: true
   })
+
   const contacts = completeContacts.rows.map(c => c.doc)
   const conflictedContact = contacts.find(contact => contact._conflicts)
 

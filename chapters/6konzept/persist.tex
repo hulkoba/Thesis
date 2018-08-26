@@ -27,7 +27,7 @@ Jedes Mal, wenn eine der \gls{CRUD}--Operationen auf einem Dokument ausgeführt 
 Das Modul PouchDB Upsert wiederholt die Aktion solange, bis sie erfolgreich ist.
 Es fügt ein neues Dokument hinzu, wenn noch keins existiert und aktualisiert es, wenn es vorhanden ist ~\cite{pouch_conflicts}.
 Konflikte treten so trotzdem auf und CouchDB wählt eine gewinnende Version aus.
-Alle Konflikte werden immer noch gespeichert und die beteiligten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.
+Alle Konflikte werden immer noch gespeichert und die beteiligten Dokumente können wie oben beschrieben aus der CouchDB geladen werden.\\
 %
 \begin{center}
   \lstinputlisting[language=REACT,
@@ -54,29 +54,29 @@ Der Kontakt wird hierbei nicht wirklich gelöscht sondern wird durch ein \tt{\_d
 \subsub{Daten mit Redux Offline speichern}
 Die Idee hinter Redux Offline ist, dass der Redux Store die lokale Datenbank ersetzt.
 Sobald der \gls{App}status sich ändert, also irgendwo im Code \tt{setState()} ausgeführt wird, wird er automatisch lokal gespeichert.
-Dazu wird intern \tt{redux-persist} benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird.
-Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung aus dem Local Storage geladen.
+Dazu wird intern Redux Persist benutzt, dessen Funktionsweise in Abschnitt \ref{sub:reduxpersist} erläutert wird.
+Der Redux Store wird bei jeder Änderung persistiert und beim Start der Anwendung aus dem Local Storage geladen.\\
 % Es bedarf keiner zusätzlichen Implementierung für die lokale Speicherung der Kontaktdaten.\\
 Wie die Daten mit Redux Offline gespeichert und synchronisiert werden ist im folgenden Listing erklärt.
-Das Beispiel erklärt das Hinzufügen eines Kontakts. Die restlichen Operationen, das Bearbeiten, Löschen oder Lesen eines Kontakts sind analog dazu.
+Das Beispiel erklärt das Hinzufügen eines Kontakts. Die restlichen Operationen, das Bearbeiten, Löschen oder Lesen eines Kontakts sind analog dazu.\\\\
+Mit dem Aufruf der Aktion ADD\_CONTACT, die in Zeile 3 bis 16 erzeugt wird, wird der Vorgang ''einen Kontakt hinzuzufügen'' gestartet.
+Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline}--Objekts in Zeile 9 festgelegt.
+Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON}--Datei persisitiert.
+Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert.
+Mit diesem wird in Zeile 25 der \gls{App}state aktualisiert und so lokal gespeichert.
 %
 \begin{center}  \lstinputlisting[language=REACT,
-  upquote=true
   numbers=left,xleftmargin=20pt,framexleftmargin=15pt,
+  upquote=true,
   caption={Speicherung der Daten mit Redux Offline}, 
   label=code:syncrdx]{code/Redux-sync.js}
 \end{center}
 %
-Mit dem Aufruf der Aktion ADD\_CONTACT, die in Zeile 3 bis 15 erzeugt wird, wird der Vorgang ''einen Kontakt hinzuzufügen'' gestartet.
-Die anzufragende URL ist im \tt{effect} Feld des \tt{meta.offline}--Objekts in Zeile 9 festgelegt.
-Die Anfrage geht an den Server, welcher die Daten in der \gls{JSON}--Datei persisitiert.
-Der Reducer hat Zugriff auf das Aktionsobjekt. Dort ist der gerade hinzugefügte Kontakt gespeichert.
-Mit diesem wird in Zeile 23 der \gls{App}state aktualisiert und so lokal gespeichert.\\
-Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile 12 gefeuert.
-Die wird im Reducer in Zeile 26 behandelt. Der State wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
-Für den Fall, dass die Netzwerkanfrage nicht erfolgreich war, wird das \tt{meta.offline.rollback}--Feld definiert.
+Ist die Netzwerkanfrage erfolgreich, wird die Aktion \tt{commit} in Zeile 13 gefeuert.
+Die wird im Reducer in Zeile 27 behandelt. Der State wird mit der Antwort vom Server aktualisiert und die Synchronisation ist vollzogen.
+Für den Fall, dass die Netzwerkanfrage nicht erfolgreich war, wird das \tt{meta.offline.rollback}--Feld in Zeile 14 definiert.
 Hier könnte man die BenutzerInnen darüber informieren, dass etwas nicht geklappt hat.
-Um den Rahmen dieser Arbeit nicht zu sprengen, genügt es jedoch, den vorherigen Status zurückzuliefern, wie es in den Zeilen 10 und 11 steht.\\\\
+Um den Rahmen dieser Arbeit nicht zu sprengen, genügt es jedoch, den vorherigen Status zurückzuliefern, wie es in Zeile 33 passiert.\\\\
 Wie die Serverimplementierung für den gerade beschriebenen Fall aussehen könnte, beschreibt das Listing \ref{code:server}.
 %
 \begin{center}  \lstinputlisting[language=REACT,
