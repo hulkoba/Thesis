@@ -43,7 +43,7 @@ Ist das Attribut \tt{isOpen} auf \tt{true} gesetzt, wird das Formular gerendert,
 Wie das Kontaktobjekt aufgebaut ist, zeigt der blaue Kasten im Diagramm.
 Wird eine Aktion zum Ändern der Ansicht aufgerufen, beispielsweise durch das Betätigen eines Knopfes, wird über die Funktion \tt{toggleEdit()} der interne State aktualisiert, wodurch ein erneutes Rendern der Komponente eingeleitet wird. Dann wird entsprechend die Liste oder das Formular gerendert.\\
 %
-Der \tt{Header} implementiert das externe Modul \tt{react-detect-offline} und kann so den Netzwerkstatus anzeigen.
+Der \tt{Header} implementiert das externe Modul React Detect Offline und kann so den Netzwerkstatus anzeigen.
 Die Komponente hat Zugriff auf die \tt{toggleEdit}--Funktion und einen Knopf, der an diese gebunden ist.
 Damit kann das Rendern des Kontaktformulars eingeleitet werden.
 Dieser Knopf soll nur angezeigt werden, wenn die Liste aktiv ist. Diese Information ist in dem Attribut \tt{isOpen} abzulesen.\\
@@ -65,9 +65,9 @@ Wenn die Aktion abgebrochen wird, ruft der \tt{FormContainer} die \tt{toggleEdit
 %
 Kommt es beim Hinzufügen, Bearbeiten oder Löschen eines Kontakts zum Konflikt, werden mittels \tt{getConflictRevisions()} die beiden Versionen des konfliktbehafteten Kontakts ermittelt.
 Der Kontakt wird dann in beiden Varianten, der alten und der neueren Version, an einen Konfliktdialog übergeben, der sich prompt öffnet.
-Dieser hat Zugriff auf die Funktion \tt{chooseRev} in der \tt{Contacts}--Komponente.
-Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{ChooseRev}--Funktion mit dem ausgewähltem Kontakt als Parameter auf.
-Innerhalb von \tt{chooseRev} wird der übergebene Kontakt gespeichert und die konkurrierende Version verworfen.\\\\
+Dieser hat Zugriff auf die Funktion \tt{chooseRev()} in der \tt{Contacts}--Komponente.
+Der Dialog hat pro Kontakt einen Knopf. Jeder dieser Knöpfe ruft auf Klick die \tt{chooseRev()}--Funktion mit dem ausgewähltem Kontakt als Parameter auf.
+Innerhalb von \tt{chooseRev()} wird der übergebene Kontakt gespeichert und die konkurrierende Version verworfen.\\\\
 %
 % BACKEND
 %

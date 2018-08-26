@@ -25,8 +25,8 @@ Zusammen repräsentieren sie ein Formular, in dem der Name des Kontakts angezeig
 Die Formular--Containerkomponente hat ein Kontaktobjekt im internen State gespeichert.
 Auf dieses Objekt haben andere Komponenten keinen Zugriff und es ist nur via \tt{setState()} änderbar.
 Initial wird das Kontaktobjekt über die \tt{props} in Zeile 5 geladen. So kann das Vorausfüllen der Eingabefelder realisiert werden.\\
-In Zeile 9 steht die \tt{handleChange}--Funktion, die den internen State in Zeile 12 mit den eingegebenen Werten aktualisiert.
-Eine Viewkomponente wird wie in in den Zeilen 17 bis 19 eingebunden. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange}--Funktion. 
+In Zeile 9 steht die \tt{handleChange()}--Funktion, die den internen State in Zeile 12 mit den eingegebenen Werten aktualisiert.
+Eine Viewkomponente wird wie in in den Zeilen 17 bis 19 eingebunden. Ihr wird der interne State übergeben, also das Kontaktobjekt und die \tt{handleChange()}--Funktion. 
 Die beiden Parameter sind in Zeile 1 des folgenden Listings wiederzufinden.
 % listing
 \begin{center}
@@ -38,7 +38,7 @@ Die beiden Parameter sind in Zeile 1 des folgenden Listings wiederzufinden.
 \end{center}
 %
 Die Viewkomponente macht nichts anderes, als die ihr übergebenen Daten anzuzeigen.
-Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange}--Funktion in Zeile 5 aufgerufen.
+Im Ereignisbehandler des Eingabefeldes wird die übergebene \tt{handleChange()}--Funktion in Zeile 5 aufgerufen.
 Diese Komponente besitzt keinerlei Logik.
 %
 % Redux

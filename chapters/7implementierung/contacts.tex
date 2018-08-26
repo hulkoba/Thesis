@@ -53,10 +53,10 @@ Das Kontaktformular ist aufgeteilt in eine Container-- und eine Viewkomponente, 
 % Wo in der Viewkomponende alle beinhalteten Elemente nur dargestellt werden, besitzt die Containerkomponente die Logik.
 Der \tt{FormContainer} bekommt in Zeile 12 den zu bearbeitenden Kontakt.
 Ist dieser leer, wird über das Formular ein neuer angelegt.
-Des Weiteren bekommt er ebenfalls die \tt{toggleEdit}--Funktion, eine zum Anlegen und eine zum Bearbeiten des Kontakts (Zeilen 9 bis 11).\\
+Des Weiteren bekommt er ebenfalls die \tt{toggleEdit()}--Funktion, eine zum Anlegen und eine zum Bearbeiten des Kontakts (Zeilen 9 bis 11).\\
 %
 Der Liste werden alle im \gls{App}state gespeicherten Kontakte, die durch den Container durchgereicht werden, gegeben.
-Außerdem bekommt sie die \tt{toggleEdit} Funktion und eine zum Löschen eines Kontakts.
+Außerdem bekommt sie die \tt{toggleEdit()}--Funktion und eine zum Löschen eines Kontakts.
 Es ist zu beachten, dass hier bei der \tt{toggleEdit()} das \tt{bind(this, null)} fehlt. Das liegt daran, dass wenn man aus der Liste das Formular öffnet, man den ''Bearbeiten''--Knopf betätigt hat und der zu bearbeitende Kontakt im Formular geladen wird.
 Dieser Kontakt wird dann für die Dauer seiner Bearbeitung im \tt{state.editView.contact} gespeichert.\\\\
 %
