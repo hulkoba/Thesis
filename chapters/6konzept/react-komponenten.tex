@@ -1,4 +1,4 @@
-React ist eine Open--Source--Bibliothek, die dazu dient, die Viewkomponente des Model-View-Controller-Ansatzes abzudecken, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
+React ist eine Open--Source--Bibliothek, die dazu dient \glspl{UI} zu erstellen, also die Seite der Anwendung, die für die Anzeige und Interaktion zuständig ist.
 Ein Vorteil von React ist die komponentenbasierte Philosopie. Eine Komponente ermöglicht die Aufteilung der \gls{UI} in kleine Teile und ist eine abstrakte Basisklasse. Einmal implementiert, lässt sich eine Komponente immer wieder verwenden~\cite{react}.\\
 %
 Eine Komponente kann einen internen State besitzen, oder die Daten aus den \tt{props} nehmen.
@@ -49,7 +49,7 @@ Deswegen ist für diesen Prototypen die Implementierung von Redux vorausgesetzt.
 %
 Redux Offline ist eine erweiternde Bibliothek für Redux, dessen Funktionsweise in Abschnitt \ref{sub:reduxoffline} detailliert beschrieben wird.\\
 Nach der Installation muss der Redux \tt{store} zusammen mit dem \tt{offline "-store "-enhancer} erzeugt werden. Listing \ref{code:store} visualisiert diesen Vorgang. Ein Redux \tt{store} wird mit dem \tt{storeCreator} in Zeile 5 erzeugt. Ein \tt{store "-enhancer} ist eine Funktion, die den \tt{storeCreator} neu zusammenfügt und einen neuen, erweiterten \tt{storeCreator} zurückgibt.
-Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile 8 übergeben.
+Redux Offline kommt mit einer Grundkonfiguration (siehe Zeile 3). Diese wird dem \tt{offline store enhancer} in Zeile 8 übergeben.\\
 %
 \begin{center}
   \lstinputlisting[language=REACT,

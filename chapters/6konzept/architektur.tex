@@ -75,7 +75,7 @@ Eine Backendimplementierung ist für den Prototypen \it{amilia-qouch} nicht notw
 Die \autoref{fig:qouch-model} skizziert die Architektur von \it{amilia-qouch}.
 % TODO:
 Die Containerkomponenten handhaben die Daten, die in den Viewkomponenten angezeigt werden und speichert sie in PouchDB.
-PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in das Model.
+PouchDB synchronisiert sich mit der CouchDB und schreibt die Daten zurück in den State, der in den Containerkomponenten verwaltet wird.
 % Client - Server - Modell
 \begin{figure}[H]
   \centering
