@@ -23,7 +23,7 @@ Von den erarbeiteten Fällen sind Fall \it{b} und \it{c} für die Szenarien zur 
 Im Anwendungsbeispiel einer kollaborativen Kontaktliste können mehrere Personen die Liste verwalten. Oder eine Person benutzt die Anwendung auf mehreren Geräten, was zum selben Ergebnis führt:
 Die Komplexität wird durch mehr Parteien -- beliebig viele Clients -- erhöht.
 Jede Person kann alle Einträge jederzeit laden und einzelne erstellen, bearbeiten oder löschen. Bei den Ausführungen der grundlegenden \gls{CRUD}--Operationen, kann es bei der Synchronisation der beteiligten Parteien zu Konflikten kommen wenn einer der oben genannten Fälle \it{b} oder \it{c} eintritt und ein Objekt von mehreren Parteien bearbeitet wird.\\\\
-Laut den Aussagen von Jan Lenhardt\footnote{ Mitgründer und Geschäftsführer der Neighbourhoodie Software GmbH, Committer und Vice President von Apache CouchDB}, die er in einem Interview getroffen hat, ergeben sich unterschiedliche, angewandte Vorgehensweisen, Objekte für die Verwendung in verteilten Systemen zu identifizieren und versionieren.
+Laut den Aussagen von Jan Lehnardt\footnote{ Mitgründer und Geschäftsführer der Neighbourhoodie Software GmbH, Committer und Vice President von Apache CouchDB}, die er in einem Interview getroffen hat, ergeben sich unterschiedliche, angewandte Vorgehensweisen, Objekte für die Verwendung in verteilten Systemen zu identifizieren und versionieren.
 Nachfolgend werden diese Vorgehensweisen berücksichtigend, Konfliktszenarien dargestellt.
 Es ist zu erwähnen, dass es bei diesen Methoden nicht immer zu Konflikten kommen muss.
 Da es Thema dieser Arbeit ist, wird für jede Variante nur der ungünstigste Fall, der Konfliktfall beschrieben.
