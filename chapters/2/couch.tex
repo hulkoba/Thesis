@@ -17,7 +17,7 @@ Eine Revisionsnummer in CouchDB kann wie folgt aussehen \tt{2-5560348cec1b08c3d5
 Jede Revision hat außerdem eine Liste von vorherigen Revisionen.\\\\
 %
 %
-Hat ein Dokument durch gleichzeitiges Bearbeiten in zwei unterschiedlichen Datenbanken dieselbe Revisionsnumer, erkennt CouchDB den Konflikt und markiert das Dokument, indem das Attribut \tt{\_conficts} den Wert \tt{true} bekommt.
+Hat ein Dokument durch gleichzeitiges Bearbeiten in zwei unterschiedlichen Datenbanken dieselbe Revisionsnummer, erkennt CouchDB den Konflikt und markiert das Dokument, indem das Attribut \tt{\_conficts} den Wert \tt{true} bekommt.
 Dann entscheidet CouchDB, welche Version gewinnt und welche verliert.
 CouchDB wird nie zwei Versionen zusammenführen.
 Das muss in der Anwendung implementiert sein.
